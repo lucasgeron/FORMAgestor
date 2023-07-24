@@ -1,0 +1,24 @@
+<%# FOOTER %>
+<div class="text-sm bg-gray-100 text-slate-500 pb-4 text-center ">
+
+  <%# rails app tag %>
+  <div class="mx-auto ">
+    <%= link_to root_url, class:"", target:"_blank" do %>
+      <%= image_tag('logo-horizontal-dark.svg', class: '', style:'height: 3rem', alt: 'Logotext') %>
+    <% end %>
+  </div>
+</div>
+
+
+<%# develope by tag %>
+<div class=" bg-gray-200 text-slate-500 text-sm inner-shadow-top grid">
+  <div class="mx-auto flex-center p-4">
+    <span class="text-center text-xs"><%= t('views.site.footer.developed_by') %> </span>
+      <%= image_tag('https://lucasgeron.github.io/assets/images/favicon.ico', class:"", style:"height:1rem; padding-left:0.10rem") %>
+      <%= link_to t('views.app.github'), class:"flex-center", target:"_blank" do %>
+      <span class='text-gray-900 text-xs font-bold'> <%= t('views.app.developer') %> </span>
+    <% end %>
+  </div>
+</div>
+
+

@@ -70,6 +70,7 @@ en:
           price_label: $
           price: 20
           price_frequency: /Month
+          price_description: ""
           description: Includes everything you've always wanted.
           cta: I want to hire
           benefits:

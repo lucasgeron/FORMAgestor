@@ -1,0 +1,5 @@
+ <div class="my-2">
+    <p class="text-center text-slate-500 text-xs my-0"> <%= t('mailer.unsubscribe_instruction')%>
+      <%= link_to  t('mailer.cta'), unsubscribe_url(email: params[:email] ), class:"text-center text-slate-500 text-xs my-0"%>.
+      </p>
+  </div>

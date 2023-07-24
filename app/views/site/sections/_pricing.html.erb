@@ -6,15 +6,15 @@
       <p data-aos='zoom-in' class="title text-4xl md:text-6xl "><%= t('views.site.pricing.title')%></p>
       <p data-aos="zoom-in" data-aos-delay="50" class="max-w-screen-md mx-auto"><%= t('views.site.pricing.description')%></p>
     </div>
-      <div class="text-center mt-6" data-aos-delay="50" data-aos="zoom-in">
+    <div class="text-center mt-6" data-aos-delay="50" data-aos="zoom-in">
       <%= image_tag('logo-horizontal-dark.svg', class:'h-16 inline dark:hidden animate-breathe')%>
       <%= image_tag('logo-horizontal-white.svg', class:'h-16 hidden dark:inline animate-breathe')%>
-      </div>
+    </div>
 
     <%# PRICES %>
     <div class="mx-auto max-w-5xl md:my-10">
       <div class="grid max-w-3xl mx-auto md:grid-cols-2 ">
-        
+
         <%# LEFT BANNER %>
         <div data-aos="zoom-in" data-aos-offset="120" data-aos-delay="50" class="relative px-4 py-16 sm:rounded-5xl sm:px-10 md:py-12 lg:px-12">
           <div class="relative flex flex-col">
@@ -27,7 +27,7 @@
               <p class="text-[1.75rem] leading-tight text-gray-500"><%= t('views.site.pricing.first_plan.price_label')%></p>
               <p class="ml-1 mt-1 text-7xl tracking-tight text-slate-900 dark:text-white"><%= t('views.site.pricing.first_plan.price')%></p>
               <p class="text-[1.75rem] leading-tight text-gray-500 self-end ml-1"> <%= t('views.site.pricing.first_plan.price_frequency')%></p>
-              </div>
+            </div>
             <%# pricing.benefits %>
             <div class="order-last mt-8">
               <ul role="list" class="-my-2 divide-y text-base tracking-tight divide-slate-200 text-slate-900 dark:text-white">
@@ -54,11 +54,16 @@
             <%# pricing.description %>
             <p class="mt-2 text-lg tracking-tight text-white"><%=t('views.site.pricing.second_plan.description')%></p>
             <%# pricing.price %>
-            <div class="order-first flex font-display  mx-auto  font-bold">
-              <p class="text-[1.75rem] leading-tight text-blue-200"><%= t('views.site.pricing.second_plan.price_label')%></p>
-              <p class="ml-1 mt-1 text-7xl tracking-tight text-white"><%=t('views.site.pricing.second_plan.price')%></p>
-              <p class="text-[1.75rem] leading-tight text-blue-200 self-end ml-1"> <%= t('views.site.pricing.second_plan.price_frequency')%></p>
+
+            <div class="order-first font-display  mx-auto  font-bold">
+              <div class="flex">
+                <p class="text-[1.75rem] leading-tight text-blue-200"><%= t('views.site.pricing.second_plan.price_label')%></p>
+                <p class="ml-1 mt-1 text-7xl tracking-tight text-white"><%=t('views.site.pricing.second_plan.price')%></p>
+                <p class="text-[1.75rem] leading-tight text-blue-200 self-end ml-1"> <%= t('views.site.pricing.second_plan.price_frequency')%></p>
+              </div>
+              <p class="text-xs text-end font-light tracking-tight text-white "><%=t('views.site.pricing.second_plan.price_description').html_safe %></p>
             </div>
+
             <%# pricing.benefits %>
             <div class="order-last mt-8">
               <ul role="list" class="-my-2 divide-y text-base tracking-tight divide-white/10 dark:divide-white text-white">

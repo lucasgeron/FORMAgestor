@@ -70,16 +70,15 @@ pt-BR:
         second_plan:
           title: Completo 
           price_label: R$
-          price: 160
+          price: 80
           price_frequency: /Mês
+          price_description: '<i class="fa-solid fa-circle-info fa-xs"></i> Valor por licença ativa.'
           description: Inclúi todos os recursos para seu negócio prosperar.
           cta: Quero contratar
           benefits:
             - Acesso ao Sistema Full-Time
             - Base de Dados Exclusiva
             - Importação de Dados do Cliente *
-            - Contas Ilimitadas
-            - Servidor Dedicado
             - Central de Suporte 
           form_subject: Assunto para plano completo
           form_message: Mensagem para plano completo

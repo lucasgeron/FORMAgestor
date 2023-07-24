@@ -46,7 +46,7 @@ class SiteController < ApplicationController
     respond_to do |format|
       if @subscriber.save
         # Send email to subscriber
-        SiteMailer.with(subscriber: @subscriber).subscribed_successfully.deliver_later
+        SiteMailer.with(email: @subscriber.email).subscribed_successfully.deliver_later
         flash[:success] = t('views.site.newsletter.subscribed_successfully', email: @subscriber.email)
       else
         # Save the form data in the session
