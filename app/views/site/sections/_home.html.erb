@@ -1,0 +1,30 @@
+<section id="home" data-navigation-target="home_sec" class=" h-[90vh] grid place-items-center "  >
+  <div class="inner-section-default     md:grid lg:grid-cols-2 items-center default-gap">
+
+    <%# IMAGE BASED ON THEME %>
+    <%= link_to new_user_session_url  do %>
+    <div class="w-full" data-aos="zoom-in" >
+    <%= image_tag('favicon.svg', class: 'w-auto mx-auto h-48 md:h-auto my-10 animate-breathe', alt: 'Logotext') %>
+    <%= image_tag('favtext-white.svg', class: 'w-auto h-10 mx-auto hidden dark:block', alt: 'Logotext') %>
+    <%= image_tag('favtext-dark.svg', class: 'w-auto  h-10 mx-auto block dark:hidden', alt: 'Logotext') %>    
+    </div>
+    <%end%>
+
+    <div class="mt-4 md:mt-0 flex flex-wrap space-y-4">
+     
+      <%# home.title %>
+      <h2 data-aos="zoom-in" class="title "><%= t('views.site.home.title') %></h2>
+      
+      <%# home.description %>
+      <p data-aos="zoom-in" data-aos-delay="50" class="description"><%= t('views.site.home.description') %></p>
+      
+      <%# home.cta %>
+      <a data-aos="zoom-in" data-aos-delay="50" href="#about" data-controller="scroll-to" data-scroll-to-offset-value="40" class="btn-primary mx-auto md:mx-0 inline-flex items-center space-x-2 ">
+        <span class=""><%= icon('fa-solid', 'arrow-down', class:"fa-bounce ", style:"--fa-bounce-height: 3px") %></span>
+        <span class=""><%= t('views.site.home.cta') %></span>
+      </a>
+    </div>
+    
+  </div>
+</section>
+

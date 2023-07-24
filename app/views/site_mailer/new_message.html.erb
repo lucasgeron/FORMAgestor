@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta content='text/html; charset=UTF-8' http-equiv='Content-Type' />
+    <style type="text/css">
+      <%= Rails.application.assets.find_asset('mailer').to_s.html_safe %>
+    </style>
+  </head>
+
+  <body class="container bg-gray-50">
+    <div class=""> <%# CONTENT %>
+
+      <%# HEADER %>
+      <div class="bg-gray-200 p-4  text-center inner-shadow-top">
+        <p class="text-2xl font-bold my-2">Contato</p>
+        <p class="text-xl my-2 text-gray-900"><%= @contact_form.subject %></p>
+      </div>
+
+      <%# MAIN %>
+      <div class="p-4 bg-gray-100">
+
+        <p class="text-lg text-center">Você tem uma nova mensagem de <span class="font-bold"><%= t('views.app.title')%></span>!</p>
+
+        <div class="my-2">
+          <p class="text-xs text-center  text-slate-500">Email informado: </p>
+          <p class="text-center text-lg"><%= @contact_form.email %></p>
+        </div>
+
+        <div class="my-2">
+          <p class="text-xs text-center  text-slate-500">Mensagem: </p>
+          <p class=" p-4 bg-white rounded"><%= @contact_form.message %> </p>
+        </div>
+
+        <div class="my-2">
+          <p class="text-center text-slate-500 text-xs my-0"> Por favor, considere responde-lo em até 24 horas.</p>
+        </div>
+
+      </div>
+
+      <%# FOOTER %>
+      <%= render partial: 'mailers/shared/footer' %>
+
+    </div>
+  </body>
+
+</html>

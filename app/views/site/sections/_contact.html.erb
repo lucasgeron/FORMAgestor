@@ -1,0 +1,28 @@
+<section  id="contact" data-navigation-target="contact_sec" class="">
+  <div class=" inner-section-default ">
+
+    <div class="max-w-screen-lg space-y-4 text-center mx-auto">
+      <h2 data-aos='zoom-in' class="title "><%= t('views.site.contact.title')%></h2>
+      <p data-aos="zoom-in" data-aos-delay="50" class="max-w-screen-md mx-auto"><%= t('views.site.contact.description')%></p>
+    </div>
+
+    <%= form_with(model: contact_form, class: "my-10 space-y-8 max-w-screen-md mx-auto") do |form| %>
+        <div data-aos="zoom-in" data-aos-delay="50">
+          <%= form.label :email ,class:'block mb-2 text-sm font-medium text-gray-900 dark:text-gray-300' %>
+          <%= form.text_field :email, placeholder: t('views.site.contact.email_placeholder'), class: "shadow-sm bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500 dark:shadow-sm-light" %>
+        </div>
+        <div data-aos="zoom-in" data-aos-delay="50">
+          <%= form.label :subject ,class:'block mb-2 text-sm font-medium text-gray-900 dark:text-gray-300' %>
+          <%= form.text_field :subject, placeholder: t('views.site.contact.subject_placeholder'), class: "block p-3 w-full text-sm text-gray-900 bg-gray-50 rounded-lg border border-gray-300 shadow-sm focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500 dark:shadow-sm-light", data: { contact_target: "subject" } %>
+        </div>
+        <div data-aos="zoom-in" data-aos-delay="50" class="sm:col-span-2">
+          <%= form.label :message, class:'block mb-2 text-sm font-medium text-gray-900 dark:text-gray-400' %>
+          <%= form.text_area :message, rows:6, placeholder: t('views.site.contact.message_placeholder'), class: "block p-2.5 w-full text-sm text-gray-900 bg-gray-50 rounded-lg shadow-sm border border-gray-300 focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500", data: { contact_target: "message" }, controller: "textarea-autogrow" %>
+        </div>
+        <div data-aos="zoom-in" data-aos-delay="50" class=" text-center">
+          <%= form.submit t('views.site.contact.cta'), data: { action: 'navigation#scrollToContact' }, class: "py-3 px-5 text-sm font-medium text-center text-white rounded-lg bg-blue-700 sm:w-fit hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800 cursor-pointer" %>
+        </div>
+    <% end %>
+
+  </div>
+</section>

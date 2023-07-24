@@ -1,0 +1,32 @@
+pt-BR:
+  views:
+    services:
+      - icon_family: fa-solid
+        icon: file-invoice
+        title: Prospecções Integradas
+        description: Capture novos leads através de um formulário público e integrado a plataforma. Receba notificações e gerencie suas prospecções diretamente no sistema. 
+
+      - icon_family: fa-solid
+        icon: map-location-dot
+        title: Mapa Comercial
+        description: Personalize as cidades atendidas por cada usuário e obtenha insights valiosos através das estatísticas geradas a partir dos registros do sistema.
+
+      - icon_family: fa-solid
+        icon: calendar-check
+        title: Automação de Semestres
+        description: Atualização automática do período das turmas em relação à data atual. Saiba onde atuar e não perca mais nenhuma negociação por contato tardio.
+
+      - icon_family: fa-solid
+        icon: filter
+        title: Filtros Dinâmicos
+        description: Faça filtros com múltiplos critérios e acompanhe o desempenho das suas negociações e de seus representantes de forma simples e fácil.
+
+      - icon_family: fa-solid
+        icon: ranking-star
+        title: Estatísticas de Mercado
+        description: Identifique boas oportunidades com assertividade e obtenha métricas das principais empresas concorrentes com base nas informações contidas no sistema.
+
+      - icon_family: fa-solid
+        icon: mobile-screen-button
+        title: Sistema Responsivo
+        description: Visualize informações através da interface interativa desenvolvida para se adaptar a todos os dispositivos. Descubra as vantagens da rolagem horizontal e vertical. 

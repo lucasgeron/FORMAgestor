@@ -1,0 +1,33 @@
+<section id="services" data-navigation-target="services_sec" class="">
+  <div class="inner-section-default">
+
+    <%# header %>
+    <div class="max-w-screen-lg space-y-4 text-center mx-auto">
+      <h2 data-aos="zoom-in" class="title"><%= t('views.site.services.title')%></h2>
+      <p data-aos="zoom-in" data-aos-delay="50" class="max-w-screen-md mx-auto"><%= t('views.site.services.description') %></p>
+    </div>
+
+  
+
+    <%# grid %>
+    <div class="my-10 md:grid md:grid-cols-2 lg:grid-cols-2 xl:grid-cols-3 gap-4 space-y-4 md:space-y-0">
+      <% t('views.services').each_with_index do |item, index| %>
+        <div data-aos="zoom-in-up" data-aos-delay="50" class="overflow-hidden border dark:border-slate-800 group p-4 transition duration-300 hover:bg-gray-100 hover:dark:bg-gray-800 hover:shadow dark:hover:shadow-none rounded-xl">
+          
+          <div class="translate-y-1/2 group-hover:translate-y-0 flex justify-center items-center mx-auto  w-16 h-16 rounded-full  lg:h-20 lg:w-20 bg-gray-100 dark:bg-gray-800  transition  duration-300 group-hover:scale-125">
+            <%= icon(item[:icon_family], item[:icon], class:"fa-2x text-gray-600 group-hover:text-blue-600 dark:text-gray-400 dark:group-hover:text-white transition  duration-300 ") %>
+          </div>
+          
+          <div class="mt-4 translate-y-1/2 group-hover:translate-y-0 transition duration-300 ">
+            <h3 class="my-4 group-hover:text-blue-600 dark:text-gray-200 dark:group-hover:text-white  text-xl font-bold text-center "><%= item[:title] %></h3>
+            <span class="invisible group-hover:visible">
+            <p class=" description  max-w-lg mx-auto md:max-w-none text-center md:text-justify "><%= item[:description] %></p>
+            </span>
+          </div>
+        </div>
+      <% end %>
+    </div>
+
+  </div>
+
+</section>

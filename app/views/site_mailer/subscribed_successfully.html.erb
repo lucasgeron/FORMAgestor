@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta content='text/html; charset=UTF-8' http-equiv='Content-Type' />
+    <style type="text/css">
+      <%= Rails.application.assets.find_asset('mailer').to_s.html_safe %>
+    </style>
+  </head>
+
+  <body class="container bg-gray-50">
+    <div class=""> <%# CONTENT %>
+
+      <%# HEADER %>
+      <div class="bg-gray-200 p-4  text-center inner-shadow-top">
+        <p class="text-2xl my-2"><%= t('mailer.site.subscribed_successfully.title').html_safe%> </p>
+        <p class="text-sm my-2 text-gray-900"><%= t('mailer.site.subscribed_successfully.subtitle') %></p>
+      </div>
+
+      <%# MAIN %>
+      <div class="p-4 bg-gray-100">
+
+        <p class=" text-center"><%= t('mailer.site.subscribed_successfully.message_title') %> </p>
+
+        <p class="text-xs text-center  text-slate-500"><%= t('mailer.site.subscribed_successfully.message_subject') %></p>
+
+        <div class="my-2 p-4 bg-white rounded text-sm">
+        <% t('mailer.site.subscribed_successfully.message_text').each do |p| %>
+          <p class=""><%= p %> </p>
+        <%end%>
+        </div>
+
+        <div class="my-2">
+          <p class="text-center text-slate-500 text-xs my-0"><%= t('mailer.site.subscribed_successfully.message_footer') %> </p>
+        </div>
+
+       
+      </div>
+
+      <%# FOOTER %>
+      <%= render partial: 'mailers/shared/footer' %>
+      <%= render partial: 'mailers/shared/unsubscribe' %>
+
+    </div>
+  </body>
+
+</html>

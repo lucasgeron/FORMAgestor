@@ -1,0 +1,17 @@
+en:
+  mailer:
+    unsubscribe_instruction: If you no longer want to recieve updates,
+    cta: unsubscribe
+    site:
+      welcome:
+        subject: Newsletter Subject
+        title: Welcome to our <span class="font-bold">Newsletter</span>!
+        subtitle: We are very happy to have you as part of our community.
+        message_title: Now you are part of our subscriber list!
+        message_subject: Welcome Message!
+        message_text: >
+          <p class="">As a subscriber to our newsletter, you will have exclusive access to our latest news, special offers, and exclusive content, delivered directly to your inbox. </p>
+          <p class="">We strive to keep our subscribers up to date with the most important and relevant information, and will only send email notifications when there is something important to share. </p>
+          <p class="">In addition, we value the privacy of our subscribers and guarantee that your data will only be used for sending our newsletter and keeping you informed about our updates.</p>
+        message_footer: Thank you for subscribing. We hope you enjoy our communications.
+      new_message:
