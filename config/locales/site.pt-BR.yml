@@ -1,0 +1,109 @@
+pt-BR:
+  views:
+    site:
+      language_switched: Idioma alterado para Português do Brasil.
+      navbar:
+        home: Início
+        about: Sobre
+        faq: FAQ
+        services: Serviços
+        pricing: Preço
+        updates: Atualizações
+        contact: Contato
+      footer:
+        year: 2023
+        rights: Todos os direitos reservados
+        developed_by: Desenvolvido por
+      home: 
+        title: A ferramenta ideal para toda empresa de formaturas.
+        description: Nosso sistema permite gerenciar todas as etapas de suas negociações, desde o primeiro atendimento com a turma até o fechamento do contrato. Acompanhe o histórico de atividades e monitore o desempenho do seu time de vendas de forma fácil e interativa.
+        cta: Explorar
+      about:
+        title: Transforme a forma de gerenciar as suas negociações.
+        description: Sua empresa terá acesso a uma ferramenta completa e especializada no mercado de formaturas que permite mapear instituições, cursos, turmas e alunos de forma automatizada, além de gerenciar as principais informações e acompanhar a evolução das negociações em tempo real. 
+        note: '<p class="font-medium text-gray-900 dark:text-white text-center text-xs sm:text-sm my-2 md:text-base md:text-left">Diga adeus às planilhas confusas e a falta de informação.</p><p class="font-bold text-gray-900 dark:text-white text-center  md:text-left"> Com %{logo} você terá tudo o que precisa em um só lugar.</p>'
+        cta: Descubra o que temos a oferecer
+      faq:
+        title: Perguntas Frequentes
+        description: Explore as principais perguntas e tire suas dúvidas.
+        sub_title: Outras perguntas relevantes
+      services:
+        title: Um sistema feito para equipes como a sua!
+        description: Nós acreditamos que organização, tecnologia e inovação podem impulsionar o crescimento econômico da sua empresa. Não perca mais nenhuma negociação por desinformação!
+      updates:
+        title: Últimas Atualizações
+        description: 'Descubra as principais novidades que já chegaram no %{logo}'
+        older_updates: Perdeu alguma atualização? 
+        consideration: Considere <a href="#newsletter" data-controller="scroll-to" class="hover:text-blue-600  font-semibold" data-scroll-to-offset-value="60"> receber atualizações</a>.
+        release: Lançado há
+      newsletter:
+        title: Assine nossa newsletter
+        description: Receba as principais atualizações do sistema, dicas e conteúdo exclusivo gratuitamente em seu email.
+        input_label: Endereço de e-mail
+        placeholder: Digite seu e-mail
+        cta: Assinar
+        subscribed_successfully: 'Assinatura realizada com sucesso! Verifique seu email: %{email}.'
+        subscriber_not_found: 'O email: %{email} não faz parte da nossa lista de contatos.'
+        unsubscribed_successfully: 'O email: %{email} foi removido da lista de assinantes.'
+        unsubscribed_unsuccessfully: 'Não encontramos o email: %{email} em nossa lista de assinantes.'
+        unsubscribe:
+          title: Cancelar Assinatura
+          description: Lamentamos que você não queira mais receber nossas atualizações. Esperamos que mude de ideia no futuro.
+          cta: Cancelar Inscrição
+      pricing:
+        title: Contrate Agora
+        description: Vários clientes satisfeitos já descobriram as vantagens que nosso sistema traz para seus negócios. Junte-se a eles e descubra como podemos ajudá-lo.
+        first_plan:
+          title: Demonstração
+          price_label: R$
+          price: Grátis
+          price_frequency: .
+          description: O ponto de partida para você conhecer nosso sistema.
+          cta: Quero Conhecer
+          benefits:
+            - 03 dias de Acesso Grátis 
+            - Base de Dados Fictícia
+            - Informações Pré-Cadastradas 
+            - 01 Conta Usuário/Administrador 
+          form_subject: Assunto para plano grátis
+          form_message: Messagem para plano grátis
+        second_plan:
+          title: Completo 
+          price_label: R$
+          price: 80
+          price_frequency: /Mês
+          price_description: '<i class="fa-solid fa-circle-info fa-xs"></i> Valor por licença ativa.'
+          description: Inclúi todos os recursos para seu negócio prosperar.
+          cta: Quero contratar
+          benefits:
+            - Acesso ao Sistema Full-Time
+            - Base de Dados Exclusiva
+            - Importação de Dados do Cliente *
+            - Central de Suporte 
+          form_subject: Assunto para plano completo
+          form_message: Mensagem para plano completo
+      contact:
+        title: Entre em contato
+        description: Precisa de mais informações sobre nosso sistema? Nos deixe saber como ajudá-lo.
+        email_label: Seu email
+        email_placeholder: Informe seu email.
+        subject_label: Assunto
+        subject_placeholder: Informe o motivo do seu contato.
+        message_label: Sua mensagem
+        message_placeholder: Deixe-nos saber como podemos ajudá-lo... Se considerar relevante, informe seu telefone com DDD para contato. 
+        cta: Enviar mensagem
+        created_successfully: Sua mensagem foi enviada com sucesso.
+      team:
+        title: Conheça nosso time
+        description: Nosso time é composto por profissionais qualificados e dedicados que trabalham para oferecer soluções inovadoras e eficazes para nossos clientes.
+        members:
+          - name: Lucas Geron
+            img_src: 'https://lh3.googleusercontent.com/pw/AIL4fc9MKH3fh6GwJ1CquIvKQ1dQjSl1Hr2wv5y5cnorJ6YLiLVa2_raRaIl9z_z0quAL77E2ucG6ZbbcAB3U0lZgep4Q7TMl-kKI0HeuRY3pohYbpMwR2mTz3RCenMp9PPmbe4zgBMAgEwfZ_fHd8IQb6fv=w611-h915-s-no?authuser=0'
+            role: CEO & Web Developer
+            description: Com mais de 7 anos de experiência no mercado de formaturas, Lucas desenvolveu e lidera o projeto atualmente.
+            socials:
+              - github: http://lucasgeron.github.io
+              - behance: http://be.net/lucasgeron
+              - whatsapp: http://wa.me/5546999220095
+              - instagram: https://www.instagram.com/oolucasfernando/
+    

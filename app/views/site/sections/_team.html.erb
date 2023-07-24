@@ -1,0 +1,43 @@
+<section id="team" data-navigation-target="team_sec" class="bg-white dark:bg-gray-900 ">
+  <div class="inner-section-default ">
+
+    <div class="max-w-screen-lg space-y-4 text-center mx-auto">
+      <h2 data-aos='zoom-in' class="title"><%=t('views.site.team.title')%></h2>
+      <p data-aos="zoom-in" data-aos-delay="50" class="max-w-screen-md mx-auto"><%=t('views.site.team.description')%></p>
+    </div>
+
+    <%# team.members %>
+    <div  class="grid gap-4 my-10 grid-cols-1 md:grid-cols-2 xl:grid-cols-3 ">
+
+      <%t('views.site.team.members').each do |item| %>
+        <div data-aos="zoom-in-up" data-aos-delay="50" class="items-start bg-gray-100 rounded-lg grid grid-cols-3 space-x-2 p-2 dark:bg-gray-800 dark:border-gray-700 ">
+
+          <div class="col-span-1 overflow-y-clip rounded-lg h-36">
+            <img class="object-cover" src="<%= item[:img_src] %>" alt="Avatar Image">
+          </div>
+
+          <div class="col-span-2 pl-2 space-y-2">
+            <h3 class="text-base md:text-lg font-bold tracking-tight text-gray-900 dark:text-white"><%= item[:name] %></h3>
+            <span class="text-gray-500 text-sm md:text-base dark:text-gray-400"><%= item[:role] %></span>
+            <p class=" pr-4 text-justify text-xs md:text-sm font-light text-gray-500 dark:text-gray-400"><%= item[:description] %></p>
+
+          </div>
+          
+          <ul class="flex col-span-3 space-x-4 mt-2 ">
+            <% item[:socials].each do |hash| %>
+              <% hash.each do |key, value| %>
+                <li>
+                  <a href="<%= value %> " class="text-gray-500 hover:text-blue-600 dark:hover:text-white">
+                    <%= icon('fa-brands', key, class:"") %>
+                  </a>
+                </li>
+              <% end %>
+            <% end %>
+          </ul>
+        </div>
+      <%end%>
+
+    </div>
+
+  </div>
+</section>

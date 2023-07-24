@@ -1,0 +1,89 @@
+<section id="pricing" data-navigation-target="pricing_sec" class="">
+  <div class="inner-section-default">
+
+    <%# PRICING HEADER %>
+    <div class="max-w-screen-lg space-y-4 text-center mx-auto">
+      <p data-aos='zoom-in' class="title text-4xl md:text-6xl "><%= t('views.site.pricing.title')%></p>
+      <p data-aos="zoom-in" data-aos-delay="50" class="max-w-screen-md mx-auto"><%= t('views.site.pricing.description')%></p>
+    </div>
+    <div class="text-center mt-6" data-aos-delay="50" data-aos="zoom-in">
+      <%= image_tag('logo-horizontal-dark.svg', class:'h-16 inline dark:hidden animate-breathe')%>
+      <%= image_tag('logo-horizontal-white.svg', class:'h-16 hidden dark:inline animate-breathe')%>
+    </div>
+
+    <%# PRICES %>
+    <div class="mx-auto max-w-5xl md:my-10">
+      <div class="grid max-w-3xl mx-auto md:grid-cols-2 ">
+
+        <%# LEFT BANNER %>
+        <div data-aos="zoom-in" data-aos-offset="120" data-aos-delay="50" class="relative px-4 py-16 sm:rounded-5xl sm:px-10 md:py-12 lg:px-12">
+          <div class="relative flex flex-col">
+            <%# pricing.title %>
+            <h3 class="mt-7 text-2xl font-semibold tracking-tight text-slate-900 dark:text-white"><%= t('views.site.pricing.first_plan.title')%></h3>
+            <%# pricing.description %>
+            <p class="mt-2 text-lg tracking-tight text-slte-600 dark:text-slate-400"><%= t('views.site.pricing.first_plan.description')%></p>
+            <%# pricing.price %>
+            <div class="order-first inline-flex  mx-auto font-display font-bold ">
+              <p class="text-[1.75rem] leading-tight text-gray-500"><%= t('views.site.pricing.first_plan.price_label')%></p>
+              <p class="ml-1 mt-1 text-7xl tracking-tight text-slate-900 dark:text-white"><%= t('views.site.pricing.first_plan.price')%></p>
+              <p class="text-[1.75rem] leading-tight text-gray-500 self-end ml-1"> <%= t('views.site.pricing.first_plan.price_frequency')%></p>
+            </div>
+            <%# pricing.benefits %>
+            <div class="order-last mt-8">
+              <ul role="list" class="-my-2 divide-y text-base tracking-tight divide-slate-200 text-slate-900 dark:text-white">
+                <%t('views.site.pricing.first_plan.benefits').each do |item| %>
+                  <li class="flex py-2"> <%= icon('fa-solid','check', class:'') %> <span class="ml-4"> <%= item %></span></li>
+                <%end%>
+              </ul>
+            </div>
+            <%# pricing.btn %>
+            <a href="#contact" 
+            data-action="contact#fill_form_with" 
+            data-controller="scroll-to"  data-scroll-to-offset-value="110" 
+            data-contact-plan="<%=t('views.site.pricing.first_plan.title')%>" 
+            data-contact-subject="<%= t('views.site.pricing.first_plan.form_subject') %>" 
+            data-contact-message="<%= t('views.site.pricing.first_plan.form_message') %>"
+            class="inline-flex justify-center rounded-md py-1 px-4 text-base font-semibold tracking-tight shadow-sm focus:outline-none bg-slate-900 dark:bg-slate-50 text-white dark:text-slate-900 hover:bg-slate-700 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-slate-900 active:bg-slate-700 active:text-white/80 disabled:opacity-30 disabled:hover:bg-slate-900 mt-8" aria-label="" ><%= t('views.site.pricing.first_plan.cta')%></a></div>
+        </div>
+
+        <%# RIGHT BANNER %>
+        <div data-aos="zoom-in" data-aos-offset="120" data-aos-delay="50" class="relative px-4 py-16 rounded-3xl sm:px-10 md:py-12 lg:px-12 bg-blue-600 sm:shadow-lg">
+          <div class="relative flex flex-col">
+            <%# pricing.title %>
+            <h3 class="mt-7 text-2xl font-semibold tracking-tight text-white"><%=t('views.site.pricing.second_plan.title')%></h3>
+            <%# pricing.description %>
+            <p class="mt-2 text-lg tracking-tight text-white"><%=t('views.site.pricing.second_plan.description')%></p>
+            <%# pricing.price %>
+
+            <div class="order-first font-display  mx-auto  font-bold">
+              <div class="flex">
+                <p class="text-[1.75rem] leading-tight text-blue-200"><%= t('views.site.pricing.second_plan.price_label')%></p>
+                <p class="ml-1 mt-1 text-7xl tracking-tight text-white"><%=t('views.site.pricing.second_plan.price')%></p>
+                <p class="text-[1.75rem] leading-tight text-blue-200 self-end ml-1"> <%= t('views.site.pricing.second_plan.price_frequency')%></p>
+              </div>
+              <p class="text-xs text-end font-light tracking-tight text-white "><%=t('views.site.pricing.second_plan.price_description').html_safe %></p>
+            </div>
+
+            <%# pricing.benefits %>
+            <div class="order-last mt-8">
+              <ul role="list" class="-my-2 divide-y text-base tracking-tight divide-white/10 dark:divide-white text-white">
+                <%t('views.site.pricing.second_plan.benefits').each do |item| %>
+                  <li class="flex py-2"><%= icon('fa-solid','check', class:'my-auto') %> <span class="ml-4"><%= item %></span></li>
+                <%end%>
+              </ul>
+            </div>
+            <%# pricing.btn %>
+            <a href="#contact" 
+            data-action="contact#fill_form_with"  
+            data-controller="scroll-to"  data-scroll-to-offset-value="110" 
+            data-contact-plan="<%=t('views.site.pricing.second_plan.title')%>" 
+            data-contact-subject="<%= t('views.site.pricing.second_plan.form_subject') %>" 
+            data-contact-message="<%= t('views.site.pricing.second_plan.form_message') %>"
+            class="inline-flex justify-center rounded-md py-1 px-4 text-base font-semibold tracking-tight shadow-sm focus:outline-none bg-white text-blue-600 hover:text-blue-700 focus-visible:text-blue-900 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-white active:bg-blue-50 active:text-blue-900/80 disabled:opacity-40 disabled:hover:text-blue-600 mt-8" aria-label="" ><%= t('views.site.pricing.second_plan.cta')%></a></div>
+        </div>
+
+      </div>
+    </div>
+
+  </div>
+</section>

@@ -1,0 +1,37 @@
+<%= form_with(model: client, url: client.new_record? ? app_clients_path : app_client_path(client), class: "contents") do |form| %>
+  <% if client.errors.any? %>
+    <div id="error_explanation" class="bg-red-50 text-red-500 px-3 py-2 font-medium rounded-lg mt-3">
+      <h2><%= pluralize(client.errors.count, "error") %> prohibited this client from being saved:</h2>
+
+      <ul>
+        <% client.errors.each do |error| %>
+          <li><%= error.full_message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="my-5">
+    <%= form.label :name %>
+    <%= form.text_field :name, class: "form-input" %>
+  </div>
+
+  <div class="my-5">
+    <%= form.label :cnpj %>
+    <%= form.text_field :cnpj, class: "form-input" %>
+  </div>
+
+  <div class="my-5">
+    <%= form.label :active %>
+    <%= form.check_box :active, class: "form-checkbox" %>
+  </div>
+
+  <div class="my-5">
+    <%= form.label :licenses %>
+    <%= form.number_field :licenses, class: "form-input" %>
+  </div>
+
+  <div class="inline">
+    <%= form.submit class: "rounded-lg py-3 px-5 bg-blue-600 text-white inline-block font-medium cursor-pointer" %>
+  </div>
+<% end %>

@@ -2,12 +2,136 @@
 @tailwind components;
 @tailwind utilities;
 
-/*
-
 @layer components {
+  /* BUTTONS  */
   .btn-primary {
-    @apply py-2 px-4 bg-blue-200;
+    @apply 
+    text-white 
+    bg-blue-700 hover:bg-blue-800 dark:bg-blue-600 dark:hover:bg-blue-700 
+    focus:ring-4 focus:outline-none focus:ring-blue-300 dark:focus:ring-blue-800
+    font-medium 
+    rounded-lg 
+    px-5 
+    py-2.5 
+    text-center 
+    cursor-pointer;
   }
+
+  .nav-link{
+    @apply 
+    block rounded-lg
+    px-4 py-2 md:py-2 
+    font-medium
+    md:hover:text-blue-600
+    md:hover:bg-gray-200;
+  }
+
+  .site{
+    @apply 
+    font-light 
+    text-sm md:text-base 
+    text-gray-900 dark:text-white 
+    bg-white dark:bg-gray-900 ;
+  }
+
+  .inner-section-default{
+    @apply 
+    max-w-screen-xl 
+    mx-auto 
+    px-4 md:px-16;
+  }
+
+  .title{
+    @apply 
+    tracking-tight 
+    font-extrabold
+    text-2xl md:text-4xl;
+  }
+
+  .description{
+    @apply
+    text-gray-500 dark:text-gray-400
+    text-justify;
+  }
+
+  .default-gap{
+    @apply
+    gap-8 md:gap-12 lg:gap-16;
+  }
+
+  hr{
+    @apply
+    w-64 
+    h-1 
+    mx-auto 
+    my-12 md:my-20
+    bg-gray-100 dark:bg-gray-700
+    border-0 rounded;
+
+  }
+
+  /* APP STYLES */
+
+  .form-input{
+    @apply block rounded-md border border-gray-200 outline-none px-3 py-2 mt-2 w-full;
+  }
+
+  .form-checkbox{
+    @apply rounded border-gray-200 mr-1 w-5 h-5;
+  }
+
+  .sidebar-link{
+    @apply block p-2  
+    
+    text-sm rounded-lg  
+    text-gray-900 dark:text-slate-400
+    hover:text-blue-600 dark:hover:text-white
+    hover:bg-gray-200 dark:hover:bg-gray-950;
+  }
+
+  .sidebar-link-active{
+    @apply block p-2
+      
+    text-sm rounded-lg  
+    text-white dark:text-white
+    bg-blue-600 dark:bg-blue-600
+    hover:bg-blue-700 dark:hover:bg-blue-700;
+  }
+
+  .dropdown-toggle[aria-expanded="true"] {
+    @apply text-blue-600
+  }
+  
+
 }
 
-*/
+/* DROPDOWN MENU TOGGLE */
+
+
+[aria-expanded="true"] .fa-chevron-down {
+  display: none;
+}
+
+[aria-expanded="false"] .fa-chevron-down {
+  display: block;
+}
+
+[aria-expanded="true"] .fa-chevron-up {
+  display: block;
+}
+
+[aria-expanded="false"] .fa-chevron-up {
+  display: none;
+}
+
+/* REMOVE SCROLL BAR FROM _SIDEBAR */
+/* For Webkit-based browsers (Chrome, Safari and Opera) */
+.scrollbar-hide::-webkit-scrollbar {
+  display: none;
+}
+
+/* For IE, Edge and Firefox */
+.scrollbar-hide {
+  -ms-overflow-style: none;  /* IE and Edge */
+  scrollbar-width: none;  /* Firefox */
+}

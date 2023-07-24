@@ -1,0 +1,31 @@
+
+<%= render partial: 'site/sections/home' %>
+
+<hr>
+
+<%= render partial: 'site/sections/about' %>
+
+<hr>
+
+<%= render partial: 'site/sections/services' %>
+
+<hr>
+
+<%= render partial: 'site/sections/faq' %>
+
+<hr>
+
+<%= render partial: 'site/sections/updates' %>
+
+<%= render partial: 'site/sections/newsletter', locals: {subscriber: @subscriber} %>
+
+<div data-controller="contact">
+  <%= render partial: 'site/sections/pricing' %>
+
+  <hr>
+
+  <%= render partial: 'site/sections/contact', locals: {contact_form: @contact_form} %>
+</div>
+<hr>
+
+<%= render partial: 'site/sections/team' %>

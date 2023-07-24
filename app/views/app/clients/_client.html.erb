@@ -1,0 +1,32 @@
+<div id="<%= dom_id client %>">
+  <p class="">
+    <strong class="block font-medium mb-1">Name:</strong>
+    <%= client.name %>
+  </p>
+
+  <p class="">
+    <strong class="block font-medium mb-1">Cnpj:</strong>
+    <%= client.cnpj %>
+  </p>
+
+  <p class="">
+    <strong class="block font-medium mb-1">Ativo:</strong>
+    <%= client.active %>
+  </p>
+
+  <p class="">
+    <strong class="block font-medium mb-1">Licensas:</strong>
+    
+    <p class=""> <%= client.users.count %> Usuários </p>
+    <p class=""> <%= client.used_licenses %> de <%= client.licenses %> Utilizadas  </p>
+    <p class=""><%= client.available_licenses %> Disponíveis </p>
+
+    <%= client.has_available_license? %>
+  </p>
+
+  <% if action_name != "show" %>
+    <%= link_to "Show this client", app_client_path(client), class: "rounded-lg py-3 px-5 bg-gray-100 inline-block font-medium" %>
+    <%= link_to 'Edit this client', edit_app_client_path(client), class: "rounded-lg py-3 ml-2 px-5 bg-gray-100 inline-block font-medium" %>
+    <hr class="mt-6">
+  <% end %>
+</div>
