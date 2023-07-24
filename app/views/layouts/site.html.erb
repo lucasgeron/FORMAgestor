@@ -19,17 +19,11 @@
   </head>
 
   <body>
-    <main class="application min-h-screen bg-white dark:bg-gray-800 text-gray-900 dark:text-slate-400 " >
-
-  
-
-      <%= render partial: 'layouts/shared/app_notification' %>
-      
-      <%= render partial: 'app/shared/sidebar' if has_session? %> 
-      
-      <div class="min-h-screen<% if has_session? %> p-4 xl:ml-64 <%end%>">
-        <%= yield  %>
-      </div>
+    <main class="site transition duration-500 min-h-screen" <% if !is_unsubscribe_page? %> data-controller="navigation" <%end%>>
+      <%= render partial: 'layouts/shared/site_notification' %>
+      <%= render partial: 'site/shared/navbar' %>
+      <%= yield %>
+      <%= render partial: 'site/shared/footer' %>
     </main>
 
     <%# CDN SCRIPTS  %>

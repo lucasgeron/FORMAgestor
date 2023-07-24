@@ -10,6 +10,42 @@ pt-BR:
         message: Mensagem
   activerecord:
     models:
+      prospect:
+        one: Propecção
+        other: Prospecções
+      students:
+        one: Aluno
+        other: Alunos
+      services:
+        one: Atendimento
+        other: Atendimentos
+      city:
+        one: Cidade
+        other: Cidades
+      institution:
+        one: Instituição
+        other: Instituições
+      course:
+        one: Curso
+        other: Cursos
+      update:
+        one: Atualização
+        other: Atualizações
+      semester:
+        one: Semestre
+        other: Semestres
+      vendor:
+        one: Representante
+        other: Representantes
+      company:
+        one: Empresa
+        other: Empresas
+      admin:
+        one: Administrador
+        other: Administradores
+      client:
+        one: Cliente
+        other: Clientes
       contactform: Formulário de Contato
       subscriber: Assinante
     attributes:

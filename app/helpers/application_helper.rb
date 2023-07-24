@@ -8,4 +8,12 @@ module ApplicationHelper
     end
   end
 
+  def has_session?
+    user_signed_in? || admin_signed_in?
+  end
+
+  def is_link_active?(link)
+    controller_name == link ? '-active' : ''
+  end
+
 end
