@@ -26,14 +26,12 @@ module App
     def create
       @client = Client.new(client_params)
 
-      respond_to do |format|
         if @client.save
           flash[:success] = "Client was successfully created."
           redirect_to app_client_url(@client)
         else
           render :new, status: :unprocessable_entity
         end
-      end
     end
 
     # PATCH/PUT /clients/1 or /clients/1.json

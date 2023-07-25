@@ -22,17 +22,12 @@
       <%= form.text_field :licenses, class:"form-input", placeholder:" " %>
     </div>
 
-    <div class=" group">
+    <div class="group">
       <%= form.label :active, class:'pointer-events-none' %>
       <%= form.check_box :active, class: "hidden peer" %>
       <%= form.label :active, class:'form-checkbox w-full 
-      border-gray-200 dark:border-gray-600
-      dark:bg-gray-800
-
-      peer-checked:border-none 
-
-      group-hover:bg-gray-100             group-hover:peer-checked:bg-blue-700  
-      dark:group-hover:bg-gray-700   dark:group-hover:peer-checked:bg-blue-700' do %>
+        group-hover:bg-gray-100        group-hover:peer-checked:bg-blue-700  
+        dark:group-hover:bg-gray-700   dark:group-hover:peer-checked:bg-blue-700' do %>
       <% end %>
 
       <div class="text-base peer-text hidden peer-checked:block "> <%= icon('fa-solid','check')%> <%= t('activerecord.attributes.client.active_status.true')%></div>

@@ -8,7 +8,7 @@ class User < ApplicationRecord
   belongs_to :client
 
   # Validations
-  validates :email, presence: true, uniqueness: true
+  validates :email, uniqueness: true # devise valide emails by defauld
   validates :client_id, presence: true
   
   # Scopes

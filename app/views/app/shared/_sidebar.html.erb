@@ -4,7 +4,10 @@
     <%= icon('fa-solid','bars')%>
   </button>
 
-  <p class="text-lg xl:hidden"> <%= yield :page_title %> </p>
+  <div class="flex items-center justify-center xl:hidden space-x-2">
+  <p class="text-lg"> <%= yield :page_title %> </p>
+  <p class="description"> <%=icon('fa-solid','hashtag', class:'fa-sm mr-0.5')%><%= yield :entry_id %></p>
+  </div>
 
   <% if content_for(:sidebar) %>
   <button data-drawer-target="sidebar-multi-level-sidebar-b" data-drawer-toggle="sidebar-multi-level-sidebar-b" data-drawer-placement="right" aria-controls="sidebar-multi-level-sidebar-b" type="button" class="text-gray-500 dark:text-gray-400 hover:bg-gray-100 dark:hover:bg-gray-700 focus:outline-none  rounded-lg text-sm py-2.5 px-4">

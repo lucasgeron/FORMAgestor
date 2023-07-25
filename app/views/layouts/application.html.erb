@@ -38,8 +38,11 @@
         </div>
         <% end %>
 
-        <div class="hidden xl:block ">
+        <div class="hidden xl:flex items-end justify-between">
           <p class="font-bold text-2xl"> <%= yield :page_title %> </p>
+          <% if content_for(:entry_id) %>
+          <p class="description font-medium"> <%=icon('fa-solid','hashtag', class:'fa-sm')%> <%= yield :entry_id %></p>
+          <% end %>
         </div>
           
         <div class="">

@@ -10,6 +10,7 @@
    
 <% provide :head_title, "#{t('views.app.general.editing')} #{Client.model_name.human}" %>
 <% provide :page_title, "#{t('views.app.general.editing')} #{Client.model_name.human}" %>
+<% provide :entry_id, "#{@client.id}" %>
 
 <% content_for :page_content do %>
   <%= render "form", client: @client %>

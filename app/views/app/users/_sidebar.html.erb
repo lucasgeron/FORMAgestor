@@ -1,0 +1,29 @@
+
+<aside id="sidebar-multi-level-sidebar-b" class=" fixed top-0 right-0 z-40 h-screen overflow-y-auto transition-transform translate-x-full xl:translate-x-0 bg-white w-64 dark:bg-gray-800"  aria-label="Sidebar">
+  <div class="h-full px-3 overflow-y-auto  scrollbar-hide">
+
+    
+
+    <div class="space-y-1 my-4">       
+      
+      <div class="detail-input flex justify-between items-center">
+        <p class=""><%= icon('fa-solid','key')%> <%= Client.human_attribute_name('licenses')%> </p>
+        <p class="px-2 py-1 text-xs font-medium text-white bg-blue-600 rounded-full"> <%= User.by_client(current_user.client).only_active.count %> / <%= current_user.client.licenses %> </p>
+      </div>
+
+      <div class="detail-input flex justify-between items-center">
+        <p class=""><%= icon('fa-solid','circle-user')%> <%= User.model_name.human.pluralize %> </p>
+        <% if current_admin %>
+        <p class="px-2 py-1 text-xs font-medium text-white bg-blue-600 rounded-full"> <%= Client.only_active.count %> / <%= Client.all.count %> </p>
+        <% else %>
+        <p class="px-2 py-1 text-xs font-medium text-white bg-blue-600 rounded-full"> <%= User.by_client(current_user.client).count %>  </p>
+        <% end %>
+      </div>
+
+ 
+
+
+    </div>
+
+  </div>
+</aside>

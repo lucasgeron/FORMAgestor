@@ -1,52 +1,75 @@
 <%= form_with(model: user, url: user.new_record? ? app_users_path : app_user_path(user), class: "contents") do |form| %>
+
   <% if user.errors.any? %>
-    <div id="error_explanation" class="bg-red-50 text-red-500 px-3 py-2 font-medium rounded-lg mt-3">
-      <h2><%= pluralize(user.errors.count, "error") %> prohibited this user from being saved:</h2>
+    <% flash.now[:error] = user.errors.to_a%>
+  <% end %>
 
-      <ul>
-        <% user.errors.each do |error| %>
-          <li><%= error.full_message %></li>
-        <% end %>
-      </ul>
+  <div class="grid grid-cols-1 xl:grid-cols-4 gap-4">
+
+    <div class="">
+      <%= form.label :email, class:'required' %>
+      <%= form.text_field :email, autofocus: true, autocomplete: "email", class:"form-input" %>
     </div>
-  <% end %>
 
-  <div class="field">
-    <%= form.label :email %><br />
-    <%= form.email_field :email, autofocus: true, autocomplete: "email" %>
+    <div class=" group">
+      <%= form.label :active, class:'pointer-events-none' %>
+      <%= form.check_box :active, class: "hidden peer" %>
+      <%= form.label :active, class:'form-checkbox w-full 
+      group-hover:bg-gray-100        group-hover:peer-checked:bg-blue-700  
+      dark:group-hover:bg-gray-700   dark:group-hover:peer-checked:bg-blue-700' do %>
+      <% end %>
+
+      <div class="text-base peer-text hidden peer-checked:block "> <%= icon('fa-solid','check')%> <%= t('activerecord.attributes.client.active_status.true')%></div>
+      <div class="text-base peer-text block peer-checked:hidden "> <%= icon('fa-solid','xmark')%> <%= t('activerecord.attributes.client.active_status.false')%></div>
+    </div>
+
+    <div class="">
+      <%= form.label :password, class:'' %>
+      <%= form.password_field :password, autocomplete: "new-password", class:"form-input" %>
+    </div>
+
+    <div class="">
+      <%= form.label :password_confirmation %>
+      <%= form.password_field :password_confirmation, autocomplete: "new-password", class:"form-input dark:text-white" %>
+    </div>
+
+    <div class="">
+      <%= form.label :vendor_id, class:'' %>
+      <%= form.collection_select :client_id, Client.all, :id, :name, {}, {class: "form-input"} %>
+    </div>
+
+      <% if current_admin %>
+      <div class="">
+        <%= form.label :client_id, class:'flex justify-between items-center' do %>
+          <div class="required">
+            <%= icon('fa-solid','building-user')%> 
+            <%= form.label :client_id %> 
+          </div>
+          <%= icon('fa-solid','user-shield', class:'fa-xs text-blue-600')%>
+
+        <%end%>
+        <%= form.collection_select :client_id, Client.all, :id, :name, {}, {class: "form-input"} %>
+      </div>
+    <% else %>
+     <div class="">
+    <div class="flex justify-between items-center">
+    <div class="">
+      <%= icon('fa-solid','building-user')%> 
+      <%= Client.model_name.human %>
+     </div>
+     <%= icon('fa-solid','user-shield', class:'fa-xs text-blue-600')%>
+    </div>
+     
+    <p class="detail-input"><%= user.client ? user.client.name : current_user.client.name %></p>
+  </div>
+    <% end %>
+
+
   </div>
 
-  <div class="field">
-    <%= form.label :password %>
-    <% if @minimum_password_length %>
-    <em>(<%= @minimum_password_length %> characters minimum)</em>
-    <% end %><br />
-    <%= form.password_field :password, autocomplete: "new-password" %>
-  </div>
+  
 
-  <div class="field">
-    <%= form.label :password_confirmation %><br />
-    <%= form.password_field :password_confirmation, autocomplete: "new-password" %>
-  </div>
-
-  <div class="my-5">
-    <%= form.label :active %>
-    <%= form.check_box :active, class: "block mt-2 h-5 w-5" %>
-  </div>
-
-  <% if current_admin %>
-  <div class="field">
-    <%= form.label :client_id %><br />
-    <%= form.collection_select :client_id, Client.all, :id, :name %>
-  </div>
-  <% else %>
-  <div class="field">
-   <%= form.hidden_field :client_id, value: current_user.client_id %>
-  </div>
-  <% end %>
-
-
-  <div class="inline">
-    <%= form.submit class: "rounded-lg py-3 px-5 bg-blue-600 text-white inline-block font-medium cursor-pointer" %>
+  <div class="mt-4 inline-flex w-full justify-end">
+    <%= form.submit class: "btn-primary" %>
   </div>
 <% end %>

@@ -1,12 +1,22 @@
-<div class="mx-auto md:w-2/3 w-full flex">
-  <div class="mx-auto">
+<% content_for :ctas_secondary do %>
+  <%= link_to app_users_path, class: "btn-secondary-gray flex-none" do %>
+    <%= icon('fa-solid','arrow-left', class:'-mx-1')%>
+  <%end%>
 
-    <%= render @user %>
+  <%= link_to edit_app_user_path(@user), class: "btn-secondary flex-none" do %>
+    <%= icon('fa-solid','pen-to-square', class:'-mx-1')%>
+  <%end%>
 
-    <%= link_to 'Edit this user', edit_app_user_path(@user), class: "mt-2 rounded-lg py-3 px-5 bg-gray-100 inline-block font-medium" %>
-    <div class="inline-block ml-2">
-      <%= button_to 'Destroy this user', app_user_path(@user), method: :delete, class: "mt-2 rounded-lg py-3 px-5 bg-gray-100 font-medium" %>
-    </div>
-    <%= link_to 'Back to users', app_users_path, class: "ml-2 rounded-lg py-3 px-5 bg-gray-100 inline-block font-medium" %>
-  </div>
-</div>
+  <%= button_to app_user_path(@user), method: :delete, class: "btn-delete flex-none" do %>
+    <%= icon('fa-solid','trash-can', class:'-mx-1')%>
+  <%end%>
+
+<% end %>
+   
+<% provide :head_title, "#{t('views.app.general.showing')} #{User.model_name.human} " %>
+<% provide :page_title, "#{t('views.app.general.showing')} #{User.model_name.human} " %>
+<% provide :entry_id, "#{@user.id}" %>
+
+<% content_for :page_content do %>
+  <%= render "detail", user: @user %>
+<%end%>

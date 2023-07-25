@@ -149,7 +149,9 @@
     bg-gray-100 dark:bg-gray-900
     border-none outline-none
     dark:border-none  
-    h-10 px-3 py-2 mt-2 w-full;
+    h-10 px-3 py-2 mt-2 w-full
+    overflow-x-scroll scrollbar-hide
+    ;
   }
 
   .form-checkbox-simple {
@@ -174,12 +176,16 @@
     @apply h-10 w-10 px-3 py-2 mt-2  
     focus:outline-none dark:focus:ring-offset-0 
    
-    border border-gray-200 outline-none
-    dark:border border-gray-600
+    bg-white dark:bg-gray-800
 
+
+    border border-gray-200 outline-none
+    dark:border dark:border-gray-600
+
+    
     inline-flex items-center justify-between 
     rounded-lg cursor-pointer 
-
+    peer-checked:border-none 
     peer-checked:bg-blue-600   dark:peer-checked:bg-blue-600
     ;
   }
@@ -190,6 +196,10 @@
     text-red-600             dark:text-red-600 
     peer-checked:text-white    dark:peer-checked:text-white
     ;
+  }
+
+  .required{
+    @apply after:content-['*'] after:ml-0.5 after:text-red-600;
   }
 
 
@@ -256,3 +266,8 @@ input:-webkit-autofill {
 }
 
 
+@media (prefers-color-scheme: dark) {
+  .dark ::-ms-reveal {
+    filter: invert(100%);
+  }
+}

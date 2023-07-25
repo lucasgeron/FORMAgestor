@@ -1,17 +1,17 @@
-<div class="w-full">
- 
+<% content_for :ctas_primary do %>
+  <%= link_to new_app_user_path, class: "btn-primary flex-none" do %>
+    <%= icon('fa-solid','plus',class:'btn-icon') %>
+    <%= User.model_name.human %>
+  <% end %>
+<% end %>
 
-  <div class="flex justify-between items-center">
-    <h1 class="font-bold text-4xl">Users</h1>
-    <%= link_to 'New user', new_app_user_path, class: "rounded-lg py-3 px-5 bg-blue-600 text-white block font-medium" %>
+   
+<% provide :head_title, User.model_name.human.pluralize %>
+<% provide :page_title, User.model_name.human.pluralize %>
+<% provide :sidebar, render(partial: 'app/users/sidebar') %>
+
+<% content_for :page_content do %>
+  <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-3 2xl:grid-cols-4 gap-4">
+    <%= render(@users)%>
   </div>
-
-  <% if current_user %>
-    licenças: <%= current_user.client.licenses %>
-    licenças disponíveis: <%= current_user.client.available_licenses %>
-  <%end %>
-
-  <div id="users" class="min-w-full">
-    <%= render @users %>
-  </div>
-</div>
+<%end%>

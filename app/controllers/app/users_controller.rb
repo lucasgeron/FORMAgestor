@@ -14,7 +14,10 @@ module App
 
     # GET /users/1 or /users/1.json
     def show
-      
+      if !current_admin && @user.client_id != current_user.client_id
+        flash[:error] = "You don't have permission to access this page"
+        redirect_to app_users_path 
+      end
     end
 
     # GET /users/new
@@ -24,56 +27,44 @@ module App
       else  
         flash[:error] = "You don't have available licenses"
         redirect_to app_users_url
-      end
-
-      # @user = User.new
-      
+      end      
     end
 
     # GET /users/1/edit
     def edit
-      
+      if !current_admin && @user.client_id != current_user.client_id
+        flash[:error] = "You don't have permission to access this page"
+        redirect_to app_users_path 
+      end
     end
 
     # POST /users or /users.json
     def create
       
+      params[:user][:client_id] = current_user.client_id if current_user
+      
       @user = User.new(user_params)
 
-      respond_to do |format|
-        
         if @user.client.available_licenses >= 0
-
           if @user.active == true && @user.client.available_licenses <= 0
-            format.html do
               flash.now[:error] = "Não existem licensas disponíveis para #{@user.client.name}, só é possível criar o usuário inativo."
               render :new, status: :unprocessable_entity
-            end
-          elsif ( is_client_scope?(user_params[:client_id]) &&  @user.save )
-            format.html do  
+          elsif ( @user.save )
               flash[:success] = "User was successfully created."
               redirect_to app_user_url(@user)
-            end
           else
-            format.html { render :new, status: :unprocessable_entity }
-          end
-
-        
-        else
-          format.html do
-            flash.now[:error] = "Não existem licensas disponíveis para #{@user.client.name}"
-            render :new, status: :unprocessable_entity
+              render :new, status: :unprocessable_entity
           end
         end
-      end
+       
 
     end
 
     # PATCH/PUT /users/1 or /users/1.json
     def update
-
+      params[:user][:client_id] = current_user.client_id if current_user
+      
       respond_to do |format|
-
         # garante que o o cliente tem licenças
         if @user.client.available_licenses >= 0 
 
@@ -83,7 +74,7 @@ module App
               flash.now[:error] = "Não existem licensas disponíveis para #{@user.client.name}. Considere liberar uma licença antes de ativar este usuário."
               render :edit, status: :unprocessable_entity
             end
-          elsif ( is_client_scope?(user_params[:client_id]) && @user.update(user_params) )
+          elsif ( @user.update(user_params) )
             format.html do 
               flash[:success] = "User was successfully updated."
               redirect_to app_user_url(@user)
@@ -121,7 +112,12 @@ module App
     private
       # Use callbacks to share common setup or constraints between actions.
       def set_user
-        @user = User.find(params[:id])
+        if User.exists?(params[:id])
+          @user = User.find(params[:id])
+        else
+          flash[:error] = "User not found"
+          redirect_to app_users_url
+        end
       end
 
       # Only allow a list of trusted parameters through.
