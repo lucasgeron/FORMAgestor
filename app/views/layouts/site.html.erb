@@ -20,7 +20,7 @@
 
   <body>
     <main class="site transition duration-500 min-h-screen" <% if !is_unsubscribe_page? %> data-controller="navigation" <%end%>>
-      <%= render partial: 'layouts/shared/site_notification' %>
+      <%= render partial: 'layouts/site_notification' %>
       <%= render partial: 'site/shared/navbar' %>
       <%= yield %>
       <%= render partial: 'site/shared/footer' %>

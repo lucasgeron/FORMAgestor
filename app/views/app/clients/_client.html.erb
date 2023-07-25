@@ -1,32 +1,41 @@
-<div id="<%= dom_id client %>">
-  <p class="">
-    <strong class="block font-medium mb-1">Name:</strong>
-    <%= client.name %>
-  </p>
+<div id="<%= dom_id client %>" class="bg-gray-100  dark:bg-gray-900 rounded-lg p-4 space-y-2">
 
-  <p class="">
-    <strong class="block font-medium mb-1">Cnpj:</strong>
-    <%= client.cnpj %>
-  </p>
+  <div class="flex items-center justify-between">
 
-  <p class="">
-    <strong class="block font-medium mb-1">Ativo:</strong>
-    <%= client.active %>
-  </p>
+    <div class="">
+      <%= link_to client.name, app_client_path(client), class:'font-medium' %>
+      <p class="text-xs">CNPJ: <%= client.cnpj %></p>
+    </div>
 
-  <p class="">
-    <strong class="block font-medium mb-1">Licensas:</strong>
-    
-    <p class=""> <%= client.users.count %> Usuários </p>
-    <p class=""> <%= client.used_licenses %> de <%= client.licenses %> Utilizadas  </p>
-    <p class=""><%= client.available_licenses %> Disponíveis </p>
+    <%= button_tag class:'hover:bg-gray-200 px-3 py-2 text-sm rounded-lg', data: { popover_target: "popover-click-#{client.id}", popover_trigger: "click", popover_placement:"left" } do %>
+      <%= icon('fa-solid','bars', class:'fa-sm')%>
+    <%end%>
 
-    <%= client.has_available_license? %>
-  </p>
+  </div>
 
-  <% if action_name != "show" %>
-    <%= link_to "Show this client", app_client_path(client), class: "rounded-lg py-3 px-5 bg-gray-100 inline-block font-medium" %>
-    <%= link_to 'Edit this client', edit_app_client_path(client), class: "rounded-lg py-3 ml-2 px-5 bg-gray-100 inline-block font-medium" %>
-    <hr class="mt-6">
-  <% end %>
+  <div class="flex justify-between">
+
+    <% if client.active %>
+      <p class="w-fit text-white tracking-tight px-2.5 py-0.5 text-sm  bg-blue-600 rounded-lg"><%= icon('fa-solid','check', class:'')%> <%= t('activerecord.attributes.client.active_status.true')%></p>
+    <%else%>
+      <p class="w-fit text-red-600 tracking-tight px-2.5 py-0.5 text-sm  bg-gray-200 dark:bg-gray-800 rounded-lg"><%= icon('fa-solid','xmark', class:'')%> <%= t('activerecord.attributes.client.active_status.false')%> </p>
+    <%end%>
+
+    <p class="text-sm ">
+      <%= icon('fa-solid','key', class:'')%> <%= client.used_licenses %> / <%= client.licenses %> 
+    </p>
+  </div>
+
+  <div data-popover id="popover-click-<%=client.id%>" role="tooltip" class="absolute z-10 invisible inline-block w-auto text-xs transition-opacity duration-300 border bg-gray-100  border-gray-200 rounded-lg  opacity-0 dark:text-gray-400 dark:border-gray-600 dark:bg-gray-800">
+
+    <div class="px-2 py-1 grid grid-flow-col ">
+
+      <%= link_to edit_app_client_path(client), class:'inline-flex items-center py-1 px-2 hover:text-blue-600' do %>
+        <%= icon('fa-solid', 'pen-to-square', class:'mr-1') %>
+        <p class=""> <%= t('views.app.general.edit')%></p>
+      <%end%>
+    </div>
+    <div data-popper-arrow></div>
+  </div>
+
 </div>

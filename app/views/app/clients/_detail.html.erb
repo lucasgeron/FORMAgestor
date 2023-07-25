@@ -1,0 +1,54 @@
+<div class="space-y-4">
+
+<%# DETAILS %>
+<div class="grid grid-cols-1 xl:grid-cols-4 gap-4">
+
+  <div class="">
+    <p class=""><%= Client.human_attribute_name('name') %></p>
+    <p class="detail-input"><%= @client.name%></p>
+  </div>
+
+  <div class="">
+    <p class=""><%= Client.human_attribute_name('cnpj') %></p>
+    <p class="detail-input"><%= @client.cnpj%></p>
+  </div>
+
+  <div class="">
+    <p class=""><%= Client.human_attribute_name('licenses') %></p>
+    <p class="detail-input"><%= @client.licenses%></p>
+  </div>
+
+  <div class="">
+    <p class=""><%= Client.human_attribute_name('active') %></p>
+   
+    <% if @client.active %>
+     <div class="text-base detail-input dark:bg-blue-600 bg-blue-600 text-white text-center rounded-lg"> <%= icon('fa-solid','check')%> <%= t('activerecord.attributes.client.active_status.true')%></div>
+    <% else %>
+      <div class="text-base detail-input bg-gray-100 text-red-600 text-center rounded-lg "> <%= icon('fa-solid','xmark')%> <%= t('activerecord.attributes.client.active_status.false')%></div>
+    <% end %>
+  </div>
+
+</div>
+
+<%# USERS TITLE %>
+
+<p class="font-bold text-2xl"> <%= User.model_name.human.pluralize %> </p>
+<% if @client.users.present? %>
+  <% @client.users.each do |user| %>
+    <%= render user %>
+  <% end %>
+<% else %>
+  <div class="detail-input h-auto flex justify-between items-center gap-4"> 
+  <p class="">
+    <%= icon('fa-solid', 'triangle-exclamation', class:'mr-1')%>
+    Não existem usuários vinculados a esta empresa. 
+  </p>
+    
+  <%= link_to new_app_user_path, class: "btn-primary flex-none" do %>
+    <%= icon('fa-solid','plus',class:'btn-icon') %>
+    <%= User.model_name.human %>
+  <% end %>
+  
+<% end %>
+
+</div>

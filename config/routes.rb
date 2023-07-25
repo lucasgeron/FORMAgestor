@@ -1,6 +1,8 @@
 Rails.application.routes.draw do
   
   root to: "site#index"
+  
+  # - - - - - - - - - - ROUTES FOR SITE - - - - - - - - - - 
 
   post '/toogle_locale', to: 'site#toogle_locale', as: :toogle_locale
   post "/subscribe", to: 'site#subscribe_to_newsletter', as: :subscribe

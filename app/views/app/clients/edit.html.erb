@@ -1,8 +1,16 @@
-<div class="mx-auto md:w-2/3 w-full">
-  <h1 class="font-bold text-4xl">Editing client</h1>
+<% content_for :ctas_secondary do %>
+  <%= link_to app_clients_path, class: "btn-secondary-gray flex-none" do %>
+    <%= icon('fa-solid','arrow-left', class:'-mx-1')%>
+  <%end%>
 
+  <%= link_to app_client_path(@client), class: "btn-secondary flex-none" do %>
+    <%= icon('fa-solid','arrow-up-right-from-square', class:'-mx-1')%>
+  <%end%>
+<% end %>
+   
+<% provide :head_title, "#{t('views.app.general.editing')} #{Client.model_name.human}" %>
+<% provide :page_title, "#{t('views.app.general.editing')} #{Client.model_name.human}" %>
+
+<% content_for :page_content do %>
   <%= render "form", client: @client %>
-
-  <%= link_to "Show this client", app_client_path(@client), class: "ml-2 rounded-lg py-3 px-5 bg-gray-100 inline-block font-medium" %>
-  <%= link_to "Back to clients", app_clients_path, class: "ml-2 rounded-lg py-3 px-5 bg-gray-100 inline-block font-medium" %>
-</div>
+<%end%>

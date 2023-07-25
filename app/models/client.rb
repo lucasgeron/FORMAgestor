@@ -3,26 +3,24 @@ class Client < ApplicationRecord
   has_many :users
 
   # Validations
-  # validates :name, presence: true
-  # validates :status, presence: true
+  validates :name, presence: true
+  validates :cnpj, presence: true
 
   # Scopes
-  # scope :active, -> { where(status: true) }
+  scope :only_active, -> { where(active: true) }
   # scope :inactive, -> { where(status: false) }
 
 
   def has_available_license?
-    self.licenses > self.users.active.count
+    self.licenses > self.users.only_active.count
   end
 
   def available_licenses
-    self.licenses - self.users.active.count
+    self.licenses - self.users.only_active.count
   end
 
   def used_licenses
-    self.users.active.count
+    self.users.only_active.count
   end
-
-
 
 end

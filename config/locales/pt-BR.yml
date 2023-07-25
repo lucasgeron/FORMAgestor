@@ -49,6 +49,14 @@ pt-BR:
       contactform: Formulário de Contato
       subscriber: Assinante
     attributes:
+      client:
+        name: Nome
+        cnpj: CNPJ
+        active: Acesso
+        active_status:
+          true: Habilitado
+          false: Bloqueado
+        licenses: Licenças
       contactform:
         email: Teste OK
         subject: Teste 2

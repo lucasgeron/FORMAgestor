@@ -13,5 +13,5 @@ class User < ApplicationRecord
   
   # Scopes
   scope :by_client, ->(client_id) { where(client_id: client_id) }
-  scope :active, -> { where(active: true) }
+  scope :only_active, -> { where(active: true) }
 end

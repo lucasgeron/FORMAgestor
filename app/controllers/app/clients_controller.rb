@@ -28,35 +28,33 @@ module App
 
       respond_to do |format|
         if @client.save
-          format.html { redirect_to app_client_url(@client), notice: "Client was successfully created." }
-          format.json { render :show, status: :created, location: @client }
+          flash[:success] = "Client was successfully created."
+          redirect_to app_client_url(@client)
         else
-          format.html { render :new, status: :unprocessable_entity }
-          format.json { render json: @client.errors, status: :unprocessable_entity }
+          render :new, status: :unprocessable_entity
         end
       end
     end
 
     # PATCH/PUT /clients/1 or /clients/1.json
     def update
-      respond_to do |format|
-        if @client.update(client_params)
-          format.html { redirect_to app_client_url(@client), notice: "Client was successfully updated." }
-          format.json { render :show, status: :ok, location: @client }
-        else
-          format.html { render :edit, status: :unprocessable_entity }
-          format.json { render json: @client.errors, status: :unprocessable_entity }
-        end
+      if @client.update(client_params)
+        flash[:success] = "Client was successfully updated."
+        redirect_to app_client_url(@client)
+      else
+        render :edit, status: :unprocessable_entity
       end
     end
 
     # DELETE /clients/1 or /clients/1.json
     def destroy
-      @client.destroy
-
-      respond_to do |format|
-        format.html { redirect_to app_clients_url, notice: "Client was successfully destroyed." }
-        format.json { head :no_content }
+      if @client.users.count == 0 
+        @client.destroy
+        flash[:success] = "Client was successfully destroyed."
+        redirect_to app_clients_url
+      else
+        flash[:error] = "Client was not destroyed, because it has users."
+        redirect_to app_client_url(@client)
       end
     end
 

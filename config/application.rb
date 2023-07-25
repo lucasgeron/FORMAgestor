@@ -30,5 +30,16 @@ module RailsApp
     config.i18n.default_locale = :'pt-BR'
     # config.i18n.default_locale = :en
 
+    # set layouts for devise
+    config.to_prepare do
+      Devise::SessionsController.layout "public_application"
+      Devise::RegistrationsController.layout "public_application"
+      Devise::ConfirmationsController.layout "public_application"
+      Devise::UnlocksController.layout "public_application"
+      Devise::PasswordsController.layout "public_application"
+    end
+    
+
+
   end
 end

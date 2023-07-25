@@ -1,11 +1,17 @@
-<div class="w-full">
+<% content_for :ctas_primary do %>
+  <%= link_to new_app_client_path, class: "btn-primary flex-none" do %>
+    <%= icon('fa-solid','plus',class:'btn-icon') %>
+    <%= Client.model_name.human %>
+  <% end %>
+<% end %>
 
-  <div class="flex justify-between items-center">
-    <h1 class="font-bold text-4xl">Clients</h1>
-    <%= link_to 'New client', new_app_client_path, class: "rounded-lg py-3 px-5 bg-blue-600 text-white block font-medium" %>
-  </div>
+   
+<% provide :head_title, Client.model_name.human.pluralize %>
+<% provide :page_title, Client.model_name.human.pluralize %>
+<% provide :sidebar, render(partial: 'app/clients/sidebar') %>
 
-  <div id="clients" class="min-w-full">
-    <%= render @clients %>
+<% content_for :page_content do %>
+  <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-3 2xl:grid-cols-4 gap-4">
+    <%= render(@clients)%>
   </div>
-</div>
+<%end%>

@@ -1,0 +1,9 @@
+pt-BR:
+  views:
+    app:
+      general:
+        new: Novo 
+        edit: Editar
+        editing: Editando
+        show: Exibir
+        showing: Exibindo

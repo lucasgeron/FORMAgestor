@@ -19,34 +19,12 @@
   </head>
 
   <body>
-    <main class=" application min-h-screen bg-white dark:bg-gray-800 text-gray-900 dark:text-gray-400" >
+    <main class=" application min-h-screen duration-300 bg-white dark:bg-gray-800 text-gray-900 dark:text-gray-400 " >
       <%= render partial: 'layouts/app_notification' %>
-      <%= render partial: 'app/shared/sidebar' %> 
-      <%= yield :sidebar %>
       
-      <div class="min-h-screen px-4 xl:py-4 xl:mx-64 space-y-4">
-
-        <% if content_for(:ctas_primary) %>
-        <div class="bg-gray-100 dark:bg-gray-900 rounded-lg p-1.5 flex flex-row-reverse gap-x-2 scrollbar-hide overflow-x-scroll mb-4 ">
-          <%= yield :ctas_primary %>
-        </div>
-        <% end %>
-      
-        <% if content_for(:ctas_secondary) %>
-        <div class="bg-gray-100 dark:bg-gray-900 rounded-lg p-1.5 flex gap-x-2 scrollbar-hide overflow-x-scroll mb-4 ">
-          <%= yield :ctas_secondary %>
-        </div>
-        <% end %>
-
-        <div class="hidden xl:block ">
-          <p class="font-bold text-2xl"> <%= yield :page_title %> </p>
-        </div>
-          
-        <div class="">
-          <%= yield :page_content %>
-        </div>
+      <div class="min-h-screen">
+          <%= yield %>
       </div>
-
 
     </main>
 
