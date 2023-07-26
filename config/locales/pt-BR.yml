@@ -28,7 +28,7 @@ pt-BR:
       course:
         one: Curso
         other: Cursos
-      update:
+      app/update:
         one: Atualização
         other: Atualizações
       semester:
@@ -72,6 +72,8 @@ pt-BR:
         message: Teste 3
       subscriber: 
         email: Email
+        locale: Localização
+        created_at: Membro há
     errors:
       messages:
         record_invalid: 'A validação falhou: %{errors}'

@@ -1,0 +1,20 @@
+<div id="<%= dom_id subscriber %>">
+  <tr class="bg-white border-b dark:bg-gray-800 dark:border-gray-700">
+
+    <td class="p-2">
+      <%= subscriber.email %>
+    </td>
+    <td class="p-2">
+      <%= image_tag "i18n/#{subscriber.locale.downcase}.svg", class:'h-6 mx-auto'%>
+    </td>
+    <td class="p-2">
+      <%= time_ago_in_words(subscriber.created_at) %>
+    </td>
+    <td class="p-2">
+      <%= button_to app_subscriber_path(subscriber), method: :delete, class: "btn-delete flex-none" do %>
+        <%= icon('fa-solid','trash-can', class:'-mx-1')%>
+      <% end %>
+    </td>
+  </tr>
+
+</div>

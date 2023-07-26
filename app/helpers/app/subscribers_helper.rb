@@ -1,0 +1,2 @@
+module App::SubscribersHelper
+end

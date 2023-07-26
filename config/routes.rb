@@ -34,6 +34,8 @@ Rails.application.routes.draw do
       # Exclusive routes in App namespace (just for admin)
       namespace :app do
         resources :clients
+        resources :subscribers
+        resources :updates    
       end
     end
   end

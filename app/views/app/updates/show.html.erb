@@ -1,0 +1,20 @@
+<% content_for :ctas_secondary do %>
+  <%= link_to app_updates_path, class: "btn-secondary-gray flex-none" do %>
+    <%= icon('fa-solid','clock-rotate-left', class:'-mx-1')%>
+  <%end%>
+
+  <%= link_to edit_app_update_path(@app_update), class: "btn-secondary flex-none" do %>
+    <%= icon('fa-solid','pen-to-square', class:'-mx-1')%>
+  <%end if current_admin %>
+
+  <%= button_to app_update_path(@app_update), method: :delete, class: "btn-delete flex-none" do %>
+    <%= icon('fa-solid','trash-can', class:'-mx-1')%>
+  <%end if current_admin%>
+
+<% end %>
+   
+<% provide :head_title, "#{t('views.app.general.showing')} #{App::Update.model_name.human} " %>
+
+<% content_for :page_content do %>
+  <%= render "detail", app_update: @app_update %>
+<%end%>

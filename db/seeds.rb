@@ -8,10 +8,14 @@
 
 p Admin.create(email: 'lucasf.geron@gmail.com', password:'123456', password_confirmation:'123456')
 
-p Client.create(name: 'Empresa A', active: true, licenses: 5)
+p Client.create(name: 'Empresa A', cnpj:'00.000.000/0001-00', active: true, licenses: 5)
 p User.create(email: 'lucasf.geron@gmail.com', password:'123456', password_confirmation:'123456', client_id: 1)
 p User.create(email: 'a@a', password:'123456', password_confirmation:'123456', client_id: 1)
 
 
-p Client.create(name: 'Empresa B', active: true, licenses: 1)
+p Client.create(name: 'Empresa B', cnpj:'00.000.000/0001-00', active: true, licenses: 1)
 p User.create(email: 'a@b', password:'123456', password_confirmation:'123456', client_id: 2)
+
+
+require 'date'
+load Rails.root.join('db', 'seeds', 'app_updates.rb')

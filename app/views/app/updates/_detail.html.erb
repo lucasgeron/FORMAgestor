@@ -1,26 +1,18 @@
 <section id="updates" data-navigation-target="updates_sec"  class="">
   <div class="inner-section-default">
 
-    <%# UPDATES HEADER %>
-    <div class="max-w-screen-lg space-y-4 text-center mx-auto">
-      <h2 data-aos='zoom-in' class="title"> <%= t('views.site.updates.title')%> </h2>
-      <div data-aos="zoom-in" data-aos-delay="50" class=" text-sm md:text-base max-w-screen-md mx-auto"> <%= t('views.site.updates.description', logo: "#{image_tag('favicon.svg', class:'h-4 inline')} #{image_tag('favtext-dark.svg', class:'h-4 dark:hidden inline')} #{image_tag('favtext-white.svg', class:'h-4 hidden dark:inline')}" ).html_safe %></div>
-    </div>
-
+  
     <%# UPDATES TABS %>
     <div data-aos="fade-up" data-aos-delay="50" class="update_aos_trigger max-w-3xl mx-auto my-10">
 
       <div class=" border-b border-gray-200 dark:border-gray-700 ">
         <ul class="flex flex-wrap  justify-around center -mb-px text-sm text-center" id="myTab" data-tabs-toggle="#myTabContent" role="tablist">
-          <% @app_updates.each do |app_update| %>
             <li class="" role="presentation">
               <button class=" text-xs md:text-base inline-block p-2 md:p-4 border-b-2 rounded-t-lg" id="<%=app_update.id%>-tab" data-tabs-target="#profile-<%=app_update.id%>" type="button" role="tab" aria-controls="profile" aria-selected="false"><span class="text-sm"><%=icon('fa-solid','code-commit', class:"mr-1")%></span><%= app_update.version%></button>
             </li>
-          <% end %>
         </ul>
       </div>
       <div id="myTabContent" class="my-8">
-        <%  @app_updates.each do |app_update| %>
           <div class="hidden px-4 md:px-8 py-8 rounded-lg bg-gray-100 dark:bg-gray-800" id="profile-<%=app_update.id%>" role="tabpanel" aria-labelledby="<%=app_update.id%>-tab">
             <div class="grid space-y-4 text-sm">
               <p class="description  md:text-center text-base"> <span class=""><%=t('views.site.updates.release')%></span> <span class="px-2 py-1 ml-1  bg-blue-600 text-white  rounded"><%= time_ago_in_words(app_update.release_date).capitalize %></span></p>
@@ -67,14 +59,9 @@
 
             </div>
           </div>
-        <%end%>
       </div>
     </div>
 
-    <div data-aos="zoom-in" data-aos-anchor=".update_aos_trigger" data-aos-delay="50" class="description text-xs md:text-sm text-center">
-      <p class=""><%= t('views.site.updates.older_updates')%></p>
-      <p class=""><%= t('views.site.updates.consideration').html_safe%></p>
-    </div>
-
+ 
   </div>
 </section>

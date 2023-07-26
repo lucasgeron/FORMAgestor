@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2023_07_20_195844) do
+ActiveRecord::Schema[7.0].define(version: 2023_07_25_232115) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -26,6 +26,24 @@ ActiveRecord::Schema[7.0].define(version: 2023_07_20_195844) do
     t.index ["reset_password_token"], name: "index_admins_on_reset_password_token", unique: true
   end
 
+  create_table "app_update_notes", force: :cascade do |t|
+    t.string "title"
+    t.string "description"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "app_updates", force: :cascade do |t|
+    t.string "version"
+    t.date "release_date"
+    t.text "description"
+    t.text "added_features"
+    t.text "removed_features"
+    t.text "bugs_fixed"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
   create_table "clients", force: :cascade do |t|
     t.string "name"
     t.string "cnpj"
@@ -38,6 +56,13 @@ ActiveRecord::Schema[7.0].define(version: 2023_07_20_195844) do
   create_table "subscribers", force: :cascade do |t|
     t.string "email"
     t.string "locale"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "update_notes", force: :cascade do |t|
+    t.string "title"
+    t.string "description"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end

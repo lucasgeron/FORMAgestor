@@ -1,0 +1,35 @@
+<% provide :head_title, Subscriber.model_name.human.pluralize %>
+<% provide :page_title, Subscriber.model_name.human.pluralize %>
+
+<% content_for :page_content do %>
+
+
+  
+<div class="relative overflow-x-auto sm:rounded-lg">
+    <table class="w-full text-sm text-center ">
+    
+        <thead class="text-xs text-gray-900 uppercase bg-gray-100 dark:bg-gray-700 dark:text-gray-400">
+            <tr>
+                <th scope="col" class="p-4 text-center">
+                    <%= Subscriber.human_attribute_name('email')%>
+                </th>
+                <th scope="col" class="p-4 text-center">
+                    <%= Subscriber.human_attribute_name('locale')%>
+                </th>
+                <th scope="col" class="p-4 text-center">
+                    <%= Subscriber.human_attribute_name('created_at')%>
+                </th>
+                <th scope="col" class="p-4 text-center">
+                   
+                </th>
+            </tr>
+        </thead>
+        <tbody>
+          <%= render @app_subscribers %>
+        </tbody>
+    </table>
+</div>
+
+
+
+<%end%>

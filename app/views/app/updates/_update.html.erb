@@ -1,0 +1,60 @@
+<div id="<%= dom_id update %>" class="bg-gray-100  dark:bg-gray-900 rounded-lg p-4 space-y-2">
+
+  <div class="flex items-center justify-between">
+
+    <div class="">
+      <%= link_to update, class:'font-medium' do %>
+        <%= icon('fa-solid','code-commit') %>
+        <%= update.version %>
+      <% end %>
+      <p class="text-xs"> <%= time_ago_in_words(update.release_date) %></p>
+    </div>
+
+    <%= button_tag class:'hover:bg-gray-200 px-3 py-2 text-sm rounded-lg', data: { popover_target: "popover-click-#{update.id}", popover_trigger: "click", popover_placement:"left" } do %>
+      <%= icon('fa-solid','bars', class:'fa-sm')%>
+    <%end if current_admin%>
+
+  </div>
+
+  <div class="flex items-center justify-start space-x-4">
+    <% if  update.description.present? %>
+      <span class="text-xs">
+        <%= icon('fa-solid','comment', class:'text-blue-600') %>
+      </span>
+    <% end %>
+    <% if  update.added_features.present? %>
+      <span class="text-xs">
+        <%= icon('fa-solid','circle-check', class:'text-blue-600') %>
+        <%=icon('fa-solid','caret-right')%>
+        <%= convert_to_hash(update.added_features).count %>
+      </span>
+    <% end %>
+    <% if  update.removed_features.present? %>
+      <span class="text-xs">
+        <%= icon('fa-solid','circle-xmark', class:'text-red-600') %>
+        <%=icon('fa-solid','caret-right')%>
+        <%= convert_to_hash(update.removed_features).count %>
+      </span>
+    <% end %>
+    <% if  update.bugs_fixed.present? %>
+      <span class="text-xs">
+        <%= icon('fa-solid','bug-slash', class:'text-blue-600') %>
+        <%=icon('fa-solid','caret-right')%>
+        <%= convert_to_hash(update.bugs_fixed).count %>
+      </span>
+    <% end %>
+
+  </div>
+
+  <div data-popover id="popover-click-<%=update.id%>" role="tooltip" class="absolute z-10 invisible inline-block w-auto text-xs transition-opacity duration-300 border bg-gray-100  border-gray-200 rounded-lg  opacity-0 dark:text-gray-400 dark:border-gray-600 dark:bg-gray-800">
+
+    <div class="px-2 py-1 grid grid-flow-col ">
+
+      <%= link_to edit_app_update_path(update), class:'inline-flex items-center py-1 px-2 hover:text-blue-600' do %>
+        <%= icon('fa-solid', 'pen-to-square', class:'mr-1') %>
+        <p class=""> <%= t('views.app.general.edit')%></p>
+      <%end%>
+    </div>
+    <div data-popper-arrow></div>
+  </div>
+</div>

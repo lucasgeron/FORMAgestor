@@ -1,0 +1,16 @@
+<% content_for :ctas_primary do %>
+  <%= link_to new_app_update_path, class: "btn-primary flex-none" do %>
+    <%= icon('fa-solid','plus',class:'btn-icon') %>
+    <%= App::Update.model_name.human %>
+  <% end if current_admin %>
+<% end %>
+
+<% provide :head_title, App::Update.model_name.human(count:2) %>
+<% provide :page_title, App::Update.model_name.human(count:2) %>
+<% provide :sidebar, render(partial: 'app/updates/sidebar') %>
+
+<% content_for :page_content do %>
+  <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-3 2xl:grid-cols-4 gap-4">
+    <%= render(@app_updates)%>
+  </div>
+<%end%>

@@ -23,7 +23,8 @@ class SiteController < ApplicationController
     @contact_form.subject = session.delete(:contact_form_subject) if session.key?(:contact_form_subject)
     @contact_form.message = session.delete(:contact_form_message) if session.key?(:contact_form_message)
 
-    # redirect_to root_path(locale: I18n.locale, anchor: 'newsletter')
+
+    @app_updates = App::Update.last(5).reverse
 
   end
 

@@ -1,0 +1,17 @@
+<% content_for :ctas_secondary do %>
+  <%= link_to app_updates_path, class: "btn-secondary-gray flex-none" do %>
+    <%= icon('fa-solid','arrow-left', class:'-mx-1')%>
+  <%end%>
+
+  <%= link_to @app_update, class: "btn-secondary flex-none" do %>
+    <%= icon('fa-solid','arrow-up-right-from-square', class:'-mx-1')%>
+  <%end%>
+<% end %>
+   
+<% provide :head_title, "#{t('views.app.general.editing')} #{App::Update.model_name.human}" %>
+<% provide :page_title, "#{t('views.app.general.editing')} #{App::Update.model_name.human}" %>
+<% provide :entry_id, "#{@app_update.id}" %>
+
+<% content_for :page_content do %>
+  <%= render "form", app_update: @app_update %>
+<%end%>
