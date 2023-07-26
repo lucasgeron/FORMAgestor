@@ -33,6 +33,24 @@ class ApplicationController < ActionController::Base
       true
     end
   end
+
+  def check_client_id
+
+    # get controller namespace and name # app/users - used for redirect_back if record not found by direct link.
+    namespace, controller = controller_path.split("/")
+    url = url_for([namespace.to_sym, controller.to_sym])
+
+    record = "App::#{controller_name.classify}".constantize.find_by(id: params[:id])
+    if record.nil?
+      flash[:error] = t('views.app.general.flash.not_found', model: "App::#{controller_name.classify}".constantize.model_name.human)
+      redirect_to request.referrer || url
+    elsif current_user.client_id != record.client_id
+      flash[:error] = [ t('views.app.general.flash.unauthorized'), t('views.app.general.flash.ban_alert')]
+      sign_out(current_user)
+      redirect_to new_user_session_path
+    end
+  end
+  
   
 
 end

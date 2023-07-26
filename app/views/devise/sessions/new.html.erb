@@ -9,18 +9,24 @@
 <div class="grid place-items-center h-screen ">
   <div class="bg-gray-100 dark:bg-gray-900 rounded-lg p-10 max-w-sm space-y-2">
 
+
+    <%= link_to site_root_path, class: "btn-secondary-gray relative -top-4 -left-6 " do %>
+      <%= icon('fa-solid','arrow-left', class:'-mx-1')%>
+    <% end %>
+
+
     <div class="space-y-10 mb-6">
       <%= image_tag('favicon.svg', class:"w-full h-48 animate-breathe") %>
       <%= image_tag('favtext-dark.svg', class:"w-full block dark:hidden") %>
       <%= image_tag('favtext-white.svg', class:"w-full dark:block hidden") %>
     </div>
 
-    <div class="flex justify-center space-x-2">
-        <%= link_to Admin.model_name.human, :new_admin_session, class:"p-2 text-xs #{resource_name.to_s=='admin' ? 'bg-blue-600 text-white '  : ' bg-gray-200'} dark:bg-gray-700  dark:hover:bg-blue-700 rounded-lg hover:bg-blue-700 hover:text-white" %>
-        <%= link_to User.model_name.human, :new_user_session, class:"p-2 text-xs #{resource_name.to_s=='user' ? 'bg-blue-600 text-white' : 'bg-gray-200'}  dark:bg-gray-700  dark:hover:bg-blue-700 rounded-lg hover:bg-blue-700 hover:text-white" %>
+    <div class="flex justify-center space-x-2 pt-4">
+        <%= link_to App::Admin.model_name.human, :new_admin_session, class:"p-2 text-xs #{resource_name.to_s=='admin' ? 'bg-blue-600 dark:bg-blue-600 text-white '  : ' bg-gray-200 dark:bg-gray-700 '}  dark:hover:bg-blue-700 rounded-lg hover:bg-blue-700 hover:text-white" %>
+        <%= link_to App::User.model_name.human, :new_user_session, class:"p-2 text-xs #{resource_name.to_s=='user' ? 'bg-blue-600 dark:bg-blue-600 text-white' : 'bg-gray-200 dark:bg-gray-700'}    dark:hover:bg-blue-700 rounded-lg hover:bg-blue-700 hover:text-white" %>
     </div>
 
-    <%= form_for(resource, as: resource_name, url: session_path(resource_name), html: {class: "space-y-2"}) do |f| %>
+    <%= form_for(resource, as: resource_name, url: session_path(resource_name), html: {class: "space-y-2 "}) do |f| %>
 
       <div class="">
         <%= f.label :email %>

@@ -1,6 +1,6 @@
-class Client < ApplicationRecord
+class App::Client < ApplicationRecord
   # Associations
-  has_many :users
+  has_many :users, class_name: 'App::User'
 
   # Validations
   validates :name, presence: true

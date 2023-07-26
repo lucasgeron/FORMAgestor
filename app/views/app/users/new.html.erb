@@ -4,8 +4,8 @@
   <%end%>
 <% end %>
    
-<% provide :page_title, "#{t('views.app.general.new')} #{User.model_name.human}" %>
+<% provide :page_title, "#{t('views.app.general.new')} #{App::User.model_name.human}" %>
 
 <% content_for :page_content do %>
-  <%= render "form", user: @user %>
+  <%= render "form", app_user: @app_user %>
 <%end%>

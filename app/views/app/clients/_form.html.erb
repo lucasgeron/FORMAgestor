@@ -1,7 +1,7 @@
-<%= form_with(model: client, url: client.new_record? ? app_clients_path : app_client_path(client), class: "contents") do |form| %>
+<%= form_with(model: app_client, class: "contents") do |form| %>
 
-  <% if client.errors.any? %>
-    <% flash.now[:error] = client.errors.to_a%>
+  <% if app_client.errors.any? %>
+    <% flash.now[:error] = app_client.errors.to_a%>
   <% end %>
 
   <div class="grid grid-cols-1 xl:grid-cols-4 gap-4">
@@ -30,8 +30,8 @@
         dark:group-hover:bg-gray-700   dark:group-hover:peer-checked:bg-blue-700' do %>
       <% end %>
 
-      <div class="text-base peer-text hidden peer-checked:block "> <%= icon('fa-solid','check')%> <%= t('activerecord.attributes.client.active_status.true')%></div>
-      <div class="text-base peer-text block peer-checked:hidden "> <%= icon('fa-solid','xmark')%> <%= t('activerecord.attributes.client.active_status.false')%></div>
+      <div class="text-base peer-text hidden peer-checked:block "> <%= icon('fa-solid','check')%> <%= t('activerecord.attributes.app/client.active_status.true')%></div>
+      <div class="text-base peer-text block peer-checked:hidden "> <%= icon('fa-solid','xmark')%> <%= t('activerecord.attributes.app/client.active_status.false')%></div>
     </div>
 
   </div>

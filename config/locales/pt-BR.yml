@@ -40,16 +40,19 @@ pt-BR:
       company:
         one: Empresa
         other: Empresas
-      admin:
+      app/admin:
         one: Administrador
         other: Administradores
-      client:
+      app/user:
+        one: Usuário
+        other: Usuários
+      app/client:
         one: Cliente
         other: Clientes
       contactform: Formulário de Contato
       subscriber: Assinante
     attributes:
-      client:
+      app/client:
         name: Nome
         cnpj: CNPJ
         active: Acesso
@@ -57,10 +60,12 @@ pt-BR:
         active_status:
           true: Habilitado
           false: Bloqueado
-      user:
+      app/user:
         client_id: Cliente
         vendor_id: Representante
         vendor_not_found: Não associado
+        password: Senha
+        password_confirmation: Confirme sua senha
         active: Acesso
         active_status:
           true: Habilitado

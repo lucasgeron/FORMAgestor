@@ -7,3 +7,16 @@ pt-BR:
         editing: Editando
         show: Exibir
         showing: Exibindo
+        flash:
+          unauthorized: 'Você não possui permissão para acessar esta página.'
+          ban_alert: 'ATENÇÃO: Repetir esta ação pode resultar banimento.'
+          not_found: '%{model} não encontrado.' 
+          create: '%{model} foi criado com sucesso.'
+          update: '%{model} foi atualizado com sucesso.'
+          destroy: '%{model} foi excluido com sucesso.'
+      clients:
+        flash:
+          destroy_failed: 'Não é possível excluir este Cliente pois ele possui Usuários.'
+      users:
+        flash:
+

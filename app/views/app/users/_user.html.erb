@@ -7,7 +7,7 @@
      
       <%= link_to user.email, app_user_path(user), class:'font-medium ' %>
 
-      <p class="text-xs "><%= icon('fa-solid','user')%>  <%= false ? 'Nome aqui' : User.human_attribute_name('vendor_not_found') %> </p>
+      <p class="text-xs "><%= icon('fa-solid','user')%>  <%= false ? 'Nome aqui' : App::User.human_attribute_name('vendor_not_found') %> </p>
     </div>
 
     <%= button_tag class:'hover:bg-gray-200 px-3 py-2 text-sm rounded-lg', data: { popover_target: "popover-click-#{user.id}", popover_trigger: "click", popover_placement:"left" } do %>
@@ -19,9 +19,9 @@
   <div class="flex justify-between items-center">
 
     <% if user.active %>
-      <p class="w-fit text-white tracking-tight px-2.5 py-0.5 text-sm  bg-blue-600 rounded-lg"><%= icon('fa-solid','check', class:'')%> <%= t('activerecord.attributes.user.active_status.true')%></p>
+      <p class="w-fit text-white tracking-tight px-2.5 py-0.5 text-sm  bg-blue-600 rounded-lg"><%= icon('fa-solid','check', class:'')%> <%= t('activerecord.attributes.app/user.active_status.true')%></p>
     <%else%>
-      <p class="w-fit text-red-600 tracking-tight px-2.5 py-0.5 text-sm  bg-gray-200 dark:bg-gray-800 rounded-lg"><%= icon('fa-solid','xmark', class:'')%> <%= t('activerecord.attributes.user.active_status.false')%> </p>
+      <p class="w-fit text-red-600 tracking-tight px-2.5 py-0.5 text-sm  bg-gray-200 dark:bg-gray-800 rounded-lg"><%= icon('fa-solid','xmark', class:'')%> <%= t('activerecord.attributes.app/user.active_status.false')%> </p>
     <%end%>
 
      <p class="text-xs"><%= icon('fa-solid','building-user')%> <%= user.client.name %></p>
