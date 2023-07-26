@@ -3,15 +3,15 @@
     <%= icon('fa-solid','arrow-left', class:'-mx-1')%>
   <%end%>
 
-  <%= link_to app_user_path(@user), class: "btn-secondary flex-none" do %>
+  <%= link_to app_user_path(@app_user), class: "btn-secondary flex-none" do %>
     <%= icon('fa-solid','arrow-up-right-from-square', class:'-mx-1')%>
   <%end%>
 <% end %>
    
-<% provide :head_title, "#{t('views.app.general.editing')} #{User.model_name.human}" %>
-<% provide :page_title, "#{t('views.app.general.editing')} #{User.model_name.human}" %>
-<% provide :entry_id, "#{@user.id}" %>
+<% provide :head_title, "#{t('views.app.general.editing')} #{App::User.model_name.human}" %>
+<% provide :page_title, "#{t('views.app.general.editing')} #{App::User.model_name.human}" %>
+<% provide :entry_id, "#{@app_user.id}" %>
 
 <% content_for :page_content do %>
-  <%= render "form", user: @user %>
+  <%= render "form", app_user: @app_user %>
 <%end%>

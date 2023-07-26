@@ -60,6 +60,10 @@
     cursor-pointer;
   }
 
+  .btn-card{
+    @apply hover:bg-gray-200 dark:hover:bg-gray-800 px-3 py-2 text-sm rounded-lg;
+  }
+
   .nav-link{
     @apply 
     block rounded-lg
@@ -138,7 +142,7 @@
 
   .form-input{
     @apply block rounded-md 
-    bg-white dark:bg-gray-800
+    bg-white dark:bg-gray-900
     border border-gray-200 outline-none
     dark:border dark:border-gray-600
     h-10 px-3 py-2 mt-2 w-full;

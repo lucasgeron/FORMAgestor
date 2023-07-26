@@ -1,6 +1,10 @@
-class Client < ApplicationRecord
+class App::Client < ApplicationRecord
   # Associations
-  has_many :users
+  
+  has_many :admins, class_name: 'App::Admin'
+
+  has_many :users, class_name: 'App::User'
+  has_many :cities, class_name: 'App::City'
 
   # Validations
   validates :name, presence: true
@@ -10,11 +14,8 @@ class Client < ApplicationRecord
   scope :only_active, -> { where(active: true) }
   # scope :inactive, -> { where(status: false) }
 
-
-  def has_available_license?
-    self.licenses > self.users.only_active.count
-  end
-
+  
+  # Methods
   def available_licenses
     self.licenses - self.users.only_active.count
   end

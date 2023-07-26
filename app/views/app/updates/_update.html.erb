@@ -10,7 +10,7 @@
       <p class="text-xs"> <%= time_ago_in_words(update.release_date) %></p>
     </div>
 
-    <%= button_tag class:'hover:bg-gray-200 px-3 py-2 text-sm rounded-lg', data: { popover_target: "popover-click-#{update.id}", popover_trigger: "click", popover_placement:"left" } do %>
+    <%= button_tag class:'btn-card', data: { popover_target: "popover-click-#{update.id}", popover_trigger: "click", popover_placement:"left" } do %>
       <%= icon('fa-solid','bars', class:'fa-sm')%>
     <%end if current_admin%>
 

@@ -1,0 +1,21 @@
+<%= form_with(model: app_city, class: "contents") do |form| %>
+  <% if app_city.errors.any? %>
+    <% flash.now[:error] = app_city.errors.to_a%>
+  <% end %>
+
+  <div class="grid grid-cols-2 gap-4">
+    <div class="">
+      <%= form.label :name %>
+      <%= form.text_field :name, class: "form-input" %>
+    </div>
+
+    <div class="">
+      <%= form.label :state %>
+      <%= form.text_field :state, class: "form-input" %>
+    </div>
+  </div>
+
+  <div class="mt-4 inline-flex w-full justify-end">
+    <%= form.submit class: "btn-primary" %>
+  </div>
+<% end %>

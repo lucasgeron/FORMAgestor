@@ -1,17 +1,18 @@
 <% content_for :ctas_primary do %>
   <%= link_to new_app_client_path, class: "btn-primary flex-none" do %>
     <%= icon('fa-solid','plus',class:'btn-icon') %>
-    <%= Client.model_name.human %>
+    <%= App::Client.model_name.human %>
   <% end %>
 <% end %>
 
    
-<% provide :head_title, Client.model_name.human.pluralize %>
-<% provide :page_title, Client.model_name.human.pluralize %>
+<% provide :head_title, App::Client.model_name.human.pluralize %>
+<% provide :page_title, App::Client.model_name.human.pluralize %>
 <% provide :sidebar, render(partial: 'app/clients/sidebar') %>
 
 <% content_for :page_content do %>
   <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-3 2xl:grid-cols-4 gap-4">
-    <%= render(@clients)%>
+    <%= render(@app_clients) %>
+    
   </div>
 <%end%>

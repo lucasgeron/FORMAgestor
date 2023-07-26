@@ -2,8 +2,29 @@ pt-BR:
   views:
     app:
       general:
-        new: Novo 
+        new: Criar 
         edit: Editar
         editing: Editando
         show: Exibir
         showing: Exibindo
+        flash:
+          unauthorized: 'Você não possui permissão para acessar esta página.'
+          ban_alert: 'ATENÇÃO: Repetir esta ação pode resultar banimento.'
+          not_found: '%{model} não encontrado.' 
+          create: '%{model} foi criado com sucesso.'
+          update: '%{model} foi atualizado com sucesso.'
+          destroy: '%{model} foi excluido com sucesso.'
+      clients:
+        flash:
+          destroy_failed: 'Não é possível excluir este Cliente pois ele possui Usuários.'
+      admins:
+        flash:
+          update_client: 'Cliente alterado para %{client}.'
+      users:
+        flash:
+          no_license_available: 'Não existem licensas disponíveis para %{client}.'
+          tip_for_create: "É possível criar este usuário com <span class='font-bold'> Acesso: Bloqueado</span>"
+          tip_for_update: 'Libere licenças não utilizadas ou adquira novas licenças para prosseguir'
+          password_updated: Senha Atualizada.
+          password_not_updated: Senha não alterada.
+

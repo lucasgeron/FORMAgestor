@@ -1,12 +1,11 @@
-module App
-  class ClientsController < ApplicationController
+  class App::ClientsController < ApplicationController
     
     before_action :authenticate_admin!
     before_action :set_client, only: %i[ show edit update destroy ]
 
     # GET /clients or /clients.json
     def index
-      @clients = Client.all
+      @app_clients = App::Client.all
     end
 
     # GET /clients/1 or /clients/1.json
@@ -15,7 +14,7 @@ module App
 
     # GET /clients/new
     def new
-      @client = Client.new
+      @app_client = App::Client.new
     end
 
     # GET /clients/1/edit
@@ -24,11 +23,11 @@ module App
 
     # POST /clients or /clients.json
     def create
-      @client = Client.new(client_params)
+      @app_client = App::Client.new(client_params)
 
-        if @client.save
-          flash[:success] = "Client was successfully created."
-          redirect_to app_client_url(@client)
+        if @app_client.save
+          flash[:success] = t('views.app.general.flash.create', model: App::Client.model_name.human)
+          redirect_to app_client_url(@app_client)
         else
           render :new, status: :unprocessable_entity
         end
@@ -36,9 +35,9 @@ module App
 
     # PATCH/PUT /clients/1 or /clients/1.json
     def update
-      if @client.update(client_params)
-        flash[:success] = "Client was successfully updated."
-        redirect_to app_client_url(@client)
+      if @app_client.update(client_params)
+        flash[:success] = t('views.app.general.flash.update', model: App::Client.model_name.human)
+        redirect_to app_client_url(@app_client)
       else
         render :edit, status: :unprocessable_entity
       end
@@ -46,25 +45,24 @@ module App
 
     # DELETE /clients/1 or /clients/1.json
     def destroy
-      if @client.users.count == 0 
-        @client.destroy
-        flash[:success] = "Client was successfully destroyed."
+      if @app_client.users.count == 0 
+        @app_client.destroy
+        flash[:success] = t('views.app.general.flash.destroy', model: App::Client.model_name.human)
         redirect_to app_clients_url
       else
-        flash[:error] = "Client was not destroyed, because it has users."
-        redirect_to app_client_url(@client)
+        flash[:error] = t('views.app.clients.flash.destroy_failed', model: App::Client.model_name.human)
+        redirect_to app_client_url(@app_client)
       end
     end
 
     private
       # Use callbacks to share common setup or constraints between actions.
       def set_client
-        @client = Client.find(params[:id])
+        @app_client = App::Client.find(params[:id])
       end
 
       # Only allow a list of trusted parameters through.
       def client_params
-        params.require(:client).permit(:name, :cnpj, :active, :licenses)
+        params.require(:app_client).permit(:name, :cnpj, :active, :licenses)
       end
   end
-end

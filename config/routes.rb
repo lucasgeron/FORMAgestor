@@ -1,19 +1,17 @@
 Rails.application.routes.draw do
+  devise_for :admins, class_name: "App::Admin", controllers: { sessions: 'admins/sessions'}
+  devise_for :users, class_name: "App::User", controllers: { sessions: 'users/sessions'}
   
-  root to: "site#index"
+  root to: "site#index", as: :site_root
   
   # - - - - - - - - - - ROUTES FOR SITE - - - - - - - - - - 
 
+  get 'unsubscribe', to: 'app/subscribers#unsubscribe', as: :unsubscribe
   post '/toogle_locale', to: 'site#toogle_locale', as: :toogle_locale
-  post "/subscribe", to: 'site#subscribe_to_newsletter', as: :subscribe
-  get "/unsubscribe", to: 'site#unsubscribe_confirm', as: :unsubscribe_confirm
-  post "/unsubscribe", to: 'site#unsubscribe_to_newsletter', as: :unsubscribe
-  post "/contact_forms", to: 'site#contact_forms', as: :contact_forms
+  post '/contact_forms', to: 'site#contact_forms', as: :contact_forms
 
   # - - - - - - - - - - ROUTES FOR APPLICATION - - - - - - - - - - 
 
-  devise_for :users, controllers: { sessions: 'users/sessions'}
-  devise_for :admins, controllers: { sessions: 'admins/sessions'}
 
   devise_scope :user do
     authenticated :user do
@@ -33,17 +31,20 @@ Rails.application.routes.draw do
       
       # Exclusive routes in App namespace (just for admin)
       namespace :app do
+        resources :admins, only: [:update]
         resources :clients
-        resources :subscribers
-        resources :updates    
+        resources :subscribers, only: [:index]
+        resources :updates 
       end
     end
   end
 
   # Commom routes in App namespace
   namespace :app do
+    resources :cities
     resources :users
+    resources :subscribers, only: [:create, :destroy]
+    resources :updates, only: [:index, :show]
   end
-
-
+  
 end

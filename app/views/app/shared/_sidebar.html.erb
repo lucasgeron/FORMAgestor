@@ -91,11 +91,14 @@
           <% end %>
         <%end %>
       </div>
-
     </div>
+
+
+    
 
     <div class="space-y-1 mb-4">       <%# -------------- %>
       
+    <%= render 'app/admins/form', app_admin: current_admin if current_admin %>
       
 
 
@@ -121,10 +124,9 @@
       <%end%>
 
       <%# CIDADES %>
-      <%= link_to "#", class:"sidebar-link#{is_link_active?('cities')}" do %>
+      <%= link_to app_cities_path, class:"sidebar-link#{is_link_active?('cities')}" do %>
         <%= icon('fa-solid','map-location-dot', class:"mr-1")%>
-        <%# <%= Prospect.model_name.human.pluralize %>
-        <%= t('activerecord.models.city.other')%>
+        <%= App::City.model_name.human.pluralize %>
       <%end%>
 
       <%# INSTITUIÇÕES %>
@@ -165,7 +167,7 @@
       <%# CONFIGURAÇÕES %>
 
       <%# setup for aria-expanded %>
-      <% %w'semesters companies users clients updates'.include?(controller_name) ? ae = true : ae = false %>
+      <% %w'semesters companies users clients updates subscribers'.include?(controller_name) ? ae = true : ae = false %>
 
       <button type="button" aria-expanded="<%= ae %>" class="dropdown-toggle sidebar-link inline-flex items-center justify-between w-full" aria-controls="dropdown-example" data-collapse-toggle="dropdown-example">
         <div class="">
@@ -194,14 +196,14 @@
         <%# USUÁRIOS %>
         <%= link_to app_users_path, class:"sidebar-link#{is_link_active?('users')}" do %>
           <%= icon('fa-solid','circle-user', class:"mr-1")%>
-          <%= User.model_name.human.pluralize %>
+          <%= App::User.model_name.human.pluralize %>
         <%end%>
 
         <%# CLIENTES %>
         <%= link_to app_clients_path, class:"inline-flex w-full justify-between items-center sidebar-link#{is_link_active?('clients')}" do%>
           <div class="">
             <%= icon('fa-solid','building-user', class:"mr-1")%>
-            <%= Client.model_name.human.pluralize %>
+            <%= App::Client.model_name.human.pluralize %>
           </div>
           <%= icon('fa-solid','user-shield', class:"mr-1 fa-xs")%>
         <% end if admin_signed_in?  %>
@@ -219,7 +221,7 @@
         <%= link_to app_subscribers_path, class:"inline-flex w-full justify-between items-center sidebar-link#{is_link_active?('subscribers')}" do%>
           <div class="">
             <%= icon('fa-solid','envelope-circle-check', class:"mr-1")%>
-            <%= Subscriber.model_name.human.pluralize %>
+            <%= App::Subscriber.model_name.human.pluralize %>
           </div>
           <%= icon('fa-solid','user-shield', class:"mr-1 fa-xs")%>
         <% end if admin_signed_in?  %>

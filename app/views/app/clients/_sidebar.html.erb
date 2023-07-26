@@ -8,15 +8,14 @@
       
       
       <div class="detail-input flex justify-between items-center">
-        <p class=""><%= icon('fa-solid','building-user')%> <%= Client.model_name.human.pluralize %> </p>
-        <p class="px-2 py-1 text-xs font-medium text-white bg-blue-600 rounded-full"> <%= Client.only_active.count %> / <%= Client.all.count %> </p>
+        <p class=""><%= icon('fa-solid','building-user')%> <%= App::Client.model_name.human.pluralize %> </p>
+        <p class="px-2 py-1 text-xs font-medium text-white bg-blue-600 rounded-full"> <%= App::Client.only_active.count %> / <%= App::Client.all.count %> </p>
       </div>
 
       <div class="detail-input flex justify-between items-center">
-        <p class=""><%= icon('fa-solid','key')%> <%= Client.human_attribute_name('licenses')%> </p>
-        <p class="px-2 py-1 text-xs font-medium text-white bg-blue-600 rounded-full"> <%= count_userd_licenses %> /  <%= count_active_licenses %> </p>
+        <p class=""><%= icon('fa-solid','key')%> <%= App::Client.human_attribute_name('licenses')%> </p>
+        <p class="px-2 py-1 text-xs font-medium text-white bg-blue-600 rounded-full"> <%= count_active_users %> /  <%= sum_all_liceses %> </p>
       </div>
-
 
     </div>
 
