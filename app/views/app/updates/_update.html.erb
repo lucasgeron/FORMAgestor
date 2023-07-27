@@ -1,13 +1,13 @@
-<div id="<%= dom_id update %>" class="bg-gray-100  dark:bg-gray-900 rounded-lg p-4 space-y-2">
+<div id="<%= dom_id update %>" class="bg-gray-100  dark:bg-gray-900 rounded-lg p-4 space-y-2 group">
 
-  <div class="flex items-center justify-between">
+  <div class="flex items-center justify-between ">
 
-    <div class="">
-      <%= link_to update, class:'font-medium' do %>
+    <div class="translate-y-1/4 group-hover:translate-y-0 transition duration-300">
+      <%= link_to update, class:'font-medium hover:text-blue-600 ' do %>
         <%= icon('fa-solid','code-commit') %>
         <%= update.version %>
       <% end %>
-      <p class="text-xs"> <%= time_ago_in_words(update.release_date) %></p>
+      <p class="text-xs"> <%= t('views.site.updates.release')%> <%= time_ago_in_words(update.release_date) %></p>
     </div>
 
     <%= button_tag class:'btn-card', data: { popover_target: "popover-click-#{update.id}", popover_trigger: "click", popover_placement:"left" } do %>
@@ -16,7 +16,7 @@
 
   </div>
 
-  <div class="flex items-center justify-start space-x-4">
+  <div class="flex items-center justify-start space-x-4 opacity-0 group-hover:opacity-100 transition duration-300">
     <% if  update.description.present? %>
       <span class="text-xs">
         <%= icon('fa-solid','comment', class:'text-blue-600') %>

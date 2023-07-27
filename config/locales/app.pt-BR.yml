@@ -11,6 +11,7 @@ pt-BR:
         show: Exibir
         showing: Exibindo
         flash:
+          switch_client: 'É necessário alterar o Cliente para realizar esta ação.'
           unauthorized: 'Você não possui permissão para acessar esta página.'
           ban_alert: 'ATENÇÃO: Repetir esta ação pode resultar banimento.'
           not_found: '%{model} não encontrado.' 
