@@ -15,7 +15,7 @@
 
   <div class="">
     <p class=""><%= App::Client.human_attribute_name('licenses') %></p>
-    <p class="detail-input"><%= app_client.licenses%></p>
+    <p class="detail-input"><%= icon('fa-solid', 'key', class:'detail-icon')%> <%= app_client.used_licenses%> / <%= app_client.licenses%></p>
   </div>
 
   <div class="">
@@ -28,15 +28,18 @@
     <% end %>
   </div>
 
+
+
 </div>
 
 <%# USERS TITLE %>
-
 <p class="font-bold text-2xl"> <%= App::User.model_name.human.pluralize %> </p>
+
+
 <% if app_client.users.present? %>
-  <% app_client.users.each do |user| %>
-    <%= render user %>
-  <% end %>
+  <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-3 2xl:grid-cols-4 gap-4">
+    <%= render app_client.users %>
+  </div>
 <% else %>
   <div class="detail-input h-auto flex justify-between items-center gap-4"> 
   <p class="">
