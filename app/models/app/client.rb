@@ -1,4 +1,4 @@
-class App::App::Client < ApplicationRecord
+class App::Client < ApplicationRecord
   # Associations
   
   has_many :admins, class_name: 'App::Admin'

@@ -8,8 +8,8 @@
       
       
       <div class="detail-input flex justify-between items-center">
-        <p class=""><%= icon('fa-solid','building-user')%> <%= App::App::Client.model_name.human.pluralize %> </p>
-        <p class="px-2 py-1 text-xs font-medium text-white bg-blue-600 rounded-full"> <%= App::App::Client.only_active.count %> / <%= App::App::Client.all.count %> </p>
+        <p class=""><%= icon('fa-solid','building-user')%> <%= App::Client.model_name.human.pluralize %> </p>
+        <p class="px-2 py-1 text-xs font-medium text-white bg-blue-600 rounded-full"> <%= App::Client.only_active.count %> / <%= App::Client.all.count %> </p>
       </div>
 
       <div class="detail-input flex justify-between items-center">

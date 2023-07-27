@@ -14,7 +14,7 @@ ActiveRecord::Schema[7.0].define(version: 2023_07_26_230816) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
-  create_table "app_app_admins", force: :cascade do |t|
+  create_table "app_admins", force: :cascade do |t|
     t.string "email", default: "", null: false
     t.string "encrypted_password", default: "", null: false
     t.string "reset_password_token"
@@ -46,7 +46,7 @@ ActiveRecord::Schema[7.0].define(version: 2023_07_26_230816) do
     t.datetime "updated_at", null: false
   end
 
-  create_table "app_app_subscribers", force: :cascade do |t|
+  create_table "app_subscribers", force: :cascade do |t|
     t.string "email"
     t.string "locale"
     t.datetime "created_at", null: false
@@ -64,7 +64,7 @@ ActiveRecord::Schema[7.0].define(version: 2023_07_26_230816) do
     t.datetime "updated_at", null: false
   end
 
-  create_table "app_app_users", force: :cascade do |t|
+  create_table "app_users", force: :cascade do |t|
     t.string "email", default: "", null: false
     t.string "encrypted_password", default: "", null: false
     t.string "reset_password_token"
@@ -74,10 +74,9 @@ ActiveRecord::Schema[7.0].define(version: 2023_07_26_230816) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.bigint "client_id", null: false
-    t.bigint "client_id", null: false
-    t.index ["client_id"], name: "index_app_app_users_on_client_id"
-    t.index ["email"], name: "index_app_app_users_on_email", unique: true
-    t.index ["reset_password_token"], name: "index_app_app_users_on_reset_password_token", unique: true
+    t.index ["client_id"], name: "index_app_users_on_client_id"
+    t.index ["email"], name: "index_app_users_on_email", unique: true
+    t.index ["reset_password_token"], name: "index_app_users_on_reset_password_token", unique: true
   end
 
   add_foreign_key "app_admins", "app_clients", column: "client_id"
