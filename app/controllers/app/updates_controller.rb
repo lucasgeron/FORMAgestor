@@ -48,6 +48,10 @@ class App::UpdatesController < ApplicationController
     @app_update.destroy
     flash[:success] = t('views.app.general.flash.destroy', model: App::Update.model_name.human)
     redirect_to app_updates_url
+<<<<<<< HEAD
+=======
+    end
+>>>>>>> a759820c143df7d3a776df8e9a3c7abc5a3072c6
   end
 
   private

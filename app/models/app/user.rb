@@ -10,6 +10,8 @@ class App::User < ApplicationRecord
   # Validations
   validates :email, uniqueness: true # devise valide emails by defauld
   validates :client_id, presence: true
+  validates :password, presence: true, on: :create
+  validates :password_confirmation, presence: true, on: :create
   
   # Scopes
   include App::Scopes
