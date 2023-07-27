@@ -48,12 +48,12 @@ class ApplicationController < ActionController::Base
       flash[:error] = t('views.app.general.flash.not_found', model: "App::#{controller_name.classify}".constantize.model_name.human)
       should_redirect = true
     elsif get_client_id != record.client_id
-      flash[:error] = [ t('views.app.general.flash.unauthorized'), t('views.app.general.flash.ban_alert')]
+      flash[:error] = [ t('views.app.general.flash.unauthorized') ]
+      flash[:error] <<  t('views.app.general.flash.ban_alert') if current_user
       should_redirect = true
-      # sign_out(current_user)
     end
     
-    redirect_to request.referrer || url if should_redirect
+    redirect_to url if should_redirect
     
   end
 

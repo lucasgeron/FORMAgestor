@@ -1,5 +1,8 @@
 pt-BR:
   views:
+    sessions:
+      user_not_active: '%{email} está com acesso bloqueado. Para desbloquear, entre em contato com %{client}.'
+      client_not_active: '%{client} está bloqueado. Para desbloquear, entre em contato com FORMAgestor.'
     app:
       general:
         new: Criar 

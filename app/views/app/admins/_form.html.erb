@@ -1,3 +1,3 @@
-<%= form_with(model: app_admin, remote: true, class: "contents ") do |form| %>
-  <%= form.collection_select :client_id, App::Client.all, :id, :name, {}, {class: "form-input -mt-1", onchange: "this.form.submit();"} %>
+<%= form_with(model: app_admin, remote: true, class: "contents") do |form| %>
+  <%= form.collection_select :client_id, App::Client.all, :id, :name, {}, {class: "form-input -mt-1  ", onchange: "this.form.submit();"} %>
 <%end%>

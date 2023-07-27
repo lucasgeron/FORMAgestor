@@ -8,7 +8,7 @@ class App::AdminsController < ApplicationController
    def update
     if @app_admin.update_without_password(app_admin_params)
       flash[:success] = t('views.app.admins.flash.update_client', client: @app_admin.client.name)
-      redirect_to request.referrer 
+      redirect_to request.referrer
     else
       render :edit, status: :unprocessable_entity 
     end
