@@ -41,7 +41,11 @@ Rails.application.routes.draw do
 
   # Commom routes in App namespace
   namespace :app do
-    resources :cities
+
+    resources :cities do 
+      get :filter, on: :collection
+    end
+    
     resources :users
     resources :subscribers, only: [:create, :destroy]
     resources :updates, only: [:index, :show]

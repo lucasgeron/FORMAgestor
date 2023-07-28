@@ -62,6 +62,9 @@ pt-BR:
         active_status:
           true: Habilitado
           false: Bloqueado
+      app/city:
+        name: Cidade
+        state: Estado
       app/user:
         client_id: Cliente
         vendor_id: Representante

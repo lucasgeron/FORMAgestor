@@ -1,3 +1,4 @@
+
 class App::CitiesController < ApplicationController
   
   before_action :authenticate_user_or_admin! 
@@ -15,6 +16,7 @@ class App::CitiesController < ApplicationController
 
   # GET /app/cities/new
   def new
+    require 'conecta_address_br'
     @app_city = App::City.new
   end
 
@@ -51,6 +53,16 @@ class App::CitiesController < ApplicationController
     @app_city.destroy
     flash[:success] = t('views.app.general.flash.destroy', model: App::City.model_name.human)
     redirect_to app_cities_url
+  end
+
+  def filter
+    @cities = ConectaAddressBr::Cities.by_state_single(params[:state])
+    @target = params[:target]
+  
+    respond_to do |format|
+      format.turbo_stream
+    end
+
   end
 
   private
