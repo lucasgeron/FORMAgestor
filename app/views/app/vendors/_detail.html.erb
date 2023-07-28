@@ -1,0 +1,45 @@
+<div class="space-y-4">
+
+  <div class="grid grid-cols-2 gap-4">
+
+    <div class="">
+      <p class=""><%= App::Vendor.human_attribute_name('name')%></p>
+      <p class="detail-input"><%= app_vendor.name  %></p>
+    </div>
+
+    <div class="">
+      <p class=""><%= App::Vendor.human_attribute_name('role')%></p>
+      <p class="detail-input"><%= app_vendor.role %></p>
+    </div>
+
+    <div class="">
+      <p class=""><%= App::Vendor.human_attribute_name('phone')%></p>
+      <p class="detail-input"><%= app_vendor.phone %></p>
+    </div>
+
+    <div class="">
+      <p class=""><%= App::Vendor.human_attribute_name('email')%></p>
+      <p class="detail-input"><%= app_vendor.email %></p>
+    </div>
+
+  </div>
+
+  <%# USERS TITLE %>
+  <div class="">
+    <p class="font-bold text-2xl"> <%= App::Vendor.human_attribute_name('city_ids') %> </p>
+
+    <% if app_vendor.cities.present? %>
+      <div class="mt-2 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-3 2xl:grid-cols-4 gap-4">
+        <%= render app_vendor.cities %>
+      </div>
+    <% else %>
+      <div class="detail-input flex justify-between items-center gap-4">
+        <p class="">
+          <%= icon('fa-solid', 'triangle-exclamation', class:'mr-1')%>
+          Este Representante não atende nenhuma cidade.
+        </p>
+      </div>
+    <% end %>
+  </div>
+
+</div>

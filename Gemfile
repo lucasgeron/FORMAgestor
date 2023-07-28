@@ -66,6 +66,9 @@ gem 'conecta_address_br'
 # requestjs-rails [https://github.com/rails/requestjs-rails]
 gem 'requestjs-rails'
 
+# Faker [https://github.com/faker-ruby/faker]
+gem 'faker'
+
 group :development, :test do
   # See https://guides.rubyonrails.org/debugging_FORMAgestorlications.html#debugging-with-the-debug-gem
   gem "debug", platforms: %i[ mri mingw x64_mingw ]

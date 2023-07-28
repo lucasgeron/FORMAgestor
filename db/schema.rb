@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2023_07_26_230816) do
+ActiveRecord::Schema[7.0].define(version: 2023_07_28_181408) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -35,6 +35,13 @@ ActiveRecord::Schema[7.0].define(version: 2023_07_26_230816) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["client_id"], name: "index_app_cities_on_client_id"
+  end
+
+  create_table "app_cities_vendors", id: false, force: :cascade do |t|
+    t.bigint "city_id"
+    t.bigint "vendor_id"
+    t.index ["city_id"], name: "index_app_cities_vendors_on_city_id"
+    t.index ["vendor_id"], name: "index_app_cities_vendors_on_vendor_id"
   end
 
   create_table "app_clients", force: :cascade do |t|
@@ -79,7 +86,21 @@ ActiveRecord::Schema[7.0].define(version: 2023_07_26_230816) do
     t.index ["reset_password_token"], name: "index_app_users_on_reset_password_token", unique: true
   end
 
+  create_table "app_vendors", force: :cascade do |t|
+    t.string "name"
+    t.string "phone"
+    t.string "email"
+    t.string "role"
+    t.bigint "client_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["client_id"], name: "index_app_vendors_on_client_id"
+  end
+
   add_foreign_key "app_admins", "app_clients", column: "client_id"
   add_foreign_key "app_cities", "app_clients", column: "client_id"
+  add_foreign_key "app_cities_vendors", "app_cities", column: "city_id"
+  add_foreign_key "app_cities_vendors", "app_vendors", column: "vendor_id"
   add_foreign_key "app_users", "app_clients", column: "client_id"
+  add_foreign_key "app_vendors", "app_clients", column: "client_id"
 end

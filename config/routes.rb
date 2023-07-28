@@ -41,6 +41,7 @@ Rails.application.routes.draw do
 
   # Commom routes in App namespace
   namespace :app do
+    resources :vendors
 
     resources :cities do 
       get :filter, on: :collection

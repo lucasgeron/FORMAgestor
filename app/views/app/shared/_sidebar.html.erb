@@ -162,10 +162,9 @@
       <%end%>
 
       <%# REPRESENTANTES %>
-      <%= link_to "#", class:"sidebar-link#{is_link_active?('vendors')}" do %>
+      <%= link_to app_vendors_path, class:"sidebar-link#{is_link_active?('vendors')}" do %>
         <%= icon('fa-solid','user-group', class:"mr-1")%>
-        <%# <%= Prospect.model_name.human.pluralize %>
-        <%= t('activerecord.models.vendor.other')%>
+        <%= App::Vendor.model_name.human.pluralize %>
       <%end%>
 
       <%# CONFIGURAÇÕES %>

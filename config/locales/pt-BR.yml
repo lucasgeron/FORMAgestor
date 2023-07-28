@@ -34,7 +34,7 @@ pt-BR:
       semester:
         one: Semestre
         other: Semestres
-      vendor:
+      app/vendor:
         one: Representante
         other: Representantes
       company:
@@ -76,6 +76,12 @@ pt-BR:
           true: Habilitado
           false: Bloqueado
         licenses: Licenças
+      app/vendor:
+        name: Nome
+        phone: Telefone
+        email: Email
+        role: Cargo
+        city_ids: Cidades Atendidas
       contactform:
         email: Teste OK
         subject: Teste 2

@@ -1,0 +1,22 @@
+<% content_for :ctas_secondary do %>
+  <%= link_to app_vendors_path, class: "btn-secondary-gray flex-none" do %>
+    <%= icon('fa-solid','arrow-left', class:'-mx-1')%>
+  <%end%>
+
+  <%= link_to edit_app_vendor_path(@app_vendor), class: "btn-secondary flex-none" do %>
+    <%= icon('fa-solid','pen-to-square', class:'-mx-1')%>
+  <%end%>
+
+  <%= button_to app_vendor_path(@app_vendor), method: :delete, class: "btn-delete flex-none" do %>
+    <%= icon('fa-solid','trash-can', class:'-mx-1')%>
+  <%end%>
+
+<% end %>
+
+<% provide :head_title, "#{t('views.app.general.showing')} #{App::Vendor.model_name.human} " %>
+<% provide :page_title, "#{t('views.app.general.showing')} #{App::Vendor.model_name.human} " %>
+<% provide :entry_id, "#{@app_vendor.id}" %>
+
+<% content_for :page_content do %>
+  <%= render "detail", app_vendor: @app_vendor %>
+<%end%>

@@ -1,0 +1,52 @@
+<%= form_with(model: app_vendor, class: "contents space-y-4") do |form| %>
+  <% if app_vendor.errors.any? %>
+    <% flash.now[:error] = app_vendor.errors.to_a%>
+  <% end %>
+
+  <div class="grid grid-cols-2 gap-4">
+
+    <div class="">
+      <%= form.label :name %>
+      <%= form.text_field :name, class: "form-input" %>
+    </div>
+
+    <div class="">
+      <%= form.label :role %>
+      <%= form.text_field :role, class: "form-input" %>
+    </div>
+
+    <div class="">
+      <%= form.label :phone %>
+      <%= form.text_field :phone, class: "form-input" %>
+    </div>
+
+    <div class="">
+      <%= form.label :email %>
+      <%= form.text_field :email, class: "form-input" %>
+    </div>
+
+  </div>
+
+  <div class="">
+    <%= form.label :city_ids, class:'font-bold text-2xl' %>
+    <%# force city_ids, even is empty %>
+    <%= form.hidden_field :city_ids, value: [], multiple: true %>
+
+
+<div class="grid grid-cols-4 gap-4 border dark:border-gray-600 dark:bg-gray-900 p-4 rounded-lg mt-2 ">
+  <% App::City.all.each do |city| %>
+    <div class="flex items-center rounded-lg ">
+      <%= form.check_box :city_ids, { multiple: true, class: 'form-checkbox-simple mr-2 dark:bg-gray-950 bg-gray-200', id: "city_#{city.id}" }, city.id, nil %>
+      <%= label_tag "city_#{city.id}", class:'cursor-pointer' do %> <%= city.name %> - <%= city.state.upcase %></p> <%end%>
+    </div>
+  <% end %>
+</div>
+
+
+  </div>
+
+  <div class="mt-4 inline-flex w-full justify-end">
+    <%= form.submit class: "btn-primary" %>
+  </div>
+
+<% end %>

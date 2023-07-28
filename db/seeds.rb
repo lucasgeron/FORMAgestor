@@ -1,4 +1,4 @@
-require 'date'
+
 load Rails.root.join('db', 'seeds', 'app_updates.rb')
 
 
@@ -16,3 +16,6 @@ p App::User.create(email: 'b@a', password:'123456', password_confirmation:'12345
 p App::User.create(email: 'a@b', password:'123456', password_confirmation:'123456', client_id: 3)
 p App::User.create(email: 'b@b', password:'123456', password_confirmation:'123456', client_id: 3)
 
+
+load Rails.root.join('db', 'seeds', 'app_city.rb')
+load Rails.root.join('db', 'seeds', 'app_vendor.rb')
