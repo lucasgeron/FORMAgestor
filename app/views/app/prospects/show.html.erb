@@ -1,0 +1,37 @@
+<% content_for :ctas_secondary do %>
+  <%= link_to app_prospects_path, class: "btn-secondary-gray flex-none" do %>
+    <%= icon('fa-solid','arrow-left', class:'-mx-1')%>
+  <%end%>
+
+  <%= link_to edit_app_prospect_path(@app_prospect), class: "btn-secondary flex-none" do %>
+    <%= icon('fa-solid','pen-to-square', class:'-mx-1')%>
+  <%end%>
+
+  <%= button_to app_prospect_path(@app_prospect), method: :delete, class: "btn-delete flex-none" do %>
+    <%= icon('fa-solid','trash-can', class:'-mx-1')%>
+  <%end%>
+
+<% end %>
+
+<% content_for :ctas_primary do %>
+
+  <%= link_to new_app_prospect_path, class: "btn-primary flex-none" do %>
+    <%= icon('fa-solid','plus',class:'btn-icon') %>
+    <%= App::Prospect.model_name.human %>
+  <% end %>
+
+<%= button_to app_prospect_path(@app_prospect), method: :patch, class: "btn-primary flex-none", params: { app_prospect: { vendor_id: get_current_access.vendor_id } } do %>
+  <%= icon('fa-solid','check-to-slot',class:'btn-icon') %>
+  <%= t('views.app.prospects.button.set_vendor') %>
+<% end if get_current_access.vendor && @app_prospect.vendor.nil?%>
+
+
+<% end %>
+
+<% provide :head_title, "#{t('views.app.general.showing')} #{App::Prospect.model_name.human} " %>
+<% provide :page_title, "#{t('views.app.general.showing')} #{App::Prospect.model_name.human} " %>
+<% provide :entry_id, "#{@app_prospect.id}" %>
+
+<% content_for :page_content do %>
+  <%= render "detail", app_prospect: @app_prospect %>
+<%end%>

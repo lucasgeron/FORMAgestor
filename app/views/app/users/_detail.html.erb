@@ -12,9 +12,9 @@
     <p class=""><%= App::User.human_attribute_name('active') %></p>
    
     <% if user.active %>
-     <div class="text-base detail-input dark:bg-blue-600 bg-blue-600 text-white text-center rounded-lg"> <%= icon('fa-solid','check')%> <%= t('activerecord.attributes.app/user.active_status.true')%></div>
+     <div class="text-base detail-input dark:bg-blue-600 bg-blue-600 text-white text-center rounded-lg"> <%= icon('fa-solid','check')%> <%= t('activerecord.options.app/user.active.true')%></div>
     <% else %>
-      <div class="text-base detail-input bg-gray-100 text-red-600 text-center rounded-lg "> <%= icon('fa-solid','xmark')%> <%= t('activerecord.attributes.app/user.active_status.false')%></div>
+      <div class="text-base detail-input bg-gray-100 text-red-600 text-center rounded-lg "> <%= icon('fa-solid','xmark')%> <%= t('activerecord.options.app/user.active.false')%></div>
     <% end %>
   </div>
 
@@ -24,9 +24,11 @@
 
    <div class="">
     <p class=""><%= App::User.human_attribute_name('vendor_id') %></p>
-    <p class="detail-input "><%= user.email %></p>
+
+      <div class="relative">
+         <div class="detail-input-icon"><%= icon('fa-solid','user', class:'')%></div>
+        <p class="detail-input with-icon"><%= user.vendor ? user.vendor.name : App::User.human_attribute_name('vendor_not_found') %></p>
+      </div>
   </div>
 
-
-  
 </div>

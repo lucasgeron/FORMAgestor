@@ -1,0 +1,25 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  vendor: one
+  channel: MyString
+  institution: MyString
+  city: MyString
+  course: MyString
+  ammount: MyString
+  year_graduation: MyString
+  name: MyString
+  phone: MyString
+  instagram: MyString
+
+two:
+  vendor: two
+  channel: MyString
+  institution: MyString
+  city: MyString
+  course: MyString
+  ammount: MyString
+  year_graduation: MyString
+  name: MyString
+  phone: MyString
+  instagram: MyString

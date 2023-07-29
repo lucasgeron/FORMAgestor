@@ -13,4 +13,6 @@
   <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-3 2xl:grid-cols-4 gap-4">
     <%= render(@app_vendors) %>
   </div>
+
+  <%= render partial: 'app/shared/has_no_entry', locals: { msg: t('views.app.vendors.form.has_no_entry').html_safe } if @app_vendors.count.zero? %>
 <%end%>

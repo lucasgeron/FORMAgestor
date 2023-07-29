@@ -1,0 +1,60 @@
+
+
+<div class="w-full py-4 space-y-4">
+  
+   <div class="">
+        <p class=""><%= App::Prospect.human_attribute_name('vendor_id') %></p>
+        <div class="relative">
+          <div class="form-input-icon"><%= icon('fa-solid','user', class:'') %>  </div>
+          <p class="detail-input with-icon"><%= @app_prospect.vendor ? @app_prospect.vendor.name : t('activerecord.options.app/prospect.vendor_id.none')%> </p>
+        </div>
+      </div>
+
+  <div class="grid grid-cols-1 lg:grid-cols-3 gap-4">
+
+    <div class="">
+      <p class=""><%= App::Prospect.human_attribute_name('name') %></p>
+      <p class="detail-input"><%= @app_prospect.name.present? ? @app_prospect.name : t('activerecord.options.general.blank') %></p>
+    </div>
+
+    <div class="">
+      <p class=""><%= App::Prospect.human_attribute_name('phone') %></p>
+      <p class="detail-input"><%= @app_prospect.phone.present? ? @app_prospect.phone : t('activerecord.options.general.blank') %></p>
+    </div>
+
+    <div class="">
+      <p class=""><%= App::Prospect.human_attribute_name('instagram') %></p>
+      <p class="detail-input"><%= @app_prospect.instagram.present? ? @app_prospect.instagram : t('activerecord.options.general.blank') %></p>
+    </div>
+
+    <div class="">
+      <p class=""><%= App::Prospect.human_attribute_name('city') %></p>
+      <p class="detail-input"><%= @app_prospect.city.present? ? @app_prospect.city : t('activerecord.options.general.blank') %></p>
+    </div>
+
+    <div class="">
+      <p class=""><%= App::Prospect.human_attribute_name('institution') %></p>
+      <p class="detail-input"><%= @app_prospect.institution.present? ? @app_prospect.institution : t('activerecord.options.general.blank') %></p>
+    </div>
+
+    <div class="">
+      <p class=""><%= App::Prospect.human_attribute_name('course') %></p>
+      <p class="detail-input"><%= @app_prospect.course.present? ? @app_prospect.course : t('activerecord.options.general.blank') %></p>
+    </div>
+
+    <div class="">
+      <p class=""><%= App::Prospect.human_attribute_name('ammount') %></p>
+      <p class="detail-input"><%= @app_prospect.ammount.present? ? @app_prospect.ammount : t('activerecord.options.general.blank') %></p>
+    </div>
+
+    <div class="">
+      <p class=""><%= App::Prospect.human_attribute_name('year_graduation') %></p>
+      <p class="detail-input"><%= @app_prospect.year_graduation.present? ? @app_prospect.year_graduation : t('activerecord.options.general.blank') %></p>
+    </div>
+
+    <div class="">
+      <p class=""><%= App::Prospect.human_attribute_name('channel') %></p>
+      <p class="detail-input"><%= @app_prospect.channel.present? ? @app_prospect.channel : t('activerecord.options.general.blank') %></p>
+    </div>
+
+  </div>

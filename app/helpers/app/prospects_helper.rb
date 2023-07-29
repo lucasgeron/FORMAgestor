@@ -1,0 +1,2 @@
+module App::ProspectsHelper
+end

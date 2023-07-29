@@ -1,0 +1,17 @@
+<% content_for :ctas_secondary do %>
+  <%= link_to app_prospects_path, class: "btn-secondary-gray flex-none" do %>
+    <%= icon('fa-solid','arrow-left', class:'-mx-1')%>
+  <%end%>
+<% end %>
+
+<% provide :page_title, "#{t('views.app.general.new')} #{App::Prospect.model_name.human}" %>
+
+
+<% if has_session? %>
+<% content_for :page_content do %>
+  <%= render "form", app_prospect: @app_prospect %>
+<%end%>
+<% else %>
+  <%= render "form", app_prospect: @app_prospect %>
+<%end%>
+

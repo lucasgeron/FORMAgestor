@@ -1,10 +1,10 @@
 <div id="<%= dom_id vendor %>" class='bg-gray-100  dark:bg-gray-900 rounded-lg p-4 space-y-2 group'>
 
-  <div class="flex items-center justify-between">
+  <div class="flex items-start justify-between">
 
     <div class="translate-y-1/4 group-hover:translate-y-0 transition duration-300">
       <%= link_to vendor.name, app_vendor_path(vendor), class:'font-medium hover:text-blue-600 ' %>
-      <p class="opacity-0 group-hover:opacity-100 transition duration-300 "><%= vendor.role %></p>
+      <p class="opacity-0 group-hover:opacity-100 transition duration-300 text-sm"><%= vendor.role %></p>
     </div>
 
     <%= button_tag class:'btn-card', data: { popover_target: "popover-click-#{vendor.id}", popover_trigger: "click", popover_placement:"left" } do %>

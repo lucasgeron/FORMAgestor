@@ -87,7 +87,7 @@
 
       # Only allow a list of trusted parameters through.
       def user_params
-        params.require(:app_user).permit(:email, :password, :password_confirmation, :active)
+        params.require(:app_user).permit(:email, :password, :password_confirmation, :active, :vendor_id)
       end
 
       def current_access_is_same_user?

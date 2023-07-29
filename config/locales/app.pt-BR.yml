@@ -11,16 +11,20 @@ pt-BR:
         show: Exibir
         showing: Exibindo
         flash:
-          switch_client: 'É necessário alterar o Cliente para realizar esta ação.'
+          switch_client: 'Devido as permissões, é necessário selecione o registro novamente.'
           unauthorized: 'Você não possui permissão para acessar esta página.'
           ban_alert: 'ATENÇÃO: Repetir esta ação pode resultar banimento.'
           not_found: '%{model} não encontrado.' 
           create: '%{model} foi criado com sucesso.'
           update: '%{model} foi atualizado com sucesso.'
           destroy: '%{model} foi excluido com sucesso.'
+        file_upload: <span class="font-semibold">Clique para Enviar</span> ou arraste e solte
       clients:
+        form:
+          has_no_entry:  Não existem <span class='font-medium'> <i class="fa-solid fa-circle-user"></i> Usuários </span> cadastrados para este <span class='font-medium'> <i class="fa-solid fa-building-user"></i> Cliente</span>. 
         flash:
-          destroy_failed: 'Não é possível excluir este Cliente pois ele possui Usuários.'
+          destroy_failed: 'Não é possível excluir este Cliente pois existem Usuários.'
+          destroy_attachment_failed: 'Este cliente não possui logo vinculado atualmente.'
       admins:
         flash:
           update_client: 'Cliente alterado para %{client}.'
@@ -31,4 +35,18 @@ pt-BR:
           tip_for_update: 'Libere licenças não utilizadas ou adquira novas licenças para prosseguir'
           password_updated: Senha Atualizada.
           password_not_updated: Senha não alterada.
-
+      cities:
+        form:
+          has_no_entry: Não existem <span class='font-medium'> <i class="fa-solid fa-map-location-dot"></i> Cidades </span> cadastradas. 
+      vendors:
+        form:
+          has_no_entry: Não existem <span class='font-medium'> <i class="fa-solid fa-user"></i> Representante </span> cadastrados. 
+        detail:
+          has_no_entry: Este <span class='font-medium'> <i class="fa-solid fa-user"></i> Representante </span> não atendente nenhuma <span class='font-medium'> <i class="fa-solid fa-map-location-dot"></i> Cidade</span>.
+      prospects:
+        button:
+          set_vendor: Assumir
+        form:
+          has_no_entry: Não existem <span class='font-medium'> <i class="fa-solid fa-receipt"></i> Prospecções </span> cadastradas. 
+        flash:
+          client_not_found: O link que você tentou acessar é inválido.

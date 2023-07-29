@@ -1,13 +1,13 @@
 <div id="<%= dom_id user %>" class="bg-gray-100  dark:bg-gray-900 rounded-lg p-4 space-y-2 group">
 
 
-  <div class="flex items-center justify-between">
+  <div class="flex items-start justify-between">
 
     <div class="overflow-x-scroll scrollbar-hide translate-y-1/4 group-hover:translate-y-0 transition duration-300">
      
       <%= link_to user.email, app_user_path(user), class:'font-medium hover:text-blue-600' %>
+      <p class="text-xs opacity-0 group-hover:opacity-100 duration-100 "><%= icon('fa-solid','user')%>  <%= user.vendor ? user.vendor.name : App::User.human_attribute_name('vendor_not_found') %> </p>
 
-      <p class="text-xs opacity-0 group-hover:opacity-100 duration-100 "><%= icon('fa-solid','user')%>  <%= false ? 'Nome aqui' : App::User.human_attribute_name('vendor_not_found') %> </p>
     </div>
 
     <%= button_tag class:'btn-card', data: { popover_target: "popover-click-#{user.id}", popover_trigger: "click", popover_placement:"left" } do %>
@@ -17,13 +17,11 @@
   </div>
 
   <div class="flex justify-between items-center">
-
     <% if user.active %>
-      <p class="w-fit text-white tracking-tight px-2.5 py-0.5 text-sm  bg-blue-600 rounded-lg"><%= icon('fa-solid','check', class:'')%> <%= t('activerecord.attributes.app/user.active_status.true')%></p>
+      <p class="w-fit text-white tracking-tight px-2.5 py-0.5 text-sm  bg-blue-600 rounded-lg"><%= icon('fa-solid','check', class:'')%> <%= t('activerecord.options.app/user.active.true')%></p>
     <%else%>
-      <p class="w-fit text-red-600 tracking-tight px-2.5 py-0.5 text-sm  bg-gray-200 dark:bg-gray-800 rounded-lg"><%= icon('fa-solid','xmark', class:'')%> <%= t('activerecord.attributes.app/user.active_status.false')%> </p>
+      <p class="w-fit text-red-600 tracking-tight px-2.5 py-0.5 text-sm  bg-gray-200 dark:bg-gray-800 rounded-lg"><%= icon('fa-solid','xmark', class:'')%> <%= t('activerecord.options.app/user.active.false')%> </p>
     <%end%>
-
   </div>
 
   <div data-popover id="popover-click-<%=user.id%>" role="tooltip" class="absolute z-10 invisible inline-block w-auto text-xs transition-opacity duration-300 border bg-gray-100  border-gray-200 rounded-lg  opacity-0 dark:text-gray-400 dark:border-gray-600 dark:bg-gray-800">

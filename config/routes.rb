@@ -10,6 +10,8 @@ Rails.application.routes.draw do
   post '/toogle_locale', to: 'site#toogle_locale', as: :toogle_locale
   post '/contact_forms', to: 'site#contact_forms', as: :contact_forms
 
+  get '/:slug', to: 'app/prospects#new_by_slug'
+
   # - - - - - - - - - - ROUTES FOR APPLICATION - - - - - - - - - - 
 
 
@@ -32,7 +34,9 @@ Rails.application.routes.draw do
       # Exclusive routes in App namespace (just for admin)
       namespace :app do
         resources :admins, only: [:update]
-        resources :clients
+        resources :clients do
+          delete :destroy_attachment
+        end
         resources :subscribers, only: [:index]
         resources :updates 
       end
@@ -41,6 +45,7 @@ Rails.application.routes.draw do
 
   # Commom routes in App namespace
   namespace :app do
+    resources :prospects
     resources :vendors
 
     resources :cities do 

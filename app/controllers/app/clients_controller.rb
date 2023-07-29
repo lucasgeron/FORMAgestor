@@ -55,6 +55,19 @@
       end
     end
 
+    # DELETE /clients/1/destroy_attachment
+    def destroy_attachment
+      @app_client = App::Client.find(params[:client_id])
+      if @app_client.image.attached? 
+        @app_client.image.purge
+        flash[:success] = t('views.app.general.flash.destroy', model: t('activerecord.attributes.app/client.image'))
+        redirect_to app_client_path(@app_client)
+      else 
+        flash.now[:error] = t('views.app.clients.flash.destroy_attachment_failed', model: t('activerecord.attributes.app/client.image'))
+        render :edit, status: :unprocessable_entity
+      end
+    end
+
     private
       # Use callbacks to share common setup or constraints between actions.
       def set_client
@@ -63,6 +76,6 @@
 
       # Only allow a list of trusted parameters through.
       def client_params
-        params.require(:app_client).permit(:name, :cnpj, :active, :licenses)
+        params.require(:app_client).permit(:name, :cnpj, :active, :licenses, :slug, :image)
       end
   end

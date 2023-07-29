@@ -1,57 +1,71 @@
 <div class="space-y-4">
 
-<%# DETAILS %>
-<div class="grid grid-cols-1 xl:grid-cols-4 gap-4">
+  <%# DETAILS %>
+  
+  <div class="grid grid-cols-1 xl:grid-cols-4 gap-4">
 
-  <div class="">
-    <p class=""><%= App::Client.human_attribute_name('name') %></p>
-    <p class="detail-input"><%= app_client.name%></p>
+    <div class="">
+      <p class=""><%= App::Client.human_attribute_name('name') %></p>
+      <p class="detail-input"><%= app_client.name%></p>
+    </div>
+
+    <div class="">
+      <p class=""><%= App::Client.human_attribute_name('cnpj') %></p>
+      <p class="detail-input"><%= app_client.cnpj%></p>
+    </div>
+
+    <div class="">
+      <p class=""><%= App::Client.human_attribute_name('licenses') %></p>
+      <div class="relative">
+        <div class="detail-input-icon"><%= icon('fa-solid', 'key', class:'')%> </div>
+        <p class="detail-input with-icon"><%= app_client.used_licenses%> / <%= app_client.licenses%></p>
+      </div>
+    </div>
+
+    <div class="">
+      <p class=""><%= App::Client.human_attribute_name('active') %></p>
+
+      <% if app_client.active %>
+        <div class="text-base detail-input dark:bg-blue-600 bg-blue-600 text-white text-center rounded-lg"> <%= icon('fa-solid','check')%> <%= t('activerecord.options.app/client.active.true')%></div>
+      <% else %>
+        <div class="text-base detail-input bg-gray-100 text-red-600 text-center rounded-lg "> <%= icon('fa-solid','xmark')%> <%= t('activerecord.options.app/client.active.false')%></div>
+      <% end %>
+    </div>
+
+    <div class="">
+      <p class=""><%= App::Client.human_attribute_name('image') %></p>
+      <div class="relative">
+        <div class="detail-input-icon"><%= icon('fa-solid', 'image', class:'')%> </div>
+        <% if @app_client.image.attached? %>
+          <div class="detail-input bg-contain bg-no-repeat bg-center" style="background-image: url(<%=url_for(@app_client.image)%>)"> </div>
+        <%else%>
+          <p class="detail-input with-icon"> <%= t('activerecord.options.app/client.image.not_attached')  %></p>
+        <%end%>
+      </div>
+    </div>
+
+
+    <div class="">
+      <p class=""><%= App::Client.human_attribute_name('slug') %></p>
+      <div class="relative">
+        <div class="detail-input-icon"><%= icon('fa-solid', 'link', class:'')%> </div>
+        <%= link_to app_client.slug, "/#{app_client.slug}", class:'detail-input with-icon'  %>
+      </div>
+    </div>
+
   </div>
 
-  <div class="">
-    <p class=""><%= App::Client.human_attribute_name('cnpj') %></p>
-    <p class="detail-input"><%= app_client.cnpj%></p>
-  </div>
+  <%# USERS TITLE %>
+  <p class="font-bold text-2xl"> <%= App::User.model_name.human.pluralize %> </p>
 
-  <div class="">
-    <p class=""><%= App::Client.human_attribute_name('licenses') %></p>
-    <p class="detail-input"><%= icon('fa-solid', 'key', class:'detail-input-icon')%> <%= app_client.used_licenses%> / <%= app_client.licenses%></p>
-  </div>
-
-  <div class="">
-    <p class=""><%= App::Client.human_attribute_name('active') %></p>
-   
-    <% if app_client.active %>
-     <div class="text-base detail-input dark:bg-blue-600 bg-blue-600 text-white text-center rounded-lg"> <%= icon('fa-solid','check')%> <%= t('activerecord.attributes.app/client.active_status.true')%></div>
-    <% else %>
-      <div class="text-base detail-input bg-gray-100 text-red-600 text-center rounded-lg "> <%= icon('fa-solid','xmark')%> <%= t('activerecord.attributes.app/client.active_status.false')%></div>
-    <% end %>
-  </div>
-
-
-
-</div>
-
-<%# USERS TITLE %>
-<p class="font-bold text-2xl"> <%= App::User.model_name.human.pluralize %> </p>
-
-
-<% if app_client.users.present? %>
-  <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-3 2xl:grid-cols-4 gap-4">
-    <%= render app_client.users %>
-  </div>
-<% else %>
-  <div class="detail-input h-auto flex justify-between items-center gap-4"> 
-  <p class="">
-    <%= icon('fa-solid', 'triangle-exclamation', class:'mr-1')%>
-    Não existem usuários vinculados a esta empresa. 
-  </p>
-    
-  <%= link_to new_app_user_path, class: "btn-primary flex-none" do %>
-    <%= icon('fa-solid','plus',class:'btn-icon') %>
-    <%= App::User.model_name.human %>
+  <% if app_client.users.present? %>
+    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-3 2xl:grid-cols-4 gap-4">
+      <%= render app_client.users %>
+    </div>
+  <% else %>
+    <%= render partial: 'app/shared/has_no_entry', locals: { msg: t('views.app.clients.form.has_no_entry').html_safe, 
+                                                            entry: App::User.model_name.human, 
+                                                            path: new_app_user_path } %>
   <% end %>
-  </div>
-<% end %>
 
 </div>

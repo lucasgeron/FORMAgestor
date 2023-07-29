@@ -31,7 +31,7 @@ gem "tailwindcss-rails"
 gem 'jquery-rails'
 
 # Use Font Awsome [https://fontawesome.com/v6/docs/web/use-with/ruby-on-rails]
-gem "font-awesome-sass", "~> 6.4.0"
+gem "font-awesome-sass"
 
 # Build JSON APIs with ease [https://github.com/rails/jbuilder]
 gem "jbuilder"

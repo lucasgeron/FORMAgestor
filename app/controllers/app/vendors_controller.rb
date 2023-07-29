@@ -1,9 +1,12 @@
 class App::VendorsController < ApplicationController
+  
+  before_action :authenticate_user_or_admin!
+  before_action :check_client_id, only: %i[ show edit update destroy]  
   before_action :set_app_vendor, only: %i[ show edit update destroy ]
-
+  
   # GET /app/vendors or /app/vendors.json
   def index
-    @app_vendors = App::Vendor.all
+    @app_vendors = App::Vendor.by_client(get_client_id)
   end
 
   # GET /app/vendors/1 or /app/vendors/1.json
@@ -22,39 +25,31 @@ class App::VendorsController < ApplicationController
   # POST /app/vendors or /app/vendors.json
   def create
     @app_vendor = App::Vendor.new(app_vendor_params)
+    set_client_id(@app_vendor)
 
-    respond_to do |format|
-      if @app_vendor.save
-        format.html { redirect_to app_vendor_url(@app_vendor), notice: "Vendor was successfully created." }
-        format.json { render :show, status: :created, location: @app_vendor }
-      else
-        format.html { render :new, status: :unprocessable_entity }
-        format.json { render json: @app_vendor.errors, status: :unprocessable_entity }
-      end
+    if @app_vendor.save
+      flash[:success] = t('views.app.general.flash.create', model: App::Vendor.model_name.human)
+      redirect_to app_vendor_url(@app_vendor)
+    else
+      render :new, status: :unprocessable_entity
     end
   end
 
   # PATCH/PUT /app/vendors/1 or /app/vendors/1.json
   def update
-    respond_to do |format|
-      if @app_vendor.update(app_vendor_params)
-        format.html { redirect_to app_vendor_url(@app_vendor), notice: "Vendor was successfully updated." }
-        format.json { render :show, status: :ok, location: @app_vendor }
-      else
-        format.html { render :edit, status: :unprocessable_entity }
-        format.json { render json: @app_vendor.errors, status: :unprocessable_entity }
-      end
+    if @app_vendor.update(app_vendor_params)
+      flash[:success] = t('views.app.general.flash.update', model: App::Vendor.model_name.human)
+      redirect_to app_vendor_url(@app_vendor)
+    else
+      render :edit, status: :unprocessable_entity
     end
   end
 
   # DELETE /app/vendors/1 or /app/vendors/1.json
   def destroy
     @app_vendor.destroy
-
-    respond_to do |format|
-      format.html { redirect_to app_vendors_url, notice: "Vendor was successfully destroyed." }
-      format.json { head :no_content }
-    end
+    flash[:success] = t('views.app.general.flash.destroy', model: App::Vendor.model_name.human)
+    redirect_to app_vendors_url
   end
 
   private

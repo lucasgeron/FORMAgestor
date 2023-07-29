@@ -16,7 +16,6 @@ class App::CitiesController < ApplicationController
 
   # GET /app/cities/new
   def new
-    require 'conecta_address_br'
     @app_city = App::City.new
   end
 
@@ -55,6 +54,7 @@ class App::CitiesController < ApplicationController
     redirect_to app_cities_url
   end
 
+  # GET /app/cities/filter?state=UF&target=DIV_ID
   def filter
     @cities = ConectaAddressBr::Cities.by_state_single(params[:state])
     @target = params[:target]

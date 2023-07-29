@@ -5,5 +5,6 @@ class App::Admin < ApplicationRecord
          :recoverable, :rememberable, :validatable
 
   belongs_to :client, class_name: 'App::Client'
+  
 
 end

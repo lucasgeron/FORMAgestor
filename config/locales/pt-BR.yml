@@ -8,9 +8,10 @@ pt-BR:
         email: Email
         subject: Assunto
         message: Mensagem
+
   activerecord:
     models:
-      prospect:
+      app/prospect:
         one: Propecção
         other: Prospecções
       students:
@@ -53,15 +54,15 @@ pt-BR:
       app/subscriber:
         one: Assinante
         other: Assinantes
+
     attributes:
       app/client:
         name: Nome
         cnpj: CNPJ
         active: Acesso
         licenses: Licenças
-        active_status:
-          true: Habilitado
-          false: Bloqueado
+        slug: Link de Prospecção
+        image: Logo
       app/city:
         name: Cidade
         state: Estado
@@ -72,9 +73,6 @@ pt-BR:
         password: Senha
         password_confirmation: Confirme sua senha
         active: Acesso
-        active_status:
-          true: Habilitado
-          false: Bloqueado
         licenses: Licenças
       app/vendor:
         name: Nome
@@ -90,12 +88,58 @@ pt-BR:
         email: Email
         locale: Localização
         created_at: Membro há
+      app/prospect:
+        vendor_id: Assumido por
+        channel: Canal de Contato
+        institution: Instituição
+        city: Cidade
+        course: Curso
+        ammount: Formandos
+        year_graduation: Ano de Formação
+        name: Nome
+        phone: Telefone
+        instagram: Instagram
+
+    placeholders:
+      app/prospect:
+        vendor_id: Assumido por
+        channel: Como nos conheceu?
+        institution: Instituição
+        city: Cidade - UF
+        course: Curso(s)
+        ammount: Qtde de Alunos
+        year_graduation: 'Ex: 2023/01'
+        name: Nome Completo
+        phone: DDD + Telefone
+        instagram: '@username'
+
+    options:
+      general:
+        blank: Não Informado
+      app/prospect:
+        vendor_id:
+          none: Não Prospectada
+      app/client:
+        active:
+          true: Habilitado
+          false: Bloqueado
+        image:
+          attached: Vinculada
+          not_attached: Não Vinculada
+      app/user:
+        active:
+          true: Habilitado
+          false: Bloqueado
+
+
+
     errors:
       messages:
         record_invalid: 'A validação falhou: %{errors}'
         restrict_dependent_destroy:
           has_one: Não é possível excluir o registro pois existe um %{record} dependente
           has_many: Não é possível excluir o registro pois existem %{record} dependentes
+        vendor_client_id_matches_user_client_id: ' não pertence à sua empresa. Você foi reportado ao Administrador do sistema.'
   date:
     abbr_day_names:
     - dom

@@ -5,9 +5,12 @@
     <p class="detail-input"><%= get_state_name(app_city.state)  %></p>
   </div>
 
-  <div class="relative">
+  <div class="">
     <p class=""><%= App::City.human_attribute_name('name')%></p>
-    <p class="detail-input"><%=icon('fa-solid','map-location-dot', class:'detail-input-icon')%><%= app_city.name %></p>
+    <div class="relative">
+      <div class="detail-input-icon"><%=icon('fa-solid','map-location-dot')%></div>
+      <p class="detail-input with-icon"><%= app_city.name %></p>
+    </div>
   </div>
 
 </div>

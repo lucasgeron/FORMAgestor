@@ -246,7 +246,7 @@ DEPENDENCIES
   debug
   devise
   faker
-  font-awesome-sass (~> 6.4.0)
+  font-awesome-sass
   importmap-rails
   jbuilder
   jquery-rails

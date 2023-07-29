@@ -19,35 +19,38 @@
       dark:group-hover:bg-gray-700   dark:group-hover:peer-checked:bg-blue-700' do %>
       <% end %>
 
-      <div class="text-base peer-text hidden peer-checked:block "> <%= icon('fa-solid','check')%> <%= t('activerecord.attributes.app/client.active_status.true')%></div>
-      <div class="text-base peer-text block peer-checked:hidden "> <%= icon('fa-solid','xmark')%> <%= t('activerecord.attributes.app/client.active_status.false')%></div>
+      <div class="text-base peer-text hidden peer-checked:block "> <%= icon('fa-solid','check')%> <%= t('activerecord.options.app/client.active.true')%></div>
+      <div class="text-base peer-text block peer-checked:hidden "> <%= icon('fa-solid','xmark')%> <%= t('activerecord.options.app/client.active.false')%></div>
     </div>
 
-    <% if %w[new create].include?(action_name)  ||  @permission_to_edit  %>    
-    <div class="">
-      <%= form.label :password, class:'' %>
-      <%= form.password_field :password, autocomplete: "new-password", class:"form-input" %>
-    </div>
+    <% if %w[new create].include?(action_name)  ||  @permission_to_edit  %>
+      <div class="">
+        <%= form.label :password, class:'' %>
+        <%= form.password_field :password, autocomplete: "new-password", class:"form-input" %>
+      </div>
 
-    <div class="">
-      <%= form.label :password_confirmation %>
-      <%= form.password_field :password_confirmation, autocomplete: "new-password", class:"form-input" %>
-    </div>
+      <div class="">
+        <%= form.label :password_confirmation %>
+        <%= form.password_field :password_confirmation, autocomplete: "new-password", class:"form-input" %>
+      </div>
     <% end %>
 
   </div>
+
+
 
   <div class="grid grid-cols-1 xl:grid-cols-4 gap-4">
 
     <div class="">
       <%= form.label :vendor_id, class:'' %>
-      <%# <%= form.collection_select :vendor_id, App::Client.all, :id, :name, {}, {class: "form-input"} %>
-      <%= form.text_field :vendor_id, class: "form-input" %>
+
+      <div class="relative">
+       <div class="form-input-icon"><%= icon('fa-solid','user', class:'') %>  </div>
+        <%= form.collection_select :vendor_id, App::Vendor.by_client(get_client_id), :id, :name, {include_blank: App::User.human_attribute_name('vendor_not_found')}, {class: "form-input with-icon"} %>
+      </div>
     </div>
 
   </div>
-
-  
 
   <div class="mt-4 inline-flex w-full justify-end">
     <%= form.submit class: "btn-primary" %>

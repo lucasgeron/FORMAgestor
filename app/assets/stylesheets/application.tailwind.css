@@ -123,7 +123,7 @@
     @apply 
     text-sm xl:text-base 
     text-gray-900 dark:text-white 
-    bg-white dark:bg-gray-900 ;
+    bg-white dark:bg-gray-900;
   }
 
   .btn-icon{
@@ -147,20 +147,17 @@
     dark:border dark:border-gray-600
     h-10 px-3 py-2 mt-2 w-full 
     disabled:bg-gray-100 disabled:border-none disabled:placeholder:text-red-300
-    ;
+    text-base;
   }
 
   .form-input-icon{
-    @apply absolute inset-y-0 left-3 flex items-center  pointer-events-none;
-  }
-
-  .input-with-icon{
-    @apply pl-10;
+    @apply absolute inset-y-0 left-0 px-3 flex items-center pointer-events-none;
   }
 
   .detail-input-icon{
-    @apply pr-2;
+    @apply absolute inset-y-0 left-0 px-3 flex items-center pointer-events-none;
   }
+
 
   .detail-input{
     @apply block rounded-md 
@@ -169,7 +166,11 @@
     dark:border-none  
     h-10 px-3 py-2 mt-2 w-full
     overflow-x-scroll scrollbar-hide
-    ;
+    text-base;
+  }
+
+  .with-icon{
+    @apply pl-10;
   }
 
   .form-checkbox-simple {

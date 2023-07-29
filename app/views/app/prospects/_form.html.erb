@@ -1,0 +1,100 @@
+<%= form_with(model: app_prospect, class: "contents ") do |form| %>
+  <% if app_prospect.errors.any? %>
+    <% flash.now[:error] = app_prospect.errors.to_a%>
+  <% end %>
+
+  <div class="w-full py-4 space-y-4">
+    <% if has_session? %>
+
+      <div class="">
+        <%= form.label :vendor_id %>
+        <div class="relative">
+          <div class="form-input-icon"><%= icon('fa-solid','user', class:'') %>  </div>
+          <%= form.collection_select :vendor_id, App::Vendor.by_client(get_client_id), :id, :name, {include_blank: t('activerecord.options.app/prospect.vendor_id.none')}, {class: "form-input with-icon"} %>
+        </div>
+      </div>
+
+    <%else%>
+      <% if !has_session? %>
+
+        <% if @client.image.attached? %>
+          <div class=" h-48 bg-contain animate-breathe bg-no-repeat bg-center " style="background-image: url(<%=url_for(@client.image)%>)"> </div>
+        <%else%>
+          <p class="h-12 grid place-items-center justify-center text-2xl uppercase font-bold tracking-wide"><%= @client.name %></p>
+        <%end%>
+
+        <p class=" text-center ">Formulário de Prospecção </p>
+
+      <%end%>
+
+      <%= form.hidden_field :client_id, value:@client.id  %>
+
+    <%end%>
+
+    <div class="grid grid-cols-1 lg:grid-cols-3 gap-4">
+
+      <div class="">
+        <%= form.label :name %>
+        <%= form.text_field :name, class: "form-input", placeholder: t('activerecord.placeholders.app/prospect.name') %>
+      </div>
+
+      <div class="">
+        <%= form.label :phone %>
+        <%= form.text_field :phone, class: "form-input", placeholder: t('activerecord.placeholders.app/prospect.phone') %>
+      </div>
+
+      <div class="">
+        <%= form.label :instagram %>
+        <%= form.text_field :instagram, class: "form-input", placeholder: t('activerecord.placeholders.app/prospect.instagram') %>
+      </div>
+
+      <div class="">
+        <%= form.label :city %>
+        <%= form.text_field :city, class: "form-input", placeholder: t('activerecord.placeholders.app/prospect.city') %>
+      </div>
+
+      <div class="">
+        <%= form.label :institution %>
+        <%= form.text_field :institution, class: "form-input", placeholder: t('activerecord.placeholders.app/prospect.institution') %>
+      </div>
+
+      <div class="">
+        <%= form.label :course %>
+        <%= form.text_field :course, class: "form-input", placeholder: t('activerecord.placeholders.app/prospect.course') %>
+      </div>
+
+      <div class="">
+        <%= form.label :ammount %>
+        <%= form.text_field :ammount, class: "form-input", placeholder: t('activerecord.placeholders.app/prospect.ammount') %>
+      </div>
+
+      <div class="">
+        <%= form.label :year_graduation %>
+        <%= form.text_field :year_graduation, class: "form-input", placeholder: t('activerecord.placeholders.app/prospect.year_graduation') %>
+      </div>
+
+      <div class="">
+        <%= form.label :channel %>
+        <%= form.text_field :channel, class: "form-input", placeholder: t('activerecord.placeholders.app/prospect.channel') %>
+      </div>
+
+    </div>
+
+    <div class="mt-4 inline-flex w-full justify-between flex-row-reverse">
+
+      <%= form.submit class: "btn-primary" %>
+
+      <% if !has_session? %>
+        <div class="flex items-center text-xs">
+          <p class="">Powered by </p>
+          <%= link_to site_root_path, class:'flex items-center ' do %>
+            <%= image_tag('favicon.svg', class: 'h-6 w-fit mx-1', alt: 'Logo') %>
+            <%= image_tag('favtext-white.svg', class: 'h-3 my-auto w-fit mr-3 hidden lg:dark:inline', alt: 'Logotext') %>
+            <%= image_tag('favtext-dark.svg', class: 'h-3 my-auto w-fit mr-3 hidden lg:inline dark:hidden', alt: 'Logotext') %>
+          <%end%>
+        </div>
+      <%end%>
+
+    </div>
+  </div>
+<% end %>

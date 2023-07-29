@@ -1,6 +1,6 @@
 <div class="space-y-4">
 
-  <div class="grid grid-cols-2 gap-4">
+  <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
 
     <div class="">
       <p class=""><%= App::Vendor.human_attribute_name('name')%></p>
@@ -33,12 +33,8 @@
         <%= render app_vendor.cities %>
       </div>
     <% else %>
-      <div class="detail-input flex justify-between items-center gap-4">
-        <p class="">
-          <%= icon('fa-solid', 'triangle-exclamation', class:'mr-1')%>
-          Este Representante não atende nenhuma cidade.
-        </p>
-      </div>
+       <%= render partial: 'app/shared/has_no_entry', locals: { msg: t('views.app.vendors.detail.has_no_entry').html_safe
+                                                               } %>
     <% end %>
   </div>
 
