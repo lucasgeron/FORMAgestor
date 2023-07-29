@@ -94,7 +94,7 @@ pt-BR:
         institution: Instituição
         city: Cidade
         course: Curso
-        ammount: Formandos
+        amount: Formandos
         year_graduation: Ano de Formação
         name: Nome
         phone: Telefone
@@ -107,7 +107,7 @@ pt-BR:
         institution: Instituição
         city: Cidade - UF
         course: Curso(s)
-        ammount: Qtde de Alunos
+        amount: Qtde de Alunos
         year_graduation: 'Ex: 2023/01'
         name: Nome Completo
         phone: DDD + Telefone

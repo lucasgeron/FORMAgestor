@@ -2,6 +2,7 @@ class App::ProspectsController < ApplicationController
 
   before_action :authenticate_user_or_admin!, except: %i[ new_by_slug create  ]
   before_action :set_layout
+  before_action :check_client_id, only: %i[ show edit update destroy ]
   before_action :set_app_prospect, only: %i[ show edit update destroy ]
 
   # GET /app/prospects or /app/prospects.json
@@ -77,7 +78,7 @@ class App::ProspectsController < ApplicationController
 
   # Only allow a list of trusted parameters through.
   def app_prospect_params
-    params.require(:app_prospect).permit(:vendor_id, :channel, :institution, :city, :course, :ammount, :year_graduation, :name, :phone, :instagram, :client_id)
+    params.require(:app_prospect).permit(:vendor_id, :channel, :institution, :city, :course, :amount, :year_graduation, :name, :phone, :instagram, :client_id)
   end
 
   def set_layout

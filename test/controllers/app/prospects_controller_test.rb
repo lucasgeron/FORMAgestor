@@ -17,7 +17,7 @@ class App::ProspectsControllerTest < ActionDispatch::IntegrationTest
 
   test "should create app_prospect" do
     assert_difference("App::Prospect.count") do
-      post app_prospects_url, params: { app_prospect: { ammount: @app_prospect.ammount, channel: @app_prospect.channel, city: @app_prospect.city, course: @app_prospect.course, instagram: @app_prospect.instagram, institution: @app_prospect.institution, name: @app_prospect.name, phone: @app_prospect.phone, vendor_id: @app_prospect.vendor_id, year_graduation: @app_prospect.year_graduation } }
+      post app_prospects_url, params: { app_prospect: { amount: @app_prospect.amount, channel: @app_prospect.channel, city: @app_prospect.city, course: @app_prospect.course, instagram: @app_prospect.instagram, institution: @app_prospect.institution, name: @app_prospect.name, phone: @app_prospect.phone, vendor_id: @app_prospect.vendor_id, year_graduation: @app_prospect.year_graduation } }
     end
 
     assert_redirected_to app_prospect_url(App::Prospect.last)
@@ -34,7 +34,7 @@ class App::ProspectsControllerTest < ActionDispatch::IntegrationTest
   end
 
   test "should update app_prospect" do
-    patch app_prospect_url(@app_prospect), params: { app_prospect: { ammount: @app_prospect.ammount, channel: @app_prospect.channel, city: @app_prospect.city, course: @app_prospect.course, instagram: @app_prospect.instagram, institution: @app_prospect.institution, name: @app_prospect.name, phone: @app_prospect.phone, vendor_id: @app_prospect.vendor_id, year_graduation: @app_prospect.year_graduation } }
+    patch app_prospect_url(@app_prospect), params: { app_prospect: { amount: @app_prospect.amount, channel: @app_prospect.channel, city: @app_prospect.city, course: @app_prospect.course, instagram: @app_prospect.instagram, institution: @app_prospect.institution, name: @app_prospect.name, phone: @app_prospect.phone, vendor_id: @app_prospect.vendor_id, year_graduation: @app_prospect.year_graduation } }
     assert_redirected_to app_prospect_url(@app_prospect)
   end
 

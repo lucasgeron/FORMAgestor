@@ -6,7 +6,7 @@ class CreateAppProspects < ActiveRecord::Migration[7.0]
       t.string :institution
       t.string :city
       t.string :course
-      t.string :ammount
+      t.string :amount
       t.string :year_graduation
       t.string :name
       t.string :phone

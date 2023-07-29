@@ -14,7 +14,7 @@ class App::ProspectsTest < ApplicationSystemTestCase
     visit app_prospects_url
     click_on "New prospect"
 
-    fill_in "Ammount", with: @app_prospect.ammount
+    fill_in "amount", with: @app_prospect.amount
     fill_in "Channel", with: @app_prospect.channel
     fill_in "City", with: @app_prospect.city
     fill_in "Course", with: @app_prospect.course
@@ -34,7 +34,7 @@ class App::ProspectsTest < ApplicationSystemTestCase
     visit app_prospect_url(@app_prospect)
     click_on "Edit this prospect", match: :first
 
-    fill_in "Ammount", with: @app_prospect.ammount
+    fill_in "amount", with: @app_prospect.amount
     fill_in "Channel", with: @app_prospect.channel
     fill_in "City", with: @app_prospect.city
     fill_in "Course", with: @app_prospect.course
