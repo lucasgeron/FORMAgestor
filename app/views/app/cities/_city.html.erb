@@ -1,27 +1,25 @@
-<div id="<%= dom_id city %>" class='bg-gray-100  dark:bg-gray-900 rounded-lg p-4 space-y-2 group'>
+<div id="<%= dom_id city %>" class='card group'>
 
-  <div class="flex items-center justify-between">
+  <div class="card-header">
 
-    <div class="translate-y-1/4 group-hover:translate-y-0 transition duration-300">
-      <%= link_to city.name, app_city_path(city), class:'font-medium hover:text-blue-600 ' %>
-      <p class="opacity-0 group-hover:opacity-100 transition duration-300 text-sm"><%= get_state_name(city.state) %></p>
+    <div class="card-header-info card-header-animate">
+      <p class="card-header-title"><%= link_to city.name, app_city_path(city), class:'card-header-title' %></p>
+      <p class="card-header-subtitle card-header-subtitle-animate"><%= get_state_name(city.state) %></p>
     </div>
 
-    <%= button_tag class:'btn-card', data: { popover_target: "popover-click-#{city.id}", popover_trigger: "click", popover_placement:"left" } do %>
+    <%= button_tag class:'card-header-btn', data: { popover_target: "popover-click-#{city.id}", popover_trigger: "click", popover_placement:"left" } do %>
       <%= icon('fa-solid','bars', class:'fa-sm')%>
     <%end%>
 
   </div>
 
-  <div data-popover id="popover-click-<%=city.id%>" role="tooltip" class="absolute z-10 invisible inline-block w-auto text-xs transition-opacity duration-300 border bg-gray-100  border-gray-200 rounded-lg  opacity-0 dark:text-gray-400 dark:border-gray-600 dark:bg-gray-800">
+  <div data-popover id="popover-click-<%=city.id%>" role="tooltip" class="card-popover invisible">
 
-    <div class="px-2 py-1 grid grid-flow-col ">
+    <%= link_to edit_app_city_path(city), class:'card-popover-btn-primary' do %>
+      <%= icon('fa-solid', 'pen-to-square', class:'btn-icon') %>
+      <p class=""> <%= t('views.app.general.edit')%></p>
+    <%end%>
 
-      <%= link_to edit_app_city_path(city), class:'inline-flex items-center py-1 px-2 hover:text-blue-600' do %>
-        <%= icon('fa-solid', 'pen-to-square', class:'mr-1') %>
-        <p class=""> <%= t('views.app.general.edit')%></p>
-      <%end%>
-    </div>
     <div data-popper-arrow></div>
   </div>
 

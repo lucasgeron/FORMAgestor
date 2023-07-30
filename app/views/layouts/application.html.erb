@@ -23,28 +23,26 @@
       <%= render partial: 'layouts/app_notification' %>
       <%= render partial: 'app/shared/sidebar' %>
 
+      <%# RIGHT SIDEBAR %>
       <aside id="sidebar-multi-level-sidebar-b" class=" fixed top-0 right-0 z-40 h-screen overflow-y-auto transition-transform translate-x-full xl:translate-x-0 bg-white w-64 dark:bg-gray-800"  aria-label="Sidebar">
         <div class="h-full px-3 overflow-y-auto  scrollbar-hide">
           <%= yield :sidebar %>
         </div>
       </aside>
+      <%# END SECOND SIDEBAR%>
 
       <div class="px-4 py-4 xl:mx-64 space-y-4">
 
-        <div class="bg-gray-100 dark:bg-gray-900 rounded-lg p-1.5 flex justify-between gap-x-2 scrollbar-hide overflow-x-scroll mb-4 ">
-
-          <% if content_for(:ctas_secondary) %>
-            <div class="flex flex-1 gap-x-2 ">
-              <%= yield :ctas_secondary %>
+        <% if has_ctas? %>
+          <div class="bg-gray-100 dark:bg-gray-900 rounded-lg p-1.5  flex justify-between scrollbar-hide overflow-x-scroll">
+            <div class="flex-none grid grid-flow-col auto-cols-max gap-x-2 ">
+                <%= yield :ctas_secondary %>
             </div>
-          <% end %>
-         
-          <% if content_for(:ctas_primary) %>
-            <div class="flex flex-1 gap-x-2 flex-row-reverse">
-              <%= yield :ctas_primary %>
-            </div>
-          <% end %>
-        </div>
+            <div class="flex-none grid grid-flow-col auto-cols-max gap-x-2 scrollbar-hide overflow-x-scroll">
+                <%= yield :ctas_primary %>
+              </div>
+          </div>
+        <% end %>
 
         <% if content_for(:page_title)%>
           <div class="hidden xl:flex items-end justify-between">

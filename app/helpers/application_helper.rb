@@ -45,5 +45,8 @@ module ApplicationHelper
     end
   end
 
+  def has_ctas?
+    content_for(:ctas_primary) || content_for(:ctas_secondary)
+  end
 
 end

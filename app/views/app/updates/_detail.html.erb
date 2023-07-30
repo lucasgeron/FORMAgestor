@@ -13,7 +13,7 @@
         </ul>
       </div>
       <div id="myTabContent" class="my-8">
-          <div class="hidden px-4 md:px-8 py-8 rounded-lg bg-gray-100 dark:bg-gray-800" id="profile-<%=app_update.id%>" role="tabpanel" aria-labelledby="<%=app_update.id%>-tab">
+          <div class="hidden px-4 md:px-8 py-8 rounded-lg bg-gray-100 dark:bg-gray-900" id="profile-<%=app_update.id%>" role="tabpanel" aria-labelledby="<%=app_update.id%>-tab">
             <div class="grid space-y-4 text-sm">
               <p class="description  md:text-center text-base"> <span class=""><%=t('views.site.updates.release')%></span> <span class="px-2 py-1 ml-1  bg-blue-600 text-white  rounded"><%= time_ago_in_words(app_update.release_date).capitalize %></span></p>
               

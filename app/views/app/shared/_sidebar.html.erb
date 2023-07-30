@@ -1,28 +1,27 @@
-<div id="top" class="px-4 py-4 xl:hidden w-full inline-flex justify-between items-center sticky top-0 bg-white dark:bg-gray-800">
+<div id="top" class="px-4 py-4 xl:hidden w-full inline-flex justify-between items-center sticky top-0 bg-white dark:bg-gray-800 z-30">
   <button data-drawer-target="sidebar-multi-level-sidebar" data-drawer-toggle="sidebar-multi-level-sidebar" aria-controls="sidebar-multi-level-sidebar" type="button" class="text-gray-500 dark:text-gray-400 hover:bg-gray-100 dark:hover:bg-gray-700 focus:outline-none  rounded-lg text-sm py-2.5 px-4">
     <span class="sr-only">Open sidebar</span>
     <%= icon('fa-solid','bars')%>
   </button>
 
   <div class="flex items-center justify-center xl:hidden space-x-2">
-  <p class="text-lg"> <%= yield :page_title %> </p>
-  <% if content_for(:entry_id)%>
-    <p class="description"> <%=icon('fa-solid','hashtag', class:'fa-sm mr-0.5')%><%= yield :entry_id %></p>
-  <%end %>
+    <p class="text-lg"> <%= yield :page_title %> </p>
+    <% if content_for(:entry_id)%>
+      <p class="description"> <%=icon('fa-solid','hashtag', class:'fa-sm mr-0.5')%><%= yield :entry_id %></p>
+    <%end %>
   </div>
 
   <% if content_for(:sidebar) %>
-  <button data-drawer-target="sidebar-multi-level-sidebar-b" data-drawer-toggle="sidebar-multi-level-sidebar-b" data-drawer-placement="right" aria-controls="sidebar-multi-level-sidebar-b" type="button" class="text-gray-500 dark:text-gray-400 hover:bg-gray-100 dark:hover:bg-gray-700 focus:outline-none  rounded-lg text-sm py-2.5 px-4">
-    <span class="sr-only">Open sidebar B</span>
-    <%= icon('fa-solid','filter')%>
-  </button>
+    <button data-drawer-target="sidebar-multi-level-sidebar-b" data-drawer-toggle="sidebar-multi-level-sidebar-b" data-drawer-placement="right" aria-controls="sidebar-multi-level-sidebar-b" type="button" class="text-gray-500 dark:text-gray-400 hover:bg-gray-100 dark:hover:bg-gray-700 focus:outline-none  rounded-lg text-sm py-2.5 px-4">
+      <span class="sr-only">Open sidebar B</span>
+      <%= icon('fa-solid','filter')%>
+    </button>
   <%else%>
     <a href="#top" data-controller="scroll-to" data-scroll-to-offset-value="100" class="text-gray-500 dark:text-gray-400 hover:bg-gray-100 dark:hover:bg-gray-700 focus:outline-none  rounded-lg text-sm py-2.5 px-4">
       <%= icon('fa-solid','arrow-up', class:"") %>
     </a>
   <%end%>
 </div>
-
 
 <aside id="sidebar-multi-level-sidebar" class=" fixed top-0 left-0 z-40 w-64 h-screen transition-transform -translate-x-full xl:translate-x-0" aria-label="Sidebar">
   <div class="h-full px-3 overflow-y-auto bg-gray-50 dark:bg-gray-900 scrollbar-hide">
@@ -42,7 +41,6 @@
       <%= link_to "v#{App::Update.last.version}", App::Update.last %>
     </div>
 
-
     <%# BIG HEADER %>
     <div class="pt-5 pb-1 hidden xl:block sticky top-0 bg-gray-50 dark:bg-gray-900">
 
@@ -56,19 +54,19 @@
 
       <%# DEVISE %>
       <div class="mt-2 mb-1 flex p-2 font-medium text-xs rounded-lg justify-between items-center ">
-          <%= icon('fa-solid','user-shield', class:"text-blue-600") if current_admin %>
-          <%= current_access_has_vendor? ? get_current_access.vendor.name : get_current_access.email %>
-          <%= link_to get_logout_path, data: {turbo_method: :delete, turbo_confirm: 'Deseja fazer logout do sistema?'} do %>
-            <%= icon('fa-solid','sign-out-alt') %>
-          <% end %>
+        <%= icon('fa-solid','user-shield', class:"text-blue-600") if current_admin %>
+        <%= current_access_has_vendor? ? get_current_access.vendor.name : get_current_access.email %>
+        <%= link_to get_logout_path, data: {turbo_method: :delete, turbo_confirm: 'Deseja fazer logout do sistema?'} do %>
+          <%= icon('fa-solid','sign-out-alt') %>
+        <% end %>
       </div>
 
-       <%= render 'app/admins/form', app_admin: current_admin if current_admin %>
+      <%= render 'app/admins/form', app_admin: current_admin if current_admin %>
     </div>
 
     <%# SMALL HEADER %>
     <div class="pt-6 pb-1 bg-gray-50 dark:bg-gray-900  sticky top-0 xl:hidden mx-auto">
-        <div class="w-full inline-flex justify-center items-center">
+      <div class="w-full inline-flex justify-center items-center">
         <% if get_current_access.client.image.attached?%>
           <p class="font-bold uppercase tracking-wider"><%= get_current_access.client.name %></p>
         <%else%>
@@ -76,38 +74,45 @@
           <%= image_tag('favtext-dark.svg', class:'max-h-4 block dark:hidden  ')%>
           <%= image_tag('favtext-white.svg', class:'max-h-4 hidden dark:block ')%>
         <%end%>
-    </div>
+      </div>
 
       <%# DEVISE %>
       <div class="mt-2 mb-1 flex p-2 font-medium text-xs rounded-lg justify-between items-center">
-          <%= icon('fa-solid','user-shield', class:"text-blue-600") if current_admin %>
-          <%= current_access_has_vendor? ? get_current_access.vendor.name : get_current_access.email %>
-          <%= link_to get_logout_path, data: {turbo_method: :delete, turbo_confirm: 'Deseja fazer logout do sistema?'} do %>
-            <%= icon('fa-solid','sign-out-alt') %>
-          <%end %>
+        <%= icon('fa-solid','user-shield', class:"text-blue-600") if current_admin %>
+        <%= current_access_has_vendor? ? get_current_access.vendor.name : get_current_access.email %>
+        <%= link_to get_logout_path, data: {turbo_method: :delete, turbo_confirm: 'Deseja fazer logout do sistema?'} do %>
+          <%= icon('fa-solid','sign-out-alt') %>
+        <%end %>
       </div>
-    
+
       <%= render 'app/admins/form', app_admin: current_admin if current_admin %>
     </div>
-    
+
     <div class="space-y-1 mb-4">       <%# -------------- %>
+
+      <%# PROSPECÇÕES %>
+      <%= link_to app_prospects_path, class: "sidebar-link#{is_link_active?('prospects')} flex justify-between items-center" do %>
       
-     <%# PROSPECÇÕES %>
-      <%= link_to app_prospects_path, class: "sidebar-link#{is_link_active?('prospects')}" do %>
-        <%= icon('fa-solid', 'receipt', class: "mr-1") %>
-        <%= App::Prospect.model_name.human(count: 2) %>
+        <div class="">
+          <%= icon('fa-solid', 'receipt', class: "mr-1") %>
+          <%= App::Prospect.model_name.human(count: 2) %>
+        </div>
+
+        <% if  has_notification? %>
+          <%= icon('fa-solid','circle', class:'text-blue-600 animate-notify')%>
+        <% end %>
+
       <% end %>
 
-
       <%# ALUNOS %>
-      <%= link_to "#", class:"sidebar-link#{is_link_active?('students')}" do %>
+      <%= link_to "#", class:"sidebar-link#{is_link_active?('students')} text-red-600 dark:text-red-600  " do %>
         <%= icon('fa-solid','address-book', class:"mr-1")%>
         <%# <%= Prospect.model_name.human(count:2) %>
         <%= t('activerecord.models.students.other')%>
       <%end%>
 
       <%# ATENDIMENTOS %>
-      <%= link_to "#", class:"sidebar-link#{is_link_active?('services')}" do %>
+      <%= link_to "#", class:"sidebar-link#{is_link_active?('services')} text-red-600 dark:text-red-600  " do %>
         <%= icon('fa-solid','list', class:"mr-1")%>
         <%# <%= Prospect.model_name.human(count:2) %>
         <%= t('activerecord.models.services.other')%>
@@ -120,35 +125,35 @@
       <%end%>
 
       <%# INSTITUIÇÕES %>
-      <%= link_to "#", class:"sidebar-link#{is_link_active?('institutions')}" do %>
+      <%= link_to "#", class:"sidebar-link#{is_link_active?('institutions')} text-red-600 dark:text-red-600  " do %>
         <%= icon('fa-solid','building-columns', class:"mr-1")%>
         <%# <%= Prospect.model_name.human(count:2) %>
         <%= t('activerecord.models.institution.other')%>
       <%end%>
 
       <%# CURSOS %>
-      <%= link_to "#", class:"sidebar-link#{is_link_active?('courses')}" do %>
+      <%= link_to "#", class:"sidebar-link#{is_link_active?('courses')} text-red-600 dark:text-red-600  " do %>
         <%= icon('fa-solid','chalkboard-user', class:"mr-1")%>
         <%# <%= Prospect.model_name.human(count:2) %>
         <%= t('activerecord.models.course.other')%>
       <%end%>
 
       <%# TURMA %>
-      <%= link_to "#", class:"sidebar-link#{is_link_active?('turmas')}" do %>
+      <%= link_to "#", class:"sidebar-link#{is_link_active?('turmas')} text-red-600 dark:text-red-600  " do %>
         <%= icon('fa-solid','users-rectangle', class:"mr-1")%>
         <%# <%= Prospect.model_name.human(count:2) %>
         <%= t('Turmas')%>
       <%end%>
 
       <%# COMERCIAL %>
-      <%= link_to "#", class:"sidebar-link#{is_link_active?('comercial')}" do %>
+      <%= link_to "#", class:"sidebar-link#{is_link_active?('comercial')} text-red-600 dark:text-red-600  " do %>
         <%= icon('fa-solid','table-columns', class:"mr-1")%>
         <%# <%= Prospect.model_name.human(count:2) %>
         <%= t('Comercial')%>
       <%end%>
 
       <%# REPRESENTANTES %>
-      <%= link_to app_vendors_path, class:"sidebar-link#{is_link_active?('vendors')}" do %>
+      <%= link_to app_vendors_path, class:"sidebar-link#{is_link_active?('vendors')} " do %>
         <%= icon('fa-solid','user-group', class:"mr-1")%>
         <%= App::Vendor.model_name.human(count:2) %>
       <%end%>
@@ -169,14 +174,14 @@
       <ul id="dropdown-example" class="space-y-1 <% if !ae %> hidden <%end%>">
 
         <%# SEMESTRES %>
-        <%= link_to "#", class:"sidebar-link#{is_link_active?('semester')}" do %>
+        <%= link_to "#", class:"sidebar-link#{is_link_active?('semester')} text-red-600 dark:text-red-600  " do %>
           <%= icon('fa-solid','calendar-check', class:"mr-1")%>
           <%# <%= Prospect.model_name.human(count:2) %>
           <%= t('activerecord.models.semester.other')%>
         <%end%>
 
         <%# EMPRESAS %>
-        <%= link_to "#", class:"sidebar-link#{is_link_active?('companies')}" do %>
+        <%= link_to "#", class:"sidebar-link#{is_link_active?('companies')} text-red-600 dark:text-red-600  " do %>
           <%= icon('fa-solid','building', class:"mr-1")%>
           <%# <%= Prospect.model_name.human(count:2) %>
           <%= t('activerecord.models.company.other')%>

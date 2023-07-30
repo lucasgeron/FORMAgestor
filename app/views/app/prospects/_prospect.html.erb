@@ -1,43 +1,38 @@
-<div id="<%= dom_id prospect %>" class='bg-gray-100  dark:bg-gray-900 rounded-lg p-4 space-y-2 group'>
+<div id="<%= dom_id prospect %>" class='card group'>
 
-  <div class="flex items-start justify-between ">
+  <div class="card-header">
 
-    <div class="overflow-x-scroll scrollbar-hide translate-y-1/4 group-hover:translate-y-0 transition duration-300">
-     
-      <%= link_to  prospect.name, app_prospect_path(prospect), class:'font-medium hover:text-blue-600'  %>
-      <p class="text-xs opacity-0 group-hover:opacity-100 duration-100"><%= time_ago_in_words(prospect.created_at) %></p>
-
+    <div class="card-header-info card-header-animate ">
+      <p class="card-header-title"><%= link_to  prospect.name, app_prospect_path(prospect)%></p>
+      <p class="card-header-subtitle card-header-subtitle-animate"><%= time_ago_in_words(prospect.created_at) %></p>
     </div>
 
-    <%= button_tag class:'btn-card', data: { popover_target: "popover-click-#{prospect.id}", popover_trigger: "click", popover_placement:"left" } do %>
+    <%= button_tag class:'card-header-btn', data: { popover_target: "popover-click-#{prospect.id}", popover_trigger: "click", popover_placement:"left" } do %>
       <%= icon('fa-solid','bars', class:'fa-sm')%>
     <%end%>
 
   </div>
 
-        
-      <div class="flex justify-between items-center">
-        <% if prospect.vendor %>
-          <p class="w-fit text-white tracking-tight px-2.5 py-0.5 text-sm  bg-blue-600 rounded-lg"><%= icon('fa-solid','check', class:'')%> <%= prospect.vendor.name %></p>
-        <%else%>
-          <p class="w-fit text-red-600 tracking-tight px-2.5 py-0.5 text-sm  bg-gray-200 dark:bg-gray-800 rounded-lg"><%= icon('fa-solid','xmark', class:'')%> <%= t('activerecord.options.app/prospect.vendor_id.none')%> </p>
-        <%end%>
-      </div>
+  <%# CARD BODY %>
+  <% if prospect.vendor %>
+    <p class="card-tag-active"><%= icon('fa-solid','user', class:'btn-icon fa-xs')%> <%= prospect.vendor.name %></p>
+  <%else%>
+    <p class="card-tag-inactive"><%= icon('fa-solid','xmark', class:'btn-icon')%> <%= t('activerecord.options.app/prospect.vendor_id.none')%> </p>
+  <%end%>
+  <%# END BODY %>
 
-  <div data-popover id="popover-click-<%=prospect.id%>" role="tooltip" class="absolute z-10 invisible inline-block w-auto text-xs transition-opacity duration-300 border bg-gray-100  border-gray-200 rounded-lg  opacity-0 dark:text-gray-400 dark:border-gray-600 dark:bg-gray-800">
-    <div class="px-2 py-1 grid grid-flow-col ">
+  <div data-popover id="popover-click-<%=prospect.id%>" role="tooltip" class="card-popover invisible">
 
-      <%= button_to app_prospect_path(prospect), method: :patch, class: "inline-flex items-center py-1 px-2 hover:text-blue-600", params: { app_prospect: { vendor_id: get_current_access.vendor_id } } do %>
+      <%= button_to app_prospect_path(prospect), method: :patch, class: "card-popover-btn-primary", params: { app_prospect: { vendor_id: get_current_access.vendor_id } } do %>
         <%= icon('fa-solid','check-to-slot',class:'btn-icon') %>
         <%= t('views.app.prospects.button.set_vendor') %>
-      <% end if get_current_access.vendor && prospect.vendor.nil?%>
+      <% end if can_set_vendor?(prospect) %>
 
-      <%= link_to edit_app_prospect_path(prospect), class:'inline-flex items-center py-1 px-2 hover:text-blue-600' do %>
-        <%= icon('fa-solid', 'pen-to-square', class:'mr-1') %>
+      <%= link_to edit_app_prospect_path(prospect), class:'card-popover-btn-primary' do %>
+        <%= icon('fa-solid', 'pen-to-square', class:'btn-icon') %>
         <p class=""> <%= t('views.app.general.edit')%></p>
       <%end%>
 
-    </div>
     <div data-popper-arrow></div>
   </div>
 

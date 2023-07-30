@@ -20,6 +20,7 @@ module.exports = {
       animation: {
         wiggle: 'wiggle 1s ease-in-out infinite',
         breathe: 'breathe 3s ease-in-out infinite',
+        notify: 'notify 3s ease-in-out infinite',
       },
       keyframes: {
         wiggle: {
@@ -29,6 +30,11 @@ module.exports = {
         breathe: {
           '0%, 100%': { transform: 'scale(1.0)' },
           '50%': { transform: 'scale(1.02)' },
+        },
+        notify: {
+          '0%, 33.33%': { transform: 'scale(0.8)', opacity: 0 },
+          '33.33%, 66.66%': { transform: 'scale(1)', opacity: 1 },
+          '66.66%, 100%': { transform: 'scale(0.8)', opacity: 0 },
         }
       }
     },
