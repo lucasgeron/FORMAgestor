@@ -10,11 +10,5 @@
 <% provide :sidebar, render(partial: 'app/institutions/sidebar') %>
 
 <% content_for :page_content do %>
-
-  <% if !@cities.nil? %>
-    <%= render partial: "institutions" %>
-  <%else%>
-    <%= render partial: 'app/shared/has_no_entry', locals: { msg: t('views.app.institutions.form.has_no_entry').html_safe }  %>
-  <%end%>
-
+  <%= render partial: "institutions" %>
 <%end%>

@@ -5,7 +5,7 @@
     
     <% App::City.by_client(get_client_id).each do |city| %>
       <div class="bg-gray-100 dark:bg-gray-900 p-2 rounded-lg text-sm">
-        <%= form.check_box :city_ids, { multiple: true, class:'form-checkbox-simple h-5 w-5 rounded-md bg-gray-200 dark:bg-gray-950', checked: @cities.include?(city), data: { action: "search#submitOnChange" }}, city.id, nil %>
+        <%= form.check_box :city_ids, { multiple: true, class:'form-checkbox-simple h-5 w-5 rounded-md bg-gray-200 dark:bg-gray-950', checked: (@cities && @cities.include?(city)), data: { action: "search#submitOnChange" }}, city.id, nil %>
         <%= form.label "city_ids_#{city.id}", "#{city.name} - #{city.state}", class: "cursor-pointer" %>
       </div>
     <% end %>

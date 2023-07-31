@@ -5,12 +5,10 @@ class App::InstitutionsController < ApplicationController
   def index
     @app_institutions = App::Institution.by_client(get_client_id)
 
-    if current_access_id_admin?
-      @cities = App::City.by_client(get_client_id)
-    elsif get_current_access.vendor
+    if current_access_is_user? && get_current_access.vendor
       @cities = get_current_access.vendor.cities
     else
-      @cities = nil
+      @cities = App::City.none
     end
   end
     
@@ -31,6 +29,7 @@ class App::InstitutionsController < ApplicationController
   # POST /app/institutions or /app/institutions.json
   def create
     @app_institution = App::Institution.new(app_institution_params)
+    set_client_id(@app_institution)
 
     respond_to do |format|
       if @app_institution.save

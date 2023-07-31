@@ -1,11 +1,40 @@
-<turbo-frame id="institutions">
-<div class="space-y-4">
-  <% @cities.each do |city| %>
-    <p class="font-bold text-2xl "> <%= city.name %> </p>
+<turbo-frame id="institutions" class='gap-4'>
+  <div class="space-y-4" data-turbo='false'>
+    <% if @app_institutions.present? && @cities.count.positive? %>
 
-    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-3 2xl:grid-cols-4 gap-4">
-      <%= render(@app_institutions.by_city(city)) %>
+      <% @cities.each do |city| %>
+        <p class="font-bold text-2xl"> <%= city.name %> </p>
+
+        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-3 2xl:grid-cols-4 gap-4">
+          <%= render(@app_institutions.by_city(city)) %>
+        </div>
+      <% end %>
+
+    <% elsif App::City.by_client(get_client_id).count.zero? %>       <%# if has no city on database %>
+      <%= render partial: 'app/shared/has_no_entry', locals: { msg: t('views.app.cities.form.has_no_entry').html_safe,
+                                                            entry: App::City.model_name.human, 
+                                                            path: new_app_city_path }  %>
+
+    <% elsif App::Institution.by_client(get_client_id).count.zero? %>     <%# if has no institutions on database %>
+      <%= render partial: 'app/shared/has_no_entry', locals: { msg: t('views.app.institutions.form.has_no_entry').html_safe }  %>
+
+    <% elsif @cities.count.zero? %>                                 <%# if has no city on @cities %>
+      <%= render partial: 'app/shared/has_no_entry', locals: { msg: t('views.app.institutions.index.search_to_start').html_safe } %>
+    <% end %>
+
+  </div>
+
+
+<button data-popover-target="popover-default" type="button" class="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">Default popover</button>
+<div data-popover id="popover-default" role="tooltip" class="absolute z-10 invisible inline-block w-64 text-sm text-gray-500 transition-opacity duration-300 bg-white border border-gray-200 rounded-lg shadow-sm opacity-0 dark:text-gray-400 dark:border-gray-600 dark:bg-gray-800">
+    <div class="px-3 py-2 bg-gray-100 border-b border-gray-200 rounded-t-lg dark:border-gray-600 dark:bg-gray-700">
+        <h3 class="font-semibold text-gray-900 dark:text-white">Popover title</h3>
     </div>
-  <% end %>
+    <div class="px-3 py-2">
+        <p>And here's some amazing content. It's very engaging. Right?</p>
+    </div>
+    <div data-popper-arrow></div>
 </div>
+
+
 </turbo-frame>

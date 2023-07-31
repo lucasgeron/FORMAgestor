@@ -137,7 +137,12 @@
   }
 
   .card-header-image{
-    @apply relative w-1/4 rounded-lg dark:bg-gray-100 dark:group-hover:bg-gray-50 group-hover:bg-gray-50 group-hover:shadow-lg 
+    @apply rounded-lg 
+    h-18 w-18
+    grid justify-center place-items-center
+    group-hover:bg-gray-50 group-hover:shadow-lg
+    dark:bg-gray-100 dark:group-hover:bg-gray-50 
+    
     transition duration-300 group-hover:scale-105;
   }
 

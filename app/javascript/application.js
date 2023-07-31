@@ -3,4 +3,4 @@ import "@hotwired/turbo-rails"
 import "controllers"
 import 'flowbite';
 import 'flowbite-datepicker';
-import "@rails/request.js"
+import "@rails/request.js";

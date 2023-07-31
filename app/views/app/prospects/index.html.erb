@@ -10,9 +10,13 @@
 <% provide :sidebar, render(partial: 'app/prospects/sidebar') %>
 
 <% content_for :page_content do %>
-  <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-3 2xl:grid-cols-4 gap-4">
-    <%= render(@app_prospects) %>
-  </div>
 
-  <%= render partial: 'app/shared/has_no_entry', locals: { msg: t('views.app.prospects.form.has_no_entry').html_safe } if @app_prospects.count.zero? %>
+  <% if @app_prospects.present? %>
+    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-3 2xl:grid-cols-4 gap-4">
+      <%= render(@app_prospects) %>
+    </div>
+  <%elsif @app_prospects.count.zero? %>
+    <%= render partial: 'app/shared/has_no_entry', locals: { msg: t('views.app.prospects.form.has_no_entry').html_safe }  %>
+  <% end %>
+
 <%end%>
