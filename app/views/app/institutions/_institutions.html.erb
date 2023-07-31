@@ -1,0 +1,11 @@
+<turbo-frame id="institutions">
+<div class="space-y-4">
+  <% @cities.each do |city| %>
+    <p class="font-bold text-2xl "> <%= city.name %> </p>
+
+    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-3 2xl:grid-cols-4 gap-4">
+      <%= render(@app_institutions.by_city(city)) %>
+    </div>
+  <% end %>
+</div>
+</turbo-frame>

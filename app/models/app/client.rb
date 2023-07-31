@@ -6,6 +6,7 @@ class App::Client < ApplicationRecord
   has_many :cities, class_name: 'App::City'
   has_many :vendors, class_name: 'App::Vendor'
   has_many :prospects, class_name: 'App::Prospect'
+  has_many :institutions, class_name: 'App::Institution'
 
   has_one_attached :image
 

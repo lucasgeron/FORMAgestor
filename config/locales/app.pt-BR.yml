@@ -10,6 +10,8 @@ pt-BR:
         editing: Editando
         show: Exibir
         showing: Exibindo
+        all: Todos
+        select_all: Selecionar Todas
         flash:
           switch_client: 'Devido as permissões, é necessário selecione o registro novamente.'
           unauthorized: 'Você não possui permissão para acessar esta página.'
@@ -38,6 +40,9 @@ pt-BR:
       cities:
         form:
           has_no_entry: Não existem <span class='font-medium'> <i class="fa-solid fa-map-location-dot"></i> Cidades </span> cadastradas. 
+      institutions:
+        form:
+          has_no_entry: Não existem <span class='font-medium'> <i class="fa-solid fa-building-columns"></i> Instituições </span> cadastradas. 
       vendors:
         form:
           has_no_entry: Não existem <span class='font-medium'> <i class="fa-solid fa-user"></i> Representante </span> cadastrados. 

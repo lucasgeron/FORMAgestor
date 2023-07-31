@@ -23,7 +23,7 @@ pt-BR:
       app/city:
         one: Cidade
         other: Cidades
-      institution:
+      app/institution:
         one: Instituição
         other: Instituições
       course:

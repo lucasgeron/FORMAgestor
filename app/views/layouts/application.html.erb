@@ -18,20 +18,20 @@
 
   </head>
 
-  <body class='scrollbar-hide'>
-    <main class=" application min-h-screen bg-white dark:bg-gray-800 text-gray-900 dark:text-gray-400 " >
+  <body class='application scrollbar-hide '>
+    <main class=" " >
       <%= render partial: 'layouts/app_notification' %>
       <%= render partial: 'app/shared/sidebar' %>
 
       <%# RIGHT SIDEBAR %>
       <aside id="sidebar-multi-level-sidebar-b" class=" fixed top-0 right-0 z-40 h-screen overflow-y-auto transition-transform translate-x-full xl:translate-x-0 bg-white w-64 dark:bg-gray-800"  aria-label="Sidebar">
-        <div class="h-full px-3 overflow-y-auto  scrollbar-hide">
+        <div class="h-full px-3 overflow-y-auto scrollbar-hide space-y-1 py-4 ">
           <%= yield :sidebar %>
         </div>
       </aside>
       <%# END SECOND SIDEBAR%>
 
-      <div class="px-4 py-4 xl:mx-64 space-y-4">
+      <div class="pl-4 py-4 xl:mx-64 space-y-4">
 
         <% if has_ctas? %>
           <div class="bg-gray-100 dark:bg-gray-900 rounded-lg p-1.5  flex justify-between scrollbar-hide overflow-x-scroll">
@@ -58,6 +58,7 @@
         <div class="">
           <%= yield :page_content %>
         </div>
+
       </div>
 
     </main>

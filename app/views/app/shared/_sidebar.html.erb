@@ -125,10 +125,9 @@
       <%end%>
 
       <%# INSTITUIÇÕES %>
-      <%= link_to "#", class:"sidebar-link#{is_link_active?('institutions')} text-red-600 dark:text-red-600  " do %>
+      <%= link_to app_institutions_path, class:"sidebar-link#{is_link_active?('institutions')}" do %>
         <%= icon('fa-solid','building-columns', class:"mr-1")%>
-        <%# <%= Prospect.model_name.human(count:2) %>
-        <%= t('activerecord.models.institution.other')%>
+        <%= App::Institution.model_name.human(count:2) %>
       <%end%>
 
       <%# CURSOS %>

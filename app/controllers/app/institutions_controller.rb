@@ -1,0 +1,91 @@
+class App::InstitutionsController < ApplicationController
+  before_action :set_app_institution, only: %i[ show edit update destroy ]
+
+  # GET /app/institutions or /app/institutions.json
+  def index
+    @app_institutions = App::Institution.by_client(get_client_id)
+
+    if current_access_id_admin?
+      @cities = App::City.by_client(get_client_id)
+    elsif get_current_access.vendor
+      @cities = get_current_access.vendor.cities
+    else
+      @cities = nil
+    end
+  end
+    
+
+  # GET /app/institutions/1 or /app/institutions/1.json
+  def show
+  end
+
+  # GET /app/institutions/new
+  def new
+    @app_institution = App::Institution.new
+  end
+
+  # GET /app/institutions/1/edit
+  def edit
+  end
+
+  # POST /app/institutions or /app/institutions.json
+  def create
+    @app_institution = App::Institution.new(app_institution_params)
+
+    respond_to do |format|
+      if @app_institution.save
+        format.html { redirect_to app_institution_url(@app_institution), notice: "Institution was successfully created." }
+        format.json { render :show, status: :created, location: @app_institution }
+      else
+        format.html { render :new, status: :unprocessable_entity }
+        format.json { render json: @app_institution.errors, status: :unprocessable_entity }
+      end
+    end
+  end
+
+  # PATCH/PUT /app/institutions/1 or /app/institutions/1.json
+  def update
+    respond_to do |format|
+      if @app_institution.update(app_institution_params)
+        format.html { redirect_to app_institution_url(@app_institution), notice: "Institution was successfully updated." }
+        format.json { render :show, status: :ok, location: @app_institution }
+      else
+        format.html { render :edit, status: :unprocessable_entity }
+        format.json { render json: @app_institution.errors, status: :unprocessable_entity }
+      end
+    end
+  end
+
+  # DELETE /app/institutions/1 or /app/institutions/1.json
+  def destroy
+    @app_institution.destroy
+
+    respond_to do |format|
+      format.html { redirect_to app_institutions_url, notice: "Institution was successfully destroyed." }
+      format.json { head :no_content }
+    end
+  end
+
+  # GET /app/institutions/search
+  def search
+    @app_institutions = App::Institution.by_client(get_client_id)
+    @cities = App::City.by_client(get_client_id).by_id(params[:city_ids])
+
+    respond_to do |format|
+      format.turbo_stream do
+        render turbo_stream: turbo_stream.replace('institutions', partial: "app/institutions/institutions")
+      end
+    end
+  end
+
+  private
+    # Use callbacks to share common setup or constraints between actions.
+    def set_app_institution
+      @app_institution = App::Institution.find(params[:id])
+    end
+
+    # Only allow a list of trusted parameters through.
+    def app_institution_params
+      params.require(:app_institution).permit(:name, :abreviation, :city_id, :image)
+    end
+end

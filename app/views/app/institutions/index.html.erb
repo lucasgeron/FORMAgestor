@@ -1,0 +1,20 @@
+<% content_for :ctas_primary do %>
+  <%= link_to new_app_institution_path, class: "btn-primary flex-none" do %>
+    <%= icon('fa-solid','plus',class:'btn-icon') %>
+    <%= App::Institution.model_name.human %>
+  <% end %>
+<% end %>
+
+<% provide :head_title, App::Institution.model_name.human(count:2) %>
+<% provide :page_title, App::Institution.model_name.human(count:2) %>
+<% provide :sidebar, render(partial: 'app/institutions/sidebar') %>
+
+<% content_for :page_content do %>
+
+  <% if !@cities.nil? %>
+    <%= render partial: "institutions" %>
+  <%else%>
+    <%= render partial: 'app/shared/has_no_entry', locals: { msg: t('views.app.institutions.form.has_no_entry').html_safe }  %>
+  <%end%>
+
+<%end%>

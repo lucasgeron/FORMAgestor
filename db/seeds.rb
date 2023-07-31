@@ -18,4 +18,6 @@ p App::User.create(email: 'b@b', password:'123456', password_confirmation:'12345
 
 
 load Rails.root.join('db', 'seeds', 'app_city.rb')
+load Rails.root.join('db', 'seeds', 'app_institution.rb')
 load Rails.root.join('db', 'seeds', 'app_vendor.rb')
+load Rails.root.join('db', 'seeds', 'app_prospect.rb')

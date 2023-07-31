@@ -75,6 +75,10 @@ class ApplicationController < ActionController::Base
     current_user ? current_user : current_admin
   end
 
+  def current_access_id_admin?
+    get_current_access.instance_of?(App::Admin)
+  end
+
   def to_b(value)
     value == '1' ? true : false
   end
