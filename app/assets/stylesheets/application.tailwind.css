@@ -129,7 +129,7 @@
   }
 
   .card {
-    @apply bg-gray-100 dark:bg-gray-900 rounded-lg p-4 space-y-1;
+    @apply bg-gray-100 dark:bg-gray-900 rounded-lg p-4 space-y-1 relative;
   }
 
   .card-header{
@@ -171,14 +171,15 @@
 
   .card-popover{
     @apply rounded-lg
-    w-auto text-xs 
-    absolute  z-10 
-    grid grid-cols-1 gap-1 p-2
+    w-auto text-xs z-10 
+    absolute right-14 top-2 
+     grid-cols-1 gap-1 p-2
     transition-opacity duration-300
     border bg-gray-50 border-gray-200 
     shadow-lg 
     dark:border-gray-600 dark:bg-gray-800
-    opacity-0;
+    hidden
+    ;
   }
 
   .card-tag-active{

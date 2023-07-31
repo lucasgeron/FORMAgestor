@@ -1,13 +1,13 @@
-<div id="<%= dom_id institution %>" class='card group' data-turbo="false">
+<div id="<%= dom_id institution %>" class='card group' data-turbo="false" data-controller="reveal" data-reveal-hidden-class="grid">
 
   <div class="card-header">
 
     <%= link_to app_institution_path(institution), class:'card-header-image' do %>
-        <% if institution.image.attached? %>
-          <%= image_tag(institution.image, class:'h-fit')%>
-        <%else%>
-          <%= icon('fa-solid', 'building-columns', class:'fa-2xl dark:text-gray-900')%>
-        <%end%>
+      <% if institution.image.attached? %>
+        <%= image_tag(institution.image, class:'h-fit')%>
+      <%else%>
+        <%= icon('fa-solid', 'building-columns', class:'fa-2xl dark:text-gray-900')%>
+      <%end%>
     <% end %>
 
     <div class="card-header-info card-header-animate  ">
@@ -15,20 +15,21 @@
       <p class="card-header-subtitle card-header-subtitle-animate line-clamp-3"><%= institution.name %></p>
     </div>
 
-    <%= button_tag class:'card-header-btn', data: { popover_target: "popover-click-#{institution.id}", popover_trigger: "click", popover_placement:"left" } do %>
+    <%= button_tag class:'card-header-btn', data: { action:"click->reveal#toggle" } do %>
       <%= icon('fa-solid','bars', class:'fa-sm')%>
     <%end%>
-
+    
   </div>
 
-  <div data-popover id="popover-click-<%=institution.id%>" role="tooltip" class="card-popover invisible">
+  <div data-reveal-target="item" class="card-popover" data-action="mouseleave->reveal#show">
 
     <%= link_to edit_app_institution_path(institution), class:'card-popover-btn-primary' do %>
       <%= icon('fa-solid', 'pen-to-square', class:'btn-icon') %>
       <p class=""> <%= t('views.app.general.edit')%></p>
     <%end%>
 
-    <div data-popper-arrow></div>
   </div>
 
 </div>
+
+

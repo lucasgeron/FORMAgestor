@@ -1,4 +1,4 @@
-<div id="<%= dom_id user %>" class="card group">
+<div id="<%= dom_id user %>" class="card group" data-controller="reveal" data-reveal-hidden-class="grid">
 
   <div class="card-header">
 
@@ -7,7 +7,7 @@
       <p class="card-header-subtitle card-header-subtitle-animate"><%= icon('fa-solid','user')%>  <%= user.vendor ? user.vendor.name : App::User.human_attribute_name('vendor_not_found') %> </p>
     </div>
 
-    <%= button_tag class:'card-header-btn', data: { popover_target: "popover-click-#{user.id}", popover_trigger: "click", popover_placement:"left" } do %>
+    <%= button_tag class:'card-header-btn', data: { action:"click->reveal#toggle" }  do %>
       <%= icon('fa-solid','bars', class:'fa-sm')%>
     <%end%>
 
@@ -20,15 +20,24 @@
     <p class="card-tag-inactive"><%= icon('fa-solid','xmark', class:'')%> <%= t('activerecord.options.app/user.active.false')%> </p>
   <%end%>
   <%# END BODY %>
-  
-  <div data-popover id="popover-click-<%=user.id%>" role="tooltip" class="card-popover invisible">
+
+  <div data-reveal-target="item" class="card-popover" data-action="mouseleave->reveal#show">
 
     <%= link_to edit_app_user_path(user), class:'card-popover-btn-primary' do %>
       <%= icon('fa-solid', 'pen-to-square', class:'btn-icon') %>
       <p class=""> <%= t('views.app.general.edit')%></p>
     <%end%>
 
-    <div data-popper-arrow></div>
+    <%= button_to app_user_path(user), method: :patch, class: "card-popover-btn-delete", params: { app_user: { active: false } } do %>
+      <%= icon('fa-solid','xmark',class:'btn-icon') %>
+      Bloquear Acesso
+    <% end if user.active %>
+
+    <%= button_to app_user_path(user), method: :patch, class: "card-popover-btn-primary", params: { app_user: { active: true } } do %>
+      <%= icon('fa-solid','check',class:'btn-icon') %>
+      Habilitar Acesso
+    <% end if !user.active %>
+
   </div>
 
 </div>

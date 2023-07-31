@@ -75,6 +75,11 @@ class App::InstitutionsController < ApplicationController
         render turbo_stream: turbo_stream.replace('institutions', partial: "app/institutions/institutions")
       end
     end
+
+    # respond_to do |format|
+    #   format.turbo_stream
+    # end
+
   end
 
   private
