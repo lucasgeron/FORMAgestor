@@ -1,16 +1,32 @@
-<div class="grid grid-cols-2 gap-4">
+<div class="space-y-4">
+  <div class="grid grid-cols-1 sm:grid-cols-4 gap-4">
 
-  <div class="">
-    <p class=""><%= App::City.human_attribute_name('state')%></p>
-    <p class="detail-input"><%= get_state_name(app_city.state)  %></p>
-  </div>
+    <div class="">
+      <p class=""><%= App::City.human_attribute_name('state')%></p>
+      <p class="detail-input"><%= get_state_name(app_city.state)  %></p>
+    </div>
 
-  <div class="">
-    <p class=""><%= App::City.human_attribute_name('name')%></p>
-    <div class="relative">
-      <div class="detail-input-icon"><%=icon('fa-solid','map-location-dot')%></div>
-      <p class="detail-input with-icon"><%= app_city.name %></p>
+    <div class="">
+      <p class=""><%= App::City.human_attribute_name('name')%></p>
+      <div class="relative">
+        <div class="detail-input-icon"><%=icon('fa-solid','map-location-dot')%></div>
+        <p class="detail-input with-icon"><%= app_city.name %></p>
+      </div>
     </div>
   </div>
 
+  <%# INSTITUTIONS TITLE %>
+  <p class="font-bold text-2xl"> <%= App::Institution.model_name.human(count:2) %> </p>
+
+  <% if app_city.institutions.present? %>
+    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-3 2xl:grid-cols-4 gap-4">
+      <%= render app_city.institutions %>
+    </div>
+  <% else %>
+    <%= render partial: 'app/shared/has_no_entry', locals: { msg: t('views.app.institutions.form.has_no_entry').html_safe, 
+                                                            entry: App::Institution.model_name.human, 
+                                                            path: new_app_institution_path(city_id: app_city.id) } %>
+  <% end %>
+
+</div>
 </div>

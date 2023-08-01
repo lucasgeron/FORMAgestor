@@ -32,17 +32,19 @@
       <% end %>
     </div>
 
-    <div class="">
+    <% if app_client.image.attached? %>
+      <%= content_for(:sidebar) do %>
+        <%= image_tag(app_client.image, class:'object-cover h-52 w-60 rounded-lg')%>
+      <% end %>
+    <% else %>
+     <div class="">
       <p class=""><%= App::Client.human_attribute_name('image') %></p>
-      <div class="relative">
+       <div class="relative">
         <div class="detail-input-icon"><%= icon('fa-solid', 'image', class:'')%> </div>
-        <% if @app_client.image.attached? %>
-          <div class="detail-input bg-contain bg-no-repeat bg-center" style="background-image: url(<%=url_for(@app_client.image)%>)"> </div>
-        <%else%>
-          <p class="detail-input with-icon"> <%= t('activerecord.options.app/client.image.not_attached')  %></p>
-        <%end%>
+         <p class="detail-input with-icon"><%= t('activerecord.options.general.image.not_attached')%></p>
       </div>
     </div>
+    <% end %>
 
 
     <div class="">

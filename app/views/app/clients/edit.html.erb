@@ -7,7 +7,7 @@
     <%= icon('fa-solid','arrow-up-right-from-square', class:'-mx-1')%>
   <%end%>
 
-  <%= button_to app_client_destroy_attachment_path(@app_client), method: :delete, class: "btn-delete flex-none" do %>
+  <%= button_to destroy_attachment_app_client_path(@app_client), method: :delete, class: "btn-delete flex-none" do %>
     <%= icon('fa-solid','image', class:'-mx-1')%>
   <%end if @app_client.image.attached?%>
 

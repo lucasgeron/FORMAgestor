@@ -46,6 +46,11 @@ GEM
       erubi (~> 1.4)
       rails-dom-testing (~> 2.0)
       rails-html-sanitizer (~> 1.1, >= 1.2.0)
+    active_storage_validations (1.0.4)
+      activejob (>= 5.2.0)
+      activemodel (>= 5.2.0)
+      activestorage (>= 5.2.0)
+      activesupport (>= 5.2.0)
     activejob (7.0.6)
       activesupport (= 7.0.6)
       globalid (>= 0.3.6)
@@ -129,6 +134,7 @@ GEM
     marcel (1.0.2)
     matrix (0.4.2)
     method_source (1.0.0)
+    mini_magick (4.12.0)
     mini_mime (1.1.2)
     minitest (5.18.1)
     msgpack (1.7.2)
@@ -240,6 +246,7 @@ PLATFORMS
   x86_64-linux
 
 DEPENDENCIES
+  active_storage_validations
   bootsnap
   capybara
   conecta_address_br
@@ -250,6 +257,7 @@ DEPENDENCIES
   importmap-rails
   jbuilder
   jquery-rails
+  mini_magick
   pg (~> 1.1)
   puma (~> 5.0)
   rails (~> 7.0.6)

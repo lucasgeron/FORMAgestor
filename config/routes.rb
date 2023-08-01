@@ -35,7 +35,7 @@ Rails.application.routes.draw do
       namespace :app do
         resources :admins, only: [:update]
         resources :clients do
-          delete :destroy_attachment
+          delete :destroy_attachment, on: :member
         end
         resources :subscribers, only: [:index]
         resources :updates 
@@ -48,6 +48,7 @@ Rails.application.routes.draw do
 
     resources :institutions do
         post :search, on: :collection
+        delete :destroy_attachment, on: :member
     end
     
     resources :prospects

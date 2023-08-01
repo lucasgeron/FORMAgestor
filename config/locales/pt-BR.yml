@@ -99,6 +99,11 @@ pt-BR:
         name: Nome
         phone: Telefone
         instagram: Instagram
+      app/institution:
+        name: Nome
+        abreviation: Sigla
+        city_id: Cidade
+        image: Logo
 
     placeholders:
       app/prospect:
@@ -116,6 +121,9 @@ pt-BR:
     options:
       general:
         blank: Não Informado
+        image:
+          attached: Vinculada
+          not_attached: Não Vinculada
       app/prospect:
         vendor_id:
           none: Não Prospectada
@@ -123,9 +131,6 @@ pt-BR:
         active:
           true: Habilitado
           false: Bloqueado
-        image:
-          attached: Vinculada
-          not_attached: Não Vinculada
       app/user:
         active:
           true: Habilitado

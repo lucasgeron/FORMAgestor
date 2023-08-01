@@ -1,14 +1,18 @@
-<div class="w-full py-4 space-y-4">
+<div class="w-full py-4 space-y-4 ">
 
   <div class="">
     <p class=""><%= App::Prospect.human_attribute_name('vendor_id') %></p>
     <div class="relative">
-      <div class="detail-input-icon"><%= icon('fa-solid','user', class:'') %>  </div>
-      <% if @app_prospect.vendor %>
-        <%= link_to  @app_prospect.vendor.name, @app_prospect.vendor, class:'detail-input with-icon' %>
-      <%else%>
-        <p class="detail-input with-icon"><%= t('activerecord.options.app/prospect.vendor_id.none')%> </p>
-      <%end%>
+      
+      <% if @app_prospect.vendor  %>
+      <%= link_to @app_prospect.vendor, class:'detail-input-icon' do %>
+        <%= icon('fa-solid','user', class:'') %>
+      <%end %>
+      <% else %>
+        <%= icon('fa-solid','user', class:'detail-input-icon-disabled') %>
+      <% end %>
+      
+        <p class="detail-input with-icon"><%= @app_prospect.vendor ? @app_prospect.vendor.name : t('activerecord.options.app/prospect.vendor_id.none') %> </p>
     </div>
   </div>
 

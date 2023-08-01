@@ -183,10 +183,10 @@
     grid-template-columns: repeat(2, 1fr);
     direction: rtl;
     @apply rounded-lg
-    w-3/4 text-xs z-10 
+    w-48 text-xs z-10 
     absolute right-14 top-0
     gap-1 p-2 shadow-lg
-    bg-gray-100 
+    bg-gray-50 
     dark:border-gray-600 dark:bg-gray-800
     hidden
     ;
@@ -247,7 +247,10 @@
   }
 
   .detail-input-icon{
-    @apply absolute inset-y-0 left-0 px-3 flex items-center pointer-events-none;
+    @apply absolute inset-y-0 left-0 px-3 flex items-center hover:text-blue-600;
+  }
+  .detail-input-icon-disabled{
+    @apply absolute inset-y-0 left-0 px-3 flex items-center ;
   }
 
 
@@ -269,12 +272,12 @@
     @apply 
     h-6 w-6 
     focus:ring-white
-    dark:focus:ring-gray-800 focus:outline-none dark:focus:ring-offset-0
+    focus:outline-none focus:ring-0 focus:ring-offset-0
     bg-gray-100               dark:bg-gray-900 
-    border-none outline-none
-    dark:border-none 
+    focus:border-none 
+    border-none 
     rounded-lg cursor-pointer 
-
+    ;
   }
 
 
@@ -301,6 +304,18 @@
     ;
   }
 
+  .form-input-file{
+    @apply block rounded-md 
+    bg-white dark:bg-gray-900
+    border border-gray-200 
+    dark:border dark:border-gray-600
+    hover:bg-gray-100 dark:hover:bg-gray-950
+    h-10 px-3 py-2 mt-2 w-full 
+    text-base
+    cursor-pointer
+    ;
+    }
+
   .peer-text {
     pointer-events: none !important;
     @apply text-center -mt-8 cursor-pointer
@@ -312,8 +327,6 @@
   .required{
     @apply after:content-['*'] after:ml-0.5 after:text-red-600;
   }
-
-
 
   .sidebar-link{
     @apply block p-2  

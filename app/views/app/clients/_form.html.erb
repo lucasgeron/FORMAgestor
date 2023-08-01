@@ -36,10 +36,15 @@
       <div class="text-base peer-text block peer-checked:hidden "> <%= icon('fa-solid','xmark')%> <%= t('activerecord.options.app/client.active.false')%></div>
     </div>
 
-    <div class="col-span-2">
-      <%= form.label :image, class:'' %>
-      <%= form.file_field :image, class:'mt-2 block w-full text-sm text-gray-900 border border-gray-300 rounded-lg cursor-pointer bg-gray-50 dark:text-gray-400 focus:outline-none dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400' %>
-      <p class="mt-1 text-xs text-gray-500 dark:text-gray-300" id="file_input_help">SVG, PNG, JPG or GIF (MAX. 600x400px).</p>
+  <div class="" data-controller="reveal input" data-reveal-hidden-class="hidden">
+      <%= form.label :image, class:'inline-flex items-center gap-1 relative' do %>
+        <%= form.label :image %> <%= icon('fa-solid', 'circle-info', class:'fa-xs hover:text-blue-600', data: {action:"mouseenter->reveal#show mouseleave->reveal#hide"}) %> 
+        <div data-reveal-target="item" class="py-1 px-2 bg-gray-100 dark:bg-gray-900 rounded-md absolute left-14 text-xs hidden w-max" id="file_input_help">PNG/JPG/JPEG - Max:750kb</div>
+      <%end%>
+      <%= form.label :image, class:'form-input-file truncate', data: {input_target: 'input'} do %>
+        <%= icon('fa-solid', 'image', class:'pr-2')%> <%= t('views.app.general.empty_input_file')%>
+      <%end%>
+      <%= form.file_field :image, class:'hidden' , data: {action:'input->input#update'} %>
     </div>
 
   </div>

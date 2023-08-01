@@ -1,7 +1,7 @@
   class App::ClientsController < ApplicationController
     
     before_action :authenticate_admin!
-    before_action :set_client, only: %i[ show edit update destroy ]
+    before_action :set_client, only: %i[ show edit update destroy destroy_attachment]
 
     # GET /clients or /clients.json
     def index
@@ -57,7 +57,6 @@
 
     # DELETE /clients/1/destroy_attachment
     def destroy_attachment
-      @app_client = App::Client.find(params[:client_id])
       if @app_client.image.attached? 
         @app_client.image.purge
         flash[:success] = t('views.app.general.flash.destroy', model: t('activerecord.attributes.app/client.image'))

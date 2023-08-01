@@ -6,4 +6,5 @@ class App::City < ApplicationRecord
   # Scopes
   include App::Scopes
   scope :by_id, ->(id) { where(id: id) }
+  scope :with_institutions, -> { joins(:institutions).distinct }
 end

@@ -69,6 +69,12 @@ gem 'requestjs-rails'
 # Faker [https://github.com/faker-ruby/faker]
 gem 'faker'
 
+# Active Storage Validations [https://github.com/igorkasyanchuk/active_storage_validations]
+gem 'active_storage_validations'
+
+# Mini Magick [https://github.com/minimagick/minimagick]
+# gem "mini_magick"
+
 group :development, :test do
   # See https://guides.rubyonrails.org/debugging_FORMAgestorlications.html#debugging-with-the-debug-gem
   gem "debug", platforms: %i[ mri mingw x64_mingw ]

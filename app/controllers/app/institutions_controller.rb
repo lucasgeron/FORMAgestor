@@ -1,5 +1,5 @@
 class App::InstitutionsController < ApplicationController
-  before_action :set_app_institution, only: %i[ show edit update destroy ]
+  before_action :set_app_institution, only: %i[ show edit update destroy destroy_attachment ]
 
   # GET /app/institutions or /app/institutions.json
   def index
@@ -20,6 +20,7 @@ class App::InstitutionsController < ApplicationController
   # GET /app/institutions/new
   def new
     @app_institution = App::Institution.new
+    @app_institution.city_id = params[:city_id] if params[:city_id]
   end
 
   # GET /app/institutions/1/edit
@@ -65,21 +66,29 @@ class App::InstitutionsController < ApplicationController
     end
   end
 
+  
+  # DELETE /clients/1/destroy_attachment
+  def destroy_attachment
+    if @app_institution.image.attached? 
+      @app_institution.image.purge
+      flash[:success] = t('views.app.general.flash.destroy', model: t('activerecord.attributes.app/institution.image'))
+      redirect_to app_institution_path(@app_institution)
+    else 
+      flash.now[:error] = t('views.app.institution.flash.destroy_attachment_failed', model: t('activerecord.attributes.app/institution.image'))
+      render :edit, status: :unprocessable_entity
+    end
+  end
+
   # GET /app/institutions/search
   def search
     @app_institutions = App::Institution.by_client(get_client_id)
-    @cities = App::City.by_client(get_client_id).by_id(params[:city_ids])
+    @cities = App::City.by_client(get_client_id).with_institutions.by_id(params[:city_ids])
 
     respond_to do |format|
       format.turbo_stream do
         render turbo_stream: turbo_stream.replace('institutions', partial: "app/institutions/institutions")
       end
     end
-
-    # respond_to do |format|
-    #   format.turbo_stream
-    # end
-
   end
 
   private
