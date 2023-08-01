@@ -35,6 +35,16 @@
       <p class=""> <%= t('views.app.general.edit')%></p>
     <%end%>
 
+    <%= button_to app_client_path(client), method: :patch, class: "card-popover-btn-delete", params: { app_client: { active: false } } do %>
+      <%= icon('fa-solid','xmark',class:'btn-icon') %>
+      Bloquear
+    <% end if client.active %>
+
+    <%= button_to app_client_path(client), method: :patch, class: "card-popover-btn-primary", params: { app_client: { active: true } } do %>
+      <%= icon('fa-solid','check',class:'btn-icon') %>
+      Habilitar
+    <% end if !client.active %>
+
   </div>
 
 </div>

@@ -31,6 +31,8 @@ pt-BR:
         flash:
           update_client: 'Cliente alterado para %{client}.'
       users:
+        form:
+          has_no_entry: Não existem <span class='font-medium'> <i class="fa-solid fa-user-circle"></i> Usuários </span> cadastrados. 
         flash:
           no_license_available: 'Não existem licensas disponíveis para %{client}.'
           tip_for_create: "É possível criar este usuário com <span class='font-bold'> Acesso: Bloqueado</span>"
@@ -45,6 +47,7 @@ pt-BR:
           search_to_start: É necessário selecionar ao menos uma cidade para exibir informações.
         form:
           has_no_entry: Não existem <span class='font-medium'> <i class="fa-solid fa-building-columns"></i> Instituições </span> cadastradas. 
+      
       vendors:
         form:
           has_no_entry: Não existem <span class='font-medium'> <i class="fa-solid fa-user"></i> Representante </span> cadastrados. 

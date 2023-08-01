@@ -170,7 +170,7 @@
   }
 
   .card-popover{
-    @apply rounded-lg
+    /* @apply rounded-lg
     w-auto text-xs z-10 
     absolute right-14 top-2 
      grid-cols-1 gap-1 p-2
@@ -179,7 +179,20 @@
     shadow-lg 
     dark:border-gray-600 dark:bg-gray-800
     hidden
+    ; */
+    grid-template-columns: repeat(2, 1fr);
+    direction: rtl;
+    @apply rounded-lg
+    w-3/4 text-xs z-10 
+    absolute right-14 top-0
+    gap-1 p-2 shadow-lg
+    bg-gray-100 
+    dark:border-gray-600 dark:bg-gray-800
+    hidden
     ;
+  }
+  .card-popover * {
+    direction: ltr;
   }
 
   .card-tag-active{
@@ -205,6 +218,8 @@
     hover:bg-blue-600 dark:hover:bg-blue-600
     hover:text-white;
   }
+
+  
 
   .card-popover-btn-delete{
     @apply  rounded-md

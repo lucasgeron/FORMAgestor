@@ -44,6 +44,7 @@
     <%# BIG HEADER %>
     <div class="pt-5 pb-1 hidden xl:block sticky top-0 bg-gray-50 dark:bg-gray-900">
 
+
       <% if get_current_access.client.image.attached?%>
         <img src="<%= (url_for(get_current_access.client.image)) %>" class="block max-h-28 mx-auto">
       <%else%>

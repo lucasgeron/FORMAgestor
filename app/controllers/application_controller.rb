@@ -52,6 +52,7 @@ class ApplicationController < ActionController::Base
       if current_user 
       flash[:error] = [ t('views.app.general.flash.unauthorized'), t('views.app.general.flash.ban_alert') ]
       else 
+        current_admin.update(client_id: record.client_id)
         flash[:success] = t('views.app.admins.flash.update_client', client: get_current_access.client.name)
         flash[:info] = t('views.app.general.flash.switch_client')
       end

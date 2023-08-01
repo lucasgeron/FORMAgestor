@@ -65,7 +65,7 @@
   <% else %>
     <%= render partial: 'app/shared/has_no_entry', locals: { msg: t('views.app.clients.form.has_no_entry').html_safe, 
                                                             entry: App::User.model_name.human, 
-                                                            path: new_app_user_path } %>
+                                                            path: new_app_user_path(client_id: app_client.id) } %>
   <% end %>
 
 </div>

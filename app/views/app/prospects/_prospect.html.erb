@@ -21,17 +21,17 @@
   <%end%>
   <%# END BODY %>
 
-  <div data-reveal-target="item" class="card-popover" data-action="mouseleave->reveal#show">
+  <div data-reveal-target="item" class="card-popover <% if !can_set_vendor?(prospect)%> w-1/3<%end%>" data-action="mouseleave->reveal#show">
 
-    <%= button_to app_prospect_path(prospect), method: :patch, class: "card-popover-btn-primary", params: { app_prospect: { vendor_id: get_current_access.vendor_id } } do %>
-      <%= icon('fa-solid','check-to-slot',class:'btn-icon') %>
-      <%= t('views.app.prospects.button.set_vendor') %>
-    <% end if can_set_vendor?(prospect) %>
-
-    <%= link_to edit_app_prospect_path(prospect), class:'card-popover-btn-primary' do %>
+    <%= link_to edit_app_prospect_path(prospect), class:'card-popover-btn-primary w-full' do %>
       <%= icon('fa-solid', 'pen-to-square', class:'btn-icon') %>
       <p class=""> <%= t('views.app.general.edit')%></p>
     <%end%>
+
+    <%= button_to app_prospect_path(prospect), method: :patch, form_class: "card-popover-btn-primary w-full", class:'flex-none', params: { app_prospect: { vendor_id: get_current_access.vendor_id } } do %>
+      <%= icon('fa-solid','check-to-slot',class:'btn-icon') %>
+      <%= t('views.app.prospects.button.set_vendor') %>
+    <%end if can_set_vendor?(prospect)%>
 
   </div>
 

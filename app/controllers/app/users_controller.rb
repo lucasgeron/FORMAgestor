@@ -18,6 +18,10 @@
 
     # GET /users/new
     def new
+      if current_access_is_admin? && params[:client_id].present?
+        flash.now[:success] = t('views.app.admins.flash.update_client', client: get_current_access.client.name)
+        current_admin.update(client_id: params[:client_id])
+      end
       @app_user = App::User.new
     end
 

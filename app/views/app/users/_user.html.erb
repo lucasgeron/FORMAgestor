@@ -23,6 +23,7 @@
 
   <div data-reveal-target="item" class="card-popover" data-action="mouseleave->reveal#show">
 
+    
     <%= link_to edit_app_user_path(user), class:'card-popover-btn-primary' do %>
       <%= icon('fa-solid', 'pen-to-square', class:'btn-icon') %>
       <p class=""> <%= t('views.app.general.edit')%></p>
@@ -30,12 +31,12 @@
 
     <%= button_to app_user_path(user), method: :patch, class: "card-popover-btn-delete", params: { app_user: { active: false } } do %>
       <%= icon('fa-solid','xmark',class:'btn-icon') %>
-      Bloquear Acesso
+      Bloquear
     <% end if user.active %>
 
     <%= button_to app_user_path(user), method: :patch, class: "card-popover-btn-primary", params: { app_user: { active: true } } do %>
       <%= icon('fa-solid','check',class:'btn-icon') %>
-      Habilitar Acesso
+      Habilitar
     <% end if !user.active %>
 
   </div>
