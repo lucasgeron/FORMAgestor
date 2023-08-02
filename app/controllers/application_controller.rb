@@ -1,4 +1,5 @@
 class ApplicationController < ActionController::Base
+  include Pagy::Backend
   
   def authenticate_user_or_admin!
     if current_admin
@@ -87,6 +88,6 @@ class ApplicationController < ActionController::Base
   def to_b(value)
     value == '1' ? true : false
   end
-  
+
 
 end

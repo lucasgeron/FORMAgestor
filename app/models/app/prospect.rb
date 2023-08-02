@@ -20,6 +20,5 @@ class App::Prospect < ApplicationRecord
 
 
   # Settings 
-  self.per_page = 16  
   
 end

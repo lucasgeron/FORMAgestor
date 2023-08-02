@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+
   devise_for :admins, class_name: "App::Admin", controllers: { sessions: 'admins/sessions'}
   devise_for :users, class_name: "App::User", controllers: { sessions: 'users/sessions'}
   
@@ -10,7 +11,7 @@ Rails.application.routes.draw do
   post '/toogle_locale', to: 'site#toogle_locale', as: :toogle_locale
   post '/contact_forms', to: 'site#contact_forms', as: :contact_forms
 
-  get '/:slug', to: 'app/prospects#new_by_slug'
+  # get '/:slug', to: 'app/prospects#new_by_slug'
 
   # - - - - - - - - - - ROUTES FOR APPLICATION - - - - - - - - - - 
 
@@ -47,7 +48,7 @@ Rails.application.routes.draw do
   namespace :app do
 
     resources :institutions do
-        post :search, on: :collection
+        get :search, on: :collection
         delete :destroy_attachment, on: :member
     end
     

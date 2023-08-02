@@ -82,13 +82,14 @@ class App::InstitutionsController < ApplicationController
   # GET /app/institutions/search
   def search
     @app_institutions = App::Institution.by_client(get_client_id)
-    @cities = App::City.by_client(get_client_id).with_institutions.by_id(params[:city_ids])
+    @cities = App::City.by_client(get_client_id).with_institutions.by_id(params[:city_ids]).order(:name)
 
-    respond_to do |format|
-      format.turbo_stream do
-        render turbo_stream: turbo_stream.replace('institutions', partial: "app/institutions/institutions")
-      end
-    end
+    # respond_to do |format|
+    #   format.turbo_stream do
+    #     render turbo_stream: turbo_stream.replace('institutions', partial: "app/institutions/institutions")
+    #   end
+    # end
+    render :index
   end
 
   private

@@ -7,8 +7,14 @@ class App::ProspectsController < ApplicationController
 
   # GET /app/prospects or /app/prospects.json
   def index
-    @message = "Teste"
-    @app_prospects = App::Prospect.by_client(get_client_id).page(params[:page])
+    @pagy,  @app_prospects = pagy(App::Prospect.by_client(get_client_id), items: 3)
+    # sleep(1)
+    
+    respond_to do |format|
+      format.html 
+      format.turbo_stream
+    end
+
   end
 
   # GET /app/prospects/1 or /app/prospects/1.json
@@ -83,9 +89,8 @@ class App::ProspectsController < ApplicationController
     end
 
     @app_prospects = @app_prospects.page(params[:page])
-
+   
     render :index
-    
 
   end
 

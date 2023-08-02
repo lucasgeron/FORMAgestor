@@ -76,7 +76,10 @@ gem 'active_storage_validations'
 # gem "mini_magick"
 
 # Will Paginate [https://github.com/mislav/will_paginate]
-gem 'will_paginate', '~> 4.0'
+# gem 'will_paginate', '~> 4.0'
+
+# Pagy [https://github.com/ddnexus/pagy]
+gem "pagy" 
 
 
 group :development, :test do

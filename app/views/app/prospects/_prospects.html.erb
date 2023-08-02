@@ -1,19 +1,17 @@
-<turbo-frame id="prospects" class='gap-4' >
-  <div class="space-y-4" data-turbo='false' >
+<div class="space-y-4" data-turbo='false' >
 
-    <%= render partial: 'app/shared/pagination', locals: { collection: @app_prospects  } if @app_prospects.count.positive? || action_name == 'search' %>
+  <%# <%= render partial: 'app/shared/pagination', locals: { collection: @app_prospects  } if @app_prospects.count.positive? || action_name == 'search' %>
 
-    <% if @app_prospects.present? %>
+  <% if @app_prospects.present? %>
 
-      <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 xl:grid-cols-2 2xl:grid-cols-4 gap-4 ">
-        <%= render(@app_prospects) %>
-      </div>
+    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 xl:grid-cols-2 2xl:grid-cols-4 gap-4 ">
+      <%= render(@app_prospects) %>
+    </div>
 
-    <%elsif @app_prospects.count.zero? && action_name != 'search' %>
+  <%elsif @app_prospects.count.zero? && action_name != 'search' %>
 
-      <%= render partial: 'app/shared/has_no_entry', locals: { msg: t('views.app.prospects.form.has_no_entry').html_safe }  %>
+    <%= render partial: 'app/shared/has_no_entry', locals: { msg: t('views.app.prospects.form.has_no_entry').html_safe }  %>
 
-    <% end %>
+  <% end %>
 
-  </div>
-</turbo-frame>
+</div>

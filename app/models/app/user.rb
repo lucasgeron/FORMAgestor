@@ -24,6 +24,10 @@ class App::User < ApplicationRecord
     end
   end
 
+  def get_per_pag
+    self.default_per_page 
+  end
+
 
   # Scopes
   include App::Scopes

@@ -6,12 +6,22 @@
 
       <div class="search-input-icon dark:hover:bg-blue-600" data-action="click->search#submit"><%= icon('fa-solid','search', class:'fa-sm ') %>  </div>
 
-      <%= form.text_field :query, value:params[:query],  class:'search-input', placeholder: t('views.app.general.search'), data: {action: 'Enter->search#submit '} %>
+      <%= form.text_field :query, value:params[:query],  class:'search-input', placeholder: t('views.app.general.search'), data: {action: 'keydown.enter->search#submit'} %>
+      
 
     </div>
     <div class="hidden  detail-input text-xs h-8 " data-reveal-target="item">
       <p class="text-center">Nome | Instituição | Curso | Cidade </p>
     </div>
+      
+ 
+
+<%= form.hidden_field :pagination, value: (params[:pagination].to_i + 1).to_s %>
+
+    <%= form.button 'Search', type: 'button', data: {action: 'click->search#submit'} %>
+
+
+
 
     <% get_prospect_status.each_with_index do |status,index| %>
 
