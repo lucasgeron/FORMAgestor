@@ -8,4 +8,9 @@ module App::ProspectsHelper
     App::Prospect.by_client(get_client_id).where(vendor_id: nil).count > 0 ? true : false
   end
 
+  def get_prospect_status
+    [ t('activerecord.options.app/prospect.status.all'), t('activerecord.options.app/prospect.status.prospected'), t('activerecord.options.app/prospect.status.not_prospected')]
+  end
+
+
 end

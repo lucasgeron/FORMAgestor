@@ -14,7 +14,7 @@ class ApplicationController < ActionController::Base
     if current_admin
       app_clients_path
     elsif current_user
-      app_users_path
+      app_prospects_path
     else
       root_path
     end

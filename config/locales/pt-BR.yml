@@ -127,6 +127,10 @@ pt-BR:
       app/prospect:
         vendor_id:
           none: Não Prospectada
+        status:
+          all: Todas
+          prospected: Prospectadas
+          not_prospected: Não Prospectadas
       app/client:
         active:
           true: Habilitado

@@ -1,9 +1,32 @@
-<aside id="sidebar-multi-level-sidebar-b" class=" fixed top-0 right-0 z-40 h-screen overflow-y-auto transition-transform translate-x-full xl:translate-x-0 bg-white w-64 dark:bg-gray-800"  aria-label="Sidebar">
-  <div class="h-full px-3 overflow-y-auto  scrollbar-hide">
+<div class="" data-controller='search reveal' data-reveal-hidden-class="hidden">
 
-    <div class="space-y-1 my-4">
+  <%= form_with(url: search_app_prospects_path, method: :get,  class:'space-y-1') do |form| %>
+
+    <div class="relative" data-action='mouseenter->reveal#toggle mouseleave->reveal#toggle '>
+
+      <div class="search-input-icon dark:hover:bg-blue-600" data-action="click->search#submit"><%= icon('fa-solid','search', class:'fa-sm ') %>  </div>
+
+      <%= form.text_field :query, value:params[:query],  class:'search-input', placeholder: t('views.app.general.search'), data: {action: 'Enter->search#submit '} %>
 
     </div>
+    <div class="hidden  detail-input text-xs h-8 " data-reveal-target="item">
+      <p class="text-center">Nome | Instituição | Curso | Cidade </p>
+    </div>
 
-  </div>
-</aside>
+    <% get_prospect_status.each_with_index do |status,index| %>
+
+      <%= form.label "status_#{index}", class:'detail-input cursor-pointer mt-0' do %>
+        <%= form.radio_button :status, status, 
+            class:'form-radio-simple mr-1', 
+            id:"status_#{index}", 
+            data: {action: 'change->search#submit'}, 
+            checked: (params[:status]==status || index == 0)
+            %>
+        <%= status %>
+      <% end %>
+
+    <% end %>
+
+  <% end %>
+
+</div>

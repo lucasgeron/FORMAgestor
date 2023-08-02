@@ -11,12 +11,6 @@
 
 <% content_for :page_content do %>
 
-  <% if @app_prospects.present? %>
-    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-3 2xl:grid-cols-4 gap-4">
-      <%= render(@app_prospects) %>
-    </div>
-  <%elsif @app_prospects.count.zero? %>
-    <%= render partial: 'app/shared/has_no_entry', locals: { msg: t('views.app.prospects.form.has_no_entry').html_safe }  %>
-  <% end %>
+  <%= render partial: "prospects" %>
 
 <%end%>

@@ -8,7 +8,7 @@ export default class extends Controller {
     // this.element.textContent = "Hello World!"
   }
 
-  submitOnChange(event) {
+  submit(event) {
     event.target.closest("form").requestSubmit()
   }
 
@@ -17,5 +17,11 @@ export default class extends Controller {
       checkbox.checked = true
     })
   }
+
+  moveCursorToEnd(event) {
+    let element = event.target;
+    element.setSelectionRange(element.value.length, element.value.length);
+  }
+  
 
 }

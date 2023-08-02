@@ -170,23 +170,13 @@
   }
 
   .card-popover{
-    /* @apply rounded-lg
-    w-auto text-xs z-10 
-    absolute right-14 top-2 
-     grid-cols-1 gap-1 p-2
-    transition-opacity duration-300
-    border bg-gray-50 border-gray-200 
-    shadow-lg 
-    dark:border-gray-600 dark:bg-gray-800
-    hidden
-    ; */
     grid-template-columns: repeat(2, 1fr);
     direction: rtl;
     @apply rounded-lg
     w-48 text-xs z-10 
     absolute right-14 top-0
     gap-1 p-2 shadow-lg
-    bg-gray-50 
+    bg-gray-50 border 
     dark:border-gray-600 dark:bg-gray-800
     hidden
     ;
@@ -249,10 +239,46 @@
   .detail-input-icon{
     @apply absolute inset-y-0 left-0 px-3 flex items-center hover:text-blue-600;
   }
+
+  .search-input-icon{
+    @apply absolute inset-y-1 right-0 mx-2 p-2
+    flex items-center cursor-pointer
+    bg-gray-200 dark:bg-gray-800 hover:bg-blue-700 dark:hover:bg-blue-700
+    text-gray-400 hover:text-white dark:hover:text-white rounded-md;
+  }
+
   .detail-input-icon-disabled{
     @apply absolute inset-y-0 left-0 px-3 flex items-center ;
   }
 
+  .pagination-bar{
+    @apply w-full flex justify-between items-center h-10 
+    bg-gray-100 dark:bg-gray-900
+    p-4 rounded-lg my-4;
+  }
+
+  .pagination-btn{
+    @apply px-2.5 py-1 rounded-md 
+    bg-gray-200 dark:bg-gray-700
+    hover:bg-blue-600 hover:text-white
+    dark:hover:bg-blue-600 dark:hover:text-white
+    ;
+  }
+
+  .pagination-btn-active{
+    
+    @apply px-2.5 py-1 rounded-md 
+    bg-blue-600 dark:bg-blue-600 text-white
+    ;
+  }
+
+  .pagination-btn-disabled{
+    @apply px-2.5 py-1 rounded-md 
+    bg-gray-200 dark:bg-gray-700
+    text-gray-400 dark:text-gray-600
+    
+    ;
+  }
 
   .detail-input{
     @apply block rounded-md 
@@ -264,9 +290,20 @@
     text-base;
   }
 
+  .search-input{
+    @apply block rounded-md 
+    bg-gray-100 dark:bg-gray-900
+    border-none outline-none
+    dark:border-none  
+    h-10 pl-3 pr-12 py-2 mt-2 w-full
+    overflow-x-scroll scrollbar-hide
+    text-base;
+  }
+
   .with-icon{
     @apply pl-10;
   }
+
 
   .form-checkbox-simple {
     @apply 
@@ -277,6 +314,18 @@
     focus:border-none 
     border-none 
     rounded-lg cursor-pointer 
+    ;
+  }
+
+  .form-radio-simple {
+    @apply 
+    h-5 w-5 
+    focus:ring-white
+    focus:outline-none focus:ring-0 focus:ring-offset-0
+    bg-gray-100               dark:bg-gray-800 
+    focus:border-none 
+    border-none 
+    rounded-full cursor-pointer 
     ;
   }
 

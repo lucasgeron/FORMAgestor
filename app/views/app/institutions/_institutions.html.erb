@@ -1,5 +1,5 @@
 <turbo-frame id="institutions" class='gap-4' >
-  <div class="space-y-4" data-turbo='false' data-controller="popovers">
+  <div class="space-y-4" data-turbo='false' >
     <% if @app_institutions.present? && @cities.count.positive? %>
 
       <% @cities.each do |city| %>

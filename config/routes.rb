@@ -51,7 +51,9 @@ Rails.application.routes.draw do
         delete :destroy_attachment, on: :member
     end
     
-    resources :prospects
+    resources :prospects do 
+      get :search, on: :collection
+    end
     resources :vendors
 
     resources :cities do 

@@ -1,11 +1,11 @@
 <div class="" data-controller="search" >
   <%= form_with url: search_app_institutions_path, method: :post, class:'space-y-1 ' do |form| %>
     
-    <%= button_tag t('views.app.general.select_all'), type: "button", class: "w-full bg-gray-100 dark:bg-gray-900 p-2 rounded-lg text-sm", data: { action: "search#selectAll search#submitOnChange" } if App::City.by_client(get_client_id).with_institutions.count.positive?%>
+    <%= button_tag t('views.app.general.select_all'), type: "button", class: "w-full bg-gray-100 dark:bg-gray-900 p-2 rounded-lg text-sm", data: { action: "search#selectAll search#submit" } if App::City.by_client(get_client_id).with_institutions.count.positive?%>
     
     <% App::City.by_client(get_client_id).with_institutions.each do |city| %>
       <div class="bg-gray-100 dark:bg-gray-900 p-2 rounded-lg text-sm">
-        <%= form.check_box :city_ids, { multiple: true, class:'form-checkbox-simple h-5 w-5 rounded-md bg-gray-200 dark:bg-gray-950', checked: (@cities && @cities.include?(city)), data: { action: "search#submitOnChange" }}, city.id, nil %>
+        <%= form.check_box :city_ids, { multiple: true, class:'form-checkbox-simple h-5 w-5 rounded-md bg-gray-200 dark:bg-gray-950', checked: (@cities && @cities.include?(city)), data: { action: "search#submit" }}, city.id, nil %>
         <%= form.label "city_ids_#{city.id}", "#{city.name} - #{city.state}", class: "cursor-pointer" %>
       </div>
     <% end %>

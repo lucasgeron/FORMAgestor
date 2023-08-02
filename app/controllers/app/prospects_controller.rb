@@ -7,7 +7,8 @@ class App::ProspectsController < ApplicationController
 
   # GET /app/prospects or /app/prospects.json
   def index
-    @app_prospects = App::Prospect.by_client(get_client_id)
+    @message = "Teste"
+    @app_prospects = App::Prospect.by_client(get_client_id).page(params[:page])
   end
 
   # GET /app/prospects/1 or /app/prospects/1.json
@@ -67,6 +68,25 @@ class App::ProspectsController < ApplicationController
     @app_prospect.destroy
     flash[:success] = t('views.app.general.flash.destroy', model: App::Prospect.model_name.human)
     redirect_to app_prospects_url
+  end
+
+  #  GET /app/prospects/search?query=:query&status=:status
+  def search 
+
+    @app_prospects = App::Prospect.by_client(get_client_id).search(params[:query])
+
+    case params[:status]
+    when t('activerecord.options.app/prospect.status.prospected')
+      @app_prospects = @app_prospects.by_prospect_status(!nil)
+    when t('activerecord.options.app/prospect.status.not_prospected')
+      @app_prospects = @app_prospects.by_prospect_status(nil)
+    end
+
+    @app_prospects = @app_prospects.page(params[:page])
+
+    render :index
+    
+
   end
 
   private

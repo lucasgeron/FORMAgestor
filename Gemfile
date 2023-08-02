@@ -75,6 +75,10 @@ gem 'active_storage_validations'
 # Mini Magick [https://github.com/minimagick/minimagick]
 # gem "mini_magick"
 
+# Will Paginate [https://github.com/mislav/will_paginate]
+gem 'will_paginate', '~> 4.0'
+
+
 group :development, :test do
   # See https://guides.rubyonrails.org/debugging_FORMAgestorlications.html#debugging-with-the-debug-gem
   gem "debug", platforms: %i[ mri mingw x64_mingw ]

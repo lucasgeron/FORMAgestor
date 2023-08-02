@@ -13,6 +13,7 @@ pt-BR:
         all: Todos
         select_all: Selecionar Todas
         empty_input_file: Selecione um Arquivo
+        search: Pesquisar
         flash:
           switch_client: 'Devido as permissões, é necessário selecione o registro novamente.'
           unauthorized: 'Você não possui permissão para acessar esta página.'
