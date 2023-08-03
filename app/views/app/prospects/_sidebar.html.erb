@@ -2,40 +2,54 @@
 
   <%= form_with(url: search_app_prospects_path, method: :get,  class:'space-y-1') do |form| %>
 
+    <%# SEACH INPUT %>
     <div class="relative" data-action='mouseenter->reveal#toggle mouseleave->reveal#toggle '>
-
       <div class="search-input-icon dark:hover:bg-blue-600" data-action="click->search#submit"><%= icon('fa-solid','search', class:'fa-sm ') %>  </div>
-
-      <%= form.text_field :query, value:params[:query],  class:'search-input', placeholder: t('views.app.general.search'), data: {action: 'keydown.enter->search#submit'} %>
-      
-
+      <%= form.text_field :query, value:params[:query],  class:'search-input text-sm', placeholder: t('views.app.general.search'), data: {action: 'keydown.enter->search#submit'} %>
     </div>
     <div class="hidden  detail-input text-xs h-8 " data-reveal-target="item">
       <p class="text-center">Nome | Instituição | Curso | Cidade </p>
     </div>
-      
- 
+    <%# END OF SEARCH INPUT%>
 
-<%= form.hidden_field :pagination, value: (params[:pagination].to_i + 1).to_s %>
+    <%# STATUS INPUT %>
 
-    <%= form.button 'Search', type: 'button', data: {action: 'click->search#submit'} %>
+    <%= form.label "status_all", class:'detail-input cursor-pointer mt-0' do %>
+      <%= form.radio_button :status, 'all', class:'form-radio-simple mr-1', id:"status_all", checked: (true), data: {action: 'change->search#submit'} %>
+      <span class="text-sm"><%= t('activerecord.options.app/prospect.status.all') %></span>
+    <% end %>
 
+    <%= form.label "status_prospected", class:'detail-input cursor-pointer mt-0' do %>
+      <%= form.radio_button :status, 'prospected', class:'form-radio-simple mr-1', id:"status_prospected", checked: params[:status] == 'prospected', data: {action: 'change->search#submit'} %>
+      <span class="text-sm"><%= t('activerecord.options.app/prospect.status.prospected') %></span>
+    <% end %>
 
+    <%= form.label "status_not_prospected", class:'detail-input cursor-pointer mt-0' do %>
+      <%= form.radio_button :status, 'not_prospected', class:'form-radio-simple mr-1', id:"status_not_prospected", checked: params[:status] == 'not_prospected', data: {action: 'change->search#submit'} %>
+      <span class="text-sm"><%= t('activerecord.options.app/prospect.status.not_prospected') %></span>
+    <% end %>
 
+    <%# END OF STATUS %>
 
-    <% get_prospect_status.each_with_index do |status,index| %>
+    <%# VENDORS INPUT %>
 
-      <%= form.label "status_#{index}", class:'detail-input cursor-pointer mt-0' do %>
-        <%= form.radio_button :status, status, 
-            class:'form-radio-simple mr-1', 
-            id:"status_#{index}", 
-            data: {action: 'change->search#submit'}, 
-            checked: (params[:status]==status || index == 0)
-            %>
-        <%= status %>
-      <% end %>
+    <%# FORM COLECCTION OF VENDORS %>
+
+    <% if (params[:status].present? && params[:status]=='prospected') %>
+
+      <div class="bg-gray-100 dark:bg-gray-900 py-2 px-3 space-y-1 rounded-lg text-sm">
+        <%= form.collection_check_boxes  :vendor_ids, App::Vendor.by_client(get_client_id), :id, :name, include_hidden: false do |vendor| %>
+          <div class=" mt-0 ">
+            <%= vendor.check_box(class: 'form-checkbox-simple dark:bg-gray-800 bg-gray-200 mr-1 ', checked: (params[:vendor_ids].present? && params[:vendor_ids].include?(vendor.value.to_s)), data: {action: 'change->search#submit'}) %>
+            <%= vendor.label class:'cursor-pointer text-sm' do %>
+              <%= vendor.text %>
+            <% end %>
+          </div>
+        <% end %>
+      </div>
 
     <% end %>
+    <%# END OF VENDORS %>
 
   <% end %>
 

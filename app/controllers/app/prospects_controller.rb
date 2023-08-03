@@ -4,15 +4,21 @@ class App::ProspectsController < ApplicationController
   before_action :set_layout
   before_action :check_client_id, only: %i[ show edit update destroy ]
   before_action :set_app_prospect, only: %i[ show edit update destroy ]
+  
 
   # GET /app/prospects or /app/prospects.json
   def index
-    @pagy,  @app_prospects = pagy(App::Prospect.by_client(get_client_id), items: 3)
-    # sleep(1)
+    @pagy,  @app_prospects = pagy(App::Prospect.by_client(get_client_id), items: 4)
+    @collection_src_url = 'app_prospects_url'
     
     respond_to do |format|
-      format.html 
-      format.turbo_stream
+      format.html # index.html.erb -> will render when a normal request comes in
+      format.turbo_stream # index.turbo_stream.erb -> will render when a turbo_stream request comes in
+
+      # format.turbo_stream do # index.turbo_stream.erb -> will render when a turbo_stream request comes in
+      #   render  "app/prospe/index",
+      #           locals: { collection: @app_prospects, collection_name: "prospects" }
+      # end
     end
 
   end
@@ -79,18 +85,32 @@ class App::ProspectsController < ApplicationController
   #  GET /app/prospects/search?query=:query&status=:status
   def search 
 
-    @app_prospects = App::Prospect.by_client(get_client_id).search(params[:query])
+   
+    collection = App::Prospect.by_client(get_client_id)
 
-    case params[:status]
-    when t('activerecord.options.app/prospect.status.prospected')
-      @app_prospects = @app_prospects.by_prospect_status(!nil)
-    when t('activerecord.options.app/prospect.status.not_prospected')
-      @app_prospects = @app_prospects.by_prospect_status(nil)
+
+    collection = collection.by_prospect_status(params[:status]).search(params[:query])
+
+    collection = collection.by_vendor(params[:vendor_ids]) 
+    # abort collection.inspect
+
+
+    @pagy,  @app_prospects = pagy(collection, items: 4)
+    
+    @collection_src_url = 'search_app_prospects_path'
+    
+    
+    respond_to do |format|
+      format.html do
+        render  "app/prospects/index"
+      end
+      format.turbo_stream do
+        render  "app/prospects/index",
+                locals: { collection: @app_prospects, collection_name: "prospects"}
+      end
+      
     end
 
-    @app_prospects = @app_prospects.page(params[:page])
-   
-    render :index
 
   end
 

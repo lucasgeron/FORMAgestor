@@ -1,6 +1,6 @@
-(1..3).each_with_index do |index|
+(1..1).each_with_index do |index|
 
-    sleep 0.5
+    # sleep 0.5
 
         p @institution =  App::Institution.create(
             client_id: index,
@@ -12,7 +12,7 @@
             filename: 'cescage.png'
             ).to_s
 
-    sleep 0.5
+    # sleep 0.5
 
         p  @institution = App::Institution.create(
             client_id: index,
@@ -24,7 +24,7 @@
             filename: 'cesul.png'
             ).to_s
 
-    sleep 0.5
+    # sleep 0.5
 
         p  @institution = App::Institution.create( 
             client_id: index,
@@ -36,7 +36,7 @@
             filename: 'campo_real_unibrasil.png'
             ).to_s
 
-    sleep 0.5
+    # sleep 0.5
 
         p  @institution = App::Institution.create( 
             client_id: index,
@@ -47,7 +47,7 @@
             io: File.open('app/assets/images/seed_images/institutions/campo_real.png'),
             filename: 'campo_real.png'
             ).to_s 
-    sleep 0.5
+    # sleep 0.5
 
         p  @institution = App::Institution.create( 
             client_id: index,
@@ -59,7 +59,7 @@
             filename: 'campo_real.png'
             ).to_s
 
-    sleep 0.5
+    # sleep 0.5
 
         p  @institution = App::Institution.create( 
             client_id: index,
@@ -71,7 +71,7 @@
             filename: 'univel.png'
             ).to_s
 
-    sleep 0.5
+    # sleep 0.5
 
         p  @institution = App::Institution.create( 
             client_id: index,
@@ -83,7 +83,7 @@
             filename: 'unidep.png'
             ).to_s
 
-    sleep 0.5
+    # sleep 0.5
 
         p  @institution = App::Institution.create(
             client_id: index,
@@ -95,7 +95,7 @@
             filename: 'uniuv.png'
             ).to_s
 
-    sleep 0.5
+    # sleep 0.5
 
         p  @institution = App::Institution.create(
             client_id: index,
@@ -107,7 +107,7 @@
             filename: 'uniuv.png'
             ).to_s
 
-    sleep 0.5
+    # sleep 0.5
 
         p  @institution = App::Institution.create( 
             client_id: index,
@@ -119,7 +119,7 @@
             filename: 'fag.png'
             ).to_s
 
-    sleep 0.5
+    # sleep 0.5
 
         p  @institution = App::Institution.create( 
             client_id: index,
@@ -131,7 +131,7 @@
             filename: 'fag.png'
             ).to_s
 
-    sleep 0.5
+    # sleep 0.5
 
         p  @institution = App::Institution.create( 
             client_id: index,
@@ -143,7 +143,7 @@
             filename: 'unimater.png'
             ).to_s
 
-    sleep 0.5
+    # sleep 0.5
 
         p  @institution = App::Institution.create( 
             client_id: index,
@@ -155,7 +155,7 @@
             filename: 'unisecal.png'
             ).to_s
 
-    sleep 0.5
+    # sleep 0.5
 
         p  @institution = App::Institution.create( 
             client_id: index,
@@ -167,7 +167,7 @@
             filename: 'unisep.png'
             ).to_s
 
-    sleep 0.5
+    # sleep 0.5
 
         p  @institution = App::Institution.create( 
             client_id: index,
@@ -179,7 +179,7 @@
             filename: 'unisep.png'
             ).to_s
 
-    sleep 0.5
+    # sleep 0.5
 
         p  @institution = App::Institution.create( 
             client_id: index,
@@ -191,7 +191,7 @@
             filename: 'unifateb.png'
             ).to_s
 
-    sleep 0.5
+    # sleep 0.5
 
         p  @institution = App::Institution.create(
             client_id: index,
@@ -203,7 +203,7 @@
             filename: 'fatec.png'
             ).to_s
 
-    sleep 0.5
+    # sleep 0.5
 
         p  @institution = App::Institution.create( 
             client_id: index,
@@ -215,7 +215,7 @@
             filename: 'guarapuava.png'
             ).to_s
 
-    sleep 0.5
+    # sleep 0.5
 
         p  @institution = App::Institution.create( 
             client_id: index,
@@ -227,7 +227,7 @@
             filename: 'fasf.png'
             ).to_s
 
-    sleep 0.5
+    # sleep 0.5
 
         p  @institution = App::Institution.create( 
             client_id: index,
@@ -239,7 +239,7 @@
             filename: 'univale.png'
             ).to_s
 
-    sleep 0.5
+    # sleep 0.5
 
         p  @institution = App::Institution.create( 
             client_id: index,
@@ -251,7 +251,7 @@
             filename: 'puc-pr.png'
             ).to_s
 
-    sleep 0.5
+    # sleep 0.5
 
         p  @institution = App::Institution.create( 
             client_id: index,
@@ -263,7 +263,7 @@
             filename: 'puc-pr.png'
             ).to_s
 
-    sleep 0.5
+    # sleep 0.5
 
         p  @institution = App::Institution.create( 
             client_id: index,
@@ -275,7 +275,7 @@
             filename: 'puc-pr.png'
             ).to_s
 
-    sleep 0.5
+    # sleep 0.5
 
         p  @institution = App::Institution.create( 
             client_id: index,
@@ -287,7 +287,7 @@
             filename: 'uniguairaca.png'
             ).to_s
 
-    sleep 0.5
+    # sleep 0.5
 
         p  @institution = App::Institution.create( 
             client_id: index,
@@ -299,7 +299,7 @@
             filename: 'uniguairaca.png'
             ).to_s
 
-    sleep 0.5
+    # sleep 0.5
 
         p  @institution = App::Institution.create( 
             client_id: index,
@@ -311,7 +311,7 @@
             filename: 'unicesumar.png'
             ).to_s
 
-    sleep 0.5
+    # sleep 0.5
 
         p  @institution = App::Institution.create( 
             client_id: index,
@@ -323,7 +323,7 @@
             filename: 'unicesumar.png'
             ).to_s
 
-    sleep 0.5
+    # sleep 0.5
 
         p  @institution = App::Institution.create(
             client_id: index,
@@ -335,7 +335,7 @@
             filename: 'uepg.png'
             ).to_s
 
-    sleep 0.5
+    # sleep 0.5
 
         p  @institution = App::Institution.create( 
             client_id: index,
@@ -347,7 +347,7 @@
             filename: 'cedeteg.png'
             ).to_s
 
-    sleep 0.5
+    # sleep 0.5
 
         p  @institution = App::Institution.create( 
             client_id: index,
@@ -359,7 +359,7 @@
             filename: 'unicentro.png'
             ).to_s
 
-    sleep 0.5
+    # sleep 0.5
 
         p  @institution = App::Institution.create( 
             client_id: index,
@@ -371,7 +371,7 @@
             filename: 'unicentro.png'
             ).to_s
 
-    sleep 0.5
+    # sleep 0.5
 
         p  @institution = App::Institution.create( 
             client_id: index,
@@ -383,7 +383,7 @@
             filename: 'unicentro.png'
             ).to_s
 
-    sleep 0.5
+    # sleep 0.5
 
         p  @institution = App::Institution.create( 
             client_id: index,
@@ -395,7 +395,7 @@
             filename: 'unicentro.png'
             ).to_s
 
-    sleep 0.5
+    # sleep 0.5
 
         p  @institution = App::Institution.create( 
             client_id: index,
@@ -407,7 +407,7 @@
             filename: 'unicentro.png'
             ).to_s
 
-    sleep 0.5
+    # sleep 0.5
 
         p  @institution = App::Institution.create( 
             client_id: index,
@@ -419,7 +419,7 @@
             filename: 'unicentro.png'
             ).to_s
 
-    sleep 0.5
+    # sleep 0.5
 
         p  @institution = App::Institution.create( 
             client_id: index,
@@ -431,7 +431,7 @@
             filename: 'unicentro.png'
             ).to_s
 
-    sleep 0.5
+    # sleep 0.5
 
         p  @institution = App::Institution.create(
             client_id: index,
@@ -443,7 +443,7 @@
             filename: 'unioeste.png'
             ).to_s
 
-    sleep 0.5
+    # sleep 0.5
 
         p  @institution = App::Institution.create(
             client_id: index,
@@ -455,7 +455,7 @@
             filename: 'unioeste.png'
             ).to_s
 
-    sleep 0.5
+    # sleep 0.5
 
         
         p  @institution = App::Institution.create(
@@ -468,7 +468,7 @@
             filename: 'unioeste.png'
             ).to_s
 
-    sleep 0.5
+    # sleep 0.5
 
         p  @institution = App::Institution.create(
             client_id: index,
@@ -480,7 +480,7 @@
             filename: 'unioeste.png'
             ).to_s
 
-    sleep 0.5
+    # sleep 0.5
 
         p  @institution = App::Institution.create(
             client_id: index,
@@ -492,7 +492,7 @@
             filename: 'unespar.png'
             ).to_s
 
-    sleep 0.5
+    # sleep 0.5
 
         p  @institution = App::Institution.create( 
             client_id: index,
@@ -504,7 +504,7 @@
             filename: 'unipar.png'
             ).to_s
 
-    sleep 0.5
+    # sleep 0.5
 
         p  @institution = App::Institution.create( 
             client_id: index,
@@ -516,7 +516,7 @@
             filename: 'unipar.png'
             ).to_s
 
-    sleep 0.5
+    # sleep 0.5
 
         p  @institution = App::Institution.create( 
             client_id: index,
@@ -528,7 +528,7 @@
             filename: 'unipar.png'
             ).to_s
 
-    sleep 0.5
+    # sleep 0.5
 
         p  @institution = App::Institution.create( 
             client_id: index,
@@ -540,7 +540,7 @@
             filename: 'unipar.png'
             ).to_s
 
-    sleep 0.5
+    # sleep 0.5
 
         p  @institution = App::Institution.create( 
             client_id: index,
@@ -552,7 +552,7 @@
             filename: 'unipar.png'
             ).to_s
 
-    sleep 0.5
+    # sleep 0.5
 
         p  @institution = App::Institution.create( 
             client_id: index,
@@ -564,7 +564,7 @@
             filename: 'unipar.png'
             ).to_s
 
-    sleep 0.5
+    # sleep 0.5
 
         p  @institution = App::Institution.create( 
             client_id: index,
@@ -576,7 +576,7 @@
             filename: 'unipar.png'
             ).to_s
 
-    sleep 0.5
+    # sleep 0.5
 
         p  @institution = App::Institution.create( 
             client_id: index,
@@ -588,7 +588,7 @@
             filename: 'utfpr.png'
             ).to_s
 
-    sleep 0.5
+    # sleep 0.5
 
         p  @institution = App::Institution.create( 
             client_id: index,
@@ -600,7 +600,7 @@
             filename: 'utfpr.png'
             ).to_s
 
-    sleep 0.5
+    # sleep 0.5
 
         p  @institution = App::Institution.create( 
             client_id: index,
@@ -612,7 +612,7 @@
             filename: 'utfpr.png'
             ).to_s
 
-    sleep 0.5
+    # sleep 0.5
 
         p  @institution = App::Institution.create( 
             client_id: index,
@@ -624,7 +624,7 @@
             filename: 'utfpr.png'
             ).to_s
 
-    sleep 0.5
+    # sleep 0.5
 
         p  @institution = App::Institution.create( 
             client_id: index,
@@ -636,7 +636,7 @@
             filename: 'utfpr.png'
             ).to_s
 
-    sleep 0.5
+    # sleep 0.5
 
         p  @institution = App::Institution.create( 
             client_id: index,
@@ -648,7 +648,7 @@
             filename: 'utfpr.png'
             ).to_s
 
-    sleep 0.5
+    # sleep 0.5
 
         p  @institution = App::Institution.create( 
             client_id: index,
@@ -660,7 +660,7 @@
             filename: 'utfpr.png'
             ).to_s
 
-    sleep 0.5
+    # sleep 0.5
 
         p  @institution = App::Institution.create( 
             client_id: index,
@@ -672,7 +672,7 @@
             filename: 'utfpr.png'
             ).to_s
 
-    sleep 0.5
+    # sleep 0.5
 
         p  @institution = App::Institution.create( 
             client_id: index,
@@ -684,7 +684,7 @@
             filename: 'utfpr.png'
             ).to_s
 
-    sleep 0.5
+    # sleep 0.5
 
         p  @institution = App::Institution.create( 
             client_id: index,
@@ -696,7 +696,7 @@
             filename: 'utfpr.png'
             ).to_s
 
-    sleep 0.5
+    # sleep 0.5
 
         p  @institution = App::Institution.create( 
             client_id: index,
@@ -708,7 +708,7 @@
             filename: 'utfpr.png'
             ).to_s
 
-    sleep 0.5
+    # sleep 0.5
 
         p  @institution = App::Institution.create( 
             client_id: index,
@@ -720,7 +720,7 @@
             filename: 'utfpr.png'
             ).to_s
 
-    sleep 0.5
+    # sleep 0.5
 
         p  @institution = App::Institution.create( 
             client_id: index,

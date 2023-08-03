@@ -1,0 +1,35 @@
+  <!-- remove skeletons -->
+<%= turbo_stream.remove("app_prospects_placeholder") %>
+
+<!-- append content to turbo_frame -->
+<%= turbo_stream.append("app_prospects_list") do %>
+
+  <% if false %>
+    <%= send(@collection_src_url, page: @pagy.next, format: "turbo_stream",
+                                       query: params[:query], status: params[:status], vendor_ids: params[:vendor_ids])%>
+  <% end %>
+
+  <% @app_prospects.each do |prospect| %>
+    <%= render prospect %>
+  <% end %>
+  
+<% end %>
+
+<!-- replace #article_pagination frame by our content loader when it gets visible (our turbo_frame_tag with loading="lazy" attribute -->
+<% if @pagy.next.present? %>
+  <%= turbo_stream.replace "app_prospects_pagination" do %>
+    <%= turbo_frame_tag "app_prospects_pagination", loading: "lazy",
+                           src:  send(@collection_src_url, page: @pagy.next, format: "turbo_stream",
+                                       query: params[:query], status: params[:status], vendor_ids: params[:vendor_ids]) %>
+  <% end %>
+<% end %>
+
+<%# update # %>
+  <%= turbo_stream.update "pagy_info" do %>
+    <%== pagy_info @pagy %>
+
+    <%= params[:page]%>
+
+    <%= @pagy.page%>
+    <%= @pagy.last%>
+  <%end%>

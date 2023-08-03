@@ -1,8 +1,8 @@
 Faker::Config.locale = 'pt-BR'
 
-(1..3).each_with_index do |index|
+(1..1).each_with_index do |index|
 
-   35.times do
+   28.times do
       p App::Prospect.create( 
          client_id: index,
          channel: [ 'Evento', 'Redes Sociais', 'Indicação', 'Promoções, Sorteios ou Rifas', 'Universidade'].sample, 
