@@ -1,9 +1,9 @@
-<div id="<%= dom_id prospect %>" class='card group' data-controller="reveal" data-reveal-hidden-class="grid">
+<div id="<%= dom_id prospect %>" data-aos="fade-in" class='card group' data-controller="reveal" data-reveal-hidden-class="grid" >
 
   <div class="card-header">
 
     <div class="card-header-info card-header-animate ">
-      <p class="card-header-title"><%= link_to  prospect.name, app_prospect_path(prospect)%></p>
+      <p class="card-header-title"><%= link_to  prospect.name, prospect %></p>
       <p class="card-header-subtitle card-header-subtitle-animate"><%= time_ago_in_words(prospect.created_at) %></p>
     </div>
 

@@ -304,6 +304,10 @@
     @apply pl-10;
   }
 
+  .default-grid{
+    @apply grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-2 2xl:grid-cols-4 gap-4;
+  }
+
 
   .form-checkbox-simple {
     @apply 
@@ -322,7 +326,7 @@
     h-5 w-5 
     focus:ring-white
     focus:outline-none focus:ring-0 focus:ring-offset-0
-    bg-gray-100               dark:bg-gray-800 
+    bg-gray-200               dark:bg-gray-800 
     focus:border-none 
     border-none 
     rounded-full cursor-pointer 

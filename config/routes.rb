@@ -46,6 +46,7 @@ Rails.application.routes.draw do
 
   # Commom routes in App namespace
   namespace :app do
+    resources :articles
 
     resources :institutions do
         get :search, on: :collection

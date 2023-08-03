@@ -1,14 +1,34 @@
-<div class="space-y-4" data-turbo='false' >
-
-  <%# <%= render partial: 'app/shared/pagination', locals: { collection: @app_prospects  } if @app_prospects.count.positive? || action_name == 'search' %>
+<div class="space-y-4"  >
 
   <% if @app_prospects.present? %>
 
-    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 xl:grid-cols-2 2xl:grid-cols-4 gap-4 ">
-      <%= render(@app_prospects) %>
-    </div>
+     <div class="" id="pagy_info">
+       <%== pagy_info @pagy %>
+     </div>
 
-  <%elsif @app_prospects.count.zero? && action_name != 'search' %>
+    <%# THIS WILL BE REMOVED WHEN BEFORE TURBO_STREAM APPEND %>
+    <div class="default-grid" id="app_prospects_placeholder">
+      <!-- Adjust this to your Pagy default item count -->
+      <% 4.times do %>
+        <%= render partial: "prospect_placeholder" %>
+      <% end %>
+    </div>
+    <%# ---------------------------------------------------- %>
+
+    <%# TURBO_STREAM CONTENT APPEND WILL APPEAR HERE %>
+    <%= turbo_frame_tag "app_prospects_list", target: '_top', class:'default-grid', loading: :lazy,
+                        src: send(@collection_src_url,  page: params[:page], format: "turbo_stream",
+                                  query: params[:query], status: params[:status], vendor_ids: params[:vendor_ids]) do %>
+    <% end %>
+    <%# ---------------------------------------------------- %>
+
+    <%# CONTENT FOR TURBO PAGINATION WITH INFINITE SCROLL %>
+    <%= turbo_frame_tag "app_prospects_pagination" %>
+    <%# ---------------------------------------------------- %>
+
+    
+
+  <% elsif @app_prospects.count.zero? && action_name != 'search' %>
 
     <%= render partial: 'app/shared/has_no_entry', locals: { msg: t('views.app.prospects.form.has_no_entry').html_safe }  %>
 
