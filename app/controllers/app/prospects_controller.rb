@@ -79,13 +79,20 @@ class App::ProspectsController < ApplicationController
 
   #  GET /app/prospects/search?query=:query&status=:status
   def search 
+
+   
     collection = App::Prospect.by_client(get_client_id)
 
+
     collection = collection.by_prospect_status(params[:status]).search(params[:query])
-    collection = collection.by_vendor(params[:vendor_ids]) if (params[:vendor_ids].present? && params[:status]=="prospected")
+
+    collection = collection.by_vendor(params[:vendor_ids]) if (params[:vendor_ids].present? && params[:status] == 'prospected')
+
 
     @pagy,  @app_prospects = pagy(collection, items: 4)
+    
     @collection_src_url = 'search_app_prospects_path'
+    
     
     respond_to do |format|
       format.html do

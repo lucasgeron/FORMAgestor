@@ -6,6 +6,7 @@
   <%= form_with(url: search_app_prospects_path, method: :get,  class:'space-y-1') do |form| %>
 
     <%# SEACH INPUT %>
+    <%# SEACH INPUT %>
     <div class="relative" data-action='mouseenter->reveal#toggle mouseleave->reveal#toggle '>
       <div class="search-input-icon dark:hover:bg-blue-600" data-action="click->search#submit"><%= icon('fa-solid','search', class:'fa-sm ') %>  </div>
       <%= form.text_field :query, value:params[:query],  class:'search-input text-sm', placeholder: t('views.app.general.search'), data: {action: 'keydown.enter->search#submit'} %>
@@ -33,9 +34,12 @@
     <% end %>
 
     <%# END OF STATUS %>
+    <%# END OF STATUS %>
 
     <%# VENDORS INPUT %>
+    <%# VENDORS INPUT %>
 
+    <%# FORM COLECCTION OF VENDORS %>
     <%# FORM COLECCTION OF VENDORS %>
 
     <% if (params[:status].present? && params[:status]=='prospected') %>
@@ -52,6 +56,7 @@
       </div>
 
     <% end %>
+    <%# END OF VENDORS %>
     <%# END OF VENDORS %>
 
   <% end %>
