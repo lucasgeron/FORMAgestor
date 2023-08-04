@@ -79,6 +79,7 @@ class App::ProspectsController < ApplicationController
 
   #  GET /app/prospects/search?query=:query&status=:status
   def search 
+    collection = App::Prospect.by_client(get_client_id)
 
    
     collection = App::Prospect.by_client(get_client_id)
