@@ -1,5 +1,8 @@
 <div class="" data-controller='search reveal' data-reveal-hidden-class="hidden">
-
+  <div class="detail-input text-xs text-center h-8 -mb-1" id="pagy_info">
+   <%== pagy_info @pagy %>
+  </div>
+  
   <%= form_with(url: search_app_prospects_path, method: :get,  class:'space-y-1') do |form| %>
 
     <%# SEACH INPUT %>

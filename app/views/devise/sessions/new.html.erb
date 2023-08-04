@@ -20,7 +20,7 @@
         <%= link_to App::User.model_name.human, :new_user_session, class:"p-2 text-xs #{resource_name.to_s=='user' ? 'bg-blue-600 dark:bg-blue-600 text-white' : 'bg-gray-200 dark:bg-gray-700'}    dark:hover:bg-blue-700 rounded-lg hover:bg-blue-700 hover:text-white" %>
     </div>
 
-    <%= form_for(resource, as: resource_name, url: session_path(resource_name), html: {class: "space-y-2 "}) do |f| %>
+    <%= form_for(resource, as: resource_name, url: session_path(resource_name), html: {class: "space-y-2", data:{turbo:false} })  do |f| %>
 
       <div class="">
         <%= f.label :email %>

@@ -8,17 +8,12 @@ class App::ProspectsController < ApplicationController
 
   # GET /app/prospects or /app/prospects.json
   def index
-    @pagy,  @app_prospects = pagy(App::Prospect.by_client(get_client_id), items: 4)
+    @pagy,  @app_prospects = pagy(App::Prospect.by_client(get_client_id).order(:created_at), items: 4)
     @collection_src_url = 'app_prospects_url'
-    
-    respond_to do |format|
-      format.html # index.html.erb -> will render when a normal request comes in
-      format.turbo_stream # index.turbo_stream.erb -> will render when a turbo_stream request comes in
 
-      # format.turbo_stream do # index.turbo_stream.erb -> will render when a turbo_stream request comes in
-      #   render  "app/prospe/index",
-      #           locals: { collection: @app_prospects, collection_name: "prospects" }
-      # end
+    respond_to do |format|
+      format.html  # index.html.erb -> will render when a normal request comes in
+      format.turbo_stream # index.turbo_stream.erb -> will render when a turbo_stream request comes in
     end
 
   end
@@ -84,21 +79,13 @@ class App::ProspectsController < ApplicationController
 
   #  GET /app/prospects/search?query=:query&status=:status
   def search 
-
-   
     collection = App::Prospect.by_client(get_client_id)
 
-
     collection = collection.by_prospect_status(params[:status]).search(params[:query])
-
-    collection = collection.by_vendor(params[:vendor_ids]) if params[:vendor_ids].present?
-    # abort collection.inspect
-
+    collection = collection.by_vendor(params[:vendor_ids]) if (params[:vendor_ids].present? && params[:status]=="prospected")
 
     @pagy,  @app_prospects = pagy(collection, items: 4)
-    
     @collection_src_url = 'search_app_prospects_path'
-    
     
     respond_to do |format|
       format.html do

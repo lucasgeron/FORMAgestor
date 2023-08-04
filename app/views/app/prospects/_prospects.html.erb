@@ -1,37 +1,25 @@
 <div class="space-y-4"  >
 
-  <% if @app_prospects.present? %>
+  <%# THIS WILL BE REMOVED WHEN BEFORE TURBO_STREAM APPEND %>
+  <div class="default-grid" id="app_prospects_placeholder">
+    <!-- Adjust this to your Pagy default item count -->
+    <% 4.times do %>
+      <%= render partial: "prospect_placeholder" %>
+    <% end %>
+  </div>
+  <%# ---------------------------------------------------- %>
 
-     <div class="" id="pagy_info">
-       <%== pagy_info @pagy %>
-     </div>
+  <%= %>
 
-    <%# THIS WILL BE REMOVED WHEN BEFORE TURBO_STREAM APPEND %>
-    <div class="default-grid" id="app_prospects_placeholder">
-      <!-- Adjust this to your Pagy default item count -->
-      <% 4.times do %>
-        <%= render partial: "prospect_placeholder" %>
-      <% end %>
-    </div>
-    <%# ---------------------------------------------------- %>
-
-    <%# TURBO_STREAM CONTENT APPEND WILL APPEAR HERE %>
-    <%= turbo_frame_tag "app_prospects_list", target: '_top', class:'default-grid', loading: :lazy,
+  <%# TURBO_STREAM CONTENT APPEND WILL APPEAR HERE %>
+  <%= turbo_frame_tag "app_prospects_list",  class:'default-grid',  loading: :lazy, 
                         src: send(@collection_src_url,  page: params[:page], format: "turbo_stream",
                                   query: params[:query], status: params[:status], vendor_ids: params[:vendor_ids]) do %>
-    <% end %>
-    <%# ---------------------------------------------------- %>
-
-    <%# CONTENT FOR TURBO PAGINATION WITH INFINITE SCROLL %>
-    <%= turbo_frame_tag "app_prospects_pagination" %>
-    <%# ---------------------------------------------------- %>
-
-    
-
-  <% elsif @app_prospects.count.zero? && action_name != 'search' %>
-
-    <%= render partial: 'app/shared/has_no_entry', locals: { msg: t('views.app.prospects.form.has_no_entry').html_safe }  %>
-
   <% end %>
+  <%# ---------------------------------------------------- %>
+
+  <%# CONTENT FOR TURBO PAGINATION WITH INFINITE SCROLL %>
+  <%= turbo_frame_tag "app_prospects_pagination" %>
+  <%# ---------------------------------------------------- %>
 
 </div>

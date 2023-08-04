@@ -14,6 +14,7 @@ pt-BR:
         select_all: Selecionar Todas
         empty_input_file: Selecione um Arquivo
         search: Pesquisar
+        delete_confirm: 'Tem certeza que deseja remover este registro?'
         flash:
           switch_client: 'Devido as permissões, é necessário selecione o registro novamente.'
           unauthorized: 'Você não possui permissão para acessar esta página.'
