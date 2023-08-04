@@ -79,25 +79,19 @@ class App::ProspectsController < ApplicationController
 
   #  GET /app/prospects/search?query=:query&status=:status
   def search 
-    collection = App::Prospect.by_client(get_client_id)
 
-    collection = collection.by_prospect_status(params[:status]).search(params[:query])
-    collection = collection.by_vendor(params[:vendor_ids]) if (params[:vendor_ids].present? && params[:status]=="prospected")
+    @app_prospects = App::Prospect.by_client(get_client_id).search(params[:query])
 
-    @pagy,  @app_prospects = pagy(collection, items: 4)
-    @collection_src_url = 'search_app_prospects_path'
-    
-    respond_to do |format|
-      format.html do
-        render  "app/prospects/index"
-      end
-      format.turbo_stream do
-        render  "app/prospects/index",
-                locals: { collection: @app_prospects, collection_name: "prospects"}
-      end
-      
+    case params[:status]
+    when t('activerecord.options.app/prospect.status.prospected')
+      @app_prospects = @app_prospects.by_prospect_status(!nil)
+    when t('activerecord.options.app/prospect.status.not_prospected')
+      @app_prospects = @app_prospects.by_prospect_status(nil)
     end
 
+    @app_prospects = @app_prospects.page(params[:page])
+   
+    render :index
 
   end
 
