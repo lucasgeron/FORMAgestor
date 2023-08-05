@@ -81,17 +81,11 @@ class App::ProspectsController < ApplicationController
   def search 
     collection = App::Prospect.by_client(get_client_id)
 
-   
-    collection = App::Prospect.by_client(get_client_id)
-
-
     collection = collection.by_prospect_status(params[:status]).search(params[:query])
-
     collection = collection.by_vendor(params[:vendor_ids]) if (params[:vendor_ids].present? && params[:status] == 'prospected')
 
 
     @pagy,  @app_prospects = pagy(collection, items: 4)
-    
     @collection_src_url = 'search_app_prospects_path'
     
     
@@ -103,7 +97,6 @@ class App::ProspectsController < ApplicationController
         render  "app/prospects/index",
                 locals: { collection: @app_prospects, collection_name: "prospects"}
       end
-      
     end
 
 
