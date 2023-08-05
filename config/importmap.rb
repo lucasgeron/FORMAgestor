@@ -15,4 +15,3 @@ pin "stimulus-textarea-autogrow", to: "https://ga.jspm.io/npm:stimulus-textarea-
 pin "stimulus-reveal-controller", to: "https://ga.jspm.io/npm:stimulus-reveal-controller@4.1.0/dist/stimulus-reveal-controller.mjs"
 
 pin 'plugins/theme-toggle', preload: true
-pin 'plugins/aos-init'

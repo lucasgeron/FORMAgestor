@@ -6,4 +6,3 @@ import 'flowbite-datepicker'
 import "@rails/request.js"
 
 import 'plugins/theme-toggle'
-import 'plugins/aos-init'
