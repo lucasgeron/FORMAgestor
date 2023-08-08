@@ -4,10 +4,19 @@ class App::CitiesController < ApplicationController
   before_action :authenticate_user_or_admin! 
   before_action :check_client_id, only: %i[ show edit update destroy]
   before_action :set_app_city, only: %i[ show edit update destroy ]
+  before_action :set_content_for_sidebar, only: %i[ index search ]
   
   # GET /app/cities or /app/cities.json
   def index
-    @app_cities = App::City.by_client(get_client_id)
+
+    @pagy,  @app_cities = pagy(App::City.by_client(get_client_id).order(:name), items: 4)
+    @collection_src_url = 'app_cities_url'
+
+    respond_to do |format|
+      format.html  
+      format.turbo_stream 
+    end
+
   end
 
   # GET /app/cities/1 or /app/cities/1.json
@@ -65,6 +74,28 @@ class App::CitiesController < ApplicationController
 
   end
 
+  #  GET /app/cities/search?query=:query&uf=:status
+  def search 
+
+    collection = App::City.by_client(get_client_id)
+    collection = collection.search(params[:query])
+    collection = collection.by_uf(params[:uf]) if params[:uf].present?
+
+    @pagy,  @app_cities = pagy(collection.order(:name), items: 4)
+    @collection_src_url = 'search_app_cities_path'
+    
+    respond_to do |format|
+      format.html do
+        render  "app/cities/index"
+      end
+      format.turbo_stream do
+        render  "app/cities/index",
+                locals: { collection: @app_cities, collection_name: "cities"}
+      end
+    end
+
+  end
+
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_app_city
@@ -74,5 +105,9 @@ class App::CitiesController < ApplicationController
     # Only allow a list of trusted parameters through.
     def app_city_params
       params.require(:app_city).permit(:name, :state)
+    end
+
+    def set_content_for_sidebar
+      @states = App::City.by_client(get_client_id).pluck(:state).uniq.sort
     end
 end

@@ -4,11 +4,12 @@ class App::ProspectsController < ApplicationController
   before_action :set_layout
   before_action :check_client_id, only: %i[ show edit update destroy ]
   before_action :set_app_prospect, only: %i[ show edit update destroy ]
+  before_action :set_content_for_sidebar, only: %i[ index search ]
   
 
   # GET /app/prospects or /app/prospects.json
   def index
-    @pagy,  @app_prospects = pagy(App::Prospect.by_client(get_client_id).order(:created_at), items: 4)
+    @pagy,  @app_prospects = pagy(App::Prospect.by_client(get_client_id).order(created_at: :desc), items: 4)
     @collection_src_url = 'app_prospects_url'
 
     respond_to do |format|
@@ -85,7 +86,7 @@ class App::ProspectsController < ApplicationController
     collection = collection.by_vendor(params[:vendor_ids]) if (params[:vendor_ids].present? && params[:status] == 'prospected')
 
 
-    @pagy,  @app_prospects = pagy(collection, items: 4)
+    @pagy,  @app_prospects = pagy(collection.order(created_at: :desc), items: 4)
     @collection_src_url = 'search_app_prospects_path'
     
     
@@ -116,6 +117,10 @@ class App::ProspectsController < ApplicationController
 
   def set_layout
     get_current_access.present? ? self.class.layout("application") : self.class.layout("public_application") 
+  end
+
+  def set_content_for_sidebar
+    @vendors = App::Vendor.by_client(get_client_id).order(:name)
   end
     
 end

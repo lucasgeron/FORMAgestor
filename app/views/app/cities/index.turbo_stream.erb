@@ -1,0 +1,29 @@
+  <!-- remove skeletons -->
+<%= turbo_stream.remove("app_cities_placeholder") %>
+
+<!-- append content to turbo_frame -->
+<%= turbo_stream.append("app_cities_list") do %>
+  
+  <% @app_cities.each do |city| %>
+    <%= render city %>
+  <% end %>
+
+<% end %>
+
+
+<!-- replace #article_pagination frame by our content loader when it gets visible (our turbo_frame_tag with loading="lazy" attribute -->
+<% if @pagy.next.present? %>
+  <%= turbo_stream.replace "app_cities_pagination" do %>
+    
+    <%= turbo_frame_tag "app_cities_pagination", loading: "lazy", 
+                           src:  send(@collection_src_url, page: @pagy.next, format: "turbo_stream", 
+                                       query: params[:query], uf: params[:uf]) %>
+  
+ 
+  <% end %>
+<% end %>
+
+<%# update # %>
+<%= turbo_stream.update "pagy_info" do %>
+ <%== pagy_info(@pagy, item_name: App::City.model_name.human(count: @app_cities.count)) %>
+<%end%>

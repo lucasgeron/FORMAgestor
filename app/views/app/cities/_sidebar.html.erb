@@ -1,9 +1,37 @@
-<aside id="sidebar-multi-level-sidebar-b" class=" fixed top-0 right-0 z-40 h-screen overflow-y-auto transition-transform translate-x-full xl:translate-x-0 bg-white w-64 dark:bg-gray-800"  aria-label="Sidebar">
-  <div class="h-full px-3 overflow-y-auto  scrollbar-hide">
+<div class="" data-controller='search reveal' data-reveal-hidden-class="hidden">
+  <div class="detail-input text-xs text-center h-8 -mb-1" id="pagy_info">
+    <%== pagy_info(@pagy, item_name: App::City.model_name.human(count: @app_cities.count)) %>
+  </div>
+  
+  <%= form_with(url: search_app_cities_path, method: :get,  class:'space-y-1') do |form| %>
 
-    <div class="space-y-1 my-4">
+    <%# SEACH INPUT %>
+    <div class="relative" data-action='mouseenter->reveal#toggle mouseleave->reveal#toggle '>
+      <div class="search-input-icon dark:hover:bg-blue-600" data-action="click->search#submit"><%= icon('fa-solid','search', class:'fa-sm ') %>  </div>
+      <%= form.text_field :query, value:params[:query],  class:'search-input text-sm', placeholder: t('views.app.general.search'), data: {action: 'keydown.enter->search#submit'} %>
+    </div>
+    <div class="hidden  detail-input text-xs h-8 " data-reveal-target="item">
+      <p class="text-center"> Nome </p>
+    </div>
+    <%# END OF SEARCH INPUT%>
 
+    <%# STATES INPUT %>
+
+
+    <div class="bg-gray-100 dark:bg-gray-900 py-2 px-3 space-y-1 rounded-lg text-sm">
+      <%= form.collection_check_boxes  :uf, @states, :to_s, :to_s, include_hidden: false do |uf| %>
+        <div class=" mt-0 ">
+          <%= uf.check_box(class: 'form-checkbox-simple dark:bg-gray-800 bg-gray-200 mr-1 ', checked: (params[:uf].present? && params[:uf].include?(uf.value.to_s)), data: {action: 'change->search#submit'}) %>
+          <%= uf.label class:'cursor-pointer text-sm' do %>
+            <%= uf.text %>
+          <% end %>
+        </div>
+      <% end %>
     </div>
 
-  </div>
-</aside>
+
+    <%# END OF STATES %>
+  
+  <% end %>
+
+</div>

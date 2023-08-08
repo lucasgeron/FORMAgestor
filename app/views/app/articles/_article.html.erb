@@ -1,8 +1,0 @@
-<div id="<%= dom_id article %>" class="bg-white border border-black overflow-hidden rounded shadow flex flex-col">
-  <%= image_tag article.cover_url, class: "w-full object-fill h-64" %>
-  <div class="px-8 py-6 flex-1">
-    <h2 class="font-mono text-xl font-bold"><%= article.title %></h2>
-    <p class="mt-4"><%= article.body.truncate(128) %></p>
-  </div>
-  <p class="px-8 pb-6 text-gray-500">#<%= article.id %> @ <%= l(article.created_at, format: :short) %></p>
-</div>

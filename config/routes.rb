@@ -46,8 +46,7 @@ Rails.application.routes.draw do
 
   # Commom routes in App namespace
   namespace :app do
-    resources :articles
-
+  
     resources :institutions do
         get :search, on: :collection
         delete :destroy_attachment, on: :member
@@ -60,6 +59,7 @@ Rails.application.routes.draw do
 
     resources :cities do 
       get :filter, on: :collection
+      get :search, on: :collection
     end
     
     resources :users

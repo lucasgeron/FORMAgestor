@@ -10,13 +10,5 @@
 <% provide :sidebar, render(partial: 'app/cities/sidebar') %>
 
 <% content_for :page_content do %>
-
-  <% if @app_cities.present? %>
-    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-3 2xl:grid-cols-4 gap-4">
-      <%= render(@app_cities) %>
-    </div>
-  <% elsif @app_cities.count.zero? %>
-    <%= render partial: 'app/shared/has_no_entry', locals: { msg: t('views.app.cities.form.has_no_entry').html_safe }  %>
-  <% end %>
-
+  <%= render partial: 'cities' %>
 <%end%>

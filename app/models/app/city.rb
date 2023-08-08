@@ -6,5 +6,7 @@ class App::City < ApplicationRecord
   # Scopes
   include App::Scopes
   scope :by_id, ->(id) { where(id: id) }
-  scope :with_institutions, -> { joins(:institutions).distinct }
+  scope :by_uf, ->(uf) { where(state: uf) }
+  scope :search, -> (search) { where("LOWER(UNACCENT(name)) LIKE LOWER(UNACCENT(:search))", search: "%#{search}%") }
+
 end

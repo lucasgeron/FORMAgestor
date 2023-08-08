@@ -11,10 +11,8 @@
     <%= stylesheet_link_tag "application", "data-turbo-track": "reload" %>
     <%= javascript_importmap_tags %>
 
-    <%= javascript_include_tag 'theme-toggle' %>
-
-    <%# CDN CSS %>
-    <link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
+    <%= stylesheet_link_tag "aos.css" %>
+    <%= javascript_include_tag 'plugins/aos' %>
 
   </head>
 
