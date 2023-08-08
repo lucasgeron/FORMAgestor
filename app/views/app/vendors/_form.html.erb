@@ -27,33 +27,26 @@
 
   </div>
 
-  <div class="">
-    <%= form.label :city_ids, class:'font-bold text-2xl' %>
-
-    <% if App::City.by_client(get_client_id).count.positive? %>
-      <%# force city_ids, even is empty %>
-      <%= form.hidden_field :city_ids, value: [], multiple: true %>
-
-      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-2 2xl:grid-cols-3 gap-4 border dark:border-gray-600 dark:bg-gray-900 p-4 rounded-lg mt-2 ">
-        <% App::City.by_client(get_client_id).each do |city| %>
-          <div class="flex items-center rounded-lg ">
-            <%= form.check_box :city_ids, { multiple: true, class: 'form-checkbox-simple mr-2 dark:bg-gray-950 bg-gray-200', id: "city_#{city.id}" }, city.id, nil %>
-            <%= label_tag "city_#{city.id}", class:'cursor-pointer' do %> <%= city.name %> - <%= city.state.upcase %></p>
-          <%end%>
-        </div>
-      <% end %>
-    <% else %>
-      <%= render partial: 'app/shared/has_no_entry', locals: { msg: t('views.app.cities.form.has_no_entry').html_safe, 
-                                                               entry: App::City.model_name.human, 
-                                                               path: new_app_city_path } %>
-    <%end%>
-
+  <%# CITIES INPUT %>
+  <% if @cities.present? %>
+    <div class="">
+      <p class="font-bold text-2xl"> <%= App::Vendor.human_attribute_name('city_ids') %> </p>
+      <div class="mt-2 bg-gray-100 dark:bg-gray-900 py-2 px-3 space-y-1 rounded-lg text-sm grid grid-cols-1 lg:grid-cols-3">
+        <%= form.collection_check_boxes  :city_ids, @cities, :id, :name, include_hidden: true do |city| %>
+          <div class="">
+            <%= city.check_box(class: 'form-checkbox-simple dark:bg-gray-800 bg-gray-200 mr-1 ') %>
+            <%= city.label class:'cursor-pointer text-sm' do %>
+              <%= city.text %>
+            <% end %>
+          </div>
+        <% end %>
+      </div>
+    <% end %>
   </div>
+  <%# END OF CITIES %>
 
-</div>
-
-<div class="mt-4 inline-flex w-full justify-end">
-  <%= form.submit class: "btn-primary" %>
-</div>
+  <div class="mt-4 inline-flex w-full justify-end">
+    <%= form.submit class: "btn-primary" %>
+  </div>
 
 <% end %>

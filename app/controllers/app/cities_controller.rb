@@ -9,7 +9,7 @@ class App::CitiesController < ApplicationController
   # GET /app/cities or /app/cities.json
   def index
     collection = App::City.by_client(get_client_id).order(:name)
-    @pagy,  @app_cities = pagy(collection, items: collection.size)
+    @pagy,  @app_cities = set_pagy(collection)
   end
 
   # GET /app/cities/1 or /app/cities/1.json
@@ -32,7 +32,7 @@ class App::CitiesController < ApplicationController
     set_client_id(@app_city)
 
       if @app_city.save
-         flash[:success] = t('views.app.general.flash.create', model: App::City.model_name.human)
+         flash[:success] = t('views.app.general.flash.create_f', model: App::City.model_name.human)
          redirect_to app_city_url(@app_city)
       else
          render :new, status: :unprocessable_entity
@@ -42,7 +42,7 @@ class App::CitiesController < ApplicationController
   # PATCH/PUT /app/cities/1 or /app/cities/1.json
   def update
     if @app_city.update(app_city_params)
-      flash[:success] = t('views.app.general.flash.update', model: App::City.model_name.human)
+      flash[:success] = t('views.app.general.flash.update_f', model: App::City.model_name.human)
       redirect_to app_city_url(@app_city)
     else
       render :edit, status: :unprocessable_entity
@@ -51,9 +51,14 @@ class App::CitiesController < ApplicationController
 
   # DELETE /app/cities/1 or /app/cities/1.json
   def destroy
+    if @app_city.has_dependency?
+      flash[:error] = t('views.app.general.flash.destroy_failed_f', model: App::City.model_name.human)
+      redirect_to @app_city
+    else
     @app_city.destroy
-    flash[:success] = t('views.app.general.flash.destroy', model: App::City.model_name.human)
+    flash[:success] = t('views.app.general.flash.destroy_f', model: App::City.model_name.human)
     redirect_to app_cities_url
+    end
   end
 
   # GET /app/cities/filter?state=UF&target=DIV_ID
@@ -78,16 +83,10 @@ class App::CitiesController < ApplicationController
     elsif params[:uf].present?
       collection = collection.by_uf(params[:uf])
     else
-      collection = App::City.none
+      return redirect_to app_cities_path 
     end
   
-    if collection.present?
-      @pagy,  @app_cities = pagy(collection, items_extra: collection.size) 
-    else
-      @pagy,  @app_cities = pagy(collection, items_extra: false) 
-    end
-    
-    
+    @pagy,  @app_cities = set_pagy(collection)
     
     render :index
 
@@ -107,4 +106,6 @@ class App::CitiesController < ApplicationController
     def set_content_for_sidebar
       @states = App::City.by_client(get_client_id).pluck(:state).uniq.sort
     end
+
+    
 end

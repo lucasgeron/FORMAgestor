@@ -11,7 +11,9 @@
       <%= form.text_field :query, value:params[:query],  class:'search-input text-sm', placeholder: t('views.app.general.search'), data: {action: 'keydown.enter->search#submit'} %>
     </div>
     <div class="hidden  detail-input text-xs h-8 " data-reveal-target="item">
-      <p class="text-center">Nome | Instituição | Curso | Cidade </p>
+      <p class="text-center">
+        <%= %i[ name institution course city  ].map{|attr| App::Prospect.human_attribute_name(attr)}.join(" | ")  %>
+      </p>
     </div>
     <%# END OF SEARCH INPUT%>
 
@@ -36,7 +38,7 @@
 
     <%# VENDORS INPUT %>
 
-    <% if (params[:status].present? && params[:status]=='prospected') %>
+    <% if @vendors.present? && params[:status] =='prospected'%>
 
       <div class="bg-gray-100 dark:bg-gray-900 py-2 px-3 space-y-1 rounded-lg text-sm">
         <%= form.collection_check_boxes  :vendor_ids, @vendors, :id, :name, include_hidden: false do |vendor| %>

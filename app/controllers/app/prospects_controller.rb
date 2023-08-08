@@ -9,12 +9,12 @@ class App::ProspectsController < ApplicationController
 
   # GET /app/prospects or /app/prospects.json
   def index
-    @pagy,  @app_prospects = pagy(App::Prospect.by_client(get_client_id).order(created_at: :desc), items: 4)
+    @pagy,  @app_prospects = pagy(App::Prospect.by_client(get_client_id).order(created_at: :desc))
     @collection_src_url = 'app_prospects_url'
 
     respond_to do |format|
-      format.html  # index.html.erb -> will render when a normal request comes in
-      format.turbo_stream # index.turbo_stream.erb -> will render when a turbo_stream request comes in
+      format.html  
+      format.turbo_stream 
     end
 
   end
@@ -54,7 +54,7 @@ class App::ProspectsController < ApplicationController
     get_current_access ? set_client_id(@app_prospect) : @app_prospect[:client_id] = app_prospect_params[:client_id]
     
     if @app_prospect.save
-        flash[:success] = t('views.app.general.flash.create', model: App::Prospect.model_name.human)
+        flash[:success] = t('views.app.general.flash.create_f', model: App::Prospect.model_name.human)
         redirect_to app_prospect_url(@app_prospect)
     else
         render :new, status: :unprocessable_entity 
@@ -64,7 +64,7 @@ class App::ProspectsController < ApplicationController
   # PATCH/PUT /app/prospects/1 or /app/prospects/1.json
   def update
     if @app_prospect.update(app_prospect_params)
-      flash[:success] = t('views.app.general.flash.update', model: App::Prospect.model_name.human)
+      flash[:success] = t('views.app.general.flash.update_f', model: App::Prospect.model_name.human)
       redirect_to app_prospect_url(@app_prospect)
     else
       render :edit, status: :unprocessable_entity
@@ -74,7 +74,7 @@ class App::ProspectsController < ApplicationController
   # DELETE /app/prospects/1 or /app/prospects/1.json
   def destroy
     @app_prospect.destroy
-    flash[:success] = t('views.app.general.flash.destroy', model: App::Prospect.model_name.human)
+    flash[:success] = t('views.app.general.flash.destroy_f', model: App::Prospect.model_name.human)
     redirect_to app_prospects_url
   end
 
@@ -86,7 +86,7 @@ class App::ProspectsController < ApplicationController
     collection = collection.by_vendor(params[:vendor_ids]) if (params[:vendor_ids].present? && params[:status] == 'prospected')
 
 
-    @pagy,  @app_prospects = pagy(collection.order(created_at: :desc), items: 4)
+    @pagy,  @app_prospects = pagy(collection.order(created_at: :desc))
     @collection_src_url = 'search_app_prospects_path'
     
     
@@ -120,7 +120,7 @@ class App::ProspectsController < ApplicationController
   end
 
   def set_content_for_sidebar
-    @vendors = App::Vendor.by_client(get_client_id).order(:name)
+    @vendors = App::Vendor.by_client(get_client_id).joins(:prospects).distinct.order(:name)
   end
     
 end

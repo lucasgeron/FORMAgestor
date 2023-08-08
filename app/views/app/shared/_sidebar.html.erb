@@ -106,14 +106,14 @@
       <% end %>
 
       <%# ALUNOS %>
-      <%= link_to "#", class:"sidebar-link#{is_link_active?('students')}   " do %>
+      <%= link_to "#", class:"sidebar-link#{is_link_active?('students')}   text-gray-300 dark:text-gray-700 pointer-events-none" do %>
         <%= icon('fa-solid','address-book', class:"mr-1")%>
         <%# <%= Prospect.model_name.human(count:2) %>
         <%= t('activerecord.models.students.other')%>
       <%end%>
 
       <%# ATENDIMENTOS %>
-      <%= link_to "#", class:"sidebar-link#{is_link_active?('services')}   " do %>
+      <%= link_to "#", class:"sidebar-link#{is_link_active?('services')}   text-gray-300 dark:text-gray-700 pointer-events-none" do %>
         <%= icon('fa-solid','list', class:"mr-1")%>
         <%# <%= Prospect.model_name.human(count:2) %>
         <%= t('activerecord.models.services.other')%>
@@ -132,21 +132,21 @@
       <%end%>
 
       <%# CURSOS %>
-      <%= link_to "#", class:"sidebar-link#{is_link_active?('courses')}   " do %>
+      <%= link_to "#", class:"sidebar-link#{is_link_active?('courses')}   text-gray-300 dark:text-gray-700 pointer-events-none" do %>
         <%= icon('fa-solid','chalkboard-user', class:"mr-1")%>
         <%# <%= Prospect.model_name.human(count:2) %>
         <%= t('activerecord.models.course.other')%>
       <%end%>
 
       <%# TURMA %>
-      <%= link_to "#", class:"sidebar-link#{is_link_active?('turmas')}   " do %>
+      <%= link_to "#", class:"sidebar-link#{is_link_active?('turmas')}   text-gray-300 dark:text-gray-700 pointer-events-none" do %>
         <%= icon('fa-solid','users-rectangle', class:"mr-1")%>
         <%# <%= Prospect.model_name.human(count:2) %>
         <%= t('Turmas')%>
       <%end%>
 
       <%# COMERCIAL %>
-      <%= link_to "#", class:"sidebar-link#{is_link_active?('comercial')}   " do %>
+      <%= link_to "#", class:"sidebar-link#{is_link_active?('comercial')}   text-gray-300 dark:text-gray-700 pointer-events-none" do %>
         <%= icon('fa-solid','table-columns', class:"mr-1")%>
         <%# <%= Prospect.model_name.human(count:2) %>
         <%= t('Comercial')%>
@@ -174,14 +174,14 @@
       <ul id="dropdown-example" class="space-y-1 <% if !ae %> hidden <%end%>">
 
         <%# SEMESTRES %>
-        <%= link_to "#", class:"sidebar-link#{is_link_active?('semester')}   " do %>
+        <%= link_to "#", class:"sidebar-link#{is_link_active?('semester')}   text-gray-300 dark:text-gray-700 pointer-events-none" do %>
           <%= icon('fa-solid','calendar-check', class:"mr-1")%>
           <%# <%= Prospect.model_name.human(count:2) %>
           <%= t('activerecord.models.semester.other')%>
         <%end%>
 
         <%# EMPRESAS %>
-        <%= link_to "#", class:"sidebar-link#{is_link_active?('companies')}   " do %>
+        <%= link_to "#", class:"sidebar-link#{is_link_active?('companies')}   text-gray-300 dark:text-gray-700 pointer-events-none" do %>
           <%= icon('fa-solid','building', class:"mr-1")%>
           <%# <%= Prospect.model_name.human(count:2) %>
           <%= t('activerecord.models.company.other')%>

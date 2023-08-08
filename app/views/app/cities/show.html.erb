@@ -1,3 +1,10 @@
+<% content_for :ctas_primary do %>
+   <%= link_to new_app_institution_path(city_id: @app_city), class: "btn-primary flex-none" do %>
+    <%= icon('fa-solid','plus',class:'btn-icon') %>
+    <%= App::Institution.model_name.human %>
+  <% end %>
+<% end %>
+
 <% content_for :ctas_secondary do %>
   <%= link_to app_cities_path, class: "btn-secondary-gray flex-none" do %>
     <%= icon('fa-solid','arrow-left', class:'-mx-1')%>
@@ -10,7 +17,6 @@
   <%= button_to app_city_path(@app_city), method: :delete, data: { turbo: false },onclick: "return confirm('#{t('views.app.general.delete_confirm')}')", class: "btn-delete flex-none" do %>
     <%= icon('fa-solid','trash-can', class:'-mx-1')%>
   <%end%>
-
 <% end %>
 
 <% provide :head_title, "#{t('views.app.general.showing')} #{App::City.model_name.human} " %>

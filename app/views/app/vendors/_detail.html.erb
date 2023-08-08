@@ -25,17 +25,13 @@
   </div>
 
   <%# USERS TITLE %>
+  <% if app_vendor.cities.present? %>
   <div class="">
     <p class="font-bold text-2xl"> <%= App::Vendor.human_attribute_name('city_ids') %> </p>
-
-    <% if app_vendor.cities.present? %>
-      <div class="mt-2 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-3 2xl:grid-cols-4 gap-4">
+      <div class="mt-2 default-grid">
         <%= render app_vendor.cities %>
       </div>
-    <% else %>
-       <%= render partial: 'app/shared/has_no_entry', locals: { msg: t('views.app.vendors.detail.has_no_entry').html_safe
-                                                               } %>
-    <% end %>
   </div>
+  <% end %>
 
 </div>

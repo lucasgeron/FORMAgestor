@@ -1,16 +1,19 @@
 class App::InstitutionsController < ApplicationController
+  before_action :authenticate_user_or_admin! 
+  before_action :check_client_id, only: %i[ show edit update destroy]
   before_action :set_app_institution, only: %i[ show edit update destroy destroy_attachment ]
   before_action :set_content_for_sidebar, only: %i[ index search ]
 
   # GET /app/institutions or /app/institutions.json
   def index
-    if current_access_is_user? && get_current_access.vendor
-      @pagy, @app_institutions = pagy(App::Institution.by_client(get_client_id).by_city(get_current_access.vendor.cities))
-      @app_cities = App::City.by_client(get_client_id).by_id(get_current_access.vendor.cities).order(:name)
-    else
-      @app_institutions = App::Institution.none
+    if current_access_is_user? && get_current_access.vendor && get_current_access.vendor.cities.any?
+      @app_cities = get_current_access.vendor.cities.order(:name)
+      collection = App::Institution.by_client(get_client_id).by_city(@app_cities.ids).order(:abreviation)
+    else #CODE TO VALIDATE IF THERE'S A VENDOR
+      collection = App::Institution.none
       @app_cities = App::City.none
     end
+    @pagy, @app_institutions = set_pagy(collection)
   end
     
 
@@ -20,8 +23,7 @@ class App::InstitutionsController < ApplicationController
 
   # GET /app/institutions/new
   def new
-    @app_institution = App::Institution.new
-    @app_institution.city_id = params[:city_id] if params[:city_id]
+    @app_institution = App::Institution.new(city_id: params[:city_id])
   end
 
   # GET /app/institutions/1/edit
@@ -83,7 +85,7 @@ class App::InstitutionsController < ApplicationController
    #  GET /app/prospects/search?query=:query&status=:status
    def search 
     
-    collection = App::Institution.by_client(get_client_id).order(:name)
+    collection = App::Institution.by_client(get_client_id).order(:abreviation)
 
     if params[:query].present?  
       collection = collection.search(params[:query])
@@ -91,16 +93,10 @@ class App::InstitutionsController < ApplicationController
     elsif params[:city_ids].present?
       collection = collection.by_city(params[:city_ids])
     else
-      collection = App::Institution.none
+      return redirect_to app_institutions_path 
     end
     
-    if collection.present?
-      @pagy, @app_institutions = pagy(collection, items: collection.size)
-    else
-      @pagy, @app_institutions = pagy(collection, items_extra: false)
-    end
-    
-
+    @pagy, @app_institutions = set_pagy(collection)
     @app_cities = App::City.by_client(get_client_id).by_id(collection.pluck(:city_id)).order(:name)
 
     render :index

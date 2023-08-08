@@ -14,7 +14,7 @@ pt-BR:
 
     info:
       no_items: "Sem resultados"
-      single_page: "Exibindo %{count} %{item_name}"
+      single_page: "Exibindo %{count} de %{item_name}"
       multiple_pages: "Exibindo %{to} de %{count} %{item_name}"
 
     combo_nav_js: "<label>Página %{page_input} de %{pages}</label>"

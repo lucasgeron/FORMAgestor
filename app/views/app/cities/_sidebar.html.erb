@@ -11,13 +11,15 @@
       <%= form.text_field :query, value:params[:query],  class:'search-input text-sm', placeholder: t('views.app.general.search'), data: {action: 'keydown.enter->search#submit'} %>
     </div>
     <div class="hidden  detail-input text-xs h-8 " data-reveal-target="item">
-      <p class="text-center"> Nome </p>
+      <p class="text-center"> 
+        <%= %i[ name  ].map{|attr| App::Institution.human_attribute_name(attr)}.join(" | ")  %>
+       </p>
     </div>
     <%# END OF SEARCH INPUT%>
 
 
     <%# STATES INPUT %>
-
+    <% if @states.present? %>
     <div class="bg-gray-100 dark:bg-gray-900 py-2 px-3 space-y-1 rounded-lg text-sm">
       <%= form.collection_check_boxes  :uf, @states, :to_s, :to_s, include_hidden: false do |uf| %>
         <div class="mt-0 ">
@@ -28,8 +30,7 @@
         </div>
       <% end %>
     </div>
-
-
+    <% end %>
     <%# END OF STATES %>
   
   <% end %>

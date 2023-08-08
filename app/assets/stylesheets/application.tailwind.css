@@ -308,6 +308,12 @@
     @apply grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-2 2xl:grid-cols-4 gap-4;
   }
 
+  .vertical-grid{
+    display: grid;
+    grid-template-columns: repeat(3, 1fr); /* Cria 3 colunas com 1fr de tamanho */
+    grid-auto-flow: column; /* Ordena os elementos verticalmente em cada coluna */
+  }
+
 
   .form-checkbox-simple {
     @apply 

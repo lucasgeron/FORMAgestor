@@ -14,19 +14,28 @@
       <%= form.text_field :abreviation, class: "form-input" %>
     </div>
 
-   
     <div class="">
       <%= form.label :city_id, class:'' %>
 
-      <div class="relative">
-       <div class="form-input-icon"><%= icon('fa-solid','map-location-dot', class:'') %>  </div>
-        <%= form.collection_select :city_id, App::City.by_client(get_client_id), :id, :name, {include_blank: false}, {class: "form-input with-icon"} %>
-      </div>
+      <% cities = App::City.by_client(get_client_id)%>
+      <% if cities.present? %>
+        <div class="relative">
+          <div class="form-input-icon"><%= icon('fa-solid','map-location-dot', class:'') %>  </div>
+          <%= form.collection_select :city_id, cities, :id, :name, {include_blank: false}, {class: "form-input with-icon"} %>
+        </div>
+      <% else %>
+        <div class="detail-input">
+          <%= link_to new_app_city_path, class: "btn-primary flex-none" do %>
+            <%= icon('fa-solid','plus',class:'btn-icon') %>
+            <%= App::City.model_name.human %>
+          <% end %>
+        </div>
+      <% end %>
     </div>
 
     <div class="" data-controller="reveal input" data-reveal-hidden-class="hidden">
       <%= form.label :image, class:'inline-flex items-center gap-1 relative' do %>
-        <%= form.label :image %> <%= icon('fa-solid', 'circle-info', class:'fa-xs hover:text-blue-600', data: {action:"mouseenter->reveal#show mouseleave->reveal#hide"}) %> 
+        <%= form.label :image %> <%= icon('fa-solid', 'circle-info', class:'fa-xs hover:text-blue-600', data: {action:"mouseenter->reveal#show mouseleave->reveal#hide"}) %>
         <div data-reveal-target="item" class="py-1 px-2 bg-gray-100 dark:bg-gray-900 rounded-md absolute left-14 text-xs hidden w-max" id="file_input_help">PNG/JPG/JPEG - Max:750kb</div>
       <%end%>
       <%= form.label :image, class:'form-input-file truncate', data: {input_target: 'input'} do %>
@@ -36,7 +45,6 @@
     </div>
 
   </div>
-
 
   <div class="mt-4 inline-flex w-full justify-end">
     <%= form.submit class: "btn-primary" %>

@@ -1,9 +1,28 @@
-<aside id="sidebar-multi-level-sidebar-b" class=" fixed top-0 right-0 z-40 h-screen overflow-y-auto transition-transform translate-x-full xl:translate-x-0 bg-white w-64 dark:bg-gray-800"  aria-label="Sidebar">
-  <div class="h-full px-3 overflow-y-auto  scrollbar-hide">
+<div class="" data-controller='search reveal' data-reveal-hidden-class="hidden">
+  <div class="detail-input text-xs text-center h-8 -mb-1" id="pagy_info">
+    <%== pagy_info(@pagy, item_name: App::Vendor.model_name.human(count: @app_vendors.count)) %>
+  </div>
+  
+  <%= form_with(url: search_app_vendors_path, method: :get,  class:'space-y-1') do |form| %>
 
-    <div class="space-y-1 my-4">
-
+    <%# SEACH INPUT %>
+    <div class="relative" data-action='mouseenter->reveal#toggle mouseleave->reveal#toggle '>
+      <div class="search-input-icon dark:hover:bg-blue-600" data-action="click->search#submit"><%= icon('fa-solid','search', class:'fa-sm ') %>  </div>
+      <%= form.text_field :query, value:params[:query],  class:'search-input text-sm', placeholder: t('views.app.general.search'), data: {action: 'keydown.enter->search#submit'} %>
     </div>
 
-  </div>
-</aside>
+   
+      
+    
+    <div class="hidden  detail-input text-xs h-8 " data-reveal-target="item">
+      <p class="text-center"> 
+       <%= %i[ name role  ].map{|attr| App::Vendor.human_attribute_name(attr)}.join(" | ")  %>
+       </p>
+    </div>
+    <%# END OF SEARCH INPUT%>
+
+
+  
+  <% end %>
+
+</div>

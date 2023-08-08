@@ -7,7 +7,7 @@
     <%= icon('fa-solid','pen-to-square', class:'-mx-1')%>
   <%end%>
 
-  <%= button_to app_vendor_path(@app_vendor), method: :delete, class: "btn-delete flex-none" do %>
+  <%= button_to app_vendor_path(@app_vendor), method: :delete, data: { turbo: false },onclick: "return confirm('#{t('views.app.general.delete_confirm')}')",class: "btn-delete flex-none" do %>
     <%= icon('fa-solid','trash-can', class:'-mx-1')%>
   <%end%>
 

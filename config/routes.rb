@@ -55,7 +55,9 @@ Rails.application.routes.draw do
     resources :prospects do 
       get :search, on: :collection
     end
-    resources :vendors
+    resources :vendors do 
+      get :search, on: :collection
+    end
 
     resources :cities do 
       get :filter, on: :collection

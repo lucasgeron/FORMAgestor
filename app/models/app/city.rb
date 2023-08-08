@@ -9,4 +9,10 @@ class App::City < ApplicationRecord
   scope :by_uf, ->(uf) { where(state: uf) }
   scope :search, -> (search) { where("LOWER(UNACCENT(name)) LIKE LOWER(UNACCENT(:search))", search: "%#{search}%") }
 
+
+  # Methods
+  def has_dependency?
+    self.institutions.any?
+  end
+
 end

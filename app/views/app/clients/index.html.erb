@@ -11,5 +11,7 @@
 <% provide :sidebar, render(partial: 'app/clients/sidebar') %>
 
 <% content_for :page_content do %>
-    <%= render(@app_clients) %>
+  <div class="default-grid">
+      <%= render(@app_clients) %>
+  </div>
 <%end%>

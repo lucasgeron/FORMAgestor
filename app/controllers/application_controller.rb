@@ -89,5 +89,13 @@ class ApplicationController < ActionController::Base
     value == '1' ? true : false
   end
 
+  def set_pagy(collection)
+    if collection.present?
+      pagy(collection, items: collection.size)
+    else
+      pagy(collection)
+    end
+  end
+
 
 end

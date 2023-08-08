@@ -19,10 +19,16 @@ pt-BR:
           switch_client: 'Devido as permissões, é necessário selecione o registro novamente.'
           unauthorized: 'Você não possui permissão para acessar esta página.'
           ban_alert: 'ATENÇÃO: Repetir esta ação pode resultar banimento.'
-          not_found: '%{model} não encontrado.' 
-          create: '%{model} foi criado com sucesso.'
-          update: '%{model} foi atualizado com sucesso.'
-          destroy: '%{model} foi excluido com sucesso.'
+          not_found_m: '%{model} não encontrado.' 
+          not_found_f: '%{model} não encontrada.' 
+          create_m: '%{model} criado com sucesso.'
+          create_f: '%{model} criada com sucesso.'
+          update_m: '%{model} atualizado com sucesso.'
+          update_f: '%{model} atualizada com sucesso.'
+          destroy_m: '%{model} excluido com sucesso.'
+          destroy_f: '%{model} excluida com sucesso.'
+          destroy_failed_m: 'Não é possível excluir este %{model} pois ele possui dependências.'
+          destroy_failed_f: 'Não é possível excluir esta %{model} pois ela possui dependências.'
         file_upload: <span class="font-semibold">Clique para Enviar</span> ou arraste e solte
       clients:
         form:
@@ -46,15 +52,14 @@ pt-BR:
         form:
           has_no_entry: Não existem <span class='font-medium'> <i class="fa-solid fa-map-location-dot"></i> Cidades </span> cadastradas. 
         flash:
-          destroy_failed: 'Não é possível excluir esta Instituição existem Cursos vinculádos.'
+          destroy_failed: 'Não é possível excluir esta Cidade pois ela possui Instituições.'
           destroy_attachment_failed: 'Esta Instituição não possui logo vinculado atualmente.'
       institutions:
         index:
           search_to_start: É necessário selecionar ao menos uma cidade para exibir informações.
         form:
           has_no_entry: Não existem <span class='font-medium'> <i class="fa-solid fa-building-columns"></i> Instituições </span> cadastradas. 
-      
-      vendors:
+        flash:
         form:
           has_no_entry: Não existem <span class='font-medium'> <i class="fa-solid fa-user"></i> Representante </span> cadastrados. 
         detail:
@@ -66,3 +71,4 @@ pt-BR:
           has_no_entry: Não existem <span class='font-medium'> <i class="fa-solid fa-receipt"></i> Prospecções </span> cadastradas. 
         flash:
           client_not_found: O link que você tentou acessar é inválido.
+      

@@ -102,7 +102,8 @@ pt-BR:
       app/institution:
         name: Nome
         abreviation: Sigla
-        city_id: Cidade
+        city: Cidade #for validation
+        city_id: Cidade #for label
         image: Logo
 
     placeholders:

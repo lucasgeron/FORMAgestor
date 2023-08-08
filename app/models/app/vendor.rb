@@ -14,5 +14,8 @@ class App::Vendor < ApplicationRecord
 
   # Scopes
   include App::Scopes
+  scope :search, -> (search) { where("LOWER(UNACCENT(name)) LIKE LOWER(UNACCENT(:search)) OR 
+                                      LOWER(UNACCENT(role)) LIKE LOWER(UNACCENT(:search))", search: "%#{search}%") }
+
   
 end
