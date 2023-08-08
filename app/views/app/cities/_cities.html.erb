@@ -1,25 +1,7 @@
-<div class="space-y-4"  >
+<turbo-frame id="app_cities_list" class='gap-4' >
 
-  <%# THIS WILL BE REMOVED WHEN BEFORE TURBO_STREAM APPEND %>
-  <div class="default-grid" id="app_cities_placeholder">
-    <!-- Adjust this to your Pagy default item count -->
-    <% 4.times do %>
-      <%= render partial: "city_placeholder" %>
-    <% end %>
+  <div class="default-grid">
+    <%= render(@app_cities) %>
   </div>
-  <%# ---------------------------------------------------- %>
 
-  <%= %>
-
-  <%# TURBO_STREAM CONTENT APPEND WILL APPEAR HERE %>
-  <%= turbo_frame_tag "app_cities_list",  class:'default-grid',  loading: :lazy, 
-                        src: send(@collection_src_url,  page: params[:page], format: "turbo_stream",
-                                  query: params[:query], uf: params[:uf]) do %>
-  <% end %>
-  <%# ---------------------------------------------------- %>
-
-  <%# CONTENT FOR TURBO PAGINATION WITH INFINITE SCROLL %>
-  <%= turbo_frame_tag "app_cities_pagination" %>
-  <%# ---------------------------------------------------- %>
-
-</div>
+</turbo-frame>

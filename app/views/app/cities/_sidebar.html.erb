@@ -15,13 +15,13 @@
     </div>
     <%# END OF SEARCH INPUT%>
 
-    <%# STATES INPUT %>
 
+    <%# STATES INPUT %>
 
     <div class="bg-gray-100 dark:bg-gray-900 py-2 px-3 space-y-1 rounded-lg text-sm">
       <%= form.collection_check_boxes  :uf, @states, :to_s, :to_s, include_hidden: false do |uf| %>
-        <div class=" mt-0 ">
-          <%= uf.check_box(class: 'form-checkbox-simple dark:bg-gray-800 bg-gray-200 mr-1 ', checked: (params[:uf].present? && params[:uf].include?(uf.value.to_s)), data: {action: 'change->search#submit'}) %>
+        <div class="mt-0 ">
+          <%= uf.check_box(class: 'form-checkbox-simple dark:bg-gray-800 bg-gray-200 mr-1 ', checked: (params[:uf].present? && params[:uf].include?(uf.value.to_s)), data: {action: 'change->search#clearQuery change->search#submit'}) %>
           <%= uf.label class:'cursor-pointer text-sm' do %>
             <%= uf.text %>
           <% end %>

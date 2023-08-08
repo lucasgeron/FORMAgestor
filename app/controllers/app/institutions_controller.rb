@@ -1,14 +1,15 @@
 class App::InstitutionsController < ApplicationController
   before_action :set_app_institution, only: %i[ show edit update destroy destroy_attachment ]
+  before_action :set_content_for_sidebar, only: %i[ index search ]
 
   # GET /app/institutions or /app/institutions.json
   def index
-    @app_institutions = App::Institution.by_client(get_client_id)
-
     if current_access_is_user? && get_current_access.vendor
-      @cities = get_current_access.vendor.cities
+      @pagy, @app_institutions = pagy(App::Institution.by_client(get_client_id).by_city(get_current_access.vendor.cities))
+      @app_cities = App::City.by_client(get_client_id).by_id(get_current_access.vendor.cities).order(:name)
     else
-      @cities = App::City.none
+      @app_institutions = App::Institution.none
+      @app_cities = App::City.none
     end
   end
     
@@ -79,17 +80,31 @@ class App::InstitutionsController < ApplicationController
     end
   end
 
-  # GET /app/institutions/search
-  def search
-    @app_institutions = App::Institution.by_client(get_client_id)
-    @cities = App::City.by_client(get_client_id).with_institutions.by_id(params[:city_ids]).order(:name)
+   #  GET /app/prospects/search?query=:query&status=:status
+   def search 
+    
+    collection = App::Institution.by_client(get_client_id).order(:name)
 
-    # respond_to do |format|
-    #   format.turbo_stream do
-    #     render turbo_stream: turbo_stream.replace('institutions', partial: "app/institutions/institutions")
-    #   end
-    # end
+    if params[:query].present?  
+      collection = collection.search(params[:query])
+      params[:city_ids] = collection.pluck(:city_id).uniq # set the city_ids to the search result
+    elsif params[:city_ids].present?
+      collection = collection.by_city(params[:city_ids])
+    else
+      collection = App::Institution.none
+    end
+    
+    if collection.present?
+      @pagy, @app_institutions = pagy(collection, items: collection.size)
+    else
+      @pagy, @app_institutions = pagy(collection, items_extra: false)
+    end
+    
+
+    @app_cities = App::City.by_client(get_client_id).by_id(collection.pluck(:city_id)).order(:name)
+
     render :index
+
   end
 
   private
@@ -101,5 +116,9 @@ class App::InstitutionsController < ApplicationController
     # Only allow a list of trusted parameters through.
     def app_institution_params
       params.require(:app_institution).permit(:name, :abreviation, :city_id, :image)
+    end
+
+    def set_content_for_sidebar
+      @cities = App::City.by_client(get_client_id).joins(:institutions).distinct.order(:name)
     end
 end

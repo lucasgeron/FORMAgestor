@@ -14,6 +14,9 @@ class App::Institution < ApplicationRecord
   include App::Scopes
   scope :by_city, ->(city_id) { where(city_id: city_id) }
 
+  scope :search, -> (search) { where("LOWER(UNACCENT(name)) LIKE LOWER(UNACCENT(:search)) OR 
+                                      LOWER(UNACCENT(abreviation)) LIKE LOWER(UNACCENT(:search))", search: "%#{search}%") }
+
 
   # Methods
 

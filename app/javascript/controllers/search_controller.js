@@ -22,6 +22,10 @@ export default class extends Controller {
     let element = event.target;
     element.setSelectionRange(element.value.length, element.value.length);
   }
+
+  clearQuery(event) {
+    event.target.closest("form").querySelector('input[name="query"]').value = ""
+  }
   
 
 }

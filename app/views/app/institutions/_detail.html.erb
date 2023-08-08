@@ -1,4 +1,4 @@
-<div class="grid grid-cols-1 xl:grid-cols-4 gap-4">
+<div class="grid grid-cols-1 xl:grid-cols-2 gap-4">
     <div class="">
       <p class=""><%= App::Institution.human_attribute_name('name') %></p>
       <p class="detail-input"><%= app_institution.name%></p>
@@ -23,7 +23,7 @@
 
     <% if app_institution.image.attached? %>
       <%= content_for(:sidebar) do %>
-        <%= image_tag(app_institution.image, class:'object-cover h-52 w-60 rounded-lg')%>
+        <%= image_tag(app_institution.image, class:'object-cover h-52 w-60 rounded-lg  dark:bg-gray-100')%>
       <% end %>
     <% else %>
      <div class="">

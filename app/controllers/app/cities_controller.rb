@@ -8,15 +8,8 @@ class App::CitiesController < ApplicationController
   
   # GET /app/cities or /app/cities.json
   def index
-
-    @pagy,  @app_cities = pagy(App::City.by_client(get_client_id).order(:name), items: 4)
-    @collection_src_url = 'app_cities_url'
-
-    respond_to do |format|
-      format.html  
-      format.turbo_stream 
-    end
-
+    collection = App::City.by_client(get_client_id).order(:name)
+    @pagy,  @app_cities = pagy(collection, items: collection.size)
   end
 
   # GET /app/cities/1 or /app/cities/1.json
@@ -77,22 +70,26 @@ class App::CitiesController < ApplicationController
   #  GET /app/cities/search?query=:query&uf=:status
   def search 
 
-    collection = App::City.by_client(get_client_id)
-    collection = collection.search(params[:query])
-    collection = collection.by_uf(params[:uf]) if params[:uf].present?
-
-    @pagy,  @app_cities = pagy(collection.order(:name), items: 4)
-    @collection_src_url = 'search_app_cities_path'
+    collection = App::City.by_client(get_client_id).order(:name)
     
-    respond_to do |format|
-      format.html do
-        render  "app/cities/index"
-      end
-      format.turbo_stream do
-        render  "app/cities/index",
-                locals: { collection: @app_cities, collection_name: "cities"}
-      end
+    if params[:query].present?  
+      collection = collection.search(params[:query])
+      params[:uf] = collection.pluck(:state).uniq
+    elsif params[:uf].present?
+      collection = collection.by_uf(params[:uf])
+    else
+      collection = App::City.none
     end
+  
+    if collection.present?
+      @pagy,  @app_cities = pagy(collection, items_extra: collection.size) 
+    else
+      @pagy,  @app_cities = pagy(collection, items_extra: false) 
+    end
+    
+    
+    
+    render :index
 
   end
 
