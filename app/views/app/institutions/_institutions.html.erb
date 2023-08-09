@@ -1,4 +1,4 @@
-<turbo-frame id="app_institutions_list" class='gap-4 space-y-4' >
+<div class="gap-4 space-y-4">
 
   <% @app_cities.each do |city| %>
     <% if city.institutions.present? %> <%# ensure that force city ids without institutions will not be render %>
@@ -9,4 +9,4 @@
     <% end %>
   <% end %>
 
-</turbo-frame>
+</div>

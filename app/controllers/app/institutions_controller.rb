@@ -9,14 +9,13 @@ class App::InstitutionsController < ApplicationController
     if current_access_is_user? && get_current_access.vendor && get_current_access.vendor.cities.any?
       @app_cities = get_current_access.vendor.cities.order(:name)
       collection = App::Institution.by_client(get_client_id).by_city(@app_cities.ids).order(:abreviation)
-    else #CODE TO VALIDATE IF THERE'S A VENDOR
+    else
       collection = App::Institution.none
       @app_cities = App::City.none
     end
     @pagy, @app_institutions = set_pagy(collection)
   end
     
-
   # GET /app/institutions/1 or /app/institutions/1.json
   def show
   end
@@ -35,41 +34,36 @@ class App::InstitutionsController < ApplicationController
     @app_institution = App::Institution.new(app_institution_params)
     set_client_id(@app_institution)
 
-    respond_to do |format|
-      if @app_institution.save
-        format.html { redirect_to app_institution_url(@app_institution), notice: "Institution was successfully created." }
-        format.json { render :show, status: :created, location: @app_institution }
-      else
-        format.html { render :new, status: :unprocessable_entity }
-        format.json { render json: @app_institution.errors, status: :unprocessable_entity }
-      end
+    if @app_institution.save
+      flash[:success] = t('views.app.general.flash.create_f', model: App::Institution.model_name.human)
+      redirect_to app_institution_url(@app_institution)
+    else
+      render :new, status: :unprocessable_entity
     end
   end
 
   # PATCH/PUT /app/institutions/1 or /app/institutions/1.json
   def update
-    respond_to do |format|
-      if @app_institution.update(app_institution_params)
-        format.html { redirect_to app_institution_url(@app_institution), notice: "Institution was successfully updated." }
-        format.json { render :show, status: :ok, location: @app_institution }
-      else
-        format.html { render :edit, status: :unprocessable_entity }
-        format.json { render json: @app_institution.errors, status: :unprocessable_entity }
-      end
+    if @app_institution.update(app_institution_params)
+      flash[:success] = t('views.app.general.flash.update_f', model: App::Institution.model_name.human)
+      redirect_to app_institution_url(@app_institution)
+    else
+      render :edit, status: :unprocessable_entity
     end
   end
 
   # DELETE /app/institutions/1 or /app/institutions/1.json
   def destroy
-    @app_institution.destroy
-
-    respond_to do |format|
-      format.html { redirect_to app_institutions_url, notice: "Institution was successfully destroyed." }
-      format.json { head :no_content }
+    if @app_institution.has_dependency?
+      flash[:error] = t('views.app.general.flash.destroy_failed_f', model: App::Institution.model_name.human)
+      redirect_to @app_institution
+    else
+      @app_institution.destroy
+      flash[:success] = t('views.app.general.flash.destroy_f', model: App::Institution.model_name.human)
+      redirect_to app_institutions_url
     end
   end
 
-  
   # DELETE /clients/1/destroy_attachment
   def destroy_attachment
     if @app_institution.image.attached? 
@@ -82,7 +76,7 @@ class App::InstitutionsController < ApplicationController
     end
   end
 
-   #  GET /app/prospects/search?query=:query&status=:status
+   #  GET /app/institutions/search?query=:query&city_ids=:city_ids
    def search 
     
     collection = App::Institution.by_client(get_client_id).order(:abreviation)
@@ -103,7 +97,9 @@ class App::InstitutionsController < ApplicationController
 
   end
 
+
   private
+
     # Use callbacks to share common setup or constraints between actions.
     def set_app_institution
       @app_institution = App::Institution.find(params[:id])
@@ -114,7 +110,9 @@ class App::InstitutionsController < ApplicationController
       params.require(:app_institution).permit(:name, :abreviation, :city_id, :image)
     end
 
-    def set_content_for_sidebar
-      @cities = App::City.by_client(get_client_id).joins(:institutions).distinct.order(:name)
-    end
+  
+  def set_content_for_sidebar
+    @cities = App::City.by_client(get_client_id).joins(:institutions).distinct.order(:name)
+  end
+
 end

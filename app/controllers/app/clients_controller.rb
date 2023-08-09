@@ -5,7 +5,8 @@
 
     # GET /clients or /clients.json
     def index
-      @app_clients = App::Client.all
+      collection = App::Client.all.order(:name)
+      @pagy,  @app_clients = set_pagy(collection)
     end
 
     # GET /clients/1 or /clients/1.json
@@ -66,6 +67,17 @@
         render :edit, status: :unprocessable_entity
       end
     end
+
+    # GET /clients/seach?query=:query?status=:status
+    def search
+      collection = App::Client.all.order(:name)
+      collection = collection.search(params[:query]) if params[:query].present?
+      collection = collection.by_client_status(params[:status]) if params[:status].present?
+      
+      @pagy,  @app_clients = set_pagy(collection)
+      render :index
+    end
+
 
     private
       # Use callbacks to share common setup or constraints between actions.

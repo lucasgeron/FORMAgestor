@@ -138,6 +138,12 @@ pt-BR:
           false: Bloqueado
       app/user:
         active:
+          all: Todos
+          true: Habilitado
+          false: Bloqueado
+      app/client:
+        active:
+          all: Todos
           true: Habilitado
           false: Bloqueado
 

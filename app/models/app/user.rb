@@ -31,5 +31,20 @@ class App::User < ApplicationRecord
 
   # Scopes
   include App::Scopes
-  scope :only_active, -> { where(active: true) }
+  # scope :only_active, -> { where(active: true) }
+  scope :by_user_status, -> (status) do 
+    case status
+    when 'active'
+      where(active: true)
+    when 'not_active'
+      where(active: false)
+    end
+  end
+
+  scope :search, -> (search) { where("LOWER(UNACCENT(email)) LIKE LOWER(UNACCENT(:search))", search: "%#{search}%") }
+
+  # Methods
+  def has_dependency?
+    self.vendor
+  end
 end

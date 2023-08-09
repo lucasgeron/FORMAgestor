@@ -25,5 +25,5 @@
 
 <%# update # %>
 <%= turbo_stream.update "pagy_info" do %>
- <%== pagy_info(@pagy, item_name: App::Prospect.model_name.human(count: @app_prospects.count)) %>
+ <%== pagy_info(@pagy, item_name: App::Prospect.model_name.human(count: @pagy.items)) %>
 <%end%>

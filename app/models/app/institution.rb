@@ -17,6 +17,8 @@ class App::Institution < ApplicationRecord
 
 
   # Methods
-
+  def has_dependency?
+    false
+  end
 
 end

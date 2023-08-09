@@ -37,6 +37,7 @@ Rails.application.routes.draw do
         resources :admins, only: [:update]
         resources :clients do
           delete :destroy_attachment, on: :member
+          get :search, on: :collection
         end
         resources :subscribers, only: [:index]
         resources :updates 
@@ -64,7 +65,9 @@ Rails.application.routes.draw do
       get :search, on: :collection
     end
     
-    resources :users
+    resources :users do
+      get :search, on: :collection
+    end
     resources :subscribers, only: [:create, :destroy]
     resources :updates, only: [:index, :show]
   end

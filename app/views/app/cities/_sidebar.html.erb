@@ -1,6 +1,6 @@
 <div class="" data-controller='search reveal' data-reveal-hidden-class="hidden">
   <div class="detail-input text-xs text-center h-8 -mb-1" id="pagy_info">
-    <%== pagy_info(@pagy, item_name: App::City.model_name.human(count: @app_cities.count)) %>
+    <%== pagy_info(@pagy, item_name: App::City.model_name.human(count: @pagy.items)) %>
   </div>
   
   <%= form_with(url: search_app_cities_path, method: :get,  class:'space-y-1') do |form| %>

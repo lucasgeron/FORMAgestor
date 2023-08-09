@@ -8,8 +8,8 @@
 
     # GET /users or /users.json
     def index
-      @app_users = App::User.by_client(get_client_id)
-      @client_id = get_client_id
+      collection = App::User.by_client(get_client_id).order(:email)
+      @pagy,  @app_users = set_pagy(collection)
     end
 
     # GET /users/1 or /users/1.json
@@ -27,18 +27,16 @@
 
     # GET /users/1/edit
     def edit
-      get_current_access.id == @app_user.id ? true : false
     end
 
     # POST /users or /users.json
     def create
-      
 
       @app_user = App::User.new(user_params)
       set_client_id(@app_user)
 
         if (can_create?(@app_user.active) && @app_user.save )
-            flash[:success] = t('views.app.general.flash.create', model: @app_user.class.model_name.human)
+            flash[:success] = t('views.app.general.flash.create_m', model: @app_user.class.model_name.human)
             redirect_to app_user_url(@app_user)
         else
             render :new, status: :unprocessable_entity
@@ -61,7 +59,7 @@
       end
 
       if updated
-        flash[:success] = "#{t('views.app.general.flash.update', model: @app_user.class.model_name.human)} #{password_updated ? t('views.app.users.flash.password_updated') : t('views.app.users.flash.password_not_updated')}"
+        flash[:success] = "#{t('views.app.general.flash.update_m', model: @app_user.class.model_name.human)} #{password_updated ? t('views.app.users.flash.password_updated') : t('views.app.users.flash.password_not_updated')}"
         
         if current_access_is_same_user?
            sign_out(get_current_access)
@@ -77,10 +75,27 @@
 
     # DELETE /users/1 or /users/1.json
     def destroy
-      @app_user.destroy
+      if @app_user.has_dependency?
+        flash[:error] = t('views.app.general.flash.destroy_failed_m', model:  App::User.model_name.human)
+        redirect_to @app_user
+      else
+        @app_user.destroy
+        flash[:success] = t('views.app.general.flash.destroy_m', model:  App::User.model_name.human)
+        redirect_to app_users_url 
+      end
+    end
 
-      flash[:success] = t('views.app.general.flash.destroy', model: @app_user.class.model_name.human)
-      redirect_to app_users_url 
+    # GET /users/search?query=:query?status=:status
+    def search
+      
+      collection = App::User.by_client(get_client_id).order(:email)
+      
+      collection = collection.search(params[:query]) if params[:query].present?
+      collection = collection.by_user_status(params[:status]) if params[:status].present?
+      
+
+      @pagy,  @app_users = set_pagy(collection)
+      render :index
     end
 
     private

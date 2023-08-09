@@ -18,22 +18,35 @@ class App::Client < ApplicationRecord
   validates :slug, uniqueness: true
 
   # Scopes
-  scope :only_active, -> { where(active: true) }
+  # scope :only_active, -> { where(active: true) }
   # scope :inactive, -> { where(status: false) }
+  scope :by_client_status, -> (status) do 
+    case status
+    when 'active'
+      where(active: true)
+    when 'not_active'
+      where(active: false)
+    end
+  end
+
+  scope :search, -> (search) { where("LOWER(UNACCENT(name)) LIKE LOWER(UNACCENT(:search)) OR 
+                                      LOWER(UNACCENT(cnpj)) LIKE LOWER(UNACCENT(:search))", search: "%#{search}%") }
 
   
   # Methods
   def available_licenses
-    self.licenses - self.users.only_active.count
+    self.licenses - self.users.by_user_status('active').count
   end
 
   def used_licenses
-    self.users.only_active.count
+    self.users.by_user_status('active').count
   end
 
   # generate slug based on name
   def generate_slug
     self.slug = name.parameterize
   end
+
+
 
 end
