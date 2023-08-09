@@ -1,12 +1,12 @@
-<div class="gap-4 space-y-4">
 
-  <% @app_cities.each do |city| %>
-    <% if city.institutions.present? %> <%# ensure that force city ids without institutions will not be render %>
+<% @app_cities.each do |city| %>
+  <% if city.institutions.present? %> <%# ensure that force city ids without institutions will not be render %>
+    <div class="sticky-1">
       <p class="font-bold text-2xl" data-aos='fade'> <%= city.name %> </p>
-      <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-3 2xl:grid-cols-4 gap-4">
-        <%= render(@app_institutions.by_city(city)) %>
-      </div>
-    <% end %>
-  <% end %>
+    </div>
 
-</div>
+    <div class="default-grid">
+      <%= render(@app_institutions.by_city(city)) %>
+    </div>
+  <% end %>
+<% end %>

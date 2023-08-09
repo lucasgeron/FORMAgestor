@@ -1,0 +1,3545 @@
+           
+
+(1..1).each_with_index do |index|
+
+
+p App::Course.create(client_id: index, 
+                    name: "Filosofia", 
+                    duration: "6", 
+                    institution: App::Institution.where(name: "Pontifícia Universidade Católica do Paraná",
+                                                  city_id: App::City.by_client(index).where(name:'Maringá').first().id).first())
+                      
+p App::Course.create(client_id: index, 
+                    name: "Produção Audiovisual", 
+                    duration: "4", 
+                    institution: App::Institution.where(name: "Centro Universitário de Cascavel",
+                                                city_id: App::City.by_client(index).where(name:'Cascavel').first().id).first())
+p App::Course.create(client_id: index, 
+                    name: "Engenharia de Produção", 
+                    duration: "5", 
+                    institution: App::Institution.where(name: "Universidade Tecnológica Federal do Paraná",
+                                                  city_id: App::City.by_client(index).where(name:'Londrina').first().id).first())
+p App::Course.create(client_id: index, 
+                    name: "Química", 
+                    duration: "8", 
+                    institution: App::Institution.where(name: "Universidade Tecnológica Federal do Paraná",
+                                                  city_id: App::City.by_client(index).where(name:'Londrina').first().id).first())
+p App::Course.create(client_id: index, 
+                    name: "Engenharia Civil", 
+                    duration: "10", 
+                    institution: App::Institution.where(name: "Centro Universitário Fundação Assis Gurgacz",
+                                                city_id: App::City.by_client(index).where(name:'Cascavel').first().id).first())
+p App::Course.create(client_id: index, 
+                    name: "Publicidade e Propaganda", 
+                    duration: "8", 
+                    institution: App::Institution.where(name: "Centro Universitário Fundação Assis Gurgacz",
+                                                city_id: App::City.by_client(index).where(name:'Cascavel').first().id).first())
+p App::Course.create(client_id: index, 
+                    name: "Ciências Contábeis", 
+                    duration: "8", 
+                    institution: App::Institution.where(name: "Centro Universitário de Pato Branco",
+                                                city_id: App::City.by_client(index).where(name:'Pato Branco').first().id).first())
+p App::Course.create(client_id: index, 
+                    name: "Pedagogia", 
+                    duration: "8", 
+                    institution: App::Institution.where(name: "Universidade Estadual de Ponta Grossa",
+                                                city_id: App::City.by_client(index).where(name:'Ponta Grossa').first().id).first())
+p App::Course.create(client_id: index, 
+                    name: "Medicina Veterinária Noturno", 
+                    duration: "10", 
+                    institution: App::Institution.where(name: "Centro Universitário de Cascavel",
+                                                city_id: App::City.by_client(index).where(name:'Cascavel').first().id).first())
+p App::Course.create(client_id: index, 
+                    name: "Medicina Veterinária Matutino", 
+                    duration: "10", 
+                    institution: App::Institution.where(name: "Centro Universitário de Cascavel",
+                                                city_id: App::City.by_client(index).where(name:'Cascavel').first().id).first())
+p App::Course.create(client_id: index, 
+                    name: "Engenharia Civil", 
+                    duration: "10", 
+                    institution: App::Institution.where(name: "Universidade Cesumar",
+                                                city_id: App::City.by_client(index).where(name:'Ponta Grossa').first().id).first())
+p App::Course.create(client_id: index, 
+                    name: "Enfermagem", 
+                    duration: "10", 
+                    institution: App::Institution.where(name: "Faculdade de Telêmaco Borba",
+                                                city_id: App::City.by_client(index).where(name:'Telêmaco Borba').first().id).first())
+p App::Course.create(client_id: index, 
+                    name: "Odontologia", 
+                    duration: "9", 
+                    institution: App::Institution.where(name: "Centro Universitário de Pato Branco",
+                                                city_id: App::City.by_client(index).where(name:'Pato Branco').first().id).first())
+p App::Course.create(client_id: index, 
+                    name: "Ciências Contábeis", 
+                    duration: "10", 
+                    institution: App::Institution.where(name: "Universidade Estadual do Oeste do Paraná",
+                                                  city_id: App::City.by_client(index).where(name:'Cascavel').first().id).first())
+p App::Course.create(client_id: index, 
+                    name: "T.A.D.S", 
+                    duration: "6", 
+                    institution: App::Institution.where(name: "Universidade Cesumar",
+                                                city_id: App::City.by_client(index).where(name:'Ponta Grossa').first().id).first())
+p App::Course.create(client_id: index, 
+                    name: "Engenharia Civil", 
+                    duration: "10", 
+                    institution: App::Institution.where(name: "Faculdade de Telêmaco Borba",
+                                                city_id: App::City.by_client(index).where(name:'Telêmaco Borba').first().id).first())
+p App::Course.create(client_id: index, 
+                    name: "Psicologia", 
+                    duration: "10", 
+                    institution: App::Institution.where(name: "Centro Universitário de Pato Branco",
+                                                city_id: App::City.by_client(index).where(name:'Pato Branco').first().id).first())
+p App::Course.create(client_id: index, 
+                    name: "Sistemas para Internet", 
+                    duration: "6", 
+                    institution: App::Institution.where(name: "Universidade Tecnológica Federal do Paraná",
+                                                  city_id: App::City.by_client(index).where(name:'Toledo').first().id).first())
+p App::Course.create(client_id: index, 
+                    name: "Educação Física", 
+                    duration: "8", 
+                    institution: App::Institution.where(name: "Universidade Paranaense",
+                                                city_id: App::City.by_client(index).where(name:'Umuarama').first().id).first())
+p App::Course.create(client_id: index, 
+                    name: "Ciências Contábeis", 
+                    duration: "8", 
+                    institution: App::Institution.where(name: "Pontifícia Universidade Católica do Paraná",
+                                                  city_id: App::City.by_client(index).where(name:'Toledo').first().id).first())
+p App::Course.create(client_id: index, 
+                    name: "Filosofia", 
+                    duration: "8", 
+                    institution: App::Institution.where(name: "Universidade Estadual do Paraná",
+                                                  city_id: App::City.by_client(index).where(name:'União da Vitória').first().id).first())
+p App::Course.create(client_id: index, 
+                    name: "Psicologia", 
+                    duration: "10", 
+                    institution: App::Institution.where(name: "Universidade Paranaense",
+                                                city_id: App::City.by_client(index).where(name:'Umuarama').first().id).first())
+p App::Course.create(client_id: index, 
+                    name: "Engenharia Elétrica", 
+                    duration: "10", 
+                    institution: App::Institution.where(name: "Centro Universitário Campo Real",
+                                                city_id: App::City.by_client(index).where(name:'Guarapuava').first().id).first())
+p App::Course.create(client_id: index, 
+                    name: "Nutrição", 
+                    duration: "8", 
+                    institution: App::Institution.where(name: "Centro de Ensino Superior dos Campos Gerais",
+                                                city_id: App::City.by_client(index).where(name:'Ponta Grossa').first().id).first())
+p App::Course.create(client_id: index, 
+                    name: "Fotografia", 
+                    duration: "4", 
+                    institution: App::Institution.where(name: "Centro Universitário Fundação Assis Gurgacz",
+                                                city_id: App::City.by_client(index).where(name:'Cascavel').first().id).first())
+p App::Course.create(client_id: index, 
+                    name: "Processos Gerenciais", 
+                    duration: "4", 
+                    institution: App::Institution.where(name: "Centro Universitário Fundação Assis Gurgacz",
+                                                city_id: App::City.by_client(index).where(name:'Toledo').first().id).first())
+p App::Course.create(client_id: index, 
+                    name: "Engenharia de Software", 
+                    duration: "8", 
+                    institution: App::Institution.where(name: "Universidade Tecnológica Federal do Paraná",
+                                                  city_id: App::City.by_client(index).where(name:'Cornélio Procópio').first().id).first())
+p App::Course.create(client_id: index, 
+                    name: "Agronegócio", 
+                    duration: "6", 
+                    institution: App::Institution.where(name: "Faculdade de Tecnologia do Vale do Ivaí",
+                                                  city_id: App::City.by_client(index).where(name:'Ivaiporã').first().id).first())
+p App::Course.create(client_id: index, 
+                    name: "T.A.D.S", 
+                    duration: "6", 
+                    institution: App::Institution.where(name: "Universidade Paranaense",
+                                                city_id: App::City.by_client(index).where(name:'Toledo').first().id).first())
+p App::Course.create(client_id: index, 
+                    name: "Farmácia", 
+                    duration: "10", 
+                    institution: App::Institution.where(name: "Centro Universitário UNISEP - União de Ensino do Sudoeste do Paraná",
+                                                  city_id: App::City.by_client(index).where(name:'Dois Vizinhos').first().id).first())
+p App::Course.create(client_id: index, 
+                    name: "Engenharia de Software", 
+                    duration: "8", 
+                    institution: App::Institution.where(name: "Centro Universitário Campo Real",
+                                                city_id: App::City.by_client(index).where(name:'Guarapuava').first().id).first())
+p App::Course.create(client_id: index, 
+                    name: "Produção Audiovisual", 
+                    duration: "4", 
+                    institution: App::Institution.where(name: "Centro Universitário de União da Vitória",
+                                                  city_id: App::City.by_client(index).where(name:'São Mateus do Sul').first().id).first())
+p App::Course.create(client_id: index, 
+                    name: "Ciências Contábeis", 
+                    duration: "8", 
+                    institution: App::Institution.where(name: "Universidade Estadual do Centro Oeste",
+                                                  city_id: App::City.by_client(index).where(name:'Prudentópolis').first().id).first())
+p App::Course.create(client_id: index, 
+                    name: "Ciência da Computação", 
+                    duration: "8", 
+                    institution: App::Institution.where(name: "Universidade Estadual do Centro Oeste",
+                                                        abreviation:'CEDETEG',
+                                                  city_id: App::City.by_client(index).where(name:'Guarapuava').first().id).first())
+p App::Course.create(client_id: index, 
+                    name: "Biomedicina", 
+                    duration: "8", 
+                    institution: App::Institution.where(name: "Centro Universitário Mater Dei",
+                                                city_id: App::City.by_client(index).where(name:'Pato Branco').first().id).first())
+p App::Course.create(client_id: index, 
+                    name: "Engenharia Civil", 
+                    duration: "10", 
+                    institution: App::Institution.where(name: "Universidade Paranaense",
+                                                city_id: App::City.by_client(index).where(name:'Guaíra').first().id).first())
+p App::Course.create(client_id: index, 
+                    name: "Logística", 
+                    duration: "4", 
+                    institution: App::Institution.where(name: "Faculdade de Tecnologia do Vale do Ivaí",
+                                                  city_id: App::City.by_client(index).where(name:'Ivaiporã').first().id).first())
+p App::Course.create(client_id: index, 
+                    name: "Processos Gerenciais", 
+                    duration: "4", 
+                    institution: App::Institution.where(name: "Faculdade de Tecnologia do Vale do Ivaí",
+                                                  city_id: App::City.by_client(index).where(name:'Ivaiporã').first().id).first())
+p App::Course.create(client_id: index, 
+                    name: "Psicologia", 
+                    duration: "10", 
+                    institution: App::Institution.where(name: "Faculdade de Tecnologia do Vale do Ivaí",
+                                                  city_id: App::City.by_client(index).where(name:'Ivaiporã').first().id).first())
+p App::Course.create(client_id: index, 
+                    name: "Recursos Humanos", 
+                    duration: "4", 
+                    institution: App::Institution.where(name: "Faculdade de Tecnologia do Vale do Ivaí",
+                                                  city_id: App::City.by_client(index).where(name:'Ivaiporã').first().id).first())
+p App::Course.create(client_id: index, 
+                    name: "Psicologia", 
+                    duration: "10", 
+                    institution: App::Institution.where(name: "Universidade Paranaense",
+                                                city_id: App::City.by_client(index).where(name:'Toledo').first().id).first())
+p App::Course.create(client_id: index, 
+                    name: "Design", 
+                    duration: "8", 
+                    institution: App::Institution.where(name: "Universidade Tecnológica Federal do Paraná",
+                                                  city_id: App::City.by_client(index).where(name:'Curitiba').first().id).first())
+p App::Course.create(client_id: index, 
+                    name: "Letras Português/Inglês", 
+                    duration: "8", 
+                    institution: App::Institution.where(name: "Centro Universitário Fundação Assis Gurgacz",
+                                                city_id: App::City.by_client(index).where(name:'Cascavel').first().id).first())
+p App::Course.create(client_id: index, 
+                    name: "Psicologia Matutino", 
+                    duration: "10", 
+                    institution: App::Institution.where(name: "Centro Universitário de Cascavel",
+                                                city_id: App::City.by_client(index).where(name:'Cascavel').first().id).first())
+p App::Course.create(client_id: index, 
+                    name: "Psicologia Noturno", 
+                    duration: "10", 
+                    institution: App::Institution.where(name: "Centro Universitário de Cascavel",
+                                                city_id: App::City.by_client(index).where(name:'Cascavel').first().id).first())
+p App::Course.create(client_id: index, 
+                    name: "Letras - Língua Portuguesa e Libras", 
+                    duration: "8", 
+                    institution: App::Institution.where(name: "Centro Universitário Fundação Assis Gurgacz",
+                                                city_id: App::City.by_client(index).where(name:'Toledo').first().id).first())
+p App::Course.create(client_id: index, 
+                    name: "Fisioterapia", 
+                    duration: "10", 
+                    institution: App::Institution.where(name: "Universidade Paranaense",
+                                                city_id: App::City.by_client(index).where(name:'Umuarama').first().id).first())
+p App::Course.create(client_id: index, 
+                    name: "Letras Portugues e Inglês", 
+                    duration: "8", 
+                    institution: App::Institution.where(name: "Universidade Tecnológica Federal do Paraná",
+                                                  city_id: App::City.by_client(index).where(name:'Pato Branco').first().id).first())
+p App::Course.create(client_id: index, 
+                    name: "Comunicação Organizacional", 
+                    duration: "8", 
+                    institution: App::Institution.where(name: "Universidade Tecnológica Federal do Paraná",
+                                                  city_id: App::City.by_client(index).where(name:'Curitiba').first().id).first())
+p App::Course.create(client_id: index, 
+                    name: "Enfermagem", 
+                    duration: "10", 
+                    institution: App::Institution.where(name: "Universidade Estadual do Oeste do Paraná",
+                                                  city_id: App::City.by_client(index).where(name:'Cascavel').first().id).first())
+p App::Course.create(client_id: index, 
+                    name: "Sistemas para Internet", 
+                    duration: "6", 
+                    institution: App::Institution.where(name: "Universidade Tecnológica Federal do Paraná",
+                                                  city_id: App::City.by_client(index).where(name:'Guarapuava').first().id).first())
+p App::Course.create(client_id: index, 
+                    name: "Ciências Contábeis", 
+                    duration: "8", 
+                    institution: App::Institution.where(name: "Centro Universitário Campo Real",
+                                                city_id: App::City.by_client(index).where(name:'Irati').first().id).first())
+p App::Course.create(client_id: index, 
+                    name: "Zootecnia", 
+                    duration: "10", 
+                    institution: App::Institution.where(name: "Universidade Tecnológica Federal do Paraná",
+                                                  city_id: App::City.by_client(index).where(name:'Dois Vizinhos').first().id).first())
+p App::Course.create(client_id: index, 
+                    name: "Letras Inglês", 
+                    duration: "8", 
+                    institution: App::Institution.where(name: "Universidade Estadual do Centro Oeste",
+                                                  city_id: App::City.by_client(index).where(name:'Irati').first().id).first())
+p App::Course.create(client_id: index, 
+                    name: "Farmácia", 
+                    duration: "10", 
+                    institution: App::Institution.where(name: "Universidade Estadual de Ponta Grossa",
+                                                city_id: App::City.by_client(index).where(name:'Ponta Grossa').first().id).first())
+p App::Course.create(client_id: index, 
+                    name: "Geografia", 
+                    duration: "8", 
+                    institution: App::Institution.where(name: "Universidade Estadual do Oeste do Paraná",
+                                                  city_id: App::City.by_client(index).where(name:'Francisco Beltrão').first().id).first())
+p App::Course.create(client_id: index, 
+                    name: "Agronomia", 
+                    duration: "10", 
+                    institution: App::Institution.where(name: "Centro Universitário Campo Real",
+                                                city_id: App::City.by_client(index).where(name:'Irati').first().id).first())
+p App::Course.create(client_id: index, 
+                    name: "Engenharia Civil", 
+                    duration: "10", 
+                    institution: App::Institution.where(name: "Faculdade Guarapuava",
+                                                city_id: App::City.by_client(index).where(name:'Guarapuava').first().id).first())
+p App::Course.create(client_id: index, 
+                    name: "Administração", 
+                    duration: "8", 
+                    institution: App::Institution.where(name: "Centro Universitário Fundação Assis Gurgacz",
+                                                city_id: App::City.by_client(index).where(name:'Toledo').first().id).first())
+p App::Course.create(client_id: index, 
+                    name: "Direito", 
+                    duration: "10", 
+                    institution: App::Institution.where(name: "Universidade Paranaense",
+                                                city_id: App::City.by_client(index).where(name:'Guaíra').first().id).first())
+p App::Course.create(client_id: index, 
+                    name: "Engenharia de Materias", 
+                    duration: "10", 
+                    institution: App::Institution.where(name: "Universidade Estadual de Ponta Grossa",
+                                                city_id: App::City.by_client(index).where(name:'Ponta Grossa').first().id).first())
+p App::Course.create(client_id: index, 
+                    name: "Engenharia de Materias", 
+                    duration: "10", 
+                    institution: App::Institution.where(name: "Universidade Tecnológica Federal do Paraná",
+                                                  city_id: App::City.by_client(index).where(name:'Londrina').first().id).first())
+p App::Course.create(client_id: index, 
+                    name: "Medicina Veterinária", 
+                    duration: "10", 
+                    institution: App::Institution.where(name: "Faculdade Guarapuava",
+                                                city_id: App::City.by_client(index).where(name:'Guarapuava').first().id).first())
+p App::Course.create(client_id: index, 
+                    name: "Direito", 
+                    duration: "10", 
+                    institution: App::Institution.where(name: "Universidade Estadual de Ponta Grossa",
+                                                city_id: App::City.by_client(index).where(name:'Ponta Grossa').first().id).first())
+p App::Course.create(client_id: index, 
+                    name: "Enfermagem", 
+                    duration: "10", 
+                    institution: App::Institution.where(name: "Universidade Paranaense",
+                                                city_id: App::City.by_client(index).where(name:'Umuarama').first().id).first())
+p App::Course.create(client_id: index, 
+                    name: "Libras - Segunda Licenciatura", 
+                    duration: "1", 
+                    institution: App::Institution.where(name: "Centro Universitário Fundação Assis Gurgacz",
+                                                city_id: App::City.by_client(index).where(name:'Toledo').first().id).first())
+p App::Course.create(client_id: index, 
+                    name: "Ciências Econômicas", 
+                    duration: "8", 
+                    institution: App::Institution.where(name: "Universidade Estadual do Centro Oeste",
+                                                        abreviation:'SANTA CRUZ',
+                                                  city_id: App::City.by_client(index).where(name:'Guarapuava').first().id).first())
+p App::Course.create(client_id: index, 
+                    name: "Odontologia", 
+                    duration: "5", 
+                    institution: App::Institution.where(name: "Faculdades Integradas do Vale do Ivaí",
+                                                  city_id: App::City.by_client(index).where(name:'Ivaiporã').first().id).first())
+p App::Course.create(client_id: index, 
+                    name: "Odontologia", 
+                    duration: "8", 
+                    institution: App::Institution.where(name: "Centro de Ensino Superior dos Campos Gerais",
+                                                city_id: App::City.by_client(index).where(name:'Ponta Grossa').first().id).first())
+p App::Course.create(client_id: index, 
+                    name: "Pedagogia", 
+                    duration: "8", 
+                    institution: App::Institution.where(name: "Universidade Estadual do Centro Oeste",
+                                                  city_id: App::City.by_client(index).where(name:'Chopinzinho').first().id).first())
+p App::Course.create(client_id: index, 
+                    name: "Artes Visuais", 
+                    duration: "8", 
+                    institution: App::Institution.where(name: "Universidade Estadual de Ponta Grossa",
+                                                city_id: App::City.by_client(index).where(name:'Ponta Grossa').first().id).first())
+p App::Course.create(client_id: index, 
+                    name: "Administração", 
+                    duration: "8", 
+                    institution: App::Institution.where(name: "Universidade Estadual do Centro Oeste",
+                                                  city_id: App::City.by_client(index).where(name:'Irati').first().id).first())
+p App::Course.create(client_id: index, 
+                    name: "Letras Português/Inglês", 
+                    duration: "8", 
+                    institution: App::Institution.where(name: "Universidade Estadual de Ponta Grossa",
+                                                city_id: App::City.by_client(index).where(name:'Ponta Grossa').first().id).first())
+p App::Course.create(client_id: index, 
+                    name: "Engenharia da Computação", 
+                    duration: "10", 
+                    institution: App::Institution.where(name: "Universidade Estadual de Ponta Grossa",
+                                                city_id: App::City.by_client(index).where(name:'Ponta Grossa').first().id).first())
+p App::Course.create(client_id: index, 
+                    name: "Engenharia de Produção", 
+                    duration: "5", 
+                    institution: App::Institution.where(name: "Universidade Tecnológica Federal do Paraná",
+                                                  city_id: App::City.by_client(index).where(name:'Ponta Grossa').first().id).first())
+p App::Course.create(client_id: index, 
+                    name: "Enfermagem", 
+                    duration: "10", 
+                    institution: App::Institution.where(name: "Faculdades Integradas do Vale do Ivaí",
+                                                  city_id: App::City.by_client(index).where(name:'Ivaiporã').first().id).first())
+p App::Course.create(client_id: index, 
+                    name: "Serviço Social", 
+                    duration: "8", 
+                    institution: App::Institution.where(name: "Universidade Estadual do Centro Oeste",
+                                                        abreviation:'SANTA CRUZ',
+                                                  city_id: App::City.by_client(index).where(name:'Guarapuava').first().id).first())
+p App::Course.create(client_id: index, 
+                    name: "Engenharia Mecânica", 
+                    duration: "10", 
+                    institution: App::Institution.where(name: "Universidade Tecnológica Federal do Paraná",
+                                                  city_id: App::City.by_client(index).where(name:'Guarapuava').first().id).first())
+p App::Course.create(client_id: index, 
+                    name: "Ciências da Computação", 
+                    duration: "8", 
+                    institution: App::Institution.where(name: "Universidade Tecnológica Federal do Paraná",
+                                                  city_id: App::City.by_client(index).where(name:'Santa Helena').first().id).first())
+p App::Course.create(client_id: index, 
+                    name: "Engenharia de Alimentos", 
+                    duration: "10", 
+                    institution: App::Institution.where(name: "Universidade Estadual de Ponta Grossa",
+                                                city_id: App::City.by_client(index).where(name:'Ponta Grossa').first().id).first())
+p App::Course.create(client_id: index, 
+                    name: "Administração", 
+                    duration: "8", 
+                    institution: App::Institution.where(name: "Universidade Cesumar",
+                                                city_id: App::City.by_client(index).where(name:'Ponta Grossa').first().id).first())
+p App::Course.create(client_id: index, 
+                    name: "T.A.D.S", 
+                    duration: "6", 
+                    institution: App::Institution.where(name: "Centro Universitário de Cascavel",
+                                                city_id: App::City.by_client(index).where(name:'Cascavel').first().id).first())
+p App::Course.create(client_id: index, 
+                    name: "Administração", 
+                    duration: "8", 
+                    institution: App::Institution.where(name: "Universidade Estadual do Centro Oeste",
+                                                  city_id: App::City.by_client(index).where(name:'Chopinzinho').first().id).first())
+p App::Course.create(client_id: index, 
+                    name: "Engenharia Civil", 
+                    duration: "10", 
+                    institution: App::Institution.where(name: "Universidade Paranaense",
+                                                city_id: App::City.by_client(index).where(name:'Cascavel').first().id).first())
+p App::Course.create(client_id: index, 
+                    name: "T.A.D.S", 
+                    duration: "6", 
+                    institution: App::Institution.where(name: "Universidade Tecnológica Federal do Paraná",
+                                                  city_id: App::City.by_client(index).where(name:'Cornélio Procópio').first().id).first())
+p App::Course.create(client_id: index, 
+                    name: "Engenharia de Produção", 
+                    duration: "10", 
+                    institution: App::Institution.where(name: "Faculdade Sagrada Familia",
+                                                city_id: App::City.by_client(index).where(name:'Ponta Grossa').first().id).first())
+p App::Course.create(client_id: index, 
+                    name: "Engenharia Civil", 
+                    duration: "10", 
+                    institution: App::Institution.where(name: "Centro Universitário Campo Real",
+                                                city_id: App::City.by_client(index).where(name:'Guarapuava').first().id).first())
+p App::Course.create(client_id: index, 
+                    name: "Psicologia", 
+                    duration: "10", 
+                    institution: App::Institution.where(name: "Centro Universitário Campo Real",
+                                                city_id: App::City.by_client(index).where(name:'Guarapuava').first().id).first())
+p App::Course.create(client_id: index, 
+                    name: "Gestão Ambiental", 
+                    duration: "6", 
+                    institution: App::Institution.where(name: "Universidade Tecnológica Federal do Paraná",
+                                                  city_id: App::City.by_client(index).where(name:'Medianeira').first().id).first())
+p App::Course.create(client_id: index, 
+                    name: "Filosofia", 
+                    duration: "8", 
+                    institution: App::Institution.where(name: "Universidade Estadual do Centro Oeste",
+                                                        abreviation:'SANTA CRUZ',
+                                                  city_id: App::City.by_client(index).where(name:'Guarapuava').first().id).first())
+p App::Course.create(client_id: index, 
+                    name: "Engenharia Civil", 
+                    duration: "10", 
+                    institution: App::Institution.where(name: "Universidade Tecnológica Federal do Paraná",
+                                                  city_id: App::City.by_client(index).where(name:'Pato Branco').first().id).first())
+p App::Course.create(client_id: index, 
+                    name: "Ciência da Computação", 
+                    duration: "8", 
+                    institution: App::Institution.where(name: "Universidade Estadual do Oeste do Paraná",
+                                                  city_id: App::City.by_client(index).where(name:'Foz do Iguaçu').first().id).first())
+p App::Course.create(client_id: index, 
+                    name: "Arquitetura e Urbanismo", 
+                    duration: "10", 
+                    institution: App::Institution.where(name: "Universidade Paranaense",
+                                                city_id: App::City.by_client(index).where(name:'Francisco Beltrão').first().id).first())
+p App::Course.create(client_id: index, 
+                    name: "Fonoaudiologia", 
+                    duration: "8", 
+                    institution: App::Institution.where(name: "Universidade Estadual do Centro Oeste",
+                                                  city_id: App::City.by_client(index).where(name:'Irati').first().id).first())
+p App::Course.create(client_id: index, 
+                    name: "Fisioterapia", 
+                    duration: "10", 
+                    institution: App::Institution.where(name: "Centro de Ensino Superior dos Campos Gerais",
+                                                city_id: App::City.by_client(index).where(name:'Ponta Grossa').first().id).first())
+p App::Course.create(client_id: index, 
+                    name: "Pedagogia", 
+                    duration: "8", 
+                    institution: App::Institution.where(name: "Universidade Estadual do Centro Oeste",
+                                                  city_id: App::City.by_client(index).where(name:'Prudentópolis').first().id).first())
+p App::Course.create(client_id: index, 
+                    name: "Psicologia", 
+                    duration: "10", 
+                    institution: App::Institution.where(name: "Faculdade de Telêmaco Borba",
+                                                city_id: App::City.by_client(index).where(name:'Telêmaco Borba').first().id).first())
+p App::Course.create(client_id: index, 
+                    name: "Enfermagem", 
+                    duration: "10", 
+                    institution: App::Institution.where(name: "Universidade Paranaense",
+                                                city_id: App::City.by_client(index).where(name:'Cianorte').first().id).first())
+p App::Course.create(client_id: index, 
+                    name: "Psicologia", 
+                    duration: "10", 
+                    institution: App::Institution.where(name: "Universidade Paranaense",
+                                                city_id: App::City.by_client(index).where(name:'Cascavel').first().id).first())
+p App::Course.create(client_id: index, 
+                    name: "Fisioterapia", 
+                    duration: "10", 
+                    institution: App::Institution.where(name: "Centro Universitário UNISEP - União de Ensino do Sudoeste do Paraná",
+                                                  city_id: App::City.by_client(index).where(name:'Dois Vizinhos').first().id).first())
+p App::Course.create(client_id: index, 
+                    name: "Engenharia de Computação", 
+                    duration: "10", 
+                    institution: App::Institution.where(name: "Universidade Tecnológica Federal do Paraná",
+                                                  city_id: App::City.by_client(index).where(name:'Pato Branco').first().id).first())
+p App::Course.create(client_id: index, 
+                    name: "Biomedicina", 
+                    duration: "8", 
+                    institution: App::Institution.where(name: "Uniguairacá Centro Universitário",
+                                                city_id: App::City.by_client(index).where(name:'Guarapuava').first().id).first())
+p App::Course.create(client_id: index, 
+                    name: "Direito", 
+                    duration: "10", 
+                    institution: App::Institution.where(name: "Universidade Paranaense",
+                                                city_id: App::City.by_client(index).where(name:'Cianorte').first().id).first())
+p App::Course.create(client_id: index, 
+                    name: "Engenharia de Computação", 
+                    duration: "10", 
+                    institution: App::Institution.where(name: "Universidade Tecnológica Federal do Paraná",
+                                                  city_id: App::City.by_client(index).where(name:'Curitiba').first().id).first())
+p App::Course.create(client_id: index, 
+                    name: "T.A.D.S", 
+                    duration: "6", 
+                    institution: App::Institution.where(name: "Universidade Tecnológica Federal do Paraná",
+                                                  city_id: App::City.by_client(index).where(name:'Pato Branco').first().id).first())
+p App::Course.create(client_id: index, 
+                    name: "Ciências Contábeis", 
+                    duration: "8", 
+                    institution: App::Institution.where(name: "Universidade Paranaense",
+                                                city_id: App::City.by_client(index).where(name:'Francisco Beltrão').first().id).first())
+p App::Course.create(client_id: index, 
+                    name: "Fabricação Mecânica", 
+                    duration: "6", 
+                    institution: App::Institution.where(name: "Universidade Tecnológica Federal do Paraná",
+                                                  city_id: App::City.by_client(index).where(name:'Ponta Grossa').first().id).first())
+p App::Course.create(client_id: index, 
+                    name: "Radiologia", 
+                    duration: "6", 
+                    institution: App::Institution.where(name: "Centro de Ensino Superior dos Campos Gerais",
+                                                city_id: App::City.by_client(index).where(name:'Ponta Grossa').first().id).first())
+p App::Course.create(client_id: index, 
+                    name: "Fisioterapia", 
+                    duration: "10", 
+                    institution: App::Institution.where(name: "Centro Universitário UNISEP - União de Ensino do Sudoeste do Paraná",
+                                                  city_id: App::City.by_client(index).where(name:'Francisco Beltrão').first().id).first())
+p App::Course.create(client_id: index, 
+                    name: "Engenharia Civil", 
+                    duration: "10", 
+                    institution: App::Institution.where(name: "Universidade Paranaense",
+                                                city_id: App::City.by_client(index).where(name:'Umuarama').first().id).first())
+p App::Course.create(client_id: index, 
+                    name: "Ciências Contábeis", 
+                    duration: "8", 
+                    institution: App::Institution.where(name: "Universidade Tecnológica Federal do Paraná",
+                                                  city_id: App::City.by_client(index).where(name:'Pato Branco').first().id).first())
+p App::Course.create(client_id: index, 
+                    name: "Engenharia Mecânica", 
+                    duration: "10", 
+                    institution: App::Institution.where(name: "Universidade Tecnológica Federal do Paraná",
+                                                  city_id: App::City.by_client(index).where(name:'Pato Branco').first().id).first())
+p App::Course.create(client_id: index, 
+                    name: "Administração", 
+                    duration: "8", 
+                    institution: App::Institution.where(name: "Centro Sulamericano de Ensino Superior",
+                                                city_id: App::City.by_client(index).where(name:'Francisco Beltrão').first().id).first())
+p App::Course.create(client_id: index, 
+                    name: "Medicina Veterinária", 
+                    duration: "10", 
+                    institution: App::Institution.where(name: "Centro Universitário UNISEP - União de Ensino do Sudoeste do Paraná",
+                                                  city_id: App::City.by_client(index).where(name:'Dois Vizinhos').first().id).first())
+p App::Course.create(client_id: index, 
+                    name: "Psicologia", 
+                    duration: "10", 
+                    institution: App::Institution.where(name: "Centro Universitário Mater Dei",
+                                                city_id: App::City.by_client(index).where(name:'Pato Branco').first().id).first())
+p App::Course.create(client_id: index, 
+                    name: "Administração", 
+                    duration: "8", 
+                    institution: App::Institution.where(name: "Pontifícia Universidade Católica do Paraná",
+                                                  city_id: App::City.by_client(index).where(name:'Toledo').first().id).first())
+p App::Course.create(client_id: index, 
+                    name: "Direito", 
+                    duration: "10", 
+                    institution: App::Institution.where(name: "Universidade Paranaense",
+                                                city_id: App::City.by_client(index).where(name:'Umuarama').first().id).first())
+p App::Course.create(client_id: index, 
+                    name: "Jornalismo", 
+                    duration: "8", 
+                    institution: App::Institution.where(name: "Centro Universitário Fundação Assis Gurgacz",
+                                                city_id: App::City.by_client(index).where(name:'Cascavel').first().id).first())
+p App::Course.create(client_id: index, 
+                    name: "Geografia", 
+                    duration: "8", 
+                    institution: App::Institution.where(name: "Universidade Estadual do Paraná",
+                                                  city_id: App::City.by_client(index).where(name:'União da Vitória').first().id).first())
+p App::Course.create(client_id: index, 
+                    name: "Engenharia Eletrônica", 
+                    duration: "10", 
+                    institution: App::Institution.where(name: "Universidade Tecnológica Federal do Paraná",
+                                                  city_id: App::City.by_client(index).where(name:'Campo Mourão').first().id).first())
+p App::Course.create(client_id: index, 
+                    name: "Nutrição", 
+                    duration: "8", 
+                    institution: App::Institution.where(name: "Universidade Paranaense",
+                                                city_id: App::City.by_client(index).where(name:'Umuarama').first().id).first())
+p App::Course.create(client_id: index, 
+                    name: "Matemática", 
+                    duration: "8", 
+                    institution: App::Institution.where(name: "Universidade Tecnológica Federal do Paraná",
+                                                  city_id: App::City.by_client(index).where(name:'Cornélio Procópio').first().id).first())
+p App::Course.create(client_id: index, 
+                    name: "Arquitetura e Urbanismo", 
+                    duration: "10", 
+                    institution: App::Institution.where(name: "Universidade Tecnológica Federal do Paraná",
+                                                  city_id: App::City.by_client(index).where(name:'Curitiba').first().id).first())
+p App::Course.create(client_id: index, 
+                    name: "Nutrição", 
+                    duration: "8", 
+                    institution: App::Institution.where(name: "Centro Universitário Fundação Assis Gurgacz",
+                                                city_id: App::City.by_client(index).where(name:'Cascavel').first().id).first())
+p App::Course.create(client_id: index, 
+                    name: "Turismo", 
+                    duration: "6", 
+                    institution: App::Institution.where(name: "Universidade Estadual do Centro Oeste",
+                                                  city_id: App::City.by_client(index).where(name:'Irati').first().id).first())
+p App::Course.create(client_id: index, 
+                    name: "Pedagogia", 
+                    duration: "8", 
+                    institution: App::Institution.where(name: "Faculdades Integradas do Vale do Ivaí",
+                                                  city_id: App::City.by_client(index).where(name:'Ivaiporã').first().id).first())
+p App::Course.create(client_id: index, 
+                    name: "T.A.D.S", 
+                    duration: "6", 
+                    institution: App::Institution.where(name: "Universidade Cesumar",
+                                                city_id: App::City.by_client(index).where(name:'Londrina').first().id).first())
+p App::Course.create(client_id: index, 
+                    name: "Direito", 
+                    duration: "10", 
+                    institution: App::Institution.where(name: "Centro Universitário Santa Amélia",
+                                                city_id: App::City.by_client(index).where(name:'Ponta Grossa').first().id).first())
+p App::Course.create(client_id: index, 
+                    name: "Fisioterapia Noturno", 
+                    duration: "8", 
+                    institution: App::Institution.where(name: "Centro Universitário de Cascavel",
+                                                city_id: App::City.by_client(index).where(name:'Cascavel').first().id).first())
+p App::Course.create(client_id: index, 
+                    name: "Fisioterapia Matutino", 
+                    duration: "8", 
+                    institution: App::Institution.where(name: "Centro Universitário de Cascavel",
+                                                city_id: App::City.by_client(index).where(name:'Cascavel').first().id).first())
+p App::Course.create(client_id: index, 
+                    name: "Engenharia Elétrica", 
+                    duration: "10", 
+                    institution: App::Institution.where(name: "Universidade Tecnológica Federal do Paraná",
+                                                  city_id: App::City.by_client(index).where(name:'Pato Branco').first().id).first())
+p App::Course.create(client_id: index, 
+                    name: "CIências Econômicas", 
+                    duration: "8", 
+                    institution: App::Institution.where(name: "Universidade Estadual de Ponta Grossa",
+                                                city_id: App::City.by_client(index).where(name:'Ponta Grossa').first().id).first())
+p App::Course.create(client_id: index, 
+                    name: "Engenharia Civil", 
+                    duration: "10", 
+                    institution: App::Institution.where(name: "Uniguairacá Centro Universitário",
+                                                city_id: App::City.by_client(index).where(name:'Guarapuava').first().id).first())
+p App::Course.create(client_id: index, 
+                    name: "Matemática Aplicada e Computacional", 
+                    duration: "8", 
+                    institution: App::Institution.where(name: "Universidade Estadual do Centro Oeste",
+                                                        abreviation:'CEDETEG',
+                                                  city_id: App::City.by_client(index).where(name:'Guarapuava').first().id).first())
+p App::Course.create(client_id: index, 
+                    name: "Medicina Veterinária", 
+                    duration: "10", 
+                    institution: App::Institution.where(name: "Centro Universitário Mater Dei",
+                                                city_id: App::City.by_client(index).where(name:'Pato Branco').first().id).first())
+p App::Course.create(client_id: index, 
+                    name: "Medicina Veterinária", 
+                    duration: "10", 
+                    institution: App::Institution.where(name: "Universidade Estadual do Centro Oeste",
+                                                        abreviation:'CEDETEG',
+                                                  city_id: App::City.by_client(index).where(name:'Guarapuava').first().id).first())
+p App::Course.create(client_id: index, 
+                    name: "Engenharia de Software", 
+                    duration: "8", 
+                    institution: App::Institution.where(name: "Centro Universitário Fundação Assis Gurgacz",
+                                                city_id: App::City.by_client(index).where(name:'Cascavel').first().id).first())
+p App::Course.create(client_id: index, 
+                    name: "Engenharia de Produção", 
+                    duration: "10", 
+                    institution: App::Institution.where(name: "Centro Universitário Campo Real",
+                                                city_id: App::City.by_client(index).where(name:'Guarapuava').first().id).first())
+p App::Course.create(client_id: index, 
+                    name: "Administração", 
+                    duration: "8", 
+                    institution: App::Institution.where(name: "Universidade Tecnológica Federal do Paraná",
+                                                  city_id: App::City.by_client(index).where(name:'Pato Branco').first().id).first())
+p App::Course.create(client_id: index, 
+                    name: "Engenharia Civil", 
+                    duration: "10", 
+                    institution: App::Institution.where(name: "Centro Universitário UNISEP - União de Ensino do Sudoeste do Paraná",
+                                                  city_id: App::City.by_client(index).where(name:'Dois Vizinhos').first().id).first())
+p App::Course.create(client_id: index, 
+                    name: "Engenharia Civil", 
+                    duration: "10", 
+                    institution: App::Institution.where(name: "Universidade Tecnológica Federal do Paraná",
+                                                  city_id: App::City.by_client(index).where(name:'Guarapuava').first().id).first())
+p App::Course.create(client_id: index, 
+                    name: "Medicina Veterinária", 
+                    duration: "10", 
+                    institution: App::Institution.where(name: "Universidade Cesumar",
+                                                city_id: App::City.by_client(index).where(name:'Ponta Grossa').first().id).first())
+p App::Course.create(client_id: index, 
+                    name: "Arquitetura e Urbanismo", 
+                    duration: "10", 
+                    institution: App::Institution.where(name: "Centro Universitário Campo Real",
+                                                city_id: App::City.by_client(index).where(name:'Irati').first().id).first())
+p App::Course.create(client_id: index, 
+                    name: "Engenharia de Bioprocessos e Biotecnologia", 
+                    duration: "10", 
+                    institution: App::Institution.where(name: "Universidade Tecnológica Federal do Paraná",
+                                                  city_id: App::City.by_client(index).where(name:'Ponta Grossa').first().id).first())
+p App::Course.create(client_id: index, 
+                    name: "Ciências Contábeis", 
+                    duration: "8", 
+                    institution: App::Institution.where(name: "Universidade Estadual do Centro Oeste",
+                                                  city_id: App::City.by_client(index).where(name:'Irati').first().id).first())
+p App::Course.create(client_id: index, 
+                    name: "Administração", 
+                    duration: "8", 
+                    institution: App::Institution.where(name: "Centro Universitário Campo Real",
+                                                city_id: App::City.by_client(index).where(name:'Irati').first().id).first())
+p App::Course.create(client_id: index, 
+                    name: "Ciências Econômicas", 
+                    duration: "8", 
+                    institution: App::Institution.where(name: "Universidade Estadual do Oeste do Paraná",
+                                                  city_id: App::City.by_client(index).where(name:'Francisco Beltrão').first().id).first())
+p App::Course.create(client_id: index, 
+                    name: "Publicidade e Propaganda", 
+                    duration: "8", 
+                    institution: App::Institution.where(name: "Centro Universitário de Cascavel",
+                                                city_id: App::City.by_client(index).where(name:'Cascavel').first().id).first())
+p App::Course.create(client_id: index, 
+                    name: "Administração", 
+                    duration: "8", 
+                    institution: App::Institution.where(name: "Centro Universitário de Pato Branco",
+                                                city_id: App::City.by_client(index).where(name:'Pato Branco').first().id).first())
+p App::Course.create(client_id: index, 
+                    name: "Geografia", 
+                    duration: "8", 
+                    institution: App::Institution.where(name: "Universidade Estadual do Centro Oeste",
+                                                  city_id: App::City.by_client(index).where(name:'Irati').first().id).first())
+p App::Course.create(client_id: index, 
+                    name: "Química", 
+                    duration: "8", 
+                    institution: App::Institution.where(name: "Universidade Tecnológica Federal do Paraná",
+                                                  city_id: App::City.by_client(index).where(name:'Pato Branco').first().id).first())
+p App::Course.create(client_id: index, 
+                    name: "Arquitetura e Urbanismo", 
+                    duration: "10", 
+                    institution: App::Institution.where(name: "Universidade Paranaense",
+                                                city_id: App::City.by_client(index).where(name:'Cascavel').first().id).first())
+p App::Course.create(client_id: index, 
+                    name: "Letras Português", 
+                    duration: "8", 
+                    institution: App::Institution.where(name: "Universidade Tecnológica Federal do Paraná",
+                                                  city_id: App::City.by_client(index).where(name:'Curitiba').first().id).first())
+p App::Course.create(client_id: index, 
+                    name: "Big Data no Agronegócio", 
+                    duration: "5", 
+                    institution: App::Institution.where(name: "Uniguairacá Centro Universitário",
+                                                city_id: App::City.by_client(index).where(name:'Guarapuava').first().id).first())
+p App::Course.create(client_id: index, 
+                    name: "Agronomia", 
+                    duration: "10", 
+                    institution: App::Institution.where(name: "Centro Universitário UNISEP - União de Ensino do Sudoeste do Paraná",
+                                                  city_id: App::City.by_client(index).where(name:'Francisco Beltrão').first().id).first())
+p App::Course.create(client_id: index, 
+                    name: "Administração", 
+                    duration: "8", 
+                    institution: App::Institution.where(name: "Centro Universitário de Cascavel",
+                                                city_id: App::City.by_client(index).where(name:'Cascavel').first().id).first())
+p App::Course.create(client_id: index, 
+                    name: "Engenharia Química", 
+                    duration: "10", 
+                    institution: App::Institution.where(name: "Universidade Tecnológica Federal do Paraná",
+                                                  city_id: App::City.by_client(index).where(name:'Londrina').first().id).first())
+p App::Course.create(client_id: index, 
+                    name: "Engenharia de Produção", 
+                    duration: "10", 
+                    institution: App::Institution.where(name: "Centro Universitário Mater Dei",
+                                                city_id: App::City.by_client(index).where(name:'Pato Branco').first().id).first())
+p App::Course.create(client_id: index, 
+                    name: "Odontologia", 
+                    duration: "8", 
+                    institution: App::Institution.where(name: "Universidade Paranaense",
+                                                city_id: App::City.by_client(index).where(name:'Umuarama').first().id).first())
+p App::Course.create(client_id: index, 
+                    name: "Engenharia Elétrica", 
+                    duration: "10", 
+                    institution: App::Institution.where(name: "Universidade Tecnológica Federal do Paraná",
+                                                  city_id: App::City.by_client(index).where(name:'Medianeira').first().id).first())
+p App::Course.create(client_id: index, 
+                    name: "Enfermagem", 
+                    duration: "10", 
+                    institution: App::Institution.where(name: "Universidade Paranaense",
+                                                city_id: App::City.by_client(index).where(name:'Guaíra').first().id).first())
+p App::Course.create(client_id: index, 
+                    name: "Química", 
+                    duration: "8", 
+                    institution: App::Institution.where(name: "Universidade Estadual de Ponta Grossa",
+                                                city_id: App::City.by_client(index).where(name:'Ponta Grossa').first().id).first())
+p App::Course.create(client_id: index, 
+                    name: "T.A.D.S", 
+                    duration: "6", 
+                    institution: App::Institution.where(name: "Universidade Paranaense",
+                                                city_id: App::City.by_client(index).where(name:'Francisco Beltrão').first().id).first())
+p App::Course.create(client_id: index, 
+                    name: "Administração", 
+                    duration: "8", 
+                    institution: App::Institution.where(name: "Pontifícia Universidade Católica do Paraná",
+                                                  city_id: App::City.by_client(index).where(name:'Londrina').first().id).first())
+p App::Course.create(client_id: index, 
+                    name: "Engenharia Civil", 
+                    duration: "10", 
+                    institution: App::Institution.where(name: "Centro Universitário Campo Real",
+                                                city_id: App::City.by_client(index).where(name:'Irati').first().id).first())
+p App::Course.create(client_id: index, 
+                    name: "Medicina Veterinária (Noturno)", 
+                    duration: "11", 
+                    institution: App::Institution.where(name: "Universidade Paranaense",
+                                                city_id: App::City.by_client(index).where(name:'Umuarama').first().id).first())
+p App::Course.create(client_id: index, 
+                    name: "Química", 
+                    duration: "8", 
+                    institution: App::Institution.where(name: "Universidade Tecnológica Federal do Paraná",
+                                                  city_id: App::City.by_client(index).where(name:'Medianeira').first().id).first())
+p App::Course.create(client_id: index, 
+                    name: "Marketing", 
+                    duration: "4", 
+                    institution: App::Institution.where(name: "Centro Universitário de União da Vitória",
+                                                  city_id: App::City.by_client(index).where(name:'São Mateus do Sul').first().id).first())
+p App::Course.create(client_id: index, 
+                    name: "Radiologia", 
+                    duration: "6", 
+                    institution: App::Institution.where(name: "Universidade Tecnológica Federal do Paraná",
+                                                  city_id: App::City.by_client(index).where(name:'Curitiba').first().id).first())
+p App::Course.create(client_id: index, 
+                    name: "Engenharia Civil", 
+                    duration: "10", 
+                    institution: App::Institution.where(name: "Universidade Tecnológica Federal do Paraná",
+                                                  city_id: App::City.by_client(index).where(name:'Campo Mourão').first().id).first())
+p App::Course.create(client_id: index, 
+                    name: "Edução Física Bacharelado", 
+                    duration: "8", 
+                    institution: App::Institution.where(name: "Uniguairacá Centro Universitário",
+                                                city_id: App::City.by_client(index).where(name:'Guarapuava').first().id).first())
+p App::Course.create(client_id: index, 
+                    name: "Ciência da Computação", 
+                    duration: "8", 
+                    institution: App::Institution.where(name: "Universidade Estadual do Oeste do Paraná",
+                                                  city_id: App::City.by_client(index).where(name:'Cascavel').first().id).first())
+p App::Course.create(client_id: index, 
+                    name: "Pedagogia", 
+                    duration: "8", 
+                    institution: App::Institution.where(name: "Centro Universitário de Cascavel",
+                                                city_id: App::City.by_client(index).where(name:'Cascavel').first().id).first())
+p App::Course.create(client_id: index, 
+                    name: "Arquitetura e Urbanismo", 
+                    duration: "10", 
+                    institution: App::Institution.where(name: "Centro Universitário de Cascavel",
+                                                city_id: App::City.by_client(index).where(name:'Cascavel').first().id).first())
+p App::Course.create(client_id: index, 
+                    name: "Gestão Integrada de Agronegócios", 
+                    duration: "6", 
+                    institution: App::Institution.where(name: "Pontifícia Universidade Católica do Paraná",
+                                                  city_id: App::City.by_client(index).where(name:'Toledo').first().id).first())
+p App::Course.create(client_id: index, 
+                    name: "Administração", 
+                    duration: "8", 
+                    institution: App::Institution.where(name: "Centro Universitário Santa Amélia",
+                                                city_id: App::City.by_client(index).where(name:'Ponta Grossa').first().id).first())
+p App::Course.create(client_id: index, 
+                    name: "Odontologia", 
+                    duration: "10", 
+                    institution: App::Institution.where(name: "Centro Universitário Campo Real",
+                                                city_id: App::City.by_client(index).where(name:'Guarapuava').first().id).first())
+p App::Course.create(client_id: index, 
+                    name: "Administração", 
+                    duration: "8", 
+                    institution: App::Institution.where(name: "Uniguairacá Centro Universitário",
+                                                city_id: App::City.by_client(index).where(name:'Guarapuava').first().id).first())
+p App::Course.create(client_id: index, 
+                    name: "Engenharia de Produção", 
+                    duration: "10", 
+                    institution: App::Institution.where(name: "Pontifícia Universidade Católica do Paraná",
+                                                  city_id: App::City.by_client(index).where(name:'Toledo').first().id).first())
+p App::Course.create(client_id: index, 
+                    name: "Engenharia Civil", 
+                    duration: "10", 
+                    institution: App::Institution.where(name: "Faculdade de Tecnologia do Vale do Ivaí",
+                                                  city_id: App::City.by_client(index).where(name:'Ivaiporã').first().id).first())
+p App::Course.create(client_id: index, 
+                    name: "Farmácia", 
+                    duration: "10", 
+                    institution: App::Institution.where(name: "Universidade Paranaense",
+                                                city_id: App::City.by_client(index).where(name:'Toledo').first().id).first())
+p App::Course.create(client_id: index, 
+                    name: "Jornalismo", 
+                    duration: "8", 
+                    institution: App::Institution.where(name: "Centro Universitário de União da Vitória",
+                                                  city_id: App::City.by_client(index).where(name:'São Mateus do Sul').first().id).first())
+p App::Course.create(client_id: index, 
+                    name: "Teologia", 
+                    duration: "8", 
+                    institution: App::Institution.where(name: "Pontifícia Universidade Católica do Paraná",
+                                                  city_id: App::City.by_client(index).where(name:'Londrina').first().id).first())
+p App::Course.create(client_id: index, 
+                    name: "Administração", 
+                    duration: "8", 
+                    institution: App::Institution.where(name: "Uniguairacá Centro Universitário",
+                                                city_id: App::City.by_client(index).where(name:'Prudentópolis').first().id).first())
+p App::Course.create(client_id: index, 
+                    name: "Agronomia", 
+                    duration: "10", 
+                    institution: App::Institution.where(name: "Universidade Tecnológica Federal do Paraná",
+                                                  city_id: App::City.by_client(index).where(name:'Pato Branco').first().id).first())
+p App::Course.create(client_id: index, 
+                    name: "Engenharia Elétrica", 
+                    duration: "9", 
+                    institution: App::Institution.where(name: "Universidade Tecnológica Federal do Paraná",
+                                                  city_id: App::City.by_client(index).where(name:'Apucarana').first().id).first())
+p App::Course.create(client_id: index, 
+                    name: "Matemática", 
+                    duration: "8", 
+                    institution: App::Institution.where(name: "Universidade Estadual do Centro Oeste",
+                                                  city_id: App::City.by_client(index).where(name:'Irati').first().id).first())
+p App::Course.create(client_id: index, 
+                    name: "História", 
+                    duration: "8", 
+                    institution: App::Institution.where(name: "Universidade Estadual de Ponta Grossa",
+                                                city_id: App::City.by_client(index).where(name:'Ponta Grossa').first().id).first())
+p App::Course.create(client_id: index, 
+                    name: "Ciências Contábeis", 
+                    duration: "10", 
+                    institution: App::Institution.where(name: "Universidade Estadual do Oeste do Paraná",
+                                                  city_id: App::City.by_client(index).where(name:'Foz do Iguaçu').first().id).first())
+p App::Course.create(client_id: index, 
+                    name: "Química Integral", 
+                    duration: "8", 
+                    institution: App::Institution.where(name: "Universidade Estadual do Oeste do Paraná",
+                                                  city_id: App::City.by_client(index).where(name:'Toledo').first().id).first())
+p App::Course.create(client_id: index, 
+                    name: "Química Noturno", 
+                    duration: "8", 
+                    institution: App::Institution.where(name: "Universidade Estadual do Oeste do Paraná",
+                                                  city_id: App::City.by_client(index).where(name:'Toledo').first().id).first())
+p App::Course.create(client_id: index, 
+                    name: "Ciências Contábeis", 
+                    duration: "8", 
+                    institution: App::Institution.where(name: "Faculdade de Tecnologia do Vale do Ivaí",
+                                                  city_id: App::City.by_client(index).where(name:'Ivaiporã').first().id).first())
+p App::Course.create(client_id: index, 
+                    name: "Educação Física", 
+                    duration: "8", 
+                    institution: App::Institution.where(name: "Universidade Paranaense",
+                                                city_id: App::City.by_client(index).where(name:'Toledo').first().id).first())
+p App::Course.create(client_id: index, 
+                    name: "Fisioterapia", 
+                    duration: "10", 
+                    institution: App::Institution.where(name: "Universidade Cesumar",
+                                                city_id: App::City.by_client(index).where(name:'Ponta Grossa').first().id).first())
+p App::Course.create(client_id: index, 
+                    name: "Arquitetura e Urbanismo", 
+                    duration: "10", 
+                    institution: App::Institution.where(name: "Centro Universitário UNISEP - União de Ensino do Sudoeste do Paraná",
+                                                  city_id: App::City.by_client(index).where(name:'Dois Vizinhos').first().id).first())
+p App::Course.create(client_id: index, 
+                    name: "Letras - Português / Inglês", 
+                    duration: "8", 
+                    institution: App::Institution.where(name: "Universidade Estadual do Oeste do Paraná",
+                                                  city_id: App::City.by_client(index).where(name:'Cascavel').first().id).first())
+p App::Course.create(client_id: index, 
+                    name: "Secretariado Executivo", 
+                    duration: "8", 
+                    institution: App::Institution.where(name: "Universidade Estadual do Centro Oeste",
+                                                        abreviation:'SANTA CRUZ',
+                                                  city_id: App::City.by_client(index).where(name:'Guarapuava').first().id).first())
+p App::Course.create(client_id: index, 
+                    name: "Fisioterapia", 
+                    duration: "10", 
+                    institution: App::Institution.where(name: "Centro Universitário Campo Real",
+                                                city_id: App::City.by_client(index).where(name:'Guarapuava').first().id).first())
+p App::Course.create(client_id: index, 
+                    name: "Engenharia Civil", 
+                    duration: "5", 
+                    institution: App::Institution.where(name: "Centro Universitário Campo Real",
+                                                city_id: App::City.by_client(index).where(name:'Laranjeiras do Sul').first().id).first())
+p App::Course.create(client_id: index, 
+                    name: "T.A.D.S", 
+                    duration: "5", 
+                    institution: App::Institution.where(name: "Centro Universitário UNISEP - União de Ensino do Sudoeste do Paraná",
+                                                  city_id: App::City.by_client(index).where(name:'Francisco Beltrão').first().id).first())
+p App::Course.create(client_id: index, 
+                    name: "Odontologia", 
+                    duration: "10", 
+                    institution: App::Institution.where(name: "Uniguairacá Centro Universitário",
+                                                city_id: App::City.by_client(index).where(name:'Guarapuava').first().id).first())
+p App::Course.create(client_id: index, 
+                    name: "Arquitetura e Urbanismo", 
+                    duration: "10", 
+                    institution: App::Institution.where(name: "Faculdade de Tecnologia do Vale do Ivaí",
+                                                  city_id: App::City.by_client(index).where(name:'Ivaiporã').first().id).first())
+p App::Course.create(client_id: index, 
+                    name: "Biomedicina", 
+                    duration: "8", 
+                    institution: App::Institution.where(name: "Faculdade de Tecnologia do Vale do Ivaí",
+                                                  city_id: App::City.by_client(index).where(name:'Ivaiporã').first().id).first())
+p App::Course.create(client_id: index, 
+                    name: "Direito Matutino", 
+                    duration: "10", 
+                    institution: App::Institution.where(name: "Universidade Paranaense",
+                                                city_id: App::City.by_client(index).where(name:'Toledo').first().id).first())
+p App::Course.create(client_id: index, 
+                    name: "Direito Noturno", 
+                    duration: "10", 
+                    institution: App::Institution.where(name: "Universidade Paranaense",
+                                                city_id: App::City.by_client(index).where(name:'Toledo').first().id).first())
+p App::Course.create(client_id: index, 
+                    name: "Engenharia de Alimentos", 
+                    duration: "10", 
+                    institution: App::Institution.where(name: "Universidade Tecnológica Federal do Paraná",
+                                                  city_id: App::City.by_client(index).where(name:'Francisco Beltrão').first().id).first())
+p App::Course.create(client_id: index, 
+                    name: "Agronomia", 
+                    duration: "10", 
+                    institution: App::Institution.where(name: "Universidade Estadual do Centro Oeste",
+                                                        abreviation:'CEDETEG',
+                                                  city_id: App::City.by_client(index).where(name:'Guarapuava').first().id).first())
+p App::Course.create(client_id: index, 
+                    name: "Medicina", 
+                    duration: "12", 
+                    institution: App::Institution.where(name: "Universidade Estadual do Oeste do Paraná",
+                                                  city_id: App::City.by_client(index).where(name:'Francisco Beltrão').first().id).first())
+p App::Course.create(client_id: index, 
+                    name: "Estética e Cosmética", 
+                    duration: "5", 
+                    institution: App::Institution.where(name: "Faculdades Integradas do Vale do Ivaí",
+                                                  city_id: App::City.by_client(index).where(name:'Ivaiporã').first().id).first())
+p App::Course.create(client_id: index, 
+                    name: "Letras - Português / Espanhol", 
+                    duration: "8", 
+                    institution: App::Institution.where(name: "Universidade Estadual do Oeste do Paraná",
+                                                  city_id: App::City.by_client(index).where(name:'Cascavel').first().id).first())
+p App::Course.create(client_id: index, 
+                    name: "Medicina", 
+                    duration: "12", 
+                    institution: App::Institution.where(name: "Universidade Paranaense",
+                                                city_id: App::City.by_client(index).where(name:'Umuarama').first().id).first())
+p App::Course.create(client_id: index, 
+                    name: "Educação Física", 
+                    duration: "8", 
+                    institution: App::Institution.where(name: "Faculdade de Telêmaco Borba",
+                                                city_id: App::City.by_client(index).where(name:'Telêmaco Borba').first().id).first())
+p App::Course.create(client_id: index, 
+                    name: "Medicina", 
+                    duration: "12", 
+                    institution: App::Institution.where(name: "Centro Universitário de Pato Branco",
+                                                city_id: App::City.by_client(index).where(name:'Pato Branco').first().id).first())
+p App::Course.create(client_id: index, 
+                    name: "Biomedicina", 
+                    duration: "8", 
+                    institution: App::Institution.where(name: "Centro Universitário Campo Real",
+                                                city_id: App::City.by_client(index).where(name:'Laranjeiras do Sul').first().id).first())
+p App::Course.create(client_id: index, 
+                    name: "Ciências Contábeis", 
+                    duration: "8", 
+                    institution: App::Institution.where(name: "Centro Universitário UNISEP - União de Ensino do Sudoeste do Paraná",
+                                                  city_id: App::City.by_client(index).where(name:'Dois Vizinhos').first().id).first())
+p App::Course.create(client_id: index, 
+                    name: "Administração", 
+                    duration: "8", 
+                    institution: App::Institution.where(name: "Universidade Tecnológica Federal do Paraná",
+                                                  city_id: App::City.by_client(index).where(name:'Curitiba').first().id).first())
+p App::Course.create(client_id: index, 
+                    name: "Pedagogia", 
+                    duration: "8", 
+                    institution: App::Institution.where(name: "Universidade Cesumar",
+                                                city_id: App::City.by_client(index).where(name:'Londrina').first().id).first())
+p App::Course.create(client_id: index, 
+                    name: "Recursos Humanos", 
+                    duration: "4", 
+                    institution: App::Institution.where(name: "Centro Universitário Santa Amélia",
+                                                city_id: App::City.by_client(index).where(name:'Ponta Grossa').first().id).first())
+p App::Course.create(client_id: index, 
+                    name: "Jornalismo", 
+                    duration: "8", 
+                    institution: App::Institution.where(name: "Centro Universitário Santa Amélia",
+                                                city_id: App::City.by_client(index).where(name:'Ponta Grossa').first().id).first())
+p App::Course.create(client_id: index, 
+                    name: "Engenharia de Produção", 
+                    duration: "10", 
+                    institution: App::Institution.where(name: "Centro Universitário de Cascavel",
+                                                city_id: App::City.by_client(index).where(name:'Cascavel').first().id).first())
+p App::Course.create(client_id: index, 
+                    name: "Farmácia", 
+                    duration: "10", 
+                    institution: App::Institution.where(name: "Centro Universitário Campo Real",
+                                                city_id: App::City.by_client(index).where(name:'Guarapuava').first().id).first())
+p App::Course.create(client_id: index, 
+                    name: "Ciências Biológicas Noite", 
+                    duration: "8", 
+                    institution: App::Institution.where(name: "Universidade Estadual do Centro Oeste",
+                                                        abreviation:'CEDETEG',
+                                                  city_id: App::City.by_client(index).where(name:'Guarapuava').first().id).first())
+p App::Course.create(client_id: index, 
+                    name: "Ciências Biológicas Integral", 
+                    duration: "8", 
+                    institution: App::Institution.where(name: "Universidade Estadual do Centro Oeste",
+                                                        abreviation:'CEDETEG',
+                                                  city_id: App::City.by_client(index).where(name:'Guarapuava').first().id).first())
+p App::Course.create(client_id: index, 
+                    name: "Engenharia Ambiental e Sanitária", 
+                    duration: "10", 
+                    institution: App::Institution.where(name: "Universidade Tecnológica Federal do Paraná",
+                                                  city_id: App::City.by_client(index).where(name:'Curitiba').first().id).first())
+p App::Course.create(client_id: index, 
+                    name: "Medicina", 
+                    duration: "12", 
+                    institution: App::Institution.where(name: "Universidade Estadual do Centro Oeste",
+                                                        abreviation:'CEDETEG',
+                                                  city_id: App::City.by_client(index).where(name:'Guarapuava').first().id).first())
+p App::Course.create(client_id: index, 
+                    name: "Engenharia de Alimentos", 
+                    duration: "10", 
+                    institution: App::Institution.where(name: "Universidade Tecnológica Federal do Paraná",
+                                                  city_id: App::City.by_client(index).where(name:'Medianeira').first().id).first())
+p App::Course.create(client_id: index, 
+                    name: "Biomedicina", 
+                    duration: "8", 
+                    institution: App::Institution.where(name: "Universidade Paranaense",
+                                                city_id: App::City.by_client(index).where(name:'Cascavel').first().id).first())
+p App::Course.create(client_id: index, 
+                    name: "Secretariado Executivo Trilíngue", 
+                    duration: "8", 
+                    institution: App::Institution.where(name: "Universidade Estadual do Oeste do Paraná",
+                                                  city_id: App::City.by_client(index).where(name:'Toledo').first().id).first())
+p App::Course.create(client_id: index, 
+                    name: "Fisioterapia Integral", 
+                    duration: "8", 
+                    institution: App::Institution.where(name: "Universidade Cesumar",
+                                                city_id: App::City.by_client(index).where(name:'Ponta Grossa').first().id).first())
+p App::Course.create(client_id: index, 
+                    name: "Engenharia Mecatrônica", 
+                    duration: "10", 
+                    institution: App::Institution.where(name: "Centro Universitário Fundação Assis Gurgacz",
+                                                city_id: App::City.by_client(index).where(name:'Cascavel').first().id).first())
+p App::Course.create(client_id: index, 
+                    name: "Medicina", 
+                    duration: "12", 
+                    institution: App::Institution.where(name: "Universidade Estadual do Oeste do Paraná",
+                                                  city_id: App::City.by_client(index).where(name:'Cascavel').first().id).first())
+p App::Course.create(client_id: index, 
+                    name: "Biomedicina", 
+                    duration: "8", 
+                    institution: App::Institution.where(name: "Centro Universitário Campo Real",
+                                                city_id: App::City.by_client(index).where(name:'Irati').first().id).first())
+p App::Course.create(client_id: index, 
+                    name: "Gestão do Agronegócio", 
+                      duration: "6", 
+                      institution: App::Institution.where(name: "Centro Universitário de União da Vitória",
+                                                    city_id: App::City.by_client(index).where(name:'São Mateus do Sul').first().id).first())
+p App::Course.create(client_id: index, 
+                    name: "T.A.D.S", 
+                    duration: "6", 
+                    institution: App::Institution.where(name: "Centro Sulamericano de Ensino Superior",
+                                                city_id: App::City.by_client(index).where(name:'Francisco Beltrão').first().id).first())
+p App::Course.create(client_id: index, 
+                    name: "Fisioterapia", 
+                    duration: "10", 
+                    institution: App::Institution.where(name: "Centro Universitário de Pato Branco",
+                                                city_id: App::City.by_client(index).where(name:'Pato Branco').first().id).first())
+p App::Course.create(client_id: index, 
+                    name: "Direito", 
+                    duration: "10", 
+                    institution: App::Institution.where(name: "Faculdade de Telêmaco Borba",
+                                                city_id: App::City.by_client(index).where(name:'Telêmaco Borba').first().id).first())
+p App::Course.create(client_id: index, 
+                    name: "Engenharia Mecânica", 
+                    duration: "10", 
+                    institution: App::Institution.where(name: "Universidade Cesumar",
+                                                city_id: App::City.by_client(index).where(name:'Ponta Grossa').first().id).first())
+p App::Course.create(client_id: index, 
+                    name: "Engenharia Eletrônica", 
+                    duration: "10", 
+                    institution: App::Institution.where(name: "Universidade Tecnológica Federal do Paraná",
+                                                  city_id: App::City.by_client(index).where(name:'Toledo').first().id).first())
+p App::Course.create(client_id: index, 
+                    name: "Publicidade e Propaganda", 
+                    duration: "8", 
+                    institution: App::Institution.where(name: "Universidade Cesumar",
+                                                city_id: App::City.by_client(index).where(name:'Ponta Grossa').first().id).first())
+p App::Course.create(client_id: index, 
+                    name: "Engenharia de Produção", 
+                    duration: "10", 
+                    institution: App::Institution.where(name: "Faculdade de Telêmaco Borba",
+                                                city_id: App::City.by_client(index).where(name:'Telêmaco Borba').first().id).first())
+p App::Course.create(client_id: index, 
+                    name: "Publicidade e Propaganda", 
+                    duration: "8", 
+                    institution: App::Institution.where(name: "Centro Universitário de Pato Branco",
+                                                city_id: App::City.by_client(index).where(name:'Pato Branco').first().id).first())
+p App::Course.create(client_id: index, 
+                    name: "Farmácia", 
+                    duration: "4", 
+                    institution: App::Institution.where(name: "Centro Universitário Campo Real",
+                                                city_id: App::City.by_client(index).where(name:'Irati').first().id).first())
+p App::Course.create(client_id: index, 
+                    name: "Agronomia", 
+                    duration: "10", 
+                    institution: App::Institution.where(name: "Universidade Tecnológica Federal do Paraná",
+                                                  city_id: App::City.by_client(index).where(name:'Dois Vizinhos').first().id).first())
+p App::Course.create(client_id: index, 
+                    name: "Agronomia", 
+                    duration: "10", 
+                    institution: App::Institution.where(name: "Uniguairacá Centro Universitário",
+                                                city_id: App::City.by_client(index).where(name:'Guarapuava').first().id).first())
+p App::Course.create(client_id: index, 
+                    name: "História Noturno", 
+                    duration: "8", 
+                    institution: App::Institution.where(name: "Universidade Estadual do Centro Oeste",
+                                                        abreviation:'SANTA CRUZ',
+                                                  city_id: App::City.by_client(index).where(name:'Guarapuava').first().id).first())
+p App::Course.create(client_id: index, 
+                    name: "História Matutino", 
+                    duration: "8", 
+                    institution: App::Institution.where(name: "Universidade Estadual do Centro Oeste",
+                                                        abreviation:'SANTA CRUZ',
+                                                  city_id: App::City.by_client(index).where(name:'Guarapuava').first().id).first())
+p App::Course.create(client_id: index, 
+                    name: "Enfermagem", 
+                    duration: "8", 
+                    institution: App::Institution.where(name: "Centro Universitário de Cascavel",
+                                                city_id: App::City.by_client(index).where(name:'Cascavel').first().id).first())
+p App::Course.create(client_id: index, 
+                    name: "Engenharia Elétrica", 
+                    duration: "10", 
+                    institution: App::Institution.where(name: "Faculdade Guarapuava",
+                                                city_id: App::City.by_client(index).where(name:'Guarapuava').first().id).first())
+p App::Course.create(client_id: index, 
+                    name: "Ciências Biológicas Integral", 
+                    duration: "8", 
+                    institution: App::Institution.where(name: "Universidade Estadual do Oeste do Paraná",
+                                                  city_id: App::City.by_client(index).where(name:'Cascavel').first().id).first())
+p App::Course.create(client_id: index, 
+                    name: "Ciências Biológicas Noturno", 
+                    duration: "8", 
+                    institution: App::Institution.where(name: "Universidade Estadual do Oeste do Paraná",
+                                                  city_id: App::City.by_client(index).where(name:'Cascavel').first().id).first())
+p App::Course.create(client_id: index, 
+                    name: "Engenharia de Produção", 
+                    duration: "10", 
+                    institution: App::Institution.where(name: "Centro Universitário de União da Vitória",
+                                                  city_id: App::City.by_client(index).where(name:'São Mateus do Sul').first().id).first())
+p App::Course.create(client_id: index, 
+                    name: "Arquitetura e Urbanismo", 
+                    duration: "10", 
+                    institution: App::Institution.where(name: "Faculdade Guarapuava",
+                                                city_id: App::City.by_client(index).where(name:'Guarapuava').first().id).first())
+p App::Course.create(client_id: index, 
+                    name: "Matemática", 
+                    duration: "8", 
+                    institution: App::Institution.where(name: "Universidade Estadual de Ponta Grossa",
+                                                city_id: App::City.by_client(index).where(name:'Ponta Grossa').first().id).first())
+p App::Course.create(client_id: index, 
+                    name: "Engenharia de Computação", 
+                    duration: "10", 
+                    institution: App::Institution.where(name: "Universidade Tecnológica Federal do Paraná",
+                                                  city_id: App::City.by_client(index).where(name:'Cornélio Procópio').first().id).first())
+p App::Course.create(client_id: index, 
+                    name: "Geografia Bacharelado", 
+                    duration: "6", 
+                    institution: App::Institution.where(name: "Universidade Estadual do Centro Oeste",
+                                                        abreviation:'CEDETEG',
+                                                  city_id: App::City.by_client(index).where(name:'Guarapuava').first().id).first())
+p App::Course.create(client_id: index, 
+                    name: "Geografia Licenciatura", 
+                    duration: "8", 
+                    institution: App::Institution.where(name: "Universidade Estadual do Centro Oeste",
+                                                        abreviation:'CEDETEG',
+                                                  city_id: App::City.by_client(index).where(name:'Guarapuava').first().id).first())
+p App::Course.create(client_id: index, 
+                    name: "Agronomia", 
+                    duration: "10", 
+                    institution: App::Institution.where(name: "Universidade Estadual de Ponta Grossa",
+                                                city_id: App::City.by_client(index).where(name:'Ponta Grossa').first().id).first())
+p App::Course.create(client_id: index, 
+                    name: "Música", 
+                    duration: "8", 
+                    institution: App::Institution.where(name: "Universidade Estadual de Ponta Grossa",
+                                                city_id: App::City.by_client(index).where(name:'Ponta Grossa').first().id).first())
+p App::Course.create(client_id: index, 
+                    name: "Agronomia", 
+                    duration: "10", 
+                    institution: App::Institution.where(name: "Universidade Tecnológica Federal do Paraná",
+                                                  city_id: App::City.by_client(index).where(name:'Francisco Beltrão').first().id).first())
+p App::Course.create(client_id: index, 
+                    name: "Engenharia Civil", 
+                    duration: "10", 
+                    institution: App::Institution.where(name: "Universidade Estadual de Ponta Grossa",
+                                                city_id: App::City.by_client(index).where(name:'Ponta Grossa').first().id).first())
+p App::Course.create(client_id: index, 
+                    name: "Engenharia de Software", 
+                    duration: "8", 
+                    institution: App::Institution.where(name: "Pontifícia Universidade Católica do Paraná",
+                                                  city_id: App::City.by_client(index).where(name:'Londrina').first().id).first())
+p App::Course.create(client_id: index, 
+                    name: "Hotelaria", 
+                    duration: "8", 
+                    institution: App::Institution.where(name: "Universidade Estadual do Oeste do Paraná",
+                                                  city_id: App::City.by_client(index).where(name:'Foz do Iguaçu').first().id).first())
+p App::Course.create(client_id: index, 
+                    name: "Letras Português", 
+                    duration: "8", 
+                    institution: App::Institution.where(name: "Universidade Estadual do Centro Oeste",
+                                                  city_id: App::City.by_client(index).where(name:'Coronel Vivida').first().id).first())
+p App::Course.create(client_id: index, 
+                    name: "Química Tecnológica", 
+                    duration: "10", 
+                    institution: App::Institution.where(name: "Universidade Estadual de Ponta Grossa",
+                                                city_id: App::City.by_client(index).where(name:'Ponta Grossa').first().id).first())
+p App::Course.create(client_id: index, 
+                    name: "Odontologia", 
+                    duration: "10", 
+                    institution: App::Institution.where(name: "Universidade Estadual de Ponta Grossa",
+                                                city_id: App::City.by_client(index).where(name:'Ponta Grossa').first().id).first())
+p App::Course.create(client_id: index, 
+                    name: "Ciências Biológicas", 
+                    duration: "8", 
+                    institution: App::Institution.where(name: "Universidade Tecnológica Federal do Paraná",
+                                                  city_id: App::City.by_client(index).where(name:'Santa Helena').first().id).first())
+p App::Course.create(client_id: index, 
+                    name: "Serviço Social", 
+                    duration: "8", 
+                    institution: App::Institution.where(name: "Universidade Estadual do Oeste do Paraná",
+                                                  city_id: App::City.by_client(index).where(name:'Francisco Beltrão').first().id).first())
+p App::Course.create(client_id: index, 
+                    name: "Farmácia (5 anos)", 
+                    duration: "10", 
+                    institution: App::Institution.where(name: "Universidade Paranaense",
+                                                city_id: App::City.by_client(index).where(name:'Francisco Beltrão').first().id).first())
+p App::Course.create(client_id: index, 
+                    name: "Pedagogia", 
+                    duration: "8", 
+                    institution: App::Institution.where(name: "Universidade Estadual do Centro Oeste",
+                                                  city_id: App::City.by_client(index).where(name:'Laranjeiras do Sul').first().id).first())
+p App::Course.create(client_id: index, 
+                    name: "Geografia", 
+                    duration: "8", 
+                    institution: App::Institution.where(name: "Universidade Estadual de Ponta Grossa",
+                                                city_id: App::City.by_client(index).where(name:'Ponta Grossa').first().id).first())
+p App::Course.create(client_id: index, 
+                    name: "Ciências Contábeis", 
+                    duration: "8", 
+                    institution: App::Institution.where(name: "Centro Universitário Fundação Assis Gurgacz",
+                                                city_id: App::City.by_client(index).where(name:'Cascavel').first().id).first())
+p App::Course.create(client_id: index, 
+                    name: "Sistemas de Informação", 
+                    duration: "8", 
+                    institution: App::Institution.where(name: "Centro Universitário UNISEP - União de Ensino do Sudoeste do Paraná",
+                                                  city_id: App::City.by_client(index).where(name:'Dois Vizinhos').first().id).first())
+p App::Course.create(client_id: index, 
+                    name: "Pedagogia - Segunda Licenciatura", 
+                    duration: "1", 
+                    institution: App::Institution.where(name: "Centro Universitário Fundação Assis Gurgacz",
+                                                city_id: App::City.by_client(index).where(name:'Toledo').first().id).first())
+p App::Course.create(client_id: index, 
+                    name: "Enfermagem", 
+                    duration: "10", 
+                    institution: App::Institution.where(name: "Faculdade de Tecnologia do Vale do Ivaí",
+                                                  city_id: App::City.by_client(index).where(name:'Ivaiporã').first().id).first())
+p App::Course.create(client_id: index, 
+                    name: "Engenharia Civil", 
+                    duration: "10", 
+                    institution: App::Institution.where(name: "Universidade Paranaense",
+                                                city_id: App::City.by_client(index).where(name:'Toledo').first().id).first())
+p App::Course.create(client_id: index, 
+                    name: "Recursos Humanos EAD", 
+                    duration: "4", 
+                    institution: App::Institution.where(name: "Centro Universitário Mater Dei",
+                                                city_id: App::City.by_client(index).where(name:'Pato Branco').first().id).first())
+p App::Course.create(client_id: index, 
+                    name: "Engenharia Mecânica", 
+                    duration: "10", 
+                    institution: App::Institution.where(name: "Universidade Tecnológica Federal do Paraná",
+                                                  city_id: App::City.by_client(index).where(name:'Curitiba').first().id).first())
+p App::Course.create(client_id: index, 
+                    name: "Engenharia Mecânica", 
+                    duration: "10", 
+                    institution: App::Institution.where(name: "Centro Universitário Campo Real",
+                                                city_id: App::City.by_client(index).where(name:'Guarapuava').first().id).first())
+p App::Course.create(client_id: index, 
+                    name: "Ciências Contábeis", 
+                    duration: "8", 
+                    institution: App::Institution.where(name: "Faculdades Integradas do Vale do Ivaí",
+                                                  city_id: App::City.by_client(index).where(name:'Ivaiporã').first().id).first())
+p App::Course.create(client_id: index, 
+                    name: "Administração - Comercio Exterior", 
+                    duration: "8", 
+                    institution: App::Institution.where(name: "Universidade Estadual de Ponta Grossa",
+                                                city_id: App::City.by_client(index).where(name:'Ponta Grossa').first().id).first())
+p App::Course.create(client_id: index, 
+                    name: "Agronomia", 
+                    duration: "10", 
+                    institution: App::Institution.where(name: "Centro de Ensino Superior dos Campos Gerais",
+                                                city_id: App::City.by_client(index).where(name:'Ponta Grossa').first().id).first())
+p App::Course.create(client_id: index, 
+                    name: "Arquitetura e Urbanismo", 
+                    duration: "10", 
+                    institution: App::Institution.where(name: "Centro Universitário Mater Dei",
+                                                city_id: App::City.by_client(index).where(name:'Pato Branco').first().id).first())
+p App::Course.create(client_id: index, 
+                    name: "Química", 
+                    duration: "8", 
+                    institution: App::Institution.where(name: "Universidade Tecnológica Federal do Paraná",
+                                                  city_id: App::City.by_client(index).where(name:'Campo Mourão').first().id).first())
+p App::Course.create(client_id: index, 
+                    name: "Agronomia", 
+                    duration: "10", 
+                    institution: App::Institution.where(name: "Faculdade Guarapuava",
+                                                city_id: App::City.by_client(index).where(name:'Guarapuava').first().id).first())
+p App::Course.create(client_id: index, 
+                    name: "Educação Física", 
+                    duration: "8", 
+                    institution: App::Institution.where(name: "Universidade Tecnológica Federal do Paraná",
+                                                  city_id: App::City.by_client(index).where(name:'Curitiba').first().id).first())
+p App::Course.create(client_id: index, 
+                    name: "Estética e Cosmética", 
+                    duration: "6", 
+                    institution: App::Institution.where(name: "Universidade Paranaense",
+                                                city_id: App::City.by_client(index).where(name:'Cianorte').first().id).first())
+p App::Course.create(client_id: index, 
+                    name: "Administração", 
+                    duration: "8", 
+                    institution: App::Institution.where(name: "Universidade Paranaense",
+                                                city_id: App::City.by_client(index).where(name:'Toledo').first().id).first())
+p App::Course.create(client_id: index, 
+                    name: "Odontologia Noturno", 
+                    duration: "10", 
+                    institution: App::Institution.where(name: "Centro Universitário de Cascavel",
+                                                city_id: App::City.by_client(index).where(name:'Cascavel').first().id).first())
+p App::Course.create(client_id: index, 
+                    name: "Nutrição Matutino", 
+                    duration: "8", 
+                    institution: App::Institution.where(name: "Centro Universitário de Cascavel",
+                                                city_id: App::City.by_client(index).where(name:'Cascavel').first().id).first())
+p App::Course.create(client_id: index, 
+                    name: "Nutrição Noturno", 
+                    duration: "8", 
+                    institution: App::Institution.where(name: "Centro Universitário de Cascavel",
+                                                city_id: App::City.by_client(index).where(name:'Cascavel').first().id).first())
+p App::Course.create(client_id: index, 
+                    name: "Produção Multimídia", 
+                    duration: "4", 
+                    institution: App::Institution.where(name: "Centro Universitário Fundação Assis Gurgacz",
+                                                city_id: App::City.by_client(index).where(name:'Cascavel').first().id).first())
+p App::Course.create(client_id: index, 
+                    name: "Engenharia Quimica", 
+                    duration: "10", 
+                    institution: App::Institution.where(name: "Universidade Tecnológica Federal do Paraná",
+                                                  city_id: App::City.by_client(index).where(name:'Ponta Grossa').first().id).first())
+p App::Course.create(client_id: index, 
+                    name: "Ciências Econômicas", 
+                    duration: "10", 
+                    institution: App::Institution.where(name: "Universidade Estadual do Oeste do Paraná",
+                                                  city_id: App::City.by_client(index).where(name:'Cascavel').first().id).first())
+p App::Course.create(client_id: index, 
+                    name: "Direito", 
+                    duration: "10", 
+                    institution: App::Institution.where(name: "Centro Universitário de Pato Branco",
+                                                city_id: App::City.by_client(index).where(name:'Pato Branco').first().id).first())
+p App::Course.create(client_id: index, 
+                    name: "Produção Audiovisual", 
+                    duration: "4", 
+                    institution: App::Institution.where(name: "Centro Universitário Fundação Assis Gurgacz",
+                                                city_id: App::City.by_client(index).where(name:'Cascavel').first().id).first())
+p App::Course.create(client_id: index, 
+                    name: "Ciências Sociais", 
+                    duration: "8", 
+                    institution: App::Institution.where(name: "Universidade Estadual do Oeste do Paraná",
+                                                  city_id: App::City.by_client(index).where(name:'Toledo').first().id).first())
+p App::Course.create(client_id: index, 
+                    name: "Pedagogia", 
+                    duration: "8", 
+                    institution: App::Institution.where(name: "Faculdade de Telêmaco Borba",
+                                                city_id: App::City.by_client(index).where(name:'Telêmaco Borba').first().id).first())
+p App::Course.create(client_id: index, 
+                    name: "Publicidade", 
+                    duration: "8", 
+                    institution: App::Institution.where(name: "Universidade Estadual do Centro Oeste",
+                                                        abreviation:'SANTA CRUZ',
+                                                  city_id: App::City.by_client(index).where(name:'Guarapuava').first().id).first())
+p App::Course.create(client_id: index, 
+                    name: "Agronomia", 
+                    duration: "10", 
+                    institution: App::Institution.where(name: "Universidade Cesumar",
+                                                city_id: App::City.by_client(index).where(name:'Ponta Grossa').first().id).first())
+p App::Course.create(client_id: index, 
+                    name: "Pedagogia", 
+                    duration: "8", 
+                    institution: App::Institution.where(name: "Universidade Estadual do Paraná",
+                                                  city_id: App::City.by_client(index).where(name:'União da Vitória').first().id).first())
+p App::Course.create(client_id: index, 
+                    name: "Direito A", 
+                    duration: "10", 
+                    institution: App::Institution.where(name: "Centro Universitário Campo Real",
+                                                city_id: App::City.by_client(index).where(name:'Guarapuava').first().id).first())
+p App::Course.create(client_id: index, 
+                    name: "Direito B", 
+                    duration: "10", 
+                    institution: App::Institution.where(name: "Centro Universitário Campo Real",
+                                                city_id: App::City.by_client(index).where(name:'Guarapuava').first().id).first())
+p App::Course.create(client_id: index, 
+                    name: "Direito Matutino", 
+                    duration: "10", 
+                    institution: App::Institution.where(name: "Centro Universitário Campo Real",
+                                                city_id: App::City.by_client(index).where(name:'Guarapuava').first().id).first())
+p App::Course.create(client_id: index, 
+                    name: "História", 
+                    duration: "8", 
+                    institution: App::Institution.where(name: "Universidade Estadual do Centro Oeste",
+                                                  city_id: App::City.by_client(index).where(name:'Irati').first().id).first())
+p App::Course.create(client_id: index, 
+                    name: "Biomedicina Matutino", 
+                    duration: "8", 
+                    institution: App::Institution.where(name: "Centro Universitário de Cascavel",
+                                                city_id: App::City.by_client(index).where(name:'Cascavel').first().id).first())
+p App::Course.create(client_id: index, 
+                    name: "Biomedicina Noturno", 
+                    duration: "8", 
+                    institution: App::Institution.where(name: "Centro Universitário de Cascavel",
+                                                city_id: App::City.by_client(index).where(name:'Cascavel').first().id).first())
+p App::Course.create(client_id: index, 
+                    name: "Engenharia Agronômica", 
+                    duration: "10", 
+                    institution: App::Institution.where(name: "Universidade Paranaense",
+                                                city_id: App::City.by_client(index).where(name:'Umuarama').first().id).first())
+p App::Course.create(client_id: index, 
+                    name: "Nutrição", 
+                    duration: "8", 
+                    institution: App::Institution.where(name: "Universidade Estadual do Centro Oeste",
+                                                        abreviation:'CEDETEG',
+                                                  city_id: App::City.by_client(index).where(name:'Guarapuava').first().id).first())
+p App::Course.create(client_id: index, 
+                    name: "Educação Física", 
+                    duration: "8", 
+                    institution: App::Institution.where(name: "Universidade Estadual de Ponta Grossa",
+                                                city_id: App::City.by_client(index).where(name:'Ponta Grossa').first().id).first())
+p App::Course.create(client_id: index, 
+                    name: "Engenharia Eletrônica", 
+                    duration: "10", 
+                    institution: App::Institution.where(name: "Universidade Tecnológica Federal do Paraná",
+                                                  city_id: App::City.by_client(index).where(name:'Cornélio Procópio').first().id).first())
+p App::Course.create(client_id: index, 
+                    name: "Arquitetura e Urbanismo", 
+                    duration: "10", 
+                    institution: App::Institution.where(name: "Universidade Paranaense",
+                                                city_id: App::City.by_client(index).where(name:'Toledo').first().id).first())
+p App::Course.create(client_id: index, 
+                    name: "Enfermagem", 
+                    duration: "10", 
+                    institution: App::Institution.where(name: "Centro de Ensino Superior dos Campos Gerais",
+                                                city_id: App::City.by_client(index).where(name:'Ponta Grossa').first().id).first())
+p App::Course.create(client_id: index, 
+                    name: "Administração", 
+                    duration: "8", 
+                    institution: App::Institution.where(name: "Universidade Estadual do Centro Oeste",
+                                                  city_id: App::City.by_client(index).where(name:'Prudentópolis').first().id).first())
+p App::Course.create(client_id: index, 
+                    name: "Pedagogia", 
+                    duration: "8", 
+                    institution: App::Institution.where(name: "Universidade Estadual do Oeste do Paraná",
+                                                  city_id: App::City.by_client(index).where(name:'Francisco Beltrão').first().id).first())
+p App::Course.create(client_id: index, 
+                    name: "Gestão Pública", 
+                    duration: "4", 
+                    institution: App::Institution.where(name: "Centro Universitário de União da Vitória",
+                                                  city_id: App::City.by_client(index).where(name:'São Mateus do Sul').first().id).first())
+p App::Course.create(client_id: index, 
+                    name: "Enfermagem", 
+                    duration: "10", 
+                    institution: App::Institution.where(name: "Centro Universitário Campo Real",
+                                                city_id: App::City.by_client(index).where(name:'Guarapuava').first().id).first())
+p App::Course.create(client_id: index, 
+                    name: "Engenharia Mecânica", 
+                    duration: "10", 
+                    institution: App::Institution.where(name: "Centro Universitário UNISEP - União de Ensino do Sudoeste do Paraná",
+                                                  city_id: App::City.by_client(index).where(name:'Francisco Beltrão').first().id).first())
+p App::Course.create(client_id: index, 
+                    name: "Direito", 
+                    duration: "10", 
+                    institution: App::Institution.where(name: "Centro Universitário UNISEP - União de Ensino do Sudoeste do Paraná",
+                                                  city_id: App::City.by_client(index).where(name:'Dois Vizinhos').first().id).first())
+p App::Course.create(client_id: index, 
+                    name: "Física", 
+                    duration: "8", 
+                    institution: App::Institution.where(name: "Universidade Estadual de Ponta Grossa",
+                                                city_id: App::City.by_client(index).where(name:'Ponta Grossa').first().id).first())
+p App::Course.create(client_id: index, 
+                    name: "Engenharia Elétrica", 
+                    duration: "10", 
+                    institution: App::Institution.where(name: "Centro Universitário Fundação Assis Gurgacz",
+                                                city_id: App::City.by_client(index).where(name:'Cascavel').first().id).first())
+p App::Course.create(client_id: index, 
+                    name: "Pedagogia Matutino", 
+                    duration: "8", 
+                    institution: App::Institution.where(name: "Centro Universitário Fundação Assis Gurgacz",
+                                                city_id: App::City.by_client(index).where(name:'Cascavel').first().id).first())
+p App::Course.create(client_id: index, 
+                    name: "Pedagogia Noturno", 
+                    duration: "8", 
+                    institution: App::Institution.where(name: "Centro Universitário Fundação Assis Gurgacz",
+                                                city_id: App::City.by_client(index).where(name:'Cascavel').first().id).first())
+p App::Course.create(client_id: index, 
+                    name: "Agronomia Noturno", 
+                    duration: "10", 
+                    institution: App::Institution.where(name: "Centro Universitário Fundação Assis Gurgacz",
+                                                city_id: App::City.by_client(index).where(name:'Cascavel').first().id).first())
+p App::Course.create(client_id: index, 
+                    name: "Enfermagem", 
+                    duration: "10", 
+                    institution: App::Institution.where(name: "Universidade Estadual do Centro Oeste",
+                                                        abreviation:'CEDETEG',
+                                                  city_id: App::City.by_client(index).where(name:'Guarapuava').first().id).first())
+p App::Course.create(client_id: index, 
+                    name: "Marketing", 
+                    duration: "4", 
+                    institution: App::Institution.where(name: "Centro Sulamericano de Ensino Superior",
+                                                city_id: App::City.by_client(index).where(name:'Francisco Beltrão').first().id).first())
+p App::Course.create(client_id: index, 
+                    name: "Direito", 
+                    duration: "10", 
+                    institution: App::Institution.where(name: "Centro de Ensino Superior dos Campos Gerais",
+                                                city_id: App::City.by_client(index).where(name:'Ponta Grossa').first().id).first())
+p App::Course.create(client_id: index, 
+                    name: "Tecnologia em Alimentos", 
+                    duration: "6", 
+                    institution: App::Institution.where(name: "Universidade Tecnológica Federal do Paraná",
+                                                  city_id: App::City.by_client(index).where(name:'Medianeira').first().id).first())
+p App::Course.create(client_id: index, 
+                    name: "Gestão do Agronegócio EAD", 
+                      duration: "6", 
+                      institution: App::Institution.where(name: "Centro de Ensino Superior dos Campos Gerais",
+                                                  city_id: App::City.by_client(index).where(name:'Ponta Grossa').first().id).first())
+p App::Course.create(client_id: index, 
+                    name: "Tecnologia em Alimentos", 
+                    duration: "6", 
+                    institution: App::Institution.where(name: "Universidade Tecnológica Federal do Paraná",
+                                                  city_id: App::City.by_client(index).where(name:'Londrina').first().id).first())
+p App::Course.create(client_id: index, 
+                    name: "Engenharia Agrícola", 
+                    duration: "10", 
+                    institution: App::Institution.where(name: "Universidade Estadual do Oeste do Paraná",
+                                                  city_id: App::City.by_client(index).where(name:'Cascavel').first().id).first())
+p App::Course.create(client_id: index, 
+                    name: "Direito", 
+                    duration: "10", 
+                    institution: App::Institution.where(name: "Centro Sulamericano de Ensino Superior",
+                                                city_id: App::City.by_client(index).where(name:'Francisco Beltrão').first().id).first())
+p App::Course.create(client_id: index, 
+                    name: "Engenharia Civil", 
+                    duration: "10", 
+                    institution: App::Institution.where(name: "Faculdades Integradas do Vale do Ivaí",
+                                                  city_id: App::City.by_client(index).where(name:'Ivaiporã').first().id).first())
+p App::Course.create(client_id: index, 
+                    name: "Sistemas de Informação", 
+                    duration: "8", 
+                    institution: App::Institution.where(name: "Universidade Tecnológica Federal do Paraná",
+                                                  city_id: App::City.by_client(index).where(name:'Curitiba').first().id).first())
+p App::Course.create(client_id: index, 
+                    name: "Medicina Veterinária", 
+                    duration: "10", 
+                    institution: App::Institution.where(name: "Pontifícia Universidade Católica do Paraná",
+                                                  city_id: App::City.by_client(index).where(name:'Toledo').first().id).first())
+p App::Course.create(client_id: index, 
+                    name: "Sistemas de Informação", 
+                    duration: "8", 
+                    institution: App::Institution.where(name: "Universidade Paranaense",
+                                                city_id: App::City.by_client(index).where(name:'Paranavaí').first().id).first())
+p App::Course.create(client_id: index, 
+                    name: "História", 
+                    duration: "8", 
+                    institution: App::Institution.where(name: "Universidade Estadual do Centro Oeste",
+                                                  city_id: App::City.by_client(index).where(name:'Coronel Vivida').first().id).first())
+p App::Course.create(client_id: index, 
+                    name: "Estética e Cosmética", 
+                    duration: "6", 
+                    institution: App::Institution.where(name: "Universidade Cesumar",
+                                                city_id: App::City.by_client(index).where(name:'Ponta Grossa').first().id).first())
+p App::Course.create(client_id: index, 
+                    name: "Química", 
+                    duration: "8", 
+                    institution: App::Institution.where(name: "Universidade Estadual do Paraná",
+                                                  city_id: App::City.by_client(index).where(name:'União da Vitória').first().id).first())
+p App::Course.create(client_id: index, 
+                    name: "Engenharia de Computação", 
+                    duration: "10", 
+                    institution: App::Institution.where(name: "Universidade Tecnológica Federal do Paraná",
+                                                  city_id: App::City.by_client(index).where(name:'Toledo').first().id).first())
+p App::Course.create(client_id: index, 
+                    name: "Engenharia Mecânica", 
+                    duration: "10", 
+                    institution: App::Institution.where(name: "Universidade Paranaense",
+                                                city_id: App::City.by_client(index).where(name:'Umuarama').first().id).first())
+p App::Course.create(client_id: index, 
+                    name: "Ciências Biológicas", 
+                    duration: "8", 
+                    institution: App::Institution.where(name: "Centro Universitário Fundação Assis Gurgacz",
+                                                city_id: App::City.by_client(index).where(name:'Cascavel').first().id).first())
+p App::Course.create(client_id: index, 
+                    name: "Estética e Cosmética", 
+                    duration: "6", 
+                    institution: App::Institution.where(name: "Universidade Paranaense",
+                                                city_id: App::City.by_client(index).where(name:'Paranavaí').first().id).first())
+p App::Course.create(client_id: index, 
+                    name: "Matemática", 
+                    duration: "8", 
+                    institution: App::Institution.where(name: "Universidade Estadual do Centro Oeste",
+                                                  city_id: App::City.by_client(index).where(name:'Coronel Vivida').first().id).first())
+p App::Course.create(client_id: index, 
+                    name: "Publicidade e Propaganda", 
+                    duration: "8", 
+                    institution: App::Institution.where(name: "Centro Universitário Fundação Assis Gurgacz",
+                                                city_id: App::City.by_client(index).where(name:'Toledo').first().id).first())
+p App::Course.create(client_id: index, 
+                    name: "Engenharia Civil", 
+                    duration: "10", 
+                    institution: App::Institution.where(name: "Universidade Tecnológica Federal do Paraná",
+                                                  city_id: App::City.by_client(index).where(name:'Curitiba').first().id).first())
+p App::Course.create(client_id: index, 
+                    name: "Gastronomia", 
+                    duration: "4", 
+                    institution: App::Institution.where(name: "Universidade Cesumar",
+                                                city_id: App::City.by_client(index).where(name:'Ponta Grossa').first().id).first())
+p App::Course.create(client_id: index, 
+                    name: "Letras Portugues / Inglês", 
+                    duration: "8", 
+                    institution: App::Institution.where(name: "Universidade Estadual do Paraná",
+                                                  city_id: App::City.by_client(index).where(name:'União da Vitória').first().id).first())
+p App::Course.create(client_id: index, 
+                    name: "Arquitetura e Urbanismo Noturno", 
+                    duration: "10", 
+                    institution: App::Institution.where(name: "Centro Universitário Fundação Assis Gurgacz",
+                                                city_id: App::City.by_client(index).where(name:'Cascavel').first().id).first())
+p App::Course.create(client_id: index, 
+                    name: "Matemática", 
+                    duration: "8", 
+                    institution: App::Institution.where(name: "Universidade Estadual do Centro Oeste",
+                                                        abreviation:'CEDETEG',
+                                                  city_id: App::City.by_client(index).where(name:'Guarapuava').first().id).first())
+p App::Course.create(client_id: index, 
+                    name: "Engenharia de Controle e Automação", 
+                    duration: "10", 
+                    institution: App::Institution.where(name: "Universidade Tecnológica Federal do Paraná",
+                                                  city_id: App::City.by_client(index).where(name:'Curitiba').first().id).first())
+p App::Course.create(client_id: index, 
+                    name: "Matemática", 
+                    duration: "8", 
+                    institution: App::Institution.where(name: "Universidade Tecnológica Federal do Paraná",
+                                                  city_id: App::City.by_client(index).where(name:'Pato Branco').first().id).first())
+p App::Course.create(client_id: index, 
+                    name: "Jornalismo", 
+                    duration: "8", 
+                    institution: App::Institution.where(name: "Universidade Estadual de Ponta Grossa",
+                                                city_id: App::City.by_client(index).where(name:'Ponta Grossa').first().id).first())
+p App::Course.create(client_id: index, 
+                    name: "Matemática", 
+                    duration: "8", 
+                    institution: App::Institution.where(name: "Universidade Tecnológica Federal do Paraná",
+                                                  city_id: App::City.by_client(index).where(name:'Toledo').first().id).first())
+p App::Course.create(client_id: index, 
+                    name: "Automação Industrial", 
+                    duration: "6", 
+                    institution: App::Institution.where(name: "Universidade Tecnológica Federal do Paraná",
+                                                  city_id: App::City.by_client(index).where(name:'Ponta Grossa').first().id).first())
+p App::Course.create(client_id: index, 
+                    name: "Letras - Portugues / Italiano", 
+                    duration: "8", 
+                    institution: App::Institution.where(name: "Universidade Estadual do Oeste do Paraná",
+                                                  city_id: App::City.by_client(index).where(name:'Cascavel').first().id).first())
+p App::Course.create(client_id: index, 
+                    name: "Engenharia de Alimentos", 
+                    duration: "10", 
+                    institution: App::Institution.where(name: "Universidade Estadual do Centro Oeste",
+                                                        abreviation:'CEDETEG',
+                                                  city_id: App::City.by_client(index).where(name:'Guarapuava').first().id).first())
+p App::Course.create(client_id: index, 
+                    name: "Agronomia", 
+                    duration: "10", 
+                    institution: App::Institution.where(name: "Centro Universitário UNISEP - União de Ensino do Sudoeste do Paraná",
+                                                  city_id: App::City.by_client(index).where(name:'Dois Vizinhos').first().id).first())
+p App::Course.create(client_id: index, 
+                    name: "Psicologia", 
+                    duration: "10", 
+                    institution: App::Institution.where(name: "Universidade Paranaense",
+                                                city_id: App::City.by_client(index).where(name:'Francisco Beltrão').first().id).first())
+p App::Course.create(client_id: index, 
+                    name: "Enfermagem", 
+                    duration: "8", 
+                    institution: App::Institution.where(name: "Universidade Cesumar",
+                                                city_id: App::City.by_client(index).where(name:'Ponta Grossa').first().id).first())
+p App::Course.create(client_id: index, 
+                    name: "Ciências Contábeis", 
+                    duration: "8", 
+                    institution: App::Institution.where(name: "Universidade Cesumar",
+                                                city_id: App::City.by_client(index).where(name:'Londrina').first().id).first())
+p App::Course.create(client_id: index, 
+                    name: "Letras Português/Francês", 
+                    duration: "8", 
+                    institution: App::Institution.where(name: "Universidade Estadual de Ponta Grossa",
+                                                city_id: App::City.by_client(index).where(name:'Ponta Grossa').first().id).first())
+p App::Course.create(client_id: index, 
+                    name: "Engenharia Elétrica", 
+                    duration: "10", 
+                    institution: App::Institution.where(name: "Universidade Tecnológica Federal do Paraná",
+                                                  city_id: App::City.by_client(index).where(name:'Cornélio Procópio').first().id).first())
+p App::Course.create(client_id: index, 
+                    name: "Ciências Contábeis", 
+                    duration: "8", 
+                    institution: App::Institution.where(name: "Faculdade Guarapuava",
+                                                city_id: App::City.by_client(index).where(name:'Guarapuava').first().id).first())
+p App::Course.create(client_id: index, 
+                    name: "Engenharia Civil", 
+                    duration: "10", 
+                    institution: App::Institution.where(name: "Centro de Ensino Superior dos Campos Gerais",
+                                                city_id: App::City.by_client(index).where(name:'Ponta Grossa').first().id).first())
+p App::Course.create(client_id: index, 
+                    name: "Agronomia", 
+                    duration: "10", 
+                    institution: App::Institution.where(name: "Pontifícia Universidade Católica do Paraná",
+                                                  city_id: App::City.by_client(index).where(name:'Toledo').first().id).first())
+p App::Course.create(client_id: index, 
+                    name: "Estética e Cosmética", 
+                    duration: "5", 
+                    institution: App::Institution.where(name: "Centro Universitário Campo Real",
+                                                city_id: App::City.by_client(index).where(name:'Laranjeiras do Sul').first().id).first())
+p App::Course.create(client_id: index, 
+                    name: "Ciências Contábeis", 
+                    duration: "8", 
+                    institution: App::Institution.where(name: "Universidade Paranaense",
+                                                city_id: App::City.by_client(index).where(name:'Cianorte').first().id).first())
+p App::Course.create(client_id: index, 
+                    name: "Enfermagem", 
+                    duration: "10", 
+                    institution: App::Institution.where(name: "Centro Universitário de Pato Branco",
+                                                city_id: App::City.by_client(index).where(name:'Pato Branco').first().id).first())
+p App::Course.create(client_id: index, 
+                    name: "Estética e Cosmética", 
+                    duration: "6", 
+                    institution: App::Institution.where(name: "Centro Universitário de Pato Branco",
+                                                city_id: App::City.by_client(index).where(name:'Pato Branco').first().id).first())
+p App::Course.create(client_id: index, 
+                    name: "Odontologia", 
+                    duration: "8", 
+                    institution: App::Institution.where(name: "Universidade Paranaense",
+                                                city_id: App::City.by_client(index).where(name:'Cascavel').first().id).first())
+p App::Course.create(client_id: index, 
+                    name: "Arquitetura e Urbanismo", 
+                    duration: "10", 
+                    institution: App::Institution.where(name: "Universidade Paranaense",
+                                                city_id: App::City.by_client(index).where(name:'Paranavaí').first().id).first())
+p App::Course.create(client_id: index, 
+                    name: "Odontologia", 
+                    duration: "10", 
+                    institution: App::Institution.where(name: "Centro Universitário UNISEP - União de Ensino do Sudoeste do Paraná",
+                                                  city_id: App::City.by_client(index).where(name:'Francisco Beltrão').first().id).first())
+p App::Course.create(client_id: index, 
+                    name: "Arquitetura e Urbanismo", 
+                    duration: "10", 
+                    institution: App::Institution.where(name: "Universidade Cesumar",
+                                                city_id: App::City.by_client(index).where(name:'Ponta Grossa').first().id).first())
+p App::Course.create(client_id: index, 
+                    name: "Farmácia", 
+                    duration: "10", 
+                    institution: App::Institution.where(name: "Universidade Paranaense",
+                                                city_id: App::City.by_client(index).where(name:'Umuarama').first().id).first())
+p App::Course.create(client_id: index, 
+                    name: "Design Gráfico", 
+                    duration: "6", 
+                    institution: App::Institution.where(name: "Universidade Tecnológica Federal do Paraná",
+                                                  city_id: App::City.by_client(index).where(name:'Curitiba').first().id).first())
+p App::Course.create(client_id: index, 
+                    name: "Direito Noturno", 
+                    duration: "10", 
+                    institution: App::Institution.where(name: "Centro Universitário Fundação Assis Gurgacz",
+                                                city_id: App::City.by_client(index).where(name:'Cascavel').first().id).first())
+p App::Course.create(client_id: index, 
+                    name: "Direito Matutino", 
+                    duration: "10", 
+                    institution: App::Institution.where(name: "Centro Universitário Fundação Assis Gurgacz",
+                                                city_id: App::City.by_client(index).where(name:'Cascavel').first().id).first())
+p App::Course.create(client_id: index, 
+                    name: "Gestão Ambiental", 
+                    duration: "4", 
+                    institution: App::Institution.where(name: "Centro Universitário de União da Vitória",
+                                                  city_id: App::City.by_client(index).where(name:'São Mateus do Sul').first().id).first())
+p App::Course.create(client_id: index, 
+                    name: "Gestão Comercial", 
+                    duration: "4", 
+                    institution: App::Institution.where(name: "Centro Universitário de Cascavel",
+                                                city_id: App::City.by_client(index).where(name:'Cascavel').first().id).first())
+p App::Course.create(client_id: index, 
+                    name: "Pedagogia", 
+                    duration: "8", 
+                    institution: App::Institution.where(name: "Faculdade Sagrada Familia",
+                                                city_id: App::City.by_client(index).where(name:'Ponta Grossa').first().id).first())
+p App::Course.create(client_id: index, 
+                    name: "Direito", 
+                    duration: "10", 
+                    institution: App::Institution.where(name: "Universidade Paranaense",
+                                                city_id: App::City.by_client(index).where(name:'Paranavaí').first().id).first())
+p App::Course.create(client_id: index, 
+                    name: "Letras Inglês", 
+                    duration: "8", 
+                    institution: App::Institution.where(name: "Universidade Estadual do Centro Oeste",
+                                                        abreviation:'SANTA CRUZ',
+                                                  city_id: App::City.by_client(index).where(name:'Guarapuava').first().id).first())
+p App::Course.create(client_id: index, 
+                    name: "Educação Física", 
+                    duration: "8", 
+                    institution: App::Institution.where(name: "Centro Universitário de União da Vitória",
+                                                  city_id: App::City.by_client(index).where(name:'São Mateus do Sul').first().id).first())
+p App::Course.create(client_id: index, 
+                    name: "Gestão de Processos Gerenciais", 
+                    duration: "4", 
+                    institution: App::Institution.where(name: "Universidade Cesumar",
+                                                city_id: App::City.by_client(index).where(name:'Ponta Grossa').first().id).first())
+p App::Course.create(client_id: index, 
+                    name: "Produção Industrial", 
+                    duration: "6", 
+                    institution: App::Institution.where(name: "Centro Universitário de União da Vitória",
+                                                  city_id: App::City.by_client(index).where(name:'São Mateus do Sul').first().id).first())
+p App::Course.create(client_id: index, 
+                    name: "Engenharia de Produção", 
+                    duration: "10", 
+                    institution: App::Institution.where(name: "Universidade Cesumar",
+                                                city_id: App::City.by_client(index).where(name:'Ponta Grossa').first().id).first())
+p App::Course.create(client_id: index, 
+                    name: "Direito", 
+                    duration: "10", 
+                    institution: App::Institution.where(name: "Faculdade de Tecnologia do Vale do Ivaí",
+                                                  city_id: App::City.by_client(index).where(name:'Ivaiporã').first().id).first())
+p App::Course.create(client_id: index, 
+                    name: "Enfermagem", 
+                    duration: "10", 
+                    institution: App::Institution.where(name: "Universidade Paranaense",
+                                                city_id: App::City.by_client(index).where(name:'Toledo').first().id).first())
+p App::Course.create(client_id: index, 
+                    name: "Psicologia", 
+                    duration: "10", 
+                    institution: App::Institution.where(name: "Universidade Cesumar",
+                                                city_id: App::City.by_client(index).where(name:'Ponta Grossa').first().id).first())
+p App::Course.create(client_id: index, 
+                    name: "Sistemas de Informação", 
+                    duration: "8", 
+                    institution: App::Institution.where(name: "Universidade Paranaense",
+                                                city_id: App::City.by_client(index).where(name:'Umuarama').first().id).first())
+p App::Course.create(client_id: index, 
+                    name: "Psicologia Matutino", 
+                    duration: "10", 
+                    institution: App::Institution.where(name: "Centro Universitário Fundação Assis Gurgacz",
+                                                city_id: App::City.by_client(index).where(name:'Cascavel').first().id).first())
+p App::Course.create(client_id: index, 
+                    name: "Psicologia Noturno", 
+                    duration: "10", 
+                    institution: App::Institution.where(name: "Centro Universitário Fundação Assis Gurgacz",
+                                                city_id: App::City.by_client(index).where(name:'Cascavel').first().id).first())
+p App::Course.create(client_id: index, 
+                    name: "Engenharia Elétrica", 
+                    duration: "10", 
+                    institution: App::Institution.where(name: "Centro de Ensino Superior dos Campos Gerais",
+                                                city_id: App::City.by_client(index).where(name:'Ponta Grossa').first().id).first())
+p App::Course.create(client_id: index, 
+                    name: "Engenharia Civil", 
+                    duration: "10", 
+                    institution: App::Institution.where(name: "Centro Universitário de Cascavel",
+                                                city_id: App::City.by_client(index).where(name:'Cascavel').first().id).first())
+p App::Course.create(client_id: index, 
+                    name: "Manutenção Industral", 
+                    duration: "6", 
+                    institution: App::Institution.where(name: "Universidade Tecnológica Federal do Paraná",
+                                                  city_id: App::City.by_client(index).where(name:'Pato Branco').first().id).first())
+p App::Course.create(client_id: index, 
+                    name: "Ciências Contábeis", 
+                    duration: "8", 
+                    institution: App::Institution.where(name: "Faculdade Sagrada Familia",
+                                                city_id: App::City.by_client(index).where(name:'Ponta Grossa').first().id).first())
+p App::Course.create(client_id: index, 
+                    name: "Arquitetura e Urbanismo", 
+                    duration: "10", 
+                    institution: App::Institution.where(name: "Universidade Paranaense",
+                                                city_id: App::City.by_client(index).where(name:'Cianorte').first().id).first())
+p App::Course.create(client_id: index, 
+                    name: "Engenharia Mecâtronica", 
+                    duration: "10", 
+                    institution: App::Institution.where(name: "Universidade Tecnológica Federal do Paraná",
+                                                  city_id: App::City.by_client(index).where(name:'Curitiba').first().id).first())
+p App::Course.create(client_id: index, 
+                    name: "Ciências Contábeis", 
+                    duration: "8", 
+                    institution: App::Institution.where(name: "Centro Universitário Campo Real",
+                                                city_id: App::City.by_client(index).where(name:'Guarapuava').first().id).first())
+p App::Course.create(client_id: index, 
+                    name: "Pedagogia Matutino", 
+                    duration: "8", 
+                    institution: App::Institution.where(name: "Universidade Estadual do Centro Oeste",
+                                                        abreviation:'SANTA CRUZ',
+                                                  city_id: App::City.by_client(index).where(name:'Guarapuava').first().id).first())
+p App::Course.create(client_id: index, 
+                    name: "Pedagogia Noturno", 
+                    duration: "8", 
+                    institution: App::Institution.where(name: "Universidade Estadual do Centro Oeste",
+                                                        abreviation:'SANTA CRUZ',
+                                                  city_id: App::City.by_client(index).where(name:'Guarapuava').first().id).first())
+p App::Course.create(client_id: index, 
+                    name: "Processos Químicos", 
+                    duration: "6", 
+                    institution: App::Institution.where(name: "Universidade Tecnológica Federal do Paraná",
+                                                  city_id: App::City.by_client(index).where(name:'Toledo').first().id).first())
+p App::Course.create(client_id: index, 
+                    name: "Engenharia de Software", 
+                    duration: "8", 
+                    institution: App::Institution.where(name: "Centro Universitário de Pato Branco",
+                                                city_id: App::City.by_client(index).where(name:'Pato Branco').first().id).first())
+p App::Course.create(client_id: index, 
+                    name: "Administração", 
+                    duration: "8", 
+                    institution: App::Institution.where(name: "Faculdade de Telêmaco Borba",
+                                                city_id: App::City.by_client(index).where(name:'Telêmaco Borba').first().id).first())
+p App::Course.create(client_id: index, 
+                    name: "Educação Física", 
+                    duration: "8", 
+                    institution: App::Institution.where(name: "Universidade Paranaense",
+                                                city_id: App::City.by_client(index).where(name:'Cianorte').first().id).first())
+p App::Course.create(client_id: index, 
+                    name: "Engenharia de Produção", 
+                    duration: "10", 
+                    institution: App::Institution.where(name: "Pontifícia Universidade Católica do Paraná",
+                                                  city_id: App::City.by_client(index).where(name:'Londrina').first().id).first())
+p App::Course.create(client_id: index, 
+                    name: "Química Integral", 
+                    duration: "8", 
+                    institution: App::Institution.where(name: "Universidade Estadual do Centro Oeste",
+                                                        abreviation:'CEDETEG',
+                                                  city_id: App::City.by_client(index).where(name:'Guarapuava').first().id).first())
+p App::Course.create(client_id: index, 
+                    name: "Química Noite", 
+                    duration: "8", 
+                    institution: App::Institution.where(name: "Universidade Estadual do Centro Oeste",
+                                                        abreviation:'CEDETEG',
+                                                  city_id: App::City.by_client(index).where(name:'Guarapuava').first().id).first())
+p App::Course.create(client_id: index, 
+                    name: "Biomedicina", 
+                    duration: "8", 
+                    institution: App::Institution.where(name: "Universidade Cesumar",
+                                                city_id: App::City.by_client(index).where(name:'Ponta Grossa').first().id).first())
+p App::Course.create(client_id: index, 
+                    name: "Ciências Contábeis Matutino", 
+                    duration: "8", 
+                    institution: App::Institution.where(name: "Universidade Estadual do Centro Oeste",
+                                                        abreviation:'SANTA CRUZ',
+                                                  city_id: App::City.by_client(index).where(name:'Guarapuava').first().id).first())
+p App::Course.create(client_id: index, 
+                    name: "Ciências Contábeis Noturno", 
+                    duration: "8", 
+                    institution: App::Institution.where(name: "Universidade Estadual do Centro Oeste",
+                                                        abreviation:'SANTA CRUZ',
+                                                  city_id: App::City.by_client(index).where(name:'Guarapuava').first().id).first())
+p App::Course.create(client_id: index, 
+                    name: "T.A.D.S", 
+                    duration: "6", 
+                    institution: App::Institution.where(name: "Universidade Tecnológica Federal do Paraná",
+                                                  city_id: App::City.by_client(index).where(name:'Ponta Grossa').first().id).first())
+p App::Course.create(client_id: index, 
+                    name: "Farmácia", 
+                    duration: "10", 
+                    institution: App::Institution.where(name: "Uniguairacá Centro Universitário",
+                                                city_id: App::City.by_client(index).where(name:'Guarapuava').first().id).first())
+p App::Course.create(client_id: index, 
+                    name: "Gestão Financeira", 
+                    duration: "4", 
+                    institution: App::Institution.where(name: "Centro Universitário Fundação Assis Gurgacz",
+                                                city_id: App::City.by_client(index).where(name:'Toledo').first().id).first())
+p App::Course.create(client_id: index, 
+                    name: "Engenharia de Bioprocessos e Biotecnologia", 
+                    duration: "10", 
+                    institution: App::Institution.where(name: "Universidade Tecnológica Federal do Paraná",
+                                                  city_id: App::City.by_client(index).where(name:'Dois Vizinhos').first().id).first())
+p App::Course.create(client_id: index, 
+                    name: "Serviços Jurídicos", 
+                    duration: "4", 
+                    institution: App::Institution.where(name: "Centro Universitário de União da Vitória",
+                                                  city_id: App::City.by_client(index).where(name:'São Mateus do Sul').first().id).first())
+p App::Course.create(client_id: index, 
+                    name: "Direito", 
+                    duration: "10", 
+                    institution: App::Institution.where(name: "Universidade Estadual do Oeste do Paraná",
+                                                  city_id: App::City.by_client(index).where(name:'Francisco Beltrão').first().id).first())
+p App::Course.create(client_id: index, 
+                    name: "Engenharia Ambiental", 
+                    duration: "10", 
+                    institution: App::Institution.where(name: "Universidade Estadual do Centro Oeste",
+                                                  city_id: App::City.by_client(index).where(name:'Irati').first().id).first())
+p App::Course.create(client_id: index, 
+                    name: "Produção Publicitária", 
+                    duration: "5", 
+                    institution: App::Institution.where(name: "Centro de Ensino Superior dos Campos Gerais",
+                                                city_id: App::City.by_client(index).where(name:'Ponta Grossa').first().id).first())
+p App::Course.create(client_id: index, 
+                    name: "Enfermagem", 
+                    duration: "10", 
+                    institution: App::Institution.where(name: "Universidade Paranaense",
+                                                city_id: App::City.by_client(index).where(name:'Francisco Beltrão').first().id).first())
+p App::Course.create(client_id: index, 
+                    name: "Pedagogia Nortuno", 
+                    duration: "8", 
+                    institution: App::Institution.where(name: "Universidade Estadual do Oeste do Paraná",
+                                                  city_id: App::City.by_client(index).where(name:'Cascavel').first().id).first())
+p App::Course.create(client_id: index, 
+                    name: "Pedagogia Matutino", 
+                    duration: "8", 
+                    institution: App::Institution.where(name: "Universidade Estadual do Oeste do Paraná",
+                                                  city_id: App::City.by_client(index).where(name:'Cascavel').first().id).first())
+p App::Course.create(client_id: index, 
+                    name: "Arquitetura e Urbanismo", 
+                    duration: "10", 
+                    institution: App::Institution.where(name: "Centro Universitário de União da Vitória",
+                                                  city_id: App::City.by_client(index).where(name:'São Mateus do Sul').first().id).first())
+p App::Course.create(client_id: index, 
+                    name: "Estética e Cosmética", 
+                    duration: "6", 
+                    institution: App::Institution.where(name: "Universidade Paranaense",
+                                                city_id: App::City.by_client(index).where(name:'Umuarama').first().id).first())
+p App::Course.create(client_id: index, 
+                    name: "Direito (Matutino)", 
+                    duration: "10", 
+                    institution: App::Institution.where(name: "Universidade Paranaense",
+                                                city_id: App::City.by_client(index).where(name:'Umuarama').first().id).first())
+p App::Course.create(client_id: index, 
+                    name: "Zootecnia", 
+                    duration: "10", 
+                    institution: App::Institution.where(name: "Universidade Estadual de Ponta Grossa",
+                                                city_id: App::City.by_client(index).where(name:'Ponta Grossa').first().id).first())
+p App::Course.create(client_id: index, 
+                    name: "Matemática", 
+                    duration: "8", 
+                    institution: App::Institution.where(name: "Universidade Estadual do Oeste do Paraná",
+                                                  city_id: App::City.by_client(index).where(name:'Foz do Iguaçu').first().id).first())
+p App::Course.create(client_id: index, 
+                    name: "Matemática", 
+                    duration: "8", 
+                    institution: App::Institution.where(name: "Universidade Estadual do Oeste do Paraná",
+                                                  city_id: App::City.by_client(index).where(name:'Cascavel').first().id).first())
+p App::Course.create(client_id: index, 
+                    name: "Recursos Humanos", 
+                    duration: "4", 
+                    institution: App::Institution.where(name: "Centro Universitário Fundação Assis Gurgacz",
+                                                city_id: App::City.by_client(index).where(name:'Toledo').first().id).first())
+p App::Course.create(client_id: index, 
+                    name: "Análise e Desenvolvimento de Sistemas", 
+                    duration: "5", 
+                    institution: App::Institution.where(name: "Faculdades Integradas do Vale do Ivaí",
+                                                  city_id: App::City.by_client(index).where(name:'Ivaiporã').first().id).first())
+p App::Course.create(client_id: index, 
+                    name: "Ciências Contábeis", 
+                    duration: "8", 
+                    institution: App::Institution.where(name: "Centro Universitário de União da Vitória",
+                                                  city_id: App::City.by_client(index).where(name:'São Mateus do Sul').first().id).first())
+p App::Course.create(client_id: index, 
+                    name: "Agronomia", 
+                    duration: "10", 
+                    institution: App::Institution.where(name: "Centro Universitário de Cascavel",
+                                                city_id: App::City.by_client(index).where(name:'Cascavel').first().id).first())
+p App::Course.create(client_id: index, 
+                    name: "Administração", 
+                    duration: "8", 
+                    institution: App::Institution.where(name: "Universidade Estadual de Ponta Grossa",
+                                                city_id: App::City.by_client(index).where(name:'Ponta Grossa').first().id).first())
+p App::Course.create(client_id: index, 
+                    name: "T.A.D.S", 
+                    duration: "6", 
+                    institution: App::Institution.where(name: "Universidade Paranaense",
+                                                city_id: App::City.by_client(index).where(name:'Cascavel').first().id).first())
+p App::Course.create(client_id: index, 
+                    name: "Direito", 
+                    duration: "10", 
+                    institution: App::Institution.where(name: "Pontifícia Universidade Católica do Paraná",
+                                                  city_id: App::City.by_client(index).where(name:'Toledo').first().id).first())
+p App::Course.create(client_id: index, 
+                    name: "História", 
+                    duration: "8", 
+                    institution: App::Institution.where(name: "Centro Universitário Fundação Assis Gurgacz",
+                                                city_id: App::City.by_client(index).where(name:'Cascavel').first().id).first())
+p App::Course.create(client_id: index, 
+                    name: "Direito Noturno", 
+                    duration: "10", 
+                    institution: App::Institution.where(name: "Centro Universitário de Cascavel",
+                                                city_id: App::City.by_client(index).where(name:'Cascavel').first().id).first())
+p App::Course.create(client_id: index, 
+                    name: "Direito Matutino", 
+                    duration: "10", 
+                    institution: App::Institution.where(name: "Centro Universitário de Cascavel",
+                                                city_id: App::City.by_client(index).where(name:'Cascavel').first().id).first())
+p App::Course.create(client_id: index, 
+                    name: "Medicina Veterinária", 
+                    duration: "10", 
+                    institution: App::Institution.where(name: "Universidade Paranaense",
+                                                city_id: App::City.by_client(index).where(name:'Umuarama').first().id).first())
+p App::Course.create(client_id: index, 
+                    name: "Engenharia Florestal", 
+                    duration: "10", 
+                    institution: App::Institution.where(name: "Universidade Tecnológica Federal do Paraná",
+                                                  city_id: App::City.by_client(index).where(name:'Dois Vizinhos').first().id).first())
+p App::Course.create(client_id: index, 
+                    name: "Turismo", 
+                    duration: "8", 
+                    institution: App::Institution.where(name: "Universidade Estadual do Oeste do Paraná",
+                                                  city_id: App::City.by_client(index).where(name:'Foz do Iguaçu').first().id).first())
+p App::Course.create(client_id: index, 
+                    name: "Letras Português Matutino", 
+                    duration: "8", 
+                    institution: App::Institution.where(name: "Universidade Estadual do Centro Oeste",
+                                                        abreviation:'SANTA CRUZ',
+                                                  city_id: App::City.by_client(index).where(name:'Guarapuava').first().id).first())
+p App::Course.create(client_id: index, 
+                    name: "Letras Português Noturno", 
+                    duration: "8", 
+                    institution: App::Institution.where(name: "Universidade Estadual do Centro Oeste",
+                                                        abreviation:'SANTA CRUZ',
+                                                  city_id: App::City.by_client(index).where(name:'Guarapuava').first().id).first())
+p App::Course.create(client_id: index, 
+                    name: "Engenharia Civil", 
+                    duration: "10", 
+                    institution: App::Institution.where(name: "Universidade Paranaense",
+                                                city_id: App::City.by_client(index).where(name:'Paranavaí').first().id).first())
+p App::Course.create(client_id: index, 
+                    name: "Educação Física", 
+                    duration: "8", 
+                    institution: App::Institution.where(name: "Universidade Estadual do Centro Oeste",
+                                                  city_id: App::City.by_client(index).where(name:'Irati').first().id).first())
+p App::Course.create(client_id: index, 
+                    name: "Administração", 
+                    duration: "8", 
+                    institution: App::Institution.where(name: "Universidade Estadual do Oeste do Paraná",
+                                                  city_id: App::City.by_client(index).where(name:'Foz do Iguaçu').first().id).first())
+p App::Course.create(client_id: index, 
+                    name: "Letras - Língua Portuguesa e Inglês Matutino", 
+                    duration: "8", 
+                    institution: App::Institution.where(name: "Centro Universitário Fundação Assis Gurgacz",
+                                                city_id: App::City.by_client(index).where(name:'Toledo').first().id).first())
+p App::Course.create(client_id: index, 
+                    name: "Letras - Língua Portuguesa e Inglês Noturno", 
+                    duration: "8", 
+                    institution: App::Institution.where(name: "Centro Universitário Fundação Assis Gurgacz",
+                                                city_id: App::City.by_client(index).where(name:'Toledo').first().id).first())
+p App::Course.create(client_id: index, 
+                    name: "Processos Gerenciais", 
+                    duration: "6", 
+                    institution: App::Institution.where(name: "Universidade Paranaense",
+                                                city_id: App::City.by_client(index).where(name:'Cianorte').first().id).first())
+p App::Course.create(client_id: index, 
+                    name: "Física", 
+                    duration: "8", 
+                    institution: App::Institution.where(name: "Universidade Estadual do Centro Oeste",
+                                                        abreviation:'CEDETEG',
+                                                  city_id: App::City.by_client(index).where(name:'Guarapuava').first().id).first())
+p App::Course.create(client_id: index, 
+                    name: "Ciências Contábeis", 
+                    duration: "8", 
+                    institution: App::Institution.where(name: "Centro Universitário Mater Dei",
+                                                city_id: App::City.by_client(index).where(name:'Pato Branco').first().id).first())
+p App::Course.create(client_id: index, 
+                    name: "Administração", 
+                    duration: "8", 
+                    institution: App::Institution.where(name: "Universidade Estadual do Oeste do Paraná",
+                                                  city_id: App::City.by_client(index).where(name:'Cascavel').first().id).first())
+p App::Course.create(client_id: index, 
+                    name: "Engenharia Quimica", 
+                    duration: "10", 
+                    institution: App::Institution.where(name: "Universidade Tecnológica Federal do Paraná",
+                                                  city_id: App::City.by_client(index).where(name:'Francisco Beltrão').first().id).first())
+p App::Course.create(client_id: index, 
+                    name: "Design de Interiores", 
+                    duration: "4", 
+                    institution: App::Institution.where(name: "Centro Universitário de União da Vitória",
+                                                  city_id: App::City.by_client(index).where(name:'São Mateus do Sul').first().id).first())
+p App::Course.create(client_id: index, 
+                    name: "Direito Noturno", 
+                    duration: "10", 
+                    institution: App::Institution.where(name: "Centro Universitário Fundação Assis Gurgacz",
+                                                city_id: App::City.by_client(index).where(name:'Toledo').first().id).first())
+p App::Course.create(client_id: index, 
+                    name: "Direito Matutino", 
+                    duration: "10", 
+                    institution: App::Institution.where(name: "Centro Universitário Fundação Assis Gurgacz",
+                                                city_id: App::City.by_client(index).where(name:'Toledo').first().id).first())
+p App::Course.create(client_id: index, 
+                    name: "Arquitetura e Urbanismo Integral", 
+                    duration: "8", 
+                    institution: App::Institution.where(name: "Centro Universitário Fundação Assis Gurgacz",
+                                                city_id: App::City.by_client(index).where(name:'Cascavel').first().id).first())
+p App::Course.create(client_id: index, 
+                    name: "Odontologia (Noturno)", 
+                    duration: "10", 
+                    institution: App::Institution.where(name: "Universidade Paranaense",
+                                                city_id: App::City.by_client(index).where(name:'Umuarama').first().id).first())
+p App::Course.create(client_id: index, 
+                    name: "Pedagogia", 
+                    duration: "8", 
+                    institution: App::Institution.where(name: "Universidade Estadual do Centro Oeste",
+                                                  city_id: App::City.by_client(index).where(name:'Irati').first().id).first())
+p App::Course.create(client_id: index, 
+                    name: "Engenharia Civil", 
+                    duration: "10", 
+                    institution: App::Institution.where(name: "Centro Universitário de União da Vitória",
+                                                  city_id: App::City.by_client(index).where(name:'São Mateus do Sul').first().id).first())
+p App::Course.create(client_id: index, 
+                    name: "História", 
+                    duration: "8", 
+                    institution: App::Institution.where(name: "Universidade Estadual do Paraná",
+                                                  city_id: App::City.by_client(index).where(name:'União da Vitória').first().id).first())
+p App::Course.create(client_id: index, 
+                    name: "Fisioterapia", 
+                    duration: "10", 
+                    institution: App::Institution.where(name: "Universidade Estadual do Centro Oeste",
+                                                        abreviation:'CEDETEG',
+                                                  city_id: App::City.by_client(index).where(name:'Guarapuava').first().id).first())
+p App::Course.create(client_id: index, 
+                    name: "Engenharia de Pesca", 
+                    duration: "10", 
+                    institution: App::Institution.where(name: "Universidade Estadual do Oeste do Paraná",
+                                                  city_id: App::City.by_client(index).where(name:'Toledo').first().id).first())
+p App::Course.create(client_id: index, 
+                    name: "Engenharia Civil", 
+                    duration: "10", 
+                    institution: App::Institution.where(name: "Universidade Tecnológica Federal do Paraná",
+                                                  city_id: App::City.by_client(index).where(name:'Apucarana').first().id).first())
+p App::Course.create(client_id: index, 
+                    name: "Ciências Contábeis", 
+                    duration: "8", 
+                    institution: App::Institution.where(name: "Universidade Paranaense",
+                                                city_id: App::City.by_client(index).where(name:'Toledo').first().id).first())
+p App::Course.create(client_id: index, 
+                    name: "Enfermagem", 
+                    duration: "10", 
+                    institution: App::Institution.where(name: "Universidade Estadual de Ponta Grossa",
+                                                city_id: App::City.by_client(index).where(name:'Ponta Grossa').first().id).first())
+p App::Course.create(client_id: index, 
+                    name: "Engenharia de Computação", 
+                    duration: "10", 
+                    institution: App::Institution.where(name: "Universidade Tecnológica Federal do Paraná",
+                                                  city_id: App::City.by_client(index).where(name:'Apucarana').first().id).first())
+p App::Course.create(client_id: index, 
+                    name: "Design de Moda", 
+                    duration: "6", 
+                    institution: App::Institution.where(name: "Universidade Tecnológica Federal do Paraná",
+                                                  city_id: App::City.by_client(index).where(name:'Apucarana').first().id).first())
+p App::Course.create(client_id: index, 
+                    name: "Serviço Social", 
+                    duration: "8", 
+                    institution: App::Institution.where(name: "Universidade Estadual do Oeste do Paraná",
+                                                  city_id: App::City.by_client(index).where(name:'Toledo').first().id).first())
+p App::Course.create(client_id: index, 
+                    name: "Engenharia Eletrônica", 
+                    duration: "10", 
+                    institution: App::Institution.where(name: "Universidade Tecnológica Federal do Paraná",
+                                                  city_id: App::City.by_client(index).where(name:'Curitiba').first().id).first())
+p App::Course.create(client_id: index, 
+                    name: "Adminsitração", 
+                    duration: "8", 
+                    institution: App::Institution.where(name: "Faculdade Guarapuava",
+                                                city_id: App::City.by_client(index).where(name:'Guarapuava').first().id).first())
+p App::Course.create(client_id: index, 
+                    name: "Engenharia Civil", 
+                    duration: "10", 
+                    institution: App::Institution.where(name: "Centro Universitário UNISEP - União de Ensino do Sudoeste do Paraná",
+                                                  city_id: App::City.by_client(index).where(name:'Francisco Beltrão').first().id).first())
+p App::Course.create(client_id: index, 
+                    name: "Publicidade e Propaganda", 
+                    duration: "8", 
+                    institution: App::Institution.where(name: "Centro Universitário de União da Vitória",
+                                                  city_id: App::City.by_client(index).where(name:'São Mateus do Sul').first().id).first())
+p App::Course.create(client_id: index, 
+                    name: "T.A.D.S", 
+                    duration: "5", 
+                    institution: App::Institution.where(name: "Centro Universitário de Pato Branco",
+                                                city_id: App::City.by_client(index).where(name:'Pato Branco').first().id).first())
+p App::Course.create(client_id: index, 
+                    name: "Educação Física", 
+                    duration: "8", 
+                    institution: App::Institution.where(name: "Centro Universitário de Pato Branco",
+                                                city_id: App::City.by_client(index).where(name:'Pato Branco').first().id).first())
+p App::Course.create(client_id: index, 
+                    name: "Odontologia", 
+                    duration: "8", 
+                    institution: App::Institution.where(name: "Universidade Paranaense",
+                                                city_id: App::City.by_client(index).where(name:'Francisco Beltrão').first().id).first())
+p App::Course.create(client_id: index, 
+                    name: "Engenharia Ambiental", 
+                    duration: "10", 
+                    institution: App::Institution.where(name: "Universidade Tecnológica Federal do Paraná",
+                                                  city_id: App::City.by_client(index).where(name:'Francisco Beltrão').first().id).first())
+p App::Course.create(client_id: index, 
+                    name: "Engenharia Mecânica", 
+                    duration: "10", 
+                    institution: App::Institution.where(name: "Universidade Estadual do Oeste do Paraná",
+                                                  city_id: App::City.by_client(index).where(name:'Foz do Iguaçu').first().id).first())
+p App::Course.create(client_id: index, 
+                    name: "Design Gráfico", 
+                    duration: "4", 
+                    institution: App::Institution.where(name: "Centro Universitário Fundação Assis Gurgacz",
+                                                city_id: App::City.by_client(index).where(name:'Toledo').first().id).first())
+p App::Course.create(client_id: index, 
+                    name: "Estética e Cosmética", 
+                    duration: "5", 
+                    institution: App::Institution.where(name: "Centro Universitário Campo Real",
+                                                city_id: App::City.by_client(index).where(name:'Irati').first().id).first())
+p App::Course.create(client_id: index, 
+                    name: "Administração", 
+                    duration: "8", 
+                    institution: App::Institution.where(name: "Faculdade Sagrada Familia",
+                                                city_id: App::City.by_client(index).where(name:'Ponta Grossa').first().id).first())
+p App::Course.create(client_id: index, 
+                    name: "Nutrição", 
+                    duration: "8", 
+                    institution: App::Institution.where(name: "Universidade Estadual do Oeste do Paraná",
+                                                  city_id: App::City.by_client(index).where(name:'Francisco Beltrão').first().id).first())
+p App::Course.create(client_id: index, 
+                    name: "Engenharia Quimica", 
+                    duration: "10", 
+                    institution: App::Institution.where(name: "Universidade Tecnológica Federal do Paraná",
+                                                  city_id: App::City.by_client(index).where(name:'Apucarana').first().id).first())
+p App::Course.create(client_id: index, 
+                    name: "Enfermagem", 
+                    duration: "8", 
+                    institution: App::Institution.where(name: "Pontifícia Universidade Católica do Paraná",
+                                                  city_id: App::City.by_client(index).where(name:'Londrina').first().id).first())
+p App::Course.create(client_id: index, 
+                    name: "Ciências Contábeis", 
+                    duration: "8", 
+                    institution: App::Institution.where(name: "Centro Universitário Santa Amélia",
+                                                city_id: App::City.by_client(index).where(name:'Ponta Grossa').first().id).first())
+p App::Course.create(client_id: index, 
+                    name: "Educação Física", 
+                    duration: "8", 
+                    institution: App::Institution.where(name: "Uniguairacá Centro Universitário",
+                                                city_id: App::City.by_client(index).where(name:'Prudentópolis').first().id).first())
+p App::Course.create(client_id: index, 
+                    name: "Medicina", 
+                    duration: "12", 
+                    institution: App::Institution.where(name: "Universidade Estadual de Ponta Grossa",
+                                                city_id: App::City.by_client(index).where(name:'Ponta Grossa').first().id).first())
+p App::Course.create(client_id: index, 
+                    name: "Arquitetura e Urbanismo", 
+                    duration: "10", 
+                    institution: App::Institution.where(name: "Universidade Paranaense",
+                                                city_id: App::City.by_client(index).where(name:'Umuarama').first().id).first())
+p App::Course.create(client_id: index, 
+                    name: "Arquitetura e Urbanismo", 
+                    duration: "10", 
+                    institution: App::Institution.where(name: "Centro Universitário Campo Real",
+                                                city_id: App::City.by_client(index).where(name:'Guarapuava').first().id).first())
+p App::Course.create(client_id: index, 
+                    name: "Pedagogia", 
+                    duration: "8", 
+                    institution: App::Institution.where(name: "Universidade Paranaense",
+                                                city_id: App::City.by_client(index).where(name:'Umuarama').first().id).first())
+p App::Course.create(client_id: index, 
+                    name: "Arquitetura e Urbanismo", 
+                    duration: "10", 
+                    institution: App::Institution.where(name: "Centro de Ensino Superior dos Campos Gerais",
+                                                city_id: App::City.by_client(index).where(name:'Ponta Grossa').first().id).first())
+p App::Course.create(client_id: index, 
+                    name: "Engenharia de Bioprocessos e Biotecnologia", 
+                    duration: "10", 
+                    institution: App::Institution.where(name: "Universidade Tecnológica Federal do Paraná",
+                                                  city_id: App::City.by_client(index).where(name:'Toledo').first().id).first())
+p App::Course.create(client_id: index, 
+                    name: "Biomedicina", 
+                    duration: "8", 
+                    institution: App::Institution.where(name: "Centro Universitário Campo Real",
+                                                city_id: App::City.by_client(index).where(name:'Guarapuava').first().id).first())
+p App::Course.create(client_id: index, 
+                    name: "Direito", 
+                    duration: "10", 
+                    institution: App::Institution.where(name: "Centro Universitário Mater Dei",
+                                                city_id: App::City.by_client(index).where(name:'Pato Branco').first().id).first())
+p App::Course.create(client_id: index, 
+                    name: "Letras - Portugues / InglÊs", 
+                    duration: "8", 
+                    institution: App::Institution.where(name: "Universidade Estadual do Oeste do Paraná",
+                                                  city_id: App::City.by_client(index).where(name:'Foz do Iguaçu').first().id).first())
+p App::Course.create(client_id: index, 
+                    name: "Estética e Cosmética", 
+                    duration: "5", 
+                    institution: App::Institution.where(name: "Uniguairacá Centro Universitário",
+                                                city_id: App::City.by_client(index).where(name:'Guarapuava').first().id).first())
+p App::Course.create(client_id: index, 
+                    name: "Engenharia de Software", 
+                    duration: "10", 
+                    institution: App::Institution.where(name: "Universidade Estadual de Ponta Grossa",
+                                                city_id: App::City.by_client(index).where(name:'Ponta Grossa').first().id).first())
+p App::Course.create(client_id: index, 
+                    name: "Ciências da Computação", 
+                    duration: "8", 
+                    institution: App::Institution.where(name: "Universidade Tecnológica Federal do Paraná",
+                                                  city_id: App::City.by_client(index).where(name:'Ponta Grossa').first().id).first())
+p App::Course.create(client_id: index, 
+                    name: "Engenharia Elétrica", 
+                    duration: "10", 
+                    institution: App::Institution.where(name: "Universidade Tecnológica Federal do Paraná",
+                                                  city_id: App::City.by_client(index).where(name:'Ponta Grossa').first().id).first())
+p App::Course.create(client_id: index, 
+                    name: "Engenharia Química", 
+                    duration: "10", 
+                    institution: App::Institution.where(name: "Faculdade de Telêmaco Borba",
+                                                city_id: App::City.by_client(index).where(name:'Telêmaco Borba').first().id).first())
+p App::Course.create(client_id: index, 
+                    name: "Engenharia Textil", 
+                    duration: "10", 
+                    institution: App::Institution.where(name: "Universidade Tecnológica Federal do Paraná",
+                                                  city_id: App::City.by_client(index).where(name:'Apucarana').first().id).first())
+p App::Course.create(client_id: index, 
+                    name: "Nutrição", 
+                    duration: "8", 
+                    institution: App::Institution.where(name: "Centro Universitário Campo Real",
+                                                city_id: App::City.by_client(index).where(name:'Guarapuava').first().id).first())
+p App::Course.create(client_id: index, 
+                    name: "Informática", 
+                    duration: "8", 
+                    institution: App::Institution.where(name: "Universidade Tecnológica Federal do Paraná",
+                                                  city_id: App::City.by_client(index).where(name:'Francisco Beltrão').first().id).first())
+p App::Course.create(client_id: index, 
+                    name: "Jornalismo", 
+                    duration: "8", 
+                    institution: App::Institution.where(name: "Universidade Estadual do Centro Oeste",
+                                                        abreviation:'SANTA CRUZ',
+                                                  city_id: App::City.by_client(index).where(name:'Guarapuava').first().id).first())
+p App::Course.create(client_id: index, 
+                    name: "Enfermagem", 
+                    duration: "10", 
+                    institution: App::Institution.where(name: "Universidade Estadual do Oeste do Paraná",
+                                                  city_id: App::City.by_client(index).where(name:'Foz do Iguaçu').first().id).first())
+p App::Course.create(client_id: index, 
+                    name: "Engenharia Mecânica", 
+                    duration: "10", 
+                    institution: App::Institution.where(name: "Universidade Tecnológica Federal do Paraná",
+                                                  city_id: App::City.by_client(index).where(name:'Londrina').first().id).first())
+p App::Course.create(client_id: index, 
+                    name: "Administração", 
+                    duration: "8", 
+                    institution: App::Institution.where(name: "Universidade Paranaense",
+                                                city_id: App::City.by_client(index).where(name:'Cianorte').first().id).first())
+p App::Course.create(client_id: index, 
+                    name: "Educação Física Matutino", 
+                    duration: "8", 
+                    institution: App::Institution.where(name: "Centro Universitário Fundação Assis Gurgacz",
+                                                city_id: App::City.by_client(index).where(name:'Cascavel').first().id).first())
+p App::Course.create(client_id: index, 
+                    name: "Educação Física Noturno", 
+                    duration: "8", 
+                    institution: App::Institution.where(name: "Centro Universitário Fundação Assis Gurgacz",
+                                                city_id: App::City.by_client(index).where(name:'Cascavel').first().id).first())
+p App::Course.create(client_id: index, 
+                    name: "Engenharia Elétrica", 
+                    duration: "10", 
+                    institution: App::Institution.where(name: "Centro Universitário UNISEP - União de Ensino do Sudoeste do Paraná",
+                                                  city_id: App::City.by_client(index).where(name:'Francisco Beltrão').first().id).first())
+p App::Course.create(client_id: index, 
+                    name: "Ciências da Computação", 
+                    duration: "8", 
+                    institution: App::Institution.where(name: "Universidade Tecnológica Federal do Paraná",
+                                                  city_id: App::City.by_client(index).where(name:'Medianeira').first().id).first())
+p App::Course.create(client_id: index, 
+                    name: "Enfermagem", 
+                    duration: "8", 
+                    institution: App::Institution.where(name: "Centro Universitário Fundação Assis Gurgacz",
+                                                city_id: App::City.by_client(index).where(name:'Cascavel').first().id).first())
+p App::Course.create(client_id: index, 
+                    name: "Agronomia", 
+                    duration: "10", 
+                    institution: App::Institution.where(name: "Faculdade de Tecnologia do Vale do Ivaí",
+                                                  city_id: App::City.by_client(index).where(name:'Ivaiporã').first().id).first())
+p App::Course.create(client_id: index, 
+                    name: "Estética e Cosmética", 
+                    duration: "6", 
+                    institution: App::Institution.where(name: "Universidade Paranaense",
+                                                city_id: App::City.by_client(index).where(name:'Toledo').first().id).first())
+p App::Course.create(client_id: index, 
+                    name: "Gestão Financeira", 
+                    duration: "4", 
+                    institution: App::Institution.where(name: "Centro Universitário de União da Vitória",
+                                                  city_id: App::City.by_client(index).where(name:'São Mateus do Sul').first().id).first())
+p App::Course.create(client_id: index, 
+                    name: "Letras Portugues / Espanhol", 
+                    duration: "8", 
+                    institution: App::Institution.where(name: "Universidade Estadual do Paraná",
+                                                  city_id: App::City.by_client(index).where(name:'União da Vitória').first().id).first())
+p App::Course.create(client_id: index, 
+                    name: "Ciências Contábeis", 
+                    duration: "8", 
+                    institution: App::Institution.where(name: "Uniguairacá Centro Universitário",
+                                                city_id: App::City.by_client(index).where(name:'Guarapuava').first().id).first())
+p App::Course.create(client_id: index, 
+                    name: "Ciências Biológicas", 
+                    duration: "8", 
+                    institution: App::Institution.where(name: "Universidade Estadual do Paraná",
+                                                  city_id: App::City.by_client(index).where(name:'União da Vitória').first().id).first())
+p App::Course.create(client_id: index, 
+                    name: "Serviço Social", 
+                    duration: "8", 
+                    institution: App::Institution.where(name: "Universidade Estadual de Ponta Grossa",
+                                                city_id: App::City.by_client(index).where(name:'Ponta Grossa').first().id).first())
+p App::Course.create(client_id: index, 
+                    name: "Nutrição", 
+                    duration: "8", 
+                    institution: App::Institution.where(name: "Universidade Paranaense",
+                                                city_id: App::City.by_client(index).where(name:'Francisco Beltrão').first().id).first())
+p App::Course.create(client_id: index, 
+                    name: "Engenharia Mecânica", 
+                    duration: "10", 
+                    institution: App::Institution.where(name: "Centro Universitário Fundação Assis Gurgacz",
+                                                city_id: App::City.by_client(index).where(name:'Cascavel').first().id).first())
+p App::Course.create(client_id: index, 
+                    name: "Engenharia Química", 
+                    duration: "10", 
+                    institution: App::Institution.where(name: "Universidade Estadual do Oeste do Paraná",
+                                                  city_id: App::City.by_client(index).where(name:'Toledo').first().id).first())
+p App::Course.create(client_id: index, 
+                    name: "Engenharia de Software", 
+                    duration: "8", 
+                    institution: App::Institution.where(name: "Universidade Tecnológica Federal do Paraná",
+                                                  city_id: App::City.by_client(index).where(name:'Dois Vizinhos').first().id).first())
+p App::Course.create(client_id: index, 
+                    name: "Arte", 
+                    duration: "8", 
+                    institution: App::Institution.where(name: "Universidade Estadual do Centro Oeste",
+                                                        abreviation:'SANTA CRUZ',
+                                                  city_id: App::City.by_client(index).where(name:'Guarapuava').first().id).first())
+p App::Course.create(client_id: index, 
+                    name: "Farmácia", 
+                    duration: "10", 
+                    institution: App::Institution.where(name: "Centro Universitário Mater Dei",
+                                                city_id: App::City.by_client(index).where(name:'Pato Branco').first().id).first())
+p App::Course.create(client_id: index, 
+                    name: "Matemática", 
+                    duration: "8", 
+                    institution: App::Institution.where(name: "Universidade Estadual do Paraná",
+                                                  city_id: App::City.by_client(index).where(name:'União da Vitória').first().id).first())
+p App::Course.create(client_id: index, 
+                    name: "Engenharia Mecânica", 
+                    duration: "10", 
+                    institution: App::Institution.where(name: "Faculdade de Telêmaco Borba",
+                                                city_id: App::City.by_client(index).where(name:'Telêmaco Borba').first().id).first())
+p App::Course.create(client_id: index, 
+                    name: "Farmácia", 
+                    duration: "8", 
+                    institution: App::Institution.where(name: "Centro de Ensino Superior dos Campos Gerais",
+                                                city_id: App::City.by_client(index).where(name:'Ponta Grossa').first().id).first())
+p App::Course.create(client_id: index, 
+                    name: "Administração", 
+                    duration: "8", 
+                    institution: App::Institution.where(name: "Centro Universitário UNISEP - União de Ensino do Sudoeste do Paraná",
+                                                  city_id: App::City.by_client(index).where(name:'Francisco Beltrão').first().id).first())
+p App::Course.create(client_id: index, 
+                    name: "Administração", 
+                    duration: "8", 
+                    institution: App::Institution.where(name: "Universidade Paranaense",
+                                                city_id: App::City.by_client(index).where(name:'Francisco Beltrão').first().id).first())
+p App::Course.create(client_id: index, 
+                    name: "Sistemas de Informação", 
+                    duration: "8", 
+                    institution: App::Institution.where(name: "Centro Universitário UNISEP - União de Ensino do Sudoeste do Paraná",
+                                                  city_id: App::City.by_client(index).where(name:'Francisco Beltrão').first().id).first())
+p App::Course.create(client_id: index, 
+                    name: "Psicologia", 
+                    duration: "10", 
+                    institution: App::Institution.where(name: "Pontifícia Universidade Católica do Paraná",
+                                                  city_id: App::City.by_client(index).where(name:'Toledo').first().id).first())
+p App::Course.create(client_id: index, 
+                    name: "Recursos Humanos", 
+                    duration: "4", 
+                    institution: App::Institution.where(name: "Centro Universitário de Pato Branco",
+                                                city_id: App::City.by_client(index).where(name:'Pato Branco').first().id).first())
+p App::Course.create(client_id: index, 
+                    name: "Engenharia Civil", 
+                    duration: "10", 
+                    institution: App::Institution.where(name: "Centro Universitário de Pato Branco",
+                                                city_id: App::City.by_client(index).where(name:'Pato Branco').first().id).first())
+p App::Course.create(client_id: index, 
+                    name: "Gastronomia", 
+                    duration: "4", 
+                    institution: App::Institution.where(name: "Centro Universitário de Cascavel",
+                                                city_id: App::City.by_client(index).where(name:'Cascavel').first().id).first())
+p App::Course.create(client_id: index, 
+                    name: "Gestão de Cooperativas", 
+                    duration: "4", 
+                    institution: App::Institution.where(name: "Centro Sulamericano de Ensino Superior",
+                                                city_id: App::City.by_client(index).where(name:'Francisco Beltrão').first().id).first())
+p App::Course.create(client_id: index, 
+                    name: "Engenharia de Software", 
+                    duration: "8", 
+                    institution: App::Institution.where(name: "Centro Universitário Fundação Assis Gurgacz",
+                                                city_id: App::City.by_client(index).where(name:'Toledo').first().id).first())
+p App::Course.create(client_id: index, 
+                    name: "Ciências Contábeis", 
+                    duration: "8", 
+                    institution: App::Institution.where(name: "Universidade Estadual de Ponta Grossa",
+                                                city_id: App::City.by_client(index).where(name:'Ponta Grossa').first().id).first())
+p App::Course.create(client_id: index, 
+                    name: "Enfermagem", 
+                    duration: "10", 
+                    institution: App::Institution.where(name: "Faculdade Sagrada Familia",
+                                                city_id: App::City.by_client(index).where(name:'Ponta Grossa').first().id).first())
+p App::Course.create(client_id: index, 
+                    name: "Educação Física", 
+                    duration: "8", 
+                    institution: App::Institution.where(name: "Universidade Estadual do Centro Oeste",
+                                                        abreviation:'CEDETEG',
+                                                  city_id: App::City.by_client(index).where(name:'Guarapuava').first().id).first())
+p App::Course.create(client_id: index, 
+                    name: "Medicina Veterinária", 
+                    duration: "10", 
+                    institution: App::Institution.where(name: "Centro Universitário Campo Real",
+                                                city_id: App::City.by_client(index).where(name:'Guarapuava').first().id).first())
+p App::Course.create(client_id: index, 
+                    name: "Fonoaudiologia", 
+                    duration: "8", 
+                    institution: App::Institution.where(name: "Centro Universitário Fundação Assis Gurgacz",
+                                                city_id: App::City.by_client(index).where(name:'Cascavel').first().id).first())
+p App::Course.create(client_id: index, 
+                    name: "Ciências Contábeis", 
+                    duration: "8", 
+                    institution: App::Institution.where(name: "Centro Universitário Fundação Assis Gurgacz",
+                                                city_id: App::City.by_client(index).where(name:'Toledo').first().id).first())
+p App::Course.create(client_id: index, 
+                    name: "Letras Português/Espanhol", 
+                    duration: "8", 
+                    institution: App::Institution.where(name: "Universidade Estadual de Ponta Grossa",
+                                                city_id: App::City.by_client(index).where(name:'Ponta Grossa').first().id).first())
+p App::Course.create(client_id: index, 
+                    name: "Medicina", 
+                    duration: "12", 
+                    institution: App::Institution.where(name: "Pontifícia Universidade Católica do Paraná",
+                                                  city_id: App::City.by_client(index).where(name:'Londrina').first().id).first())
+p App::Course.create(client_id: index, 
+                    name: "Automação Industrial", 
+                    duration: "6", 
+                    institution: App::Institution.where(name: "Universidade Tecnológica Federal do Paraná",
+                                                  city_id: App::City.by_client(index).where(name:'Curitiba').first().id).first())
+p App::Course.create(client_id: index, 
+                    name: "T.A.D.S", 
+                    duration: "6", 
+                    institution: App::Institution.where(name: "Universidade Paranaense",
+                                                city_id: App::City.by_client(index).where(name:'Cianorte').first().id).first())
+p App::Course.create(client_id: index, 
+                    name: "Ciências Contábeis", 
+                    duration: "8", 
+                    institution: App::Institution.where(name: "Centro Universitário UNISEP - União de Ensino do Sudoeste do Paraná",
+                                                  city_id: App::City.by_client(index).where(name:'Francisco Beltrão').first().id).first())
+p App::Course.create(client_id: index, 
+                    name: "Medicina Veterinária Noturno", 
+                    duration: "10", 
+                    institution: App::Institution.where(name: "Centro Universitário Fundação Assis Gurgacz",
+                                                city_id: App::City.by_client(index).where(name:'Cascavel').first().id).first())
+p App::Course.create(client_id: index, 
+                    name: "Sistemas de Informação", 
+                    duration: "8", 
+                    institution: App::Institution.where(name: "Centro Universitário de União da Vitória",
+                                                  city_id: App::City.by_client(index).where(name:'São Mateus do Sul').first().id).first())
+p App::Course.create(client_id: index, 
+                    name: "Administração", 
+                    duration: "8", 
+                    institution: App::Institution.where(name: "Centro Universitário de União da Vitória",
+                                                  city_id: App::City.by_client(index).where(name:'São Mateus do Sul').first().id).first())
+p App::Course.create(client_id: index, 
+                    name: "Educação Física (bacharelado)", 
+                    duration: "8", 
+                    institution: App::Institution.where(name: "Universidade Paranaense",
+                                                city_id: App::City.by_client(index).where(name:'Francisco Beltrão').first().id).first())
+p App::Course.create(client_id: index, 
+                    name: "Engenharia de Controle e Automação", 
+                    duration: "10", 
+                    institution: App::Institution.where(name: "Universidade Tecnológica Federal do Paraná",
+                                                  city_id: App::City.by_client(index).where(name:'Cornélio Procópio').first().id).first())
+p App::Course.create(client_id: index, 
+                    name: "Ciências Contábeis", 
+                    duration: "8", 
+                    institution: App::Institution.where(name: "Universidade Paranaense",
+                                                city_id: App::City.by_client(index).where(name:'Umuarama').first().id).first())
+p App::Course.create(client_id: index, 
+                    name: "Agronomia", 
+                    duration: "10", 
+                    institution: App::Institution.where(name: "Universidade Tecnológica Federal do Paraná",
+                                                  city_id: App::City.by_client(index).where(name:'Santa Helena').first().id).first())
+p App::Course.create(client_id: index, 
+                    name: "Psicologia", 
+                    duration: "10", 
+                    institution: App::Institution.where(name: "Universidade Estadual do Centro Oeste",
+                                                  city_id: App::City.by_client(index).where(name:'Irati').first().id).first())
+p App::Course.create(client_id: index, 
+                    name: "Manutenção Industral", 
+                    duration: "6", 
+                    institution: App::Institution.where(name: "Universidade Tecnológica Federal do Paraná",
+                                                  city_id: App::City.by_client(index).where(name:'Medianeira').first().id).first())
+p App::Course.create(client_id: index, 
+                    name: "Educação Física", 
+                    duration: "8", 
+                    institution: App::Institution.where(name: "Centro Universitário de Cascavel",
+                                                city_id: App::City.by_client(index).where(name:'Cascavel').first().id).first())
+p App::Course.create(client_id: index, 
+                    name: "Engenharia Agronômica", 
+                    duration: "10", 
+                    institution: App::Institution.where(name: "Centro Universitário Campo Real",
+                                                city_id: App::City.by_client(index).where(name:'Guarapuava').first().id).first())
+p App::Course.create(client_id: index, 
+                    name: "Direito", 
+                    duration: "10", 
+                    institution: App::Institution.where(name: "Universidade Estadual do Oeste do Paraná",
+                                                  city_id: App::City.by_client(index).where(name:'Foz do Iguaçu').first().id).first())
+p App::Course.create(client_id: index, 
+                    name: "Engenharia de Alimentos", 
+                    duration: "10", 
+                    institution: App::Institution.where(name: "Universidade Tecnológica Federal do Paraná",
+                                                  city_id: App::City.by_client(index).where(name:'Campo Mourão').first().id).first())
+p App::Course.create(client_id: index, 
+                    name: "Pedagogia", 
+                    duration: "8", 
+                    institution: App::Institution.where(name: "Universidade Estadual do Oeste do Paraná",
+                                                  city_id: App::City.by_client(index).where(name:'Foz do Iguaçu').first().id).first())
+p App::Course.create(client_id: index, 
+                    name: "Biomedicina", 
+                    duration: "8", 
+                    institution: App::Institution.where(name: "Universidade Cesumar",
+                                                city_id: App::City.by_client(index).where(name:'Londrina').first().id).first())
+p App::Course.create(client_id: index, 
+                    name: "Odontologia Integral", 
+                    duration: "8", 
+                    institution: App::Institution.where(name: "Centro Universitário de Cascavel",
+                                                city_id: App::City.by_client(index).where(name:'Cascavel').first().id).first())
+p App::Course.create(client_id: index, 
+                    name: "Direito", 
+                    duration: "10", 
+                    institution: App::Institution.where(name: "Universidade Cesumar",
+                                                city_id: App::City.by_client(index).where(name:'Londrina').first().id).first())
+p App::Course.create(client_id: index, 
+                    name: "Letras Espanhol", 
+                    duration: "8", 
+                    institution: App::Institution.where(name: "Universidade Estadual do Centro Oeste",
+                                                  city_id: App::City.by_client(index).where(name:'Irati').first().id).first())
+p App::Course.create(client_id: index, 
+                    name: "Engenharia Civil", 
+                    duration: "10", 
+                    institution: App::Institution.where(name: "Centro Universitário Mater Dei",
+                                                city_id: App::City.by_client(index).where(name:'Pato Branco').first().id).first())
+p App::Course.create(client_id: index, 
+                    name: "Engenharia Florestal", 
+                    duration: "10", 
+                    institution: App::Institution.where(name: "Universidade Estadual do Centro Oeste",
+                                                  city_id: App::City.by_client(index).where(name:'Irati').first().id).first())
+p App::Course.create(client_id: index, 
+                    name: "Direito", 
+                    duration: "10", 
+                    institution: App::Institution.where(name: "Pontifícia Universidade Católica do Paraná",
+                                                  city_id: App::City.by_client(index).where(name:'Londrina').first().id).first())
+p App::Course.create(client_id: index, 
+                    name: "Administração", 
+                    duration: "8", 
+                    institution: App::Institution.where(name: "Centro Universitário Fundação Assis Gurgacz",
+                                                city_id: App::City.by_client(index).where(name:'Cascavel').first().id).first())
+p App::Course.create(client_id: index, 
+                    name: "Engenharia Elétrica", 
+                    duration: "10", 
+                    institution: App::Institution.where(name: "Universidade Tecnológica Federal do Paraná",
+                                                  city_id: App::City.by_client(index).where(name:'Curitiba').first().id).first())
+p App::Course.create(client_id: index, 
+                    name: "Pedagogia", 
+                    duration: "8", 
+                    institution: App::Institution.where(name: "Uniguairacá Centro Universitário",
+                                                city_id: App::City.by_client(index).where(name:'Guarapuava').first().id).first())
+p App::Course.create(client_id: index, 
+                    name: "Administração", 
+                    duration: "8", 
+                    institution: App::Institution.where(name: "Centro Universitário UNISEP - União de Ensino do Sudoeste do Paraná",
+                                                  city_id: App::City.by_client(index).where(name:'Dois Vizinhos').first().id).first())
+p App::Course.create(client_id: index, 
+                    name: "Fisioterapia", 
+                    duration: "8", 
+                    institution: App::Institution.where(name: "Pontifícia Universidade Católica do Paraná",
+                                                  city_id: App::City.by_client(index).where(name:'Londrina').first().id).first())
+p App::Course.create(client_id: index, 
+                    name: "Engenharia Mecânica", 
+                    duration: "10", 
+                    institution: App::Institution.where(name: "Universidade Tecnológica Federal do Paraná",
+                                                  city_id: App::City.by_client(index).where(name:'Ponta Grossa').first().id).first())
+p App::Course.create(client_id: index, 
+                    name: "Tecnologia em Alimentos", 
+                    duration: "6", 
+                    institution: App::Institution.where(name: "Universidade Tecnológica Federal do Paraná",
+                                                  city_id: App::City.by_client(index).where(name:'Campo Mourão').first().id).first())
+p App::Course.create(client_id: index, 
+                    name: "Educação Física Licenciatura", 
+                    duration: "8", 
+                    institution: App::Institution.where(name: "Uniguairacá Centro Universitário",
+                                                city_id: App::City.by_client(index).where(name:'Guarapuava').first().id).first())
+p App::Course.create(client_id: index, 
+                    name: "Administração", 
+                    duration: "8", 
+                    institution: App::Institution.where(name: "Centro Universitário Campo Real",
+                                                city_id: App::City.by_client(index).where(name:'Laranjeiras do Sul').first().id).first())
+p App::Course.create(client_id: index, 
+                    name: "Ciências Biológicas", 
+                    duration: "8", 
+                    institution: App::Institution.where(name: "Universidade Estadual de Ponta Grossa",
+                                                city_id: App::City.by_client(index).where(name:'Ponta Grossa').first().id).first())
+p App::Course.create(client_id: index, 
+                    name: "Psicologia", 
+                    duration: "10", 
+                    institution: App::Institution.where(name: "Centro de Ensino Superior dos Campos Gerais",
+                                                city_id: App::City.by_client(index).where(name:'Ponta Grossa').first().id).first())
+p App::Course.create(client_id: index, 
+                    name: "Design Gráfico", 
+                    duration: "4", 
+                    institution: App::Institution.where(name: "Centro Universitário de Cascavel",
+                                                city_id: App::City.by_client(index).where(name:'Cascavel').first().id).first())
+p App::Course.create(client_id: index, 
+                    name: "Medicina", 
+                    duration: "12", 
+                    institution: App::Institution.where(name: "Centro Universitário Fundação Assis Gurgacz",
+                                                city_id: App::City.by_client(index).where(name:'Cascavel').first().id).first())
+p App::Course.create(client_id: index, 
+                    name: "Fisioterapia", 
+                    duration: "10", 
+                    institution: App::Institution.where(name: "Universidade Paranaense",
+                                                city_id: App::City.by_client(index).where(name:'Francisco Beltrão').first().id).first())
+p App::Course.create(client_id: index, 
+                    name: "Administração", 
+                    duration: "8", 
+                    institution: App::Institution.where(name: "Centro de Ensino Superior dos Campos Gerais",
+                                                city_id: App::City.by_client(index).where(name:'Ponta Grossa').first().id).first())
+p App::Course.create(client_id: index, 
+                    name: "Administração Matutino", 
+                    duration: "8", 
+                    institution: App::Institution.where(name: "Universidade Estadual do Centro Oeste",
+                                                        abreviation:'SANTA CRUZ',
+                                                  city_id: App::City.by_client(index).where(name:'Guarapuava').first().id).first())
+p App::Course.create(client_id: index, 
+                    name: "Administração Noturno", 
+                    duration: "8", 
+                    institution: App::Institution.where(name: "Universidade Estadual do Centro Oeste",
+                                                        abreviation:'SANTA CRUZ',
+                                                  city_id: App::City.by_client(index).where(name:'Guarapuava').first().id).first())
+p App::Course.create(client_id: index, 
+                    name: "Enfermagem", 
+                    duration: "10", 
+                    institution: App::Institution.where(name: "Universidade Paranaense",
+                                                city_id: App::City.by_client(index).where(name:'Paranavaí').first().id).first())
+p App::Course.create(client_id: index, 
+                    name: "Odontologia", 
+                    duration: "10", 
+                    institution: App::Institution.where(name: "Universidade Estadual do Oeste do Paraná",
+                                                  city_id: App::City.by_client(index).where(name:'Cascavel').first().id).first())
+p App::Course.create(client_id: index, 
+                    name: "Negócios Imobiliários", 
+                    duration: "4", 
+                    institution: App::Institution.where(name: "Centro Universitário Fundação Assis Gurgacz",
+                                                city_id: App::City.by_client(index).where(name:'Cascavel').first().id).first())
+p App::Course.create(client_id: index, 
+                    name: "Engenharia de Produção", 
+                    duration: "5", 
+                    institution: App::Institution.where(name: "Universidade Tecnológica Federal do Paraná",
+                                                  city_id: App::City.by_client(index).where(name:'Medianeira').first().id).first())
+p App::Course.create(client_id: index, 
+                    name: "Letras Português/Espanhol", 
+                    duration: "8", 
+                    institution: App::Institution.where(name: "Centro Universitário Fundação Assis Gurgacz",
+                                                city_id: App::City.by_client(index).where(name:'Cascavel').first().id).first())
+p App::Course.create(client_id: index, 
+                    name: "Direito", 
+                    duration: "10", 
+                    institution: App::Institution.where(name: "Faculdade Guarapuava",
+                                                city_id: App::City.by_client(index).where(name:'Guarapuava').first().id).first())
+p App::Course.create(client_id: index, 
+                    name: "Engenharia Mecânica", 
+                    duration: "10", 
+                    institution: App::Institution.where(name: "Universidade Tecnológica Federal do Paraná",
+                                                  city_id: App::City.by_client(index).where(name:'Cornélio Procópio').first().id).first())
+p App::Course.create(client_id: index, 
+                    name: "Agronomia", 
+                    duration: "10", 
+                    institution: App::Institution.where(name: "Centro Universitário Mater Dei",
+                                                city_id: App::City.by_client(index).where(name:'Pato Branco').first().id).first())
+p App::Course.create(client_id: index, 
+                    name: "Química", 
+                    duration: "8", 
+                    institution: App::Institution.where(name: "Universidade Tecnológica Federal do Paraná",
+                                                  city_id: App::City.by_client(index).where(name:'Curitiba').first().id).first())
+p App::Course.create(client_id: index, 
+                    name: "T.A.D.S", 
+                    duration: "5", 
+                    institution: App::Institution.where(name: "Centro Universitário UNISEP - União de Ensino do Sudoeste do Paraná",
+                                                  city_id: App::City.by_client(index).where(name:'Dois Vizinhos').first().id).first())
+p App::Course.create(client_id: index, 
+                    name: "Direito", 
+                    duration: "10", 
+                    institution: App::Institution.where(name: "Universidade Paranaense",
+                                                city_id: App::City.by_client(index).where(name:'Cascavel').first().id).first())
+p App::Course.create(client_id: index, 
+                    name: "Engenharia Civil", 
+                    duration: "10", 
+                    institution: App::Institution.where(name: "Universidade Tecnológica Federal do Paraná",
+                                                  city_id: App::City.by_client(index).where(name:'Toledo').first().id).first())
+p App::Course.create(client_id: index, 
+                    name: "Administração", 
+                    duration: "8", 
+                    institution: App::Institution.where(name: "Faculdades Integradas do Vale do Ivaí",
+                                                  city_id: App::City.by_client(index).where(name:'Ivaiporã').first().id).first())
+p App::Course.create(client_id: index, 
+                    name: "Ciências Biológicas", 
+                    duration: "8", 
+                    institution: App::Institution.where(name: "Universidade Tecnológica Federal do Paraná",
+                                                  city_id: App::City.by_client(index).where(name:'Dois Vizinhos').first().id).first())
+p App::Course.create(client_id: index, 
+                    name: "Administração", 
+                    duration: "8", 
+                    institution: App::Institution.where(name: "Universidade Paranaense",
+                                                city_id: App::City.by_client(index).where(name:'Umuarama').first().id).first())
+p App::Course.create(client_id: index, 
+                    name: "Fisioterapia", 
+                    duration: "10", 
+                    institution: App::Institution.where(name: "Faculdade de Telêmaco Borba",
+                                                city_id: App::City.by_client(index).where(name:'Telêmaco Borba').first().id).first())
+p App::Course.create(client_id: index, 
+                    name: "Farmácia", 
+                    duration: "10", 
+                    institution: App::Institution.where(name: "Universidade Estadual do Centro Oeste",
+                                                        abreviation:'CEDETEG',
+                                                  city_id: App::City.by_client(index).where(name:'Guarapuava').first().id).first())
+p App::Course.create(client_id: index, 
+                    name: "Direito", 
+                    duration: "10", 
+                    institution: App::Institution.where(name: "Universidade Paranaense",
+                                                city_id: App::City.by_client(index).where(name:'Francisco Beltrão').first().id).first())
+p App::Course.create(client_id: index, 
+                    name: "Medicina Veterinária", 
+                    duration: "10", 
+                    institution: App::Institution.where(name: "Uniguairacá Centro Universitário",
+                                                city_id: App::City.by_client(index).where(name:'Guarapuava').first().id).first())
+p App::Course.create(client_id: index, 
+                    name: "Engenharia de Software", 
+                    duration: "8", 
+                    institution: App::Institution.where(name: "Uniguairacá Centro Universitário",
+                                                city_id: App::City.by_client(index).where(name:'Guarapuava').first().id).first())
+p App::Course.create(client_id: index, 
+                    name: "Medicina Veterinária Integral", 
+                    duration: "8", 
+                    institution: App::Institution.where(name: "Centro Universitário Fundação Assis Gurgacz",
+                                                city_id: App::City.by_client(index).where(name:'Cascavel').first().id).first())
+p App::Course.create(client_id: index, 
+                    name: "Engenharia Ambiental", 
+                    duration: "10", 
+                    institution: App::Institution.where(name: "Universidade Tecnológica Federal do Paraná",
+                                                  city_id: App::City.by_client(index).where(name:'Londrina').first().id).first())
+p App::Course.create(client_id: index, 
+                    name: "Engenharia Mecânica", 
+                    duration: "10", 
+                    institution: App::Institution.where(name: "Centro Universitário de Cascavel",
+                                                city_id: App::City.by_client(index).where(name:'Cascavel').first().id).first())
+p App::Course.create(client_id: index, 
+                    name: "Ciências Econômicas", 
+                    duration: "8", 
+                    institution: App::Institution.where(name: "Universidade Estadual do Oeste do Paraná",
+                                                  city_id: App::City.by_client(index).where(name:'Toledo').first().id).first())
+p App::Course.create(client_id: index, 
+                    name: "Estética e Cosmética", 
+                    duration: "6", 
+                    institution: App::Institution.where(name: "Universidade Paranaense",
+                                                city_id: App::City.by_client(index).where(name:'Guaíra').first().id).first())
+p App::Course.create(client_id: index, 
+                    name: "Letras Inglês", 
+                    duration: "8", 
+                    institution: App::Institution.where(name: "Universidade Tecnológica Federal do Paraná",
+                                                  city_id: App::City.by_client(index).where(name:'Curitiba').first().id).first())
+p App::Course.create(client_id: index, 
+                    name: "Administração", 
+                    duration: "8", 
+                    institution: App::Institution.where(name: "Universidade Cesumar",
+                                                city_id: App::City.by_client(index).where(name:'Londrina').first().id).first())
+p App::Course.create(client_id: index, 
+                    name: "Fisioterapia", 
+                    duration: "10", 
+                    institution: App::Institution.where(name: "Universidade Estadual do Oeste do Paraná",
+                                                  city_id: App::City.by_client(index).where(name:'Cascavel').first().id).first())
+p App::Course.create(client_id: index, 
+                    name: "Arquitetura e Urbanismo", 
+                    duration: "10", 
+                    institution: App::Institution.where(name: "Uniguairacá Centro Universitário",
+                                                city_id: App::City.by_client(index).where(name:'Guarapuava').first().id).first())
+p App::Course.create(client_id: index, 
+                    name: "Publicidade e Propaganda", 
+                    duration: "7", 
+                    institution: App::Institution.where(name: "Centro Universitário Campo Real",
+                                                city_id: App::City.by_client(index).where(name:'Guarapuava').first().id).first())
+p App::Course.create(client_id: index, 
+                    name: "Química", 
+                    duration: "8", 
+                    institution: App::Institution.where(name: "Universidade Tecnológica Federal do Paraná",
+                                                  city_id: App::City.by_client(index).where(name:'Apucarana').first().id).first())
+p App::Course.create(client_id: index, 
+                    name: "Ciências Contábeis", 
+                    duration: "8", 
+                    institution: App::Institution.where(name: "Centro Universitário de Cascavel",
+                                                city_id: App::City.by_client(index).where(name:'Cascavel').first().id).first())
+p App::Course.create(client_id: index, 
+                    name: "Pilotagem Profissional de Aeronaves", 
+                    duration: "4", 
+                    institution: App::Institution.where(name: "Uniguairacá Centro Universitário",
+                                                city_id: App::City.by_client(index).where(name:'Guarapuava').first().id).first())
+p App::Course.create(client_id: index, 
+                    name: "Sistemas de Telecomunicações", 
+                    duration: "6", 
+                    institution: App::Institution.where(name: "Universidade Tecnológica Federal do Paraná",
+                                                  city_id: App::City.by_client(index).where(name:'Curitiba').first().id).first())
+p App::Course.create(client_id: index, 
+                    name: "Ciências Contábeis", 
+                    duration: "8", 
+                    institution: App::Institution.where(name: "Universidade Cesumar",
+                                                city_id: App::City.by_client(index).where(name:'Ponta Grossa').first().id).first())
+p App::Course.create(client_id: index, 
+                    name: "Sistemas de Informação", 
+                    duration: "8", 
+                    institution: App::Institution.where(name: "Centro Universitário Fundação Assis Gurgacz",
+                                                city_id: App::City.by_client(index).where(name:'Toledo').first().id).first())
+p App::Course.create(client_id: index, 
+                    name: "Engenharia de Produção", 
+                    duration: "10", 
+                    institution: App::Institution.where(name: "Centro Universitário UNISEP - União de Ensino do Sudoeste do Paraná",
+                                                  city_id: App::City.by_client(index).where(name:'Francisco Beltrão').first().id).first())
+p App::Course.create(client_id: index, 
+                    name: "Pedagogia", 
+                    duration: "8", 
+                    institution: App::Institution.where(name: "Universidade Paranaense",
+                                                city_id: App::City.by_client(index).where(name:'Guaíra').first().id).first())
+p App::Course.create(client_id: index, 
+                    name: "Direito", 
+                    duration: "10", 
+                    institution: App::Institution.where(name: "Faculdades Integradas do Vale do Ivaí",
+                                                  city_id: App::City.by_client(index).where(name:'Ivaiporã').first().id).first())
+p App::Course.create(client_id: index, 
+                    name: "Ciências Contábeis", 
+                    duration: "8", 
+                    institution: App::Institution.where(name: "Faculdade de Telêmaco Borba",
+                                                city_id: App::City.by_client(index).where(name:'Telêmaco Borba').first().id).first())
+p App::Course.create(client_id: index, 
+                    name: "Engenharia Elétrica", 
+                    duration: "10", 
+                    institution: App::Institution.where(name: "Centro Universitário de Pato Branco",
+                                                city_id: App::City.by_client(index).where(name:'Pato Branco').first().id).first())
+p App::Course.create(client_id: index, 
+                    name: "Engenharia Civil", 
+                    duration: "10", 
+                    institution: App::Institution.where(name: "Universidade Estadual do Oeste do Paraná",
+                                                  city_id: App::City.by_client(index).where(name:'Cascavel').first().id).first())
+p App::Course.create(client_id: index, 
+                    name: "Pedagogia Matutino", 
+                    duration: "8", 
+                    institution: App::Institution.where(name: "Centro Universitário Fundação Assis Gurgacz",
+                                                city_id: App::City.by_client(index).where(name:'Toledo').first().id).first())
+p App::Course.create(client_id: index, 
+                    name: "Pedagogia Noturno", 
+                    duration: "8", 
+                    institution: App::Institution.where(name: "Centro Universitário Fundação Assis Gurgacz",
+                                                city_id: App::City.by_client(index).where(name:'Toledo').first().id).first())
+p App::Course.create(client_id: index, 
+                    name: "Letras - Português / Espanhol", 
+                    duration: "8", 
+                    institution: App::Institution.where(name: "Universidade Estadual do Oeste do Paraná",
+                                                  city_id: App::City.by_client(index).where(name:'Foz do Iguaçu').first().id).first())
+p App::Course.create(client_id: index, 
+                    name: "T.A.D.S", 
+                    duration: "5", 
+                    institution: App::Institution.where(name: "Uniguairacá Centro Universitário",
+                                                city_id: App::City.by_client(index).where(name:'Guarapuava').first().id).first())
+p App::Course.create(client_id: index, 
+                    name: "Gastronomia", 
+                    duration: "4", 
+                    institution: App::Institution.where(name: "Uniguairacá Centro Universitário",
+                                                city_id: App::City.by_client(index).where(name:'Guarapuava').first().id).first())
+p App::Course.create(client_id: index, 
+                    name: "Administração", 
+                    duration: "8", 
+                    institution: App::Institution.where(name: "Centro Universitário Mater Dei",
+                                                city_id: App::City.by_client(index).where(name:'Pato Branco').first().id).first())
+p App::Course.create(client_id: index, 
+                    name: "Gestão Financeira", 
+                    duration: "4", 
+                    institution: App::Institution.where(name: "Faculdade de Tecnologia do Vale do Ivaí",
+                                                  city_id: App::City.by_client(index).where(name:'Ivaiporã').first().id).first())
+p App::Course.create(client_id: index, 
+                    name: "Gestão Comercial", 
+                    duration: "4", 
+                    institution: App::Institution.where(name: "Faculdade de Tecnologia do Vale do Ivaí",
+                                                  city_id: App::City.by_client(index).where(name:'Ivaiporã').first().id).first())
+p App::Course.create(client_id: index, 
+                    name: "Fisioterapia Matutino", 
+                    duration: "10", 
+                    institution: App::Institution.where(name: "Universidade Paranaense",
+                                                city_id: App::City.by_client(index).where(name:'Toledo').first().id).first())
+p App::Course.create(client_id: index, 
+                    name: "Fisioterapia Noturno", 
+                    duration: "10", 
+                    institution: App::Institution.where(name: "Universidade Paranaense",
+                                                city_id: App::City.by_client(index).where(name:'Toledo').first().id).first())
+p App::Course.create(client_id: index, 
+                    name: "Medicina Veterinária", 
+                    duration: "10", 
+                    institution: App::Institution.where(name: "Centro de Ensino Superior dos Campos Gerais",
+                                                city_id: App::City.by_client(index).where(name:'Ponta Grossa').first().id).first())
+p App::Course.create(client_id: index, 
+                    name: "Psicologia", 
+                    duration: "10", 
+                    institution: App::Institution.where(name: "Pontifícia Universidade Católica do Paraná",
+                                                  city_id: App::City.by_client(index).where(name:'Londrina').first().id).first())
+p App::Course.create(client_id: index, 
+                    name: "Administração", 
+                    duration: "8", 
+                    institution: App::Institution.where(name: "Universidade Paranaense",
+                                                city_id: App::City.by_client(index).where(name:'Cascavel').first().id).first())
+p App::Course.create(client_id: index, 
+                    name: "Farmácia", 
+                    duration: "10", 
+                    institution: App::Institution.where(name: "Centro Universitário UNISEP - União de Ensino do Sudoeste do Paraná",
+                                                  city_id: App::City.by_client(index).where(name:'Francisco Beltrão').first().id).first())
+p App::Course.create(client_id: index, 
+                    name: "Engenharia Ambiental", 
+                    duration: "10", 
+                    institution: App::Institution.where(name: "Centro Universitário de União da Vitória",
+                                                  city_id: App::City.by_client(index).where(name:'São Mateus do Sul').first().id).first())
+p App::Course.create(client_id: index, 
+                    name: "Psicologia", 
+                    duration: "10", 
+                    institution: App::Institution.where(name: "Uniguairacá Centro Universitário",
+                                                city_id: App::City.by_client(index).where(name:'Guarapuava').first().id).first())
+p App::Course.create(client_id: index, 
+                    name: "Odontologia", 
+                    duration: "8", 
+                    institution: App::Institution.where(name: "Universidade Cesumar",
+                                                city_id: App::City.by_client(index).where(name:'Londrina').first().id).first())
+p App::Course.create(client_id: index, 
+                    name: "Estética e Cosmética", 
+                    duration: "6", 
+                    institution: App::Institution.where(name: "Universidade Paranaense",
+                                                city_id: App::City.by_client(index).where(name:'Francisco Beltrão').first().id).first())
+p App::Course.create(client_id: index, 
+                    name: "Engenharia Química", 
+                    duration: "10", 
+                    institution: App::Institution.where(name: "Universidade Tecnológica Federal do Paraná",
+                                                  city_id: App::City.by_client(index).where(name:'Campo Mourão').first().id).first())
+p App::Course.create(client_id: index, 
+                    name: "Nutrição", 
+                    duration: "8", 
+                    institution: App::Institution.where(name: "Uniguairacá Centro Universitário",
+                                                city_id: App::City.by_client(index).where(name:'Guarapuava').first().id).first())
+p App::Course.create(client_id: index, 
+                    name: "Matemática", 
+                    duration: "8", 
+                    institution: App::Institution.where(name: "Universidade Tecnológica Federal do Paraná",
+                                                  city_id: App::City.by_client(index).where(name:'Curitiba').first().id).first())
+p App::Course.create(client_id: index, 
+                    name: "Letras Português", 
+                    duration: "8", 
+                    institution: App::Institution.where(name: "Universidade Estadual do Centro Oeste",
+                                                  city_id: App::City.by_client(index).where(name:'Irati').first().id).first())
+p App::Course.create(client_id: index, 
+                    name: "Odontologia", 
+                    duration: "8", 
+                    institution: App::Institution.where(name: "Universidade Cesumar",
+                                                city_id: App::City.by_client(index).where(name:'Ponta Grossa').first().id).first())
+p App::Course.create(client_id: index, 
+                    name: "Ciências Biológicas", 
+                    duration: "8", 
+                    institution: App::Institution.where(name: "Universidade Tecnológica Federal do Paraná",
+                                                  city_id: App::City.by_client(index).where(name:'Ponta Grossa').first().id).first())
+p App::Course.create(client_id: index, 
+                    name: "Engenharia de Software", 
+                    duration: "8", 
+                    institution: App::Institution.where(name: "Universidade Cesumar",
+                                                city_id: App::City.by_client(index).where(name:'Ponta Grossa').first().id).first())
+p App::Course.create(client_id: index, 
+                    name: "Fisioterapia", 
+                    duration: "8", 
+                    institution: App::Institution.where(name: "Centro Universitário Fundação Assis Gurgacz",
+                                                city_id: App::City.by_client(index).where(name:'Cascavel').first().id).first())
+p App::Course.create(client_id: index, 
+                    name: "Fisioterapia", 
+                    duration: "10", 
+                    institution: App::Institution.where(name: "Uniguairacá Centro Universitário",
+                                                city_id: App::City.by_client(index).where(name:'Guarapuava').first().id).first())
+p App::Course.create(client_id: index, 
+                    name: "Recursos Humanos", 
+                    duration: "4", 
+                    institution: App::Institution.where(name: "Uniguairacá Centro Universitário",
+                                                city_id: App::City.by_client(index).where(name:'Guarapuava').first().id).first())
+p App::Course.create(client_id: index, 
+                    name: "Manutenção Industrial", 
+                    duration: "6", 
+                    institution: App::Institution.where(name: "Universidade Tecnológica Federal do Paraná",
+                                                  city_id: App::City.by_client(index).where(name:'Guarapuava').first().id).first())
+p App::Course.create(client_id: index, 
+                    name: "Farmácia", 
+                    duration: "10", 
+                    institution: App::Institution.where(name: "Universidade Estadual do Oeste do Paraná",
+                                                  city_id: App::City.by_client(index).where(name:'Cascavel').first().id).first())
+p App::Course.create(client_id: index, 
+                    name: "Gestão de Processos Gerenciais", 
+                    duration: "4", 
+                    institution: App::Institution.where(name: "Universidade Cesumar",
+                                                city_id: App::City.by_client(index).where(name:'Londrina').first().id).first())
+p App::Course.create(client_id: index, 
+                    name: "Física", 
+                    duration: "8", 
+                    institution: App::Institution.where(name: "Universidade Tecnológica Federal do Paraná",
+                                                  city_id: App::City.by_client(index).where(name:'Curitiba').first().id).first())
+p App::Course.create(client_id: index, 
+                    name: "Administração", 
+                    duration: "8", 
+                    institution: App::Institution.where(name: "Universidade Paranaense",
+                                                city_id: App::City.by_client(index).where(name:'Guaíra').first().id).first())
+p App::Course.create(client_id: index, 
+                    name: "Agronomia Integral", 
+                    duration: "8", 
+                    institution: App::Institution.where(name: "Centro Universitário Fundação Assis Gurgacz",
+                                                city_id: App::City.by_client(index).where(name:'Cascavel').first().id).first())
+p App::Course.create(client_id: index, 
+                    name: "Secretariado Executivo", 
+                    duration: "8", 
+                    institution: App::Institution.where(name: "Universidade Estadual do Centro Oeste",
+                                                  city_id: App::City.by_client(index).where(name:'Chopinzinho').first().id).first())
+p App::Course.create(client_id: index, 
+                    name: "Engenharia Elétrica", 
+                    duration: "10", 
+                    institution: App::Institution.where(name: "Universidade Estadual do Oeste do Paraná",
+                                                  city_id: App::City.by_client(index).where(name:'Foz do Iguaçu').first().id).first())
+p App::Course.create(client_id: index, 
+                    name: "Medicina", 
+                    duration: "12", 
+                    institution: App::Institution.where(name: "Centro Universitário Campo Real",
+                                                city_id: App::City.by_client(index).where(name:'Guarapuava').first().id).first())
+p App::Course.create(client_id: index, 
+                    name: "Farmácia", 
+                    duration: "8", 
+                    institution: App::Institution.where(name: "Centro Universitário Fundação Assis Gurgacz",
+                                                city_id: App::City.by_client(index).where(name:'Cascavel').first().id).first())
+p App::Course.create(client_id: index, 
+                    name: "Direito", 
+                    duration: "10", 
+                    institution: App::Institution.where(name: "Universidade Cesumar",
+                                                city_id: App::City.by_client(index).where(name:'Ponta Grossa').first().id).first())
+p App::Course.create(client_id: index, 
+                    name: "Estética e Cosmética", 
+                    duration: "6", 
+                    institution: App::Institution.where(name: "Universidade Paranaense",
+                                                city_id: App::City.by_client(index).where(name:'Cascavel').first().id).first())
+p App::Course.create(client_id: index, 
+                    name: "Enfermagem", 
+                    duration: "10", 
+                    institution: App::Institution.where(name: "Uniguairacá Centro Universitário",
+                                                city_id: App::City.by_client(index).where(name:'Guarapuava').first().id).first())
+p App::Course.create(client_id: index, 
+                    name: "Enfermagem", 
+                    duration: "8", 
+                    institution: App::Institution.where(name: "Universidade Cesumar",
+                                                city_id: App::City.by_client(index).where(name:'Londrina').first().id).first())
+p App::Course.create(client_id: index, 
+                    name: "Engenharia Ambiental", 
+                    duration: "10", 
+                    institution: App::Institution.where(name: "Universidade Tecnológica Federal do Paraná",
+                                                  city_id: App::City.by_client(index).where(name:'Medianeira').first().id).first())
+p App::Course.create(client_id: index, 
+                    name: "Gestão do Agronegócio", 
+                      duration: "8", 
+                      institution: App::Institution.where(name: "Uniguairacá Centro Universitário",
+                                                  city_id: App::City.by_client(index).where(name:'Prudentópolis').first().id).first())
+p App::Course.create(client_id: index, 
+                    name: "Farmácia", 
+                    duration: "8", 
+                    institution: App::Institution.where(name: "Universidade Cesumar",
+                                                city_id: App::City.by_client(index).where(name:'Ponta Grossa').first().id).first())
+p App::Course.create(client_id: index, 
+                    name: "Engenharia Ambiental", 
+                    duration: "10", 
+                    institution: App::Institution.where(name: "Universidade Tecnológica Federal do Paraná",
+                                                  city_id: App::City.by_client(index).where(name:'Campo Mourão').first().id).first())
+p App::Course.create(client_id: index, 
+                    name: "Administração", 
+                    duration: "8", 
+                    institution: App::Institution.where(name: "Universidade Estadual do Centro Oeste",
+                                                  city_id: App::City.by_client(index).where(name:'Pitanga').first().id).first())
+p App::Course.create(client_id: index, 
+                    name: "Sistemas para Internet", 
+                    duration: "4", 
+                    institution: App::Institution.where(name: "Centro Universitário de União da Vitória",
+                                                city_id: App::City.by_client(index).where(name:'União da Vitória').first().id).first())
+p App::Course.create(client_id: index, 
+                    name: "Ciências Contábeis", 
+                    duration: "8", 
+                    institution: App::Institution.where(name: "Pontifícia Universidade Católica do Paraná",
+                                                  city_id: App::City.by_client(index).where(name:'Londrina').first().id).first())
+p App::Course.create(client_id: index, 
+                    name: "Engenharia de Controle e Automação", 
+                    duration: "10", 
+                    institution: App::Institution.where(name: "Centro Universitário Fundação Assis Gurgacz",
+                                                city_id: App::City.by_client(index).where(name:'Cascavel').first().id).first())
+p App::Course.create(client_id: index, 
+                    name: "Farmácia", 
+                    duration: "8", 
+                    institution: App::Institution.where(name: "Centro Universitário Campo Real",
+                                                city_id: App::City.by_client(index).where(name:'Laranjeiras do Sul').first().id).first())
+p App::Course.create(client_id: index, 
+                    name: "Odontologia", 
+                    duration: "10", 
+                    institution: App::Institution.where(name: "Centro Universitário de União da Vitória",
+                                                  city_id: App::City.by_client(index).where(name:'São Mateus do Sul').first().id).first())
+p App::Course.create(client_id: index, 
+                    name: "Administração", 
+                    duration: "8", 
+                    institution: App::Institution.where(name: "Universidade Estadual do Oeste do Paraná",
+                                                  city_id: App::City.by_client(index).where(name:'Francisco Beltrão').first().id).first())
+p App::Course.create(client_id: index, 
+                    name: "Agronegócio", 
+                    duration: "6", 
+                    institution: App::Institution.where(name: "Centro Universitário Fundação Assis Gurgacz",
+                                                city_id: App::City.by_client(index).where(name:'Toledo').first().id).first())
+p App::Course.create(client_id: index, 
+                    name: "Direito", 
+                    duration: "10", 
+                    institution: App::Institution.where(name: "Uniguairacá Centro Universitário",
+                                                city_id: App::City.by_client(index).where(name:'Guarapuava').first().id).first())
+p App::Course.create(client_id: index, 
+                    name: "Ciências da Computação", 
+                    duration: "8", 
+                    institution: App::Institution.where(name: "Universidade Tecnológica Federal do Paraná",
+                                                  city_id: App::City.by_client(index).where(name:'Campo Mourão').first().id).first())
+p App::Course.create(client_id: index, 
+                    name: "Engenharia Civil", 
+                    duration: "10", 
+                    institution: App::Institution.where(name: "Universidade Paranaense",
+                                                city_id: App::City.by_client(index).where(name:'Francisco Beltrão').first().id).first())
+p App::Course.create(client_id: index, 
+                    name: "Farmácia", 
+                    duration: "10", 
+                    institution: App::Institution.where(name: "Universidade Paranaense",
+                                                city_id: App::City.by_client(index).where(name:'Paranavaí').first().id).first())
+p App::Course.create(client_id: index, 
+                    name: "Engenharia de Software", 
+                    duration: "8", 
+                    institution: App::Institution.where(name: "Centro Universitário Campo Real",
+                                                city_id: App::City.by_client(index).where(name:'Irati').first().id).first())
+p App::Course.create(client_id: index, 
+                    name: "Administração", 
+                    duration: "8", 
+                    institution: App::Institution.where(name: "Centro Universitário Campo Real",
+                                                city_id: App::City.by_client(index).where(name:'Guarapuava').first().id).first())
+p App::Course.create(client_id: index, 
+                    name: "Agronomia", 
+                    duration: "10", 
+                    institution: App::Institution.where(name: "Centro Universitário Campo Real",
+                                                city_id: App::City.by_client(index).where(name:'Laranjeiras do Sul').first().id).first())
+p App::Course.create(client_id: index, 
+                    name: "Nutrição", 
+                    duration: "8", 
+                    institution: App::Institution.where(name: "Universidade Cesumar",
+                                                city_id: App::City.by_client(index).where(name:'Londrina').first().id).first())
+p App::Course.create(client_id: index, 
+                    name: "Turismo", 
+                    duration: "8", 
+                    institution: App::Institution.where(name: "Universidade Estadual de Ponta Grossa",
+                                                city_id: App::City.by_client(index).where(name:'Ponta Grossa').first().id).first())
+p App::Course.create(client_id: index, 
+                    name: "Engenharia Agronômica", 
+                    duration: "10", 
+                    institution: App::Institution.where(name: "Universidade Paranaense",
+                                                city_id: App::City.by_client(index).where(name:'Guaíra').first().id).first())
+p App::Course.create(client_id: index, 
+                    name: "Design Gráfico", 
+                    duration: "4", 
+                    institution: App::Institution.where(name: "Centro Universitário Fundação Assis Gurgacz",
+                                                city_id: App::City.by_client(index).where(name:'Cascavel').first().id).first())
+p App::Course.create(client_id: index, 
+                    name: "Nutrição", 
+                    duration: "8", 
+                    institution: App::Institution.where(name: "Universidade Cesumar",
+                                                city_id: App::City.by_client(index).where(name:'Ponta Grossa').first().id).first())
+p App::Course.create(client_id: index, 
+                    name: "Sistemas de Informação", 
+                    duration: "8", 
+                    institution: App::Institution.where(name: "Centro Universitário Mater Dei",
+                                                city_id: App::City.by_client(index).where(name:'Pato Branco').first().id).first())
+p App::Course.create(client_id: index, 
+                    name: "Filosofia Matutino", 
+                    duration: "8", 
+                    institution: App::Institution.where(name: "Universidade Estadual do Oeste do Paraná",
+                                                  city_id: App::City.by_client(index).where(name:'Toledo').first().id).first())
+p App::Course.create(client_id: index, 
+                    name: "Filosofia Noturno", 
+                    duration: "8", 
+                    institution: App::Institution.where(name: "Universidade Estadual do Oeste do Paraná",
+                                                  city_id: App::City.by_client(index).where(name:'Toledo').first().id).first())
+p App::Course.create(client_id: index, 
+                    name: "Enfermagem", 
+                    duration: "10", 
+                    institution: App::Institution.where(name: "Universidade Paranaense",
+                                                city_id: App::City.by_client(index).where(name:'Cascavel').first().id).first())
+p App::Course.create(client_id: index, 
+                    name: "Estética e Cosmética", 
+                    duration: "6", 
+                    institution: App::Institution.where(name: "Faculdade Guarapuava",
+                                                city_id: App::City.by_client(index).where(name:'Guarapuava').first().id).first())
+p App::Course.create(client_id: index, 
+                    name: "Estética e Cosmética", 
+                    duration: "6", 
+                    institution: App::Institution.where(name: "Centro Universitário Fundação Assis Gurgacz",
+                                                city_id: App::City.by_client(index).where(name:'Cascavel').first().id).first())
+
+end

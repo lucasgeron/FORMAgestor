@@ -60,10 +60,10 @@
     def destroy_attachment
       if @app_client.image.attached? 
         @app_client.image.purge
-        flash[:success] = t('views.app.general.flash.destroy', model: t('activerecord.attributes.app/client.image'))
+        flash[:success] = t('views.app.general.flash.destroy_attachment_f', model: t('activerecord.attributes.app/client.image'))
         redirect_to app_client_path(@app_client)
       else 
-        flash.now[:error] = t('views.app.clients.flash.destroy_attachment_failed', model: t('activerecord.attributes.app/client.image'))
+        flash.now[:error] = t('views.app.clients.flash.destroy_attachment_failed_f', model: t('activerecord.attributes.app/client.image'))
         render :edit, status: :unprocessable_entity
       end
     end

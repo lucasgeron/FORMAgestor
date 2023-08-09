@@ -8,17 +8,14 @@
 
     <div class="">
       <p class=""><%= App::City.human_attribute_name('name')%></p>
-      <div class="relative">
-        <div class="detail-input-icon"><%=icon('fa-solid','map-location-dot')%></div>
-        <p class="detail-input with-icon"><%= app_city.name %></p>
-      </div>
+        <p class="detail-input"><%= app_city.name %></p>
     </div>
   </div>
 
   <%# INSTITUTIONS TITLE %>
 
   <% if app_city.institutions.present? %>
-  <p class="font-bold text-2xl"> <%= App::Institution.model_name.human(count:2) %> </p>
+    <p class="font-bold text-2xl"> <%= App::Institution.model_name.human(count:2) %> </p>
     <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-3 2xl:grid-cols-4 gap-4">
       <%= render app_city.institutions %>
     </div>

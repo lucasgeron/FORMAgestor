@@ -305,13 +305,17 @@
   }
 
   .default-grid{
-    @apply grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-2 2xl:grid-cols-4 gap-4;
+    @apply grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-2 2xl:grid-cols-4 gap-4 my-4;
   }
 
-  .vertical-grid{
-    display: grid;
-    grid-template-columns: repeat(3, 1fr); /* Cria 3 colunas com 1fr de tamanho */
-    grid-auto-flow: column; /* Ordena os elementos verticalmente em cada coluna */
+  .sticky-1{
+    @apply sticky top-28  xl:top-18 z-20
+    bg-white dark:bg-gray-800 py-2 ;
+  }
+  
+  .sticky-2{
+    @apply sticky top-40  xl:top-30 z-10
+    bg-white dark:bg-gray-800 py-2 ;
   }
 
 

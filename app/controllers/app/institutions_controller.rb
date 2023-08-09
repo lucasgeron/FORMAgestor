@@ -8,7 +8,7 @@ class App::InstitutionsController < ApplicationController
   def index
     if current_access_is_user? && get_current_access.vendor && get_current_access.vendor.cities.any?
       @app_cities = get_current_access.vendor.cities.order(:name)
-      collection = App::Institution.by_client(get_client_id).by_city(@app_cities.ids).order(:abreviation)
+      collection = App::Institution.by_client(get_client_id).by_city(@app_cities).order(:abreviation)
     else
       collection = App::Institution.none
       @app_cities = App::City.none
@@ -68,10 +68,10 @@ class App::InstitutionsController < ApplicationController
   def destroy_attachment
     if @app_institution.image.attached? 
       @app_institution.image.purge
-      flash[:success] = t('views.app.general.flash.destroy', model: t('activerecord.attributes.app/institution.image'))
+      flash[:success] = t('views.app.general.flash.destroy_f', model: t('activerecord.attributes.app/institution.image'))
       redirect_to app_institution_path(@app_institution)
     else 
-      flash.now[:error] = t('views.app.institution.flash.destroy_attachment_failed', model: t('activerecord.attributes.app/institution.image'))
+      flash.now[:error] = t('views.app.institution.flash.destroy_attachment_failed_f', model: t('activerecord.attributes.app/institution.image'))
       render :edit, status: :unprocessable_entity
     end
   end

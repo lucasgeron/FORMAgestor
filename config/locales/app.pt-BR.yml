@@ -29,7 +29,10 @@ pt-BR:
           destroy_f: '%{model} excluida com sucesso.'
           destroy_failed_m: 'Não é possível excluir este %{model} pois ele possui dependências.'
           destroy_failed_f: 'Não é possível excluir esta %{model} pois ela possui dependências.'
-        file_upload: <span class="font-semibold">Clique para Enviar</span> ou arraste e solte
+          destroy_attachment_m: '%{attribute} excluido com sucesso.'
+          destroy_attachment_f: '%{attribute} excluida com sucesso.'
+          destroy_failed_m: 'Não é possível excluir este %{attribute}.'
+          destroy_failed_f: 'Não é possível excluir esta %{attribute}.'
       clients:
         form:
           has_no_entry:  Não existem <span class='font-medium'> <i class="fa-solid fa-circle-user"></i> Usuários </span> cadastrados para este <span class='font-medium'> <i class="fa-solid fa-building-user"></i> Cliente</span>. 

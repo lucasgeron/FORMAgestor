@@ -6,7 +6,7 @@
             client_id: index,
             abreviation: "CESCAGE",
             name: "Centro de Ensino Superior dos Campos Gerais",
-            city_id: App::City.by_client(index).where(name:"Ponta Grossa").first().id)
+            city: App::City.by_client(index).where(name:"Ponta Grossa").first())
         p @institution.to_s + " image attached ? " + @institution.image.attach(
             io: File.open('app/assets/images/seed_images/institutions/cescage.png'), 
             filename: 'cescage.png'

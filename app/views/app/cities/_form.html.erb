@@ -15,13 +15,12 @@
       <%= form.label :name %>
 
       <div class="relative">
-          <div class="form-input-icon"><%= icon('fa-solid','map-location-dot') %>  </div>
 
         <%# default form for new/create %>
-        <%= form.collection_select :name, ConectaAddressBr::Cities.by_state_single('AC').map{ |city| [city] }, :first, :first, {}, {class: "form-input with-icon", data:{cities_target: 'cities_select'}} if %w[new create].include?(action_name) %>
+        <%= form.collection_select :name, ConectaAddressBr::Cities.by_state_single('AC').map{ |city| [city] }, :first, :first, {}, {class: "form-input ", data:{cities_target: 'cities_select'}} if %w[new create].include?(action_name) %>
         
         <%# default form for edit/update %>
-        <%= form.collection_select :name, ConectaAddressBr::Cities.by_state_single(app_city.state).map{ |city| [city] }, :first, :first, {}, {class: "form-input with-icon", data:{cities_target: 'cities_select'}} if %w[edit update].include?(action_name) %>
+        <%= form.collection_select :name, ConectaAddressBr::Cities.by_state_single(app_city.state).map{ |city| [city] }, :first, :first, {}, {class: "form-input ", data:{cities_target: 'cities_select'}} if %w[edit update].include?(action_name) %>
       </div>
     </div>
   

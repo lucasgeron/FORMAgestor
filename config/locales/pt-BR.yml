@@ -26,7 +26,7 @@ pt-BR:
       app/institution:
         one: Instituição
         other: Instituições
-      course:
+      app/course:
         one: Curso
         other: Cursos
       app/update:
@@ -105,6 +105,12 @@ pt-BR:
         city: Cidade #for validation
         city_id: Cidade #for label
         image: Logo
+      app/course:
+        name: Curso
+        duration: Duração
+        institution_id: Instituição
+        institution: Instituição
+
 
     placeholders:
       app/prospect:

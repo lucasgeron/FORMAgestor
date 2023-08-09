@@ -1,0 +1,38 @@
+
+  <% @app_cities.each do |city| %>
+  <% if city.institutions.any? %> <%# ensure that force city ids without institutions will not be render %>
+
+    <%# CITY BAR%>
+    <div class=" sticky-1 "data-aos='fade'>
+      <p class="font-bold text-2xl " > <%= city.name %> </p>
+    </div>
+
+    <% city.institutions.order(:abreviation).each do |institution|%>
+      <% if @app_courses.pluck(:institution_id).include?(institution.id) %>
+      <%# <% if institution.courses.any? %> 
+
+        <%# INSTITUTION BAR %>
+        <div class=" sticky-2 flex items-center  space-x-2 " data-aos='fade'>
+          
+          <%= link_to app_institution_path(institution), class:'card-header-image overflow-clip' do %>
+            <% if institution.image.attached? %>
+              <%= image_tag(institution.image, class:'object-cover h-18 w-18')%>
+            <% else %>
+              <%= icon('fa-solid', 'building-columns', class:'fa-2xl dark:text-gray-900')%>
+            <% end %>
+          <% end %>
+
+          <div class="">
+          <p class="font-bold text-2xl "> <%= institution.abreviation %> </p>
+          <p class=""><%= institution.name %></p>
+          </div>
+
+        </div>
+
+        <div class="default-grid">
+          <%= render(@app_courses.by_institution(institution)) %>
+        </div>
+      <% end %>
+    <% end %>
+  <% end %>
+<% end %>

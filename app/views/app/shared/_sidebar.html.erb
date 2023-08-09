@@ -1,4 +1,4 @@
-<div id="top" class="px-4 py-4 xl:hidden w-full inline-flex justify-between items-center sticky top-0 bg-white dark:bg-gray-800 z-30">
+<div id="top" class="px-4 py-2 xl:py-4  xl:hidden w-full inline-flex justify-between items-center fixed top-0 bg-white dark:bg-gray-800 z-30">
   <button data-drawer-target="sidebar-multi-level-sidebar" data-drawer-toggle="sidebar-multi-level-sidebar" aria-controls="sidebar-multi-level-sidebar" type="button" class="text-gray-500 dark:text-gray-400 hover:bg-gray-100 dark:hover:bg-gray-700 focus:outline-none  rounded-lg text-sm py-2.5 px-4">
     <span class="sr-only">Open sidebar</span>
     <%= icon('fa-solid','bars')%>
@@ -132,10 +132,9 @@
       <%end%>
 
       <%# CURSOS %>
-      <%= link_to "#", class:"sidebar-link#{is_link_active?('courses')}   text-gray-300 dark:text-gray-700 pointer-events-none" do %>
+      <%= link_to app_courses_path, class:"sidebar-link#{is_link_active?('courses')}" do %>
         <%= icon('fa-solid','chalkboard-user', class:"mr-1")%>
-        <%# <%= Prospect.model_name.human(count:2) %>
-        <%= t('activerecord.models.course.other')%>
+        <%= App::Course.model_name.human(count:2) %>
       <%end%>
 
       <%# TURMA %>

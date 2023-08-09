@@ -1,0 +1,47 @@
+<%= form_with(model: app_course, class: "contents") do |form| %>
+  <% if app_course.errors.any? %>
+   <% flash.now[:error] = app_institution.errors.to_a %>
+  <% end %>
+
+  <div class="grid grid-cols-1 xl:grid-cols-2 gap-4">
+
+    <div class="col-span-2">
+      <%= form.label :institution_id, class:'' %>
+
+      <% institutions = App::Institution.by_client(get_client_id)%>
+      <% if institutions.present? %>
+        <div class="relative">
+          <div class="form-input-icon"><%= icon('fa-solid','building-columns', class:'') %>  </div>
+          <%= form.collection_select :institution_id, institutions, :id, :abreviation_and_city, {include_blank: false}, {class: "form-input with-icon"} %>
+        </div>
+      <% else %>
+        <div class="detail-input">
+          <%= link_to new_app_institution_path, class: "btn-primary flex-none" do %>
+            <%= icon('fa-solid','plus',class:'btn-icon') %>
+            <%= App::Institution.model_name.human %>
+          <% end %>
+        </div>
+      <% end %>
+    </div>
+
+
+    <div class="">
+      <%= form.label :name %>
+      <%= form.text_field :name, class: "form-input" %>
+    </div>
+
+    <div class="">
+      <%= form.label :duration %>
+      <%= form.number_field :duration, class: "form-input" %>
+    </div>
+
+   
+
+    </div>
+
+  
+  <div class="mt-4 inline-flex w-full justify-end">
+    <%= form.submit class: "btn-primary" %>
+  </div>
+
+<% end %>

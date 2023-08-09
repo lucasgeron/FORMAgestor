@@ -1,0 +1,18 @@
+<% content_for :ctas_secondary do %>
+  <%= link_to app_courses_path, class: "btn-secondary-gray flex-none" do %>
+    <%= icon('fa-solid','arrow-left', class:'-mx-1')%>
+  <%end%>
+
+  <%= link_to app_course_path(@app_course), class: "btn-secondary flex-none" do %>
+    <%= icon('fa-solid','arrow-up-right-from-square', class:'-mx-1')%>
+  <%end%>
+
+<% end %>
+
+<% provide :head_title, "#{t('views.app.general.editing')} #{App::Course.model_name.human}" %>
+<% provide :page_title, "#{t('views.app.general.editing')} #{App::Course.model_name.human}" %>
+<% provide :entry_id, "#{@app_course.id}" %>
+
+<% content_for :page_content do %>
+  <%= render "form", app_course: @app_course %>
+<%end%>

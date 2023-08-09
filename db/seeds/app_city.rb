@@ -1,4 +1,4 @@
-(1..3).each_with_index do |index|
+(1..1).each_with_index do |index|
 
   p App::City.create(
     name: "Apucarana",                      
