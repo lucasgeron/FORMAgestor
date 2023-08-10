@@ -1,0 +1,16 @@
+<% content_for :ctas_primary do %>
+ 
+  <%= link_to new_app_status_negotiation_path, class: "btn-primary flex-none" do %>
+    <%= icon('fa-solid','plus',class:'btn-icon') %>
+    <%= App::StatusNegotiation.model_name.human %>
+  <% end %>
+<% end %>
+
+<% provide :head_title, t('controller.app/setting.other') %>
+<% provide :page_title, t('controller.app/setting.other') %>
+
+<% content_for :page_content do %>
+  <div class="default-grid">
+    <%= link_to "#{App::StatusNegotiation.model_name.human(count:2)} (#{App::StatusNegotiation.model_name.human(count:2)})", app_status_negotiations_path, class:'card' %>
+  </div>
+<%end%>

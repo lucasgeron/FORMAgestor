@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2023_08_10_123439) do
+ActiveRecord::Schema[7.0].define(version: 2023_08_10_133546) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
   enable_extension "unaccent"
@@ -68,7 +68,7 @@ ActiveRecord::Schema[7.0].define(version: 2023_08_10_123439) do
   create_table "app_calendars", force: :cascade do |t|
     t.integer "year"
     t.integer "semester"
-    t.boolean "active"
+    t.boolean "active", default: true
     t.bigint "client_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
@@ -150,14 +150,16 @@ ActiveRecord::Schema[7.0].define(version: 2023_08_10_123439) do
     t.index ["vendor_id"], name: "index_app_prospects_on_vendor_id"
   end
 
-  create_table "app_semesters", force: :cascade do |t|
-    t.integer "year"
-    t.integer "period"
+  create_table "app_status_negotiations", force: :cascade do |t|
+    t.string "name"
     t.boolean "active"
-    t.bigint "cliend_id", null: false
+    t.string "icon"
+    t.string "style"
+    t.string "color"
+    t.bigint "client_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["cliend_id"], name: "index_app_semesters_on_cliend_id"
+    t.index ["client_id"], name: "index_app_status_negotiations_on_client_id"
   end
 
   create_table "app_subscribers", force: :cascade do |t|
@@ -220,7 +222,7 @@ ActiveRecord::Schema[7.0].define(version: 2023_08_10_123439) do
   add_foreign_key "app_institutions", "app_clients", column: "client_id"
   add_foreign_key "app_prospects", "app_clients", column: "client_id"
   add_foreign_key "app_prospects", "app_vendors", column: "vendor_id"
-  add_foreign_key "app_semesters", "app_clients", column: "cliend_id"
+  add_foreign_key "app_status_negotiations", "app_clients", column: "client_id"
   add_foreign_key "app_users", "app_clients", column: "client_id"
   add_foreign_key "app_users", "app_vendors", column: "vendor_id"
   add_foreign_key "app_vendors", "app_clients", column: "client_id"

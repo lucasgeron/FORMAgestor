@@ -160,7 +160,7 @@
       <%# CONFIGURAÇÕES %>
 
       <%# setup for aria-expanded %>
-      <% %w'calendars companies users clients updates subscribers'.include?(controller_name) ? ae = true : ae = false %>
+      <% %w'settings calendars companies users clients updates subscribers status_negotiations'.include?(controller_name) ? ae = true : ae = false %>
 
       <button type="button" aria-expanded="<%= ae %>" class="dropdown-toggle sidebar-link inline-flex items-center justify-between w-full" aria-controls="dropdown-example" data-collapse-toggle="dropdown-example">
         <div class="">
@@ -181,13 +181,20 @@
         <%# EMPRESAS %>
         <%= link_to app_companies_path, class:"sidebar-link#{is_link_active?('companies')} " do %>
           <%= icon('fa-solid','building', class:"mr-1")%>
-          <%= App::Company.model_name.human(count:2) %>
+           <%= App::Company.model_name.human(count:2) %>
         <%end%>
 
         <%# USUÁRIOS %>
         <%= link_to app_users_path, class:"sidebar-link#{is_link_active?('users')}" do %>
           <%= icon('fa-solid','circle-user', class:"mr-1")%>
           <%= App::User.model_name.human(count:2) %>
+        <%end%>
+
+        <%# SETTINGS %>
+        <% st = %w'settings status_negotiations'.include?(controller_name) ?  '-active' : '' %>
+        <%= link_to app_settings_path, class:"sidebar-link#{st}" do %>
+          <%= icon('fa-solid','gears', class:"mr-1")%>
+          <%= t('controller.app/setting.other') %>
         <%end%>
 
         <%# CLIENTES %>

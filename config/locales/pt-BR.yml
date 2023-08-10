@@ -1,5 +1,11 @@
 ---
 pt-BR:
+
+  controller:
+    app/setting:
+      one: Personalização 
+      other: Personalizações
+
   activemodel:
     models:
       contact_form: Formulário de Contato
@@ -54,6 +60,9 @@ pt-BR:
       app/subscriber:
         one: Assinante
         other: Assinantes
+      app/status_negotiation:
+        one: Status
+        other: Status
 
     attributes:
       app/client:
@@ -117,6 +126,12 @@ pt-BR:
       app/company:
         name: Nome
         active: Status
+      app/status_negotiation:
+        name: Descrição
+        active: Status
+        icon: Ícone
+        style: Estilo
+        color: Cor
 
 
     placeholders:
@@ -175,6 +190,34 @@ pt-BR:
         info:
           true: Empresa Visível
           false: Empresa Não Listado
+      app/status_negotiation:
+        active:
+          all: Todos
+          true: Ativo
+          false: Inativo
+        COLORS:
+          default: Padrão
+          red: Vermelho
+          amber: Ambar
+          orange: Laranja
+          yellow: Amarelo
+          lime: Limão
+          green: Verde
+          emerald: Esmeralda
+          teal: Verde-Azulado
+          cyan: Ciano
+          sky: Céu
+          indigo: Indigo
+          violet: Violeta
+          purple: Roxo
+          fuchsia: Fúcsia
+          pink: Pink
+          rose: Rosa
+        STYLE:
+          fa-solid: Sólido
+          fa-regular: Regular
+          fa-brands: Marcas
+
 
 
 

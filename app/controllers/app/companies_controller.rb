@@ -1,4 +1,7 @@
 class App::CompaniesController < ApplicationController
+
+  before_action :authenticate_user_or_admin!
+  before_action :check_client_id, only: %i[ show edit update destroy ]
   before_action :set_app_company, only: %i[ show edit update destroy ]
 
   # GET /app/companies or /app/companies.json

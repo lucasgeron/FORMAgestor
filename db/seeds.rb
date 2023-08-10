@@ -23,3 +23,5 @@ load Rails.root.join('db', 'seeds', 'app_course.rb')
 
 load Rails.root.join('db', 'seeds', 'app_vendor.rb')
 load Rails.root.join('db', 'seeds', 'app_prospect.rb')
+load Rails.root.join('db', 'seeds', 'app_company.rb')
+load Rails.root.join('db', 'seeds', 'app_status_negotiations.rb')
