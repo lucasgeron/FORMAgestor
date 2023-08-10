@@ -1,0 +1,29 @@
+<%= form_with(model: app_company, class: "contents") do |form| %>
+  <% if app_company.errors.any? %>
+    <% flash.now[:error] = app_company.errors.to_a%>
+  <% end %>
+
+  <div class="grid grid-cols-1 sm:grid-cols-3 gap-4">
+
+    <div class="col-span-2">
+      <%= form.label :name %>
+      <%= form.text_field :name, class: "form-input" %>
+    </div>
+
+    <div class="group">
+      <%= form.label :active, class:'pointer-events-none' %>
+      <%= form.check_box :active, class: "hidden peer" %>
+      <%= form.label :active, class:'form-checkbox w-full  dark:bg-gray-900
+      group-hover:bg-gray-100        group-hover:peer-checked:bg-blue-700  
+      dark:group-hover:bg-gray-950   dark:group-hover:peer-checked:bg-blue-700' do %>
+      <% end %>
+
+      <div class="text-base peer-text hidden peer-checked:block "> <%= icon('fa-solid','check')%> <%= t('activerecord.options.app/calendar.active.true')%></div>
+      <div class="text-base peer-text block peer-checked:hidden "> <%= icon('fa-solid','xmark')%> <%= t('activerecord.options.app/calendar.active.false')%></div>
+    </div>
+  </div>
+
+  <div class="mt-4 inline-flex w-full justify-end">
+    <%= form.submit class: "btn-primary" %>
+  </div>
+<% end %>

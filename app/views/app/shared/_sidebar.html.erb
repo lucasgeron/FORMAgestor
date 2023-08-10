@@ -179,10 +179,9 @@
         <%end%>
 
         <%# EMPRESAS %>
-        <%= link_to "#", class:"sidebar-link#{is_link_active?('companies')}   text-gray-300 dark:text-gray-700 pointer-events-none" do %>
+        <%= link_to app_companies_path, class:"sidebar-link#{is_link_active?('companies')} " do %>
           <%= icon('fa-solid','building', class:"mr-1")%>
-          <%# <%= Prospect.model_name.human(count:2) %>
-          <%= t('activerecord.models.company.other')%>
+          <%= App::Company.model_name.human(count:2) %>
         <%end%>
 
         <%# USUÁRIOS %>

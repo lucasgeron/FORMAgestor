@@ -38,7 +38,7 @@ pt-BR:
       app/vendor:
         one: Representante
         other: Representantes
-      company:
+      app/company:
         one: Empresa
         other: Empresas
       app/admin:
@@ -114,6 +114,9 @@ pt-BR:
         year: Ano
         semester: Semestre
         active: Status
+      app/company:
+        name: Nome
+        active: Status
 
 
     placeholders:
@@ -164,6 +167,14 @@ pt-BR:
         info:
           true: Calendário Visível
           false: Calendário Não Listado
+      app/company:
+        active:
+          all: Todos
+          true: Ativo
+          false: Inativo
+        info:
+          true: Empresa Visível
+          false: Empresa Não Listado
 
 
 
