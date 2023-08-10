@@ -1,5 +1,11 @@
-<% content_for :ctas_secondary do %>
+<% content_for :ctas_primary do %>
+   <%= link_to new_app_course_path(institution_id: @app_institution), class: "btn-primary flex-none" do %>
+    <%= icon('fa-solid','plus',class:'btn-icon') %>
+    <%= App::Course.model_name.human %>
+  <% end %>
+<% end %>
 
+<% content_for :ctas_secondary do %>
   <%= link_to app_institutions_path, class: "btn-secondary-gray flex-none" do %>
     <%= icon('fa-solid','arrow-left', class:'-mx-1')%>
   <%end%>

@@ -1,38 +1,39 @@
 <div class="space-y-4">
 
-<%# DETAILS %>
-<div class="grid grid-cols-1 xl:grid-cols-4 gap-4">
+  <%# DETAILS %>
+  <div class="grid grid-cols-1 xl:grid-cols-4 gap-4">
 
-  <div class="">
-    <p class=""><%= App::User.human_attribute_name('email') %></p>
-    <p class="detail-input "><%= user.email%></p>
+    <div class="">
+      <p class=""><%= App::User.human_attribute_name('email') %></p>
+      <p class="detail-input "><%= app_user.email%></p>
+    </div>
+
+    <div class="">
+      <p class=""><%= App::User.human_attribute_name('active') %></p>
+
+      <% if app_user.active %>
+        <div class="text-base detail-input dark:bg-blue-600 bg-blue-600 text-white text-center rounded-lg"> <%= icon('fa-solid','check')%> <%= t('activerecord.options.app/user.active.true')%></div>
+      <% else %>
+        <div class="text-base detail-input bg-gray-100 text-red-600 text-center rounded-lg "> <%= icon('fa-solid','xmark')%> <%= t('activerecord.options.app/user.active.false')%></div>
+      <% end %>
+    </div>
+
   </div>
 
-  <div class="">
-    <p class=""><%= App::User.human_attribute_name('active') %></p>
-   
-    <% if user.active %>
-     <div class="text-base detail-input dark:bg-blue-600 bg-blue-600 text-white text-center rounded-lg"> <%= icon('fa-solid','check')%> <%= t('activerecord.options.app/user.active.true')%></div>
-    <% else %>
-      <div class="text-base detail-input bg-gray-100 text-red-600 text-center rounded-lg "> <%= icon('fa-solid','xmark')%> <%= t('activerecord.options.app/user.active.false')%></div>
-    <% end %>
-  </div>
+  <div class="grid grid-cols-1 xl:grid-cols-4 gap-4">
 
-</div>
-
-<div class="grid grid-cols-1 xl:grid-cols-4 gap-4">
-
-   <div class="">
-    <p class=""><%= App::User.human_attribute_name('vendor_id') %></p>
+    <div class="">
+      <p class=""><%= App::User.human_attribute_name('vendor_id') %></p>
 
       <div class="relative">
-         <div class="detail-input-icon"><%= icon('fa-solid','user', class:'')%></div>
-          <% if user.vendor %>
-          <%= link_to user.vendor.name, user.vendor, class:'detail-input with-icon' %>
-          <%else%>
+        <div class="detail-input-icon"><%= icon('fa-solid','user', class:'')%></div>
+        <% if app_user.vendor %>
+          <%= link_to app_user.vendor.name, app_user.vendor, class:'detail-input with-icon' %>
+        <%else%>
           <p class="detail-input with-icon"><%= App::User.human_attribute_name('vendor_not_found') %></p>
-          <%end%>
+        <%end%>
       </div>
-  </div>
+    </div>
 
+  </div>
 </div>

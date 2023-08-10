@@ -1,0 +1,28 @@
+<div class="space-y-4">
+
+  <%# DETAILS %>
+  <div class="grid grid-cols-1 xl:grid-cols-3 gap-4">
+
+    <div class="">
+      <p class=""><%= App::Calendar.human_attribute_name('year') %></p>
+      <p class="detail-input "><%= app_calendar.year %></p>
+    </div>
+    
+    <div class="">
+      <p class=""><%= App::Calendar.human_attribute_name('semester') %></p>
+      <p class="detail-input "><%= app_calendar.semester %></p>
+    </div>
+
+    <div class="">
+      <p class=""><%= App::Calendar.human_attribute_name('active') %></p>
+
+      <% if app_calendar.active %>
+        <div class="text-base detail-input dark:bg-blue-600 bg-blue-600 text-white text-center rounded-lg"> <%= icon('fa-solid','check')%> <%= t('activerecord.options.app/calendar.active.true')%></div>
+      <% else %>
+        <div class="text-base detail-input bg-gray-100 text-red-600 text-center rounded-lg "> <%= icon('fa-solid','xmark')%> <%= t('activerecord.options.app/calendar.active.false')%></div>
+      <% end %>
+    </div>
+
+    
+
+  </div>

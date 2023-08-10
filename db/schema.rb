@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2023_08_09_000557) do
+ActiveRecord::Schema[7.0].define(version: 2023_08_10_001101) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
   enable_extension "unaccent"
@@ -63,6 +63,16 @@ ActiveRecord::Schema[7.0].define(version: 2023_08_09_000557) do
     t.text "body"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+  end
+
+  create_table "app_calendars", force: :cascade do |t|
+    t.integer "year"
+    t.integer "semester"
+    t.boolean "active"
+    t.bigint "client_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["client_id"], name: "index_app_calendars_on_client_id"
   end
 
   create_table "app_cities", force: :cascade do |t|
@@ -131,6 +141,16 @@ ActiveRecord::Schema[7.0].define(version: 2023_08_09_000557) do
     t.index ["vendor_id"], name: "index_app_prospects_on_vendor_id"
   end
 
+  create_table "app_semesters", force: :cascade do |t|
+    t.integer "year"
+    t.integer "period"
+    t.boolean "active"
+    t.bigint "cliend_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["cliend_id"], name: "index_app_semesters_on_cliend_id"
+  end
+
   create_table "app_subscribers", force: :cascade do |t|
     t.string "email"
     t.string "locale"
@@ -180,6 +200,7 @@ ActiveRecord::Schema[7.0].define(version: 2023_08_09_000557) do
   add_foreign_key "active_storage_attachments", "active_storage_blobs", column: "blob_id"
   add_foreign_key "active_storage_variant_records", "active_storage_blobs", column: "blob_id"
   add_foreign_key "app_admins", "app_clients", column: "client_id"
+  add_foreign_key "app_calendars", "app_clients", column: "client_id"
   add_foreign_key "app_cities", "app_clients", column: "client_id"
   add_foreign_key "app_cities_vendors", "app_cities", column: "city_id"
   add_foreign_key "app_cities_vendors", "app_vendors", column: "vendor_id"
@@ -189,6 +210,7 @@ ActiveRecord::Schema[7.0].define(version: 2023_08_09_000557) do
   add_foreign_key "app_institutions", "app_clients", column: "client_id"
   add_foreign_key "app_prospects", "app_clients", column: "client_id"
   add_foreign_key "app_prospects", "app_vendors", column: "vendor_id"
+  add_foreign_key "app_semesters", "app_clients", column: "cliend_id"
   add_foreign_key "app_users", "app_clients", column: "client_id"
   add_foreign_key "app_users", "app_vendors", column: "vendor_id"
   add_foreign_key "app_vendors", "app_clients", column: "client_id"

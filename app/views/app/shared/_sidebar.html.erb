@@ -160,7 +160,7 @@
       <%# CONFIGURAÇÕES %>
 
       <%# setup for aria-expanded %>
-      <% %w'semesters companies users clients updates subscribers'.include?(controller_name) ? ae = true : ae = false %>
+      <% %w'calendars companies users clients updates subscribers'.include?(controller_name) ? ae = true : ae = false %>
 
       <button type="button" aria-expanded="<%= ae %>" class="dropdown-toggle sidebar-link inline-flex items-center justify-between w-full" aria-controls="dropdown-example" data-collapse-toggle="dropdown-example">
         <div class="">
@@ -173,10 +173,9 @@
       <ul id="dropdown-example" class="space-y-1 <% if !ae %> hidden <%end%>">
 
         <%# SEMESTRES %>
-        <%= link_to "#", class:"sidebar-link#{is_link_active?('semester')}   text-gray-300 dark:text-gray-700 pointer-events-none" do %>
+        <%= link_to app_calendars_path, class:"sidebar-link#{is_link_active?('calendars')} " do %>
           <%= icon('fa-solid','calendar-check', class:"mr-1")%>
-          <%# <%= Prospect.model_name.human(count:2) %>
-          <%= t('activerecord.models.semester.other')%>
+          <%= App::Calendar.model_name.human(count:2) %>
         <%end%>
 
         <%# EMPRESAS %>

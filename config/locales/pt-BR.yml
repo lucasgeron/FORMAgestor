@@ -32,9 +32,9 @@ pt-BR:
       app/update:
         one: Atualização
         other: Atualizações
-      semester:
-        one: Semestre
-        other: Semestres
+      app/calendar:
+        one: Calendário
+        other: Calendários
       app/vendor:
         one: Representante
         other: Representantes
@@ -110,6 +110,10 @@ pt-BR:
         duration: Duração
         institution_id: Instituição
         institution: Instituição
+      app/calendar:
+        year: Ano
+        semester: Semestre
+        active: Status
 
 
     placeholders:
@@ -152,6 +156,14 @@ pt-BR:
           all: Todos
           true: Habilitado
           false: Bloqueado
+      app/calendar:
+        active:
+          all: Todos
+          true: Ativo
+          false: Inativo
+        info:
+          true: Calendário Visível
+          false: Calendário Não Listado
 
 
 

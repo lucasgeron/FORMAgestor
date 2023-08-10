@@ -31,12 +31,12 @@ class App::CitiesController < ApplicationController
     @app_city = App::City.new(app_city_params)
     set_client_id(@app_city)
 
-      if @app_city.save
-         flash[:success] = t('views.app.general.flash.create_f', model: App::City.model_name.human)
-         redirect_to app_city_url(@app_city)
-      else
-         render :new, status: :unprocessable_entity
-      end
+    if @app_city.save
+        flash[:success] = t('views.app.general.flash.create_f', model: App::City.model_name.human)
+        redirect_to app_city_url(@app_city)
+    else
+        render :new, status: :unprocessable_entity
+    end
   end
 
   # PATCH/PUT /app/cities/1 or /app/cities/1.json
