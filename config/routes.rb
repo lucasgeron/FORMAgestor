@@ -47,6 +47,11 @@ Rails.application.routes.draw do
 
   # Commom routes in App namespace
   namespace :app do
+
+    resources :negotiations, except: %i[new create destroy] do
+      get :search, on: :collection
+    end
+
     resources :status_negotiations do
       get :search, on: :collection
     end

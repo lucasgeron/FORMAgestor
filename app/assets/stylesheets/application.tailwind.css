@@ -151,7 +151,7 @@
   }
 
   .card-header-animate {
-    @apply translate-y-1/4 group-hover:translate-y-0 transition duration-300;
+    @apply translate-y-1.5 group-hover:translate-y-0 transition duration-300;
   }
   
   .card-header-title{
@@ -309,12 +309,17 @@
   }
 
   .sticky-1{
-    @apply sticky top-28  xl:top-18 z-20
+    @apply sticky top-28  xl:top-16 z-20
     bg-white dark:bg-gray-800 py-2 ;
   }
   
   .sticky-2{
-    @apply sticky top-40  xl:top-30 z-10
+    @apply sticky top-42  xl:top-28 z-10
+    bg-white dark:bg-gray-800 py-2 ;
+  }
+
+  .sticky-3{
+    @apply sticky top-54  xl:top-40 z-10
     bg-white dark:bg-gray-800 py-2 ;
   }
 

@@ -145,10 +145,9 @@
       <%end%>
 
       <%# COMERCIAL %>
-      <%= link_to "#", class:"sidebar-link#{is_link_active?('comercial')}   text-gray-300 dark:text-gray-700 pointer-events-none" do %>
+      <%= link_to app_negotiations_path, class:"sidebar-link#{is_link_active?('negotiations')} " do %>
         <%= icon('fa-solid','table-columns', class:"mr-1")%>
-        <%# <%= Prospect.model_name.human(count:2) %>
-        <%= t('Comercial')%>
+        <%= App::Negotiation.model_name.human(count:2) %>
       <%end%>
 
       <%# REPRESENTANTES %>

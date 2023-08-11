@@ -3,7 +3,7 @@
   <div class="card-header">
 
     <div class="card-header-info my-auto">
-      <p class="card-header-title text-<%=status_negotiation.color%>-600 dark:text-<%=status_negotiation.color%>-600">
+      <p class="overflow-scroll scrollbar-hide text-<%=status_negotiation.color%>-600 dark:text-<%=status_negotiation.color%>-600">
         <%= link_to app_status_negotiation_path(status_negotiation), class:'card-header-title' do %>
           <%= icon(status_negotiation.style, status_negotiation.icon)%> <%= status_negotiation.name %>
         <%end%>

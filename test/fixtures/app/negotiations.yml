@@ -1,0 +1,19 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  calendar: one
+  course: one
+  vendor: one
+  company: one
+  status: one
+  reference: MyString
+  active: false
+
+two:
+  calendar: two
+  course: two
+  vendor: two
+  company: two
+  status: two
+  reference: MyString
+  active: false

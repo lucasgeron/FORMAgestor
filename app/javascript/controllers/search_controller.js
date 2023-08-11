@@ -13,9 +13,20 @@ export default class extends Controller {
   }
 
   selectAll(event) {
-    event.target.closest("form").querySelectorAll('input[type="checkbox"]').forEach((checkbox) => {
+    event.target.closest("div").querySelectorAll('input[type="checkbox"]').forEach((checkbox) => {
       checkbox.checked = true
     })
+  }
+
+  selectOnly(event) {
+    console.log('work')
+    event.target.parentElement.parentElement.closest("div").querySelectorAll('input[type="checkbox"]').forEach((checkbox) => {
+      checkbox.checked = false
+    })
+    event.target.parentElement.closest("div").querySelectorAll('input[type="checkbox"]').forEach((checkbox) => {
+      checkbox.checked = true
+    })
+   
   }
 
   moveCursorToEnd(event) {

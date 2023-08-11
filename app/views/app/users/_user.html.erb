@@ -3,7 +3,7 @@
   <div class="card-header">
 
     <div class="card-header-info card-header-animate">
-      <p class="card-header-title"><%= link_to user.email, app_user_path(user), class:'card-header-title' %></p>
+      <p class="overflow-scroll scrollbar-hide"><%= link_to user.email, app_user_path(user), class:'card-header-title' %></p>
       <p class="card-header-subtitle card-header-subtitle-animate"><%= icon('fa-solid','user')%>  <%= user.vendor ? user.vendor.name : App::User.human_attribute_name('vendor_not_found') %> </p>
     </div>
 

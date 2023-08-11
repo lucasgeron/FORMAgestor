@@ -1,0 +1,107 @@
+<%= form_with(model: app_negotiation, class: "contents") do |form| %>
+  <% if app_negotiation.errors.any? %>
+    <% flash.now[:error] = app_prospect.errors.to_a%>
+  <% end %>
+
+  <div class="space-y-4">
+
+    <%# DETAIL %>
+    <div class="grid grid-cols-1 xl:grid-cols-3 gap-4">
+
+      <div class="">
+        <p class=""><%= App::Course.human_attribute_name('institution') %></p>
+        <div class="relative">
+          <%= link_to app_negotiation.course.institution, class:'detail-input-icon' do %>
+            <%= icon('fa-solid', 'building-columns', class:'')%>
+          <%end%>
+          <p class="detail-input with-icon"><%= app_negotiation.course.institution.abreviation_and_city %></p>
+        </div>
+      </div>
+
+      <div class="">
+        <p class=""><%= App::Negotiation.human_attribute_name('course') %></p>
+        <div class="relative">
+          <%= link_to app_negotiation.course, class:'detail-input-icon' do %>
+            <%= icon('fa-solid', 'chalkboard-user', class:'')%>
+          <%end%>
+          <p class="detail-input with-icon"><%= app_negotiation.course.name %></p>
+        </div>
+      </div>
+
+     
+    <div class="">
+      <p class=""><%= App::Negotiation.human_attribute_name('period') %></p>
+      <p class="detail-input "><%= app_negotiation.period_in_words %></p>
+    </div>
+
+    </div>
+
+    <%# FORM  %>
+    <div class="grid grid-cols-1 xl:grid-cols-4 gap-4">
+
+      <div class="">
+        <%= form.label :reference %>
+        <%= form.text_field :reference, class: "form-input" %>
+      </div>
+
+      <div class="">
+        <%= form.label :vendor_id, class:'' %>
+        <% vendors = App::Vendor.by_client(get_client_id)%>
+        <% if vendors.present? %>
+          <div class="relative">
+            <div class="form-input-icon"><%= icon('fa-solid','user', class:'') %>  </div>
+            <%= form.collection_select :vendor_id, vendors, :id, :name, {include_blank: t('activerecord.blank_entries.vendor')}, {class: "form-input with-icon"} %>
+          </div>
+        <% else %>
+          <div class="detail-input">
+            <%= link_to new_app_vendors_path, class: "btn-primary flex-none" do %>
+              <%= icon('fa-solid','plus',class:'btn-icon') %>
+              <%= App::Vendor.model_name.human %>
+            <% end %>
+          </div>
+        <% end %>
+      </div>
+
+      <div class="">
+        <%= form.label :status_id, class:'' %>
+        <% status_negotiations = App::StatusNegotiation.by_client(get_client_id)%>
+        <% if status_negotiations.present? %>
+          <div class="relative">
+            <div class="form-input-icon"><%= icon('fa-solid','circle-question', class:'') %>  </div>
+            <%= form.collection_select :status_id, status_negotiations, :id, :name, {include_blank: t('activerecord.blank_entries.status_negotiation')}, {class: "form-input with-icon"} %>
+          </div>
+        <% else %>
+          <div class="detail-input">
+            <%= link_to new_app_status_negotiations_path, class: "btn-primary flex-none" do %>
+              <%= icon('fa-solid','plus',class:'btn-icon') %>
+              <%= App::StatusNegotiation.model_name.human %>
+            <% end %>
+          </div>
+        <% end %>
+      </div>
+
+      <div class="">
+        <%= form.label :company_id, class:'' %>
+        <% companies = App::Company.by_client(get_client_id)%>
+        <% if companies.present? %>
+          <div class="relative">
+            <div class="form-input-icon"><%= icon('fa-solid','building', class:'') %>  </div>
+            <%= form.collection_select :company_id, companies, :id, :name, {include_blank: t('activerecord.blank_entries.company')}, {class: "form-input with-icon"} %>
+          </div>
+        <% else %>
+          <div class="detail-input">
+            <%= link_to new_app_companies_path, class: "btn-primary flex-none" do %>
+              <%= icon('fa-solid','plus',class:'btn-icon') %>
+              <%= App::Company.model_name.human %>
+            <% end %>
+          </div>
+        <% end %>
+      </div>
+
+    </div>
+
+    <div class="mt-4 inline-flex w-full justify-end">
+      <%= form.submit class: "btn-primary" %>
+    </div>
+  </div>
+<% end %>

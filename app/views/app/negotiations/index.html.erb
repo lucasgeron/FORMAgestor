@@ -1,0 +1,13 @@
+<% content_for :ctas_primary do %>
+  <div class="h-9">
+    contadores aqui
+  </div>
+<% end %>
+
+<% provide :head_title, App::Negotiation.model_name.human(count: 2) %>
+<% provide :page_title, App::Negotiation.model_name.human(count: 2) %>
+<% provide :sidebar, render(partial: 'app/negotiations/sidebar') %>
+
+<% content_for :page_content do %>
+  <%= render partial: 'negotiations' %>
+<%end%>

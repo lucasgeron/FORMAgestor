@@ -4,6 +4,8 @@ class App::Institution < ApplicationRecord
   has_one_attached :image
   has_many :courses, class_name: 'App::Course'
 
+  has_many :negotiations, through: :courses
+
   # Validations
   validates :image, content_type: { in: [:png, :jpg, :jpeg], message: 'is not a valid content type' }
 
@@ -12,10 +14,10 @@ class App::Institution < ApplicationRecord
   
   # Scope
   include App::Scopes
+  scope :by_negotiation, ->(negotiation_ids) { joins(courses: :negotiations).where(negotiations: {id: negotiation_ids}) }
   scope :by_city, ->(city_id) { where(city_id: city_id) }
-  scope :by_id, ->(id) { where(id: id)}
-
   scope :search, -> (search) { where("LOWER(UNACCENT(abreviation)) LIKE LOWER(UNACCENT(:search))", search: "%#{search}%") }
+  
 
 
   # Methods

@@ -63,6 +63,9 @@ pt-BR:
       app/status_negotiation:
         one: Status
         other: Status
+      app/negotiation:
+        one: Negociação
+        other: Negociações
 
     attributes:
       app/client:
@@ -132,7 +135,20 @@ pt-BR:
         icon: Ícone
         style: Estilo
         color: Cor
+      app/negotiation:
+        calendar: Calendário
+        course_id: Curso
+        vendor_id: Representante
+        company_id: Empresa
+        status_id: Status
+        reference: Referência
+        period: Período
 
+
+    blank_entries:
+      vendor: Não associado
+      company: Não associada
+      status_negotiation: Não Mapeado
 
     placeholders:
       app/prospect:
@@ -146,6 +162,7 @@ pt-BR:
         name: Nome Completo
         phone: DDD + Telefone
         instagram: '@username'
+      
 
     options:
       general:

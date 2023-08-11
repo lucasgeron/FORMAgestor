@@ -11,6 +11,6 @@
 
 <% content_for :page_content do %>
   <div class="default-grid">
-    <%= link_to "#{App::StatusNegotiation.model_name.human(count:2)} (#{App::StatusNegotiation.model_name.human(count:2)})", app_status_negotiations_path, class:'card' %>
+    <%= link_to "#{App::StatusNegotiation.model_name.human(count:2)} (#{App::Negotiation.model_name.human(count:2)})", app_status_negotiations_path, class:'card' %>
   </div>
 <%end%>

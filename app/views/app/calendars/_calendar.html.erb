@@ -3,7 +3,7 @@
   <div class="card-header">
 
     <div class="card-header-info card-header-animate">
-      <p class="card-header-title"><%= link_to calendar.name, app_calendar_path(calendar), class:'card-header-title' %></p>
+      <p class="overflow-scroll scrollbar-hide"><%= link_to calendar.name, app_calendar_path(calendar), class:'card-header-title' %></p>
       <p class="card-header-subtitle card-header-subtitle-animate">
         <% if calendar.active %>
         <%= icon('fa-solid','eye')  %> <%= t('activerecord.options.app/calendar.info.true') %>

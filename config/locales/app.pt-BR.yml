@@ -11,7 +11,8 @@ pt-BR:
         show: Exibir
         showing: Exibindo
         all: Todos
-        select_all: Selecionar Todas
+        select_all_m: Selecionar Todos
+        select_all_f: Selecionar Todas
         empty_input_file: Selecione um Arquivo
         search: Pesquisar
         delete_confirm: 'Tem certeza que deseja excluir este registro?'

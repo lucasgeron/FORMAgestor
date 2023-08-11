@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2023_08_10_133546) do
+ActiveRecord::Schema[7.0].define(version: 2023_08_10_174933) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
   enable_extension "unaccent"
@@ -103,7 +103,7 @@ ActiveRecord::Schema[7.0].define(version: 2023_08_10_133546) do
 
   create_table "app_companies", force: :cascade do |t|
     t.string "name"
-    t.boolean "active"
+    t.boolean "active", default: true
     t.bigint "client_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
@@ -132,6 +132,26 @@ ActiveRecord::Schema[7.0].define(version: 2023_08_10_133546) do
     t.index ["client_id"], name: "index_app_institutions_on_client_id"
   end
 
+  create_table "app_negotiations", force: :cascade do |t|
+    t.bigint "calendar_id", null: false
+    t.bigint "course_id", null: false
+    t.bigint "vendor_id"
+    t.bigint "company_id"
+    t.bigint "status_id"
+    t.bigint "client_id", null: false
+    t.integer "period"
+    t.string "reference"
+    t.boolean "active", default: true
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["calendar_id"], name: "index_app_negotiations_on_calendar_id"
+    t.index ["client_id"], name: "index_app_negotiations_on_client_id"
+    t.index ["company_id"], name: "index_app_negotiations_on_company_id"
+    t.index ["course_id"], name: "index_app_negotiations_on_course_id"
+    t.index ["status_id"], name: "index_app_negotiations_on_status_id"
+    t.index ["vendor_id"], name: "index_app_negotiations_on_vendor_id"
+  end
+
   create_table "app_prospects", force: :cascade do |t|
     t.bigint "vendor_id"
     t.string "channel"
@@ -152,7 +172,7 @@ ActiveRecord::Schema[7.0].define(version: 2023_08_10_133546) do
 
   create_table "app_status_negotiations", force: :cascade do |t|
     t.string "name"
-    t.boolean "active"
+    t.boolean "active", default: true
     t.string "icon"
     t.string "style"
     t.string "color"
@@ -220,6 +240,12 @@ ActiveRecord::Schema[7.0].define(version: 2023_08_10_133546) do
   add_foreign_key "app_courses", "app_institutions", column: "institution_id"
   add_foreign_key "app_institutions", "app_cities", column: "city_id"
   add_foreign_key "app_institutions", "app_clients", column: "client_id"
+  add_foreign_key "app_negotiations", "app_calendars", column: "calendar_id"
+  add_foreign_key "app_negotiations", "app_clients", column: "client_id"
+  add_foreign_key "app_negotiations", "app_companies", column: "company_id"
+  add_foreign_key "app_negotiations", "app_courses", column: "course_id"
+  add_foreign_key "app_negotiations", "app_status_negotiations", column: "status_id"
+  add_foreign_key "app_negotiations", "app_vendors", column: "vendor_id"
   add_foreign_key "app_prospects", "app_clients", column: "client_id"
   add_foreign_key "app_prospects", "app_vendors", column: "vendor_id"
   add_foreign_key "app_status_negotiations", "app_clients", column: "client_id"

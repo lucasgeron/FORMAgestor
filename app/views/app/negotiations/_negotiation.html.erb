@@ -1,0 +1,56 @@
+<div id="<%= dom_id negotiation %>" class="card group" data-aos='fade' data-controller="reveal" data-reveal-hidden-class="grid">
+
+
+  
+
+  <div class="card-header">
+
+    
+
+    <div class="card-header-info card-header-animate">
+      <p class="overflow-scroll scrollbar-hide ">
+      <%= link_to negotiation.name, app_negotiation_path(negotiation), class:'card-header-title' %>
+      
+      </p>
+      <p class="card-header-subtitle card-header-subtitle-animate"><%= negotiation.period_in_words %>  </p>
+    </div>
+
+    <%= button_tag class:'card-header-btn', data: { action:"click->reveal#toggle" }  do %>
+      <%= icon('fa-solid','bars', class:'fa-sm')%>
+    <%end%>
+
+  </div>
+
+  <%# CARD BODY %>
+  <% if negotiation.status.present? %>
+    <p class="card-tag-readonly text-<%= negotiation.status.color %>-600 dark:text-<%= negotiation.status.color %>-600">
+    <%= icon(negotiation.status.style,negotiation.status.icon, class:'')%> <%= negotiation.status.name %></p>
+  <% else %>
+    <p class="card-tag-readonly text-gray-400 dark:text-gray-400">
+    <%= icon('fa-regular','circle', class:'')%> <%= t('activerecord.blank_entries.status_negotiation') %></p>
+  <% end %>
+  <%# END BODY %>
+
+  
+
+  <div data-reveal-target="item" class="card-popover" data-action="mouseleave->reveal#show">
+
+    
+    <%= link_to edit_app_negotiation_path(negotiation), class:'card-popover-btn-primary' do %>
+      <%= icon('fa-solid', 'pen-to-square', class:'btn-icon') %>
+      <p class=""> <%= t('views.app.general.edit')%></p>
+    <%end%>
+
+    <%= button_to app_negotiation_path(negotiation), method: :patch, class: "card-popover-btn-delete", params: { app_negotiation: { active: false } } do %>
+      <%= icon('fa-solid','xmark',class:'btn-icon') %>
+      Bloquear
+    <% end if negotiation.active %>
+
+    <%= button_to app_negotiation_path(negotiation), method: :patch, class: "card-popover-btn-primary", params: { app_negotiation: { active: true } } do %>
+      <%= icon('fa-solid','check',class:'btn-icon') %>
+      Habilitar
+    <% end if !negotiation.active %>
+
+  </div>
+
+</div>
