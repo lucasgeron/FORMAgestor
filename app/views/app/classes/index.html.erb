@@ -1,0 +1,17 @@
+<% content_for :ctas_primary do %>
+  <div class="h-9">
+    contadores aqui
+  </div>
+<% end %>
+
+<% provide :head_title, t('controller.app/class.other') %>
+<% provide :page_title, t('controller.app/class.other') %>
+<% provide :sidebar, render(partial: 'app/classes/sidebar') %>
+
+<% content_for :page_content do %>
+  
+  <% if @app_negotiations.present? %>
+    <%= render partial: 'classes' %>
+  <% end %>
+  
+<%end%>

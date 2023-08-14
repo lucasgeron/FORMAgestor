@@ -1,0 +1,51 @@
+<div class="" data-controller="search reveal">
+
+  <% if @pagy.present? %>
+    <div class="detail-input text-xs text-center h-8 mb-1" id="pagy_info">
+      <%== pagy_info(@pagy, item_name: App::Negotiation.model_name.human(count: @pagy.items )) %>
+    </div>
+  <% end %>
+
+  <%= form_with url: search_app_classes_path, method: :get, class:'space-y-1' do |form| %>
+
+    
+
+    <div class="bg-gray-100 dark:bg-gray-900 py-2 px-3 space-y-1 rounded-lg text-sm">
+
+
+      <% @cities.each do |city| %>
+
+     
+
+      <button type="button" aria-expanded="<%= @ae == city.id %>" class="dropdown-toggle sidebar-link inline-flex items-center justify-between w-full" aria-controls="dropdown-example-<%=city.id%>" data-collapse-toggle="dropdown-example-<%=city.id%>">
+        <div class="">
+          <%= city.name %>
+        </div>
+        <%= icon('fa-solid', 'chevron-down', class:"")%>
+        <%= icon('fa-solid', 'chevron-up', class:"hidden")%>
+      </button>
+      
+      <ul id="dropdown-example-<%=city.id%>" class="space-y-2 py-1 <% if @ae != city.id %> hidden <%end%>" aria-expanded='true'>
+
+          
+          <%= form.collection_radio_buttons  :institution_id, @institutions.by_city(city.id), :id, :abreviation, include_hidden: false do |institution| %>    
+            <div class="mt-0 flex px-2">
+              <%= institution.radio_button(class: 'mr-1 form-radio-simple dark:bg-gray-800 bg-gray-200  ', checked: (params[:institution_id].present? && params[:institution_id] == institution.value.to_s ), data: {action: 'change->search#submit'}) %>
+              <%= institution.label class:'cursor-pointer text-sm w-full ' do %>
+                  <p class="truncate pr-4"><%= institution.text %></p>
+              <% end %>
+            </div>
+          <% end %>
+
+      
+
+      </ul>
+
+
+      <% end %>
+    </div>
+        
+
+  <% end %>
+
+</div>

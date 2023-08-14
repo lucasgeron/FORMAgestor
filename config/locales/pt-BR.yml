@@ -5,6 +5,9 @@ pt-BR:
     app/setting:
       one: Personalização 
       other: Personalizações
+    app/class:
+      one: Turma
+      other: Turmas
 
   activemodel:
     models:

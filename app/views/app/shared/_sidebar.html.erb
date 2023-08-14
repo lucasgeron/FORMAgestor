@@ -138,13 +138,12 @@
       <%end%>
 
       <%# TURMA %>
-      <%= link_to "#", class:"sidebar-link#{is_link_active?('turmas')}   text-gray-300 dark:text-gray-700 pointer-events-none" do %>
+      <%= link_to app_classes_path, class:"sidebar-link#{is_link_active?('classes')}   " do %>
         <%= icon('fa-solid','users-rectangle', class:"mr-1")%>
-        <%# <%= Prospect.model_name.human(count:2) %>
-        <%= t('Turmas')%>
+         <%= t('controller.app/class.other') %>
       <%end%>
 
-      <%# COMERCIAL %>
+      <%# NEGOCIAÇÕES %>
       <%= link_to app_negotiations_path, class:"sidebar-link#{is_link_active?('negotiations')} " do %>
         <%= icon('fa-solid','table-columns', class:"mr-1")%>
         <%= App::Negotiation.model_name.human(count:2) %>

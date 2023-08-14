@@ -19,6 +19,7 @@ module.exports = {
         '30': '7.5rem',
         '42': '10.5rem',
         '54': '13.5rem',
+        '86': '21.5rem',
       },
       animation: {
         wiggle: 'wiggle 1s ease-in-out infinite',

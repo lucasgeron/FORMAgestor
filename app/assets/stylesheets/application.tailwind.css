@@ -308,6 +308,14 @@
     @apply grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-2 2xl:grid-cols-4 gap-4 my-4;
   }
 
+  .horizontal-grid{
+    @apply grid grid-flow-col auto-cols-max space-x-4;
+  }
+
+  .horizontal-grid-item{
+    @apply w-[calc(100vw-2rem)] md:w-[calc((100vw-3rem)/2)] lg:w-[calc((100vw-4rem)/3)] xl:w-[calc((100vw-35rem)/2)] 2xl:w-[calc((100vw-37rem)/4)];
+  }
+
   .sticky-1{
     @apply sticky top-28  xl:top-16 z-20
     bg-white dark:bg-gray-800 py-2 ;

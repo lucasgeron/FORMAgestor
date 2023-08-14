@@ -17,7 +17,8 @@ class App::Institution < ApplicationRecord
   scope :by_negotiation, ->(negotiation_ids) { joins(courses: :negotiations).where(negotiations: {id: negotiation_ids}) }
   scope :by_city, ->(city_id) { where(city_id: city_id) }
   scope :search, -> (search) { where("LOWER(UNACCENT(abreviation)) LIKE LOWER(UNACCENT(:search))", search: "%#{search}%") }
-  
+  scope :select_by_city, ->(city_id) { select{|institution| institution.city_id == city_id}}
+
 
 
   # Methods

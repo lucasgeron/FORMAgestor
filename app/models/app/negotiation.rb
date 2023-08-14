@@ -7,6 +7,7 @@ class App::Negotiation < ApplicationRecord
   belongs_to :company, class_name: 'App::Company', optional: true
   belongs_to :status, class_name: 'App::StatusNegotiation', optional: true
 
+
   before_validation :calculate_period
 
   # Scope
@@ -15,7 +16,7 @@ class App::Negotiation < ApplicationRecord
   scope :by_status_negotiation, ->(status_id) { where(status_id: status_id) }
   scope :by_institution, ->(institution_ids) { joins(:course).merge(App::Course.by_institution(institution_ids)) }
   scope :search, -> (search) { where("LOWER(UNACCENT(reference)) LIKE LOWER(UNACCENT(:search))", search: "%#{search}%") }
-  
+  scope :by_calendar, ->(calendar_id) { where(calendar_id: calendar_id)}  
 
   # Methods
   def calculate_period
