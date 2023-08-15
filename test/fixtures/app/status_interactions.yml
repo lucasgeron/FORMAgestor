@@ -1,0 +1,17 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  name: MyString
+  active: false
+  icon: MyString
+  style: MyString
+  color: MyString
+  client: one
+
+two:
+  name: MyString
+  active: false
+  icon: MyString
+  style: MyString
+  color: MyString
+  client: two

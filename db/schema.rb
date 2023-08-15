@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2023_08_14_144821) do
+ActiveRecord::Schema[7.0].define(version: 2023_08_15_140346) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
   enable_extension "unaccent"
@@ -184,6 +184,18 @@ ActiveRecord::Schema[7.0].define(version: 2023_08_14_144821) do
     t.index ["vendor_id"], name: "index_app_prospects_on_vendor_id"
   end
 
+  create_table "app_status_interactions", force: :cascade do |t|
+    t.string "name"
+    t.boolean "active"
+    t.string "icon"
+    t.string "style"
+    t.string "color"
+    t.bigint "client_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["client_id"], name: "index_app_status_interactions_on_client_id"
+  end
+
   create_table "app_status_negotiations", force: :cascade do |t|
     t.string "name"
     t.boolean "active", default: true
@@ -264,6 +276,7 @@ ActiveRecord::Schema[7.0].define(version: 2023_08_14_144821) do
   add_foreign_key "app_negotiations", "app_vendors", column: "vendor_id"
   add_foreign_key "app_prospects", "app_clients", column: "client_id"
   add_foreign_key "app_prospects", "app_vendors", column: "vendor_id"
+  add_foreign_key "app_status_interactions", "app_clients", column: "client_id"
   add_foreign_key "app_status_negotiations", "app_clients", column: "client_id"
   add_foreign_key "app_users", "app_clients", column: "client_id"
   add_foreign_key "app_users", "app_vendors", column: "vendor_id"

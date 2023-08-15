@@ -82,6 +82,6 @@ class App::StatusNegotiationsController < ApplicationController
     end
 
     def set_form_variables
-      @styles = App::StatusNegotiation::STYLES.map{ |style| [style, t("activerecord.options.app/status_negotiation.STYLE.#{style}")]}
+      @styles = App::StatusNegotiation::STYLES.map{ |style| [style, t("activerecord.options.general.STYLE.#{style}")]}
     end
 end

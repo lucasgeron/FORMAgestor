@@ -17,4 +17,9 @@ class App::Contact < ApplicationRecord
     output.join(" | ").html_safe
   end
 
+  def has_dependency?
+    false
+  end
+
+
 end

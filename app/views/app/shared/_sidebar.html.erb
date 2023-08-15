@@ -157,7 +157,7 @@
       <%# CONFIGURAÇÕES %>
 
       <%# setup for aria-expanded %>
-      <% %w'settings calendars companies users clients updates subscribers status_negotiations'.include?(controller_name) ? ae = true : ae = false %>
+      <% %w'settings calendars companies users clients updates subscribers status_negotiations  status_interactions'.include?(controller_name) ? ae = true : ae = false %>
 
       <button type="button" aria-expanded="<%= ae %>" class="dropdown-toggle sidebar-link inline-flex items-center justify-between w-full" aria-controls="dropdown-example" data-collapse-toggle="dropdown-example">
         <div class="">
@@ -188,7 +188,7 @@
         <%end%>
 
         <%# SETTINGS %>
-        <% st = %w'settings status_negotiations'.include?(controller_name) ?  '-active' : '' %>
+        <% st = %w'settings status_negotiations status_interactions'.include?(controller_name) ?  '-active' : '' %>
         <%= link_to app_settings_path, class:"sidebar-link#{st}" do %>
           <%= icon('fa-solid','gears', class:"mr-1")%>
           <%= t('controller.app/setting.other') %>

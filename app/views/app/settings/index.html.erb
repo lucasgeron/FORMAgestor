@@ -2,7 +2,12 @@
  
   <%= link_to new_app_status_negotiation_path, class: "btn-primary flex-none" do %>
     <%= icon('fa-solid','plus',class:'btn-icon') %>
-    <%= App::StatusNegotiation.model_name.human %>
+    <%= App::StatusNegotiation.model_name.human %> <span class="text-xs">(<%= App::Negotiation.model_name.human %>)</span>
+  <% end %>
+
+  <%= link_to new_app_status_interaction_path, class: "btn-primary flex-none" do %>
+    <%= icon('fa-solid','plus',class:'btn-icon') %>
+    <%= App::StatusInteraction.model_name.human %>  <span class="text-xs">(<%= App::Negotiation.model_name.human %>)</span>
   <% end %>
 <% end %>
 
@@ -12,5 +17,6 @@
 <% content_for :page_content do %>
   <div class="default-grid">
     <%= link_to "#{App::StatusNegotiation.model_name.human(count:2)} (#{App::Negotiation.model_name.human(count:2)})", app_status_negotiations_path, class:'card' %>
+    <%= link_to "#{App::StatusInteraction.model_name.human(count:2)} (Interações)", app_status_interactions_path, class:'card' %>
   </div>
 <%end%>
