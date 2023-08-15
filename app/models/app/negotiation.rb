@@ -13,6 +13,7 @@ class App::Negotiation < ApplicationRecord
   # Scope
   include App::Scopes
   scope :by_vendor, ->(vendor_id) { where(vendor_id: vendor_id) }
+  scope :by_course, ->(course_id) { where(course_id: course_id) }
   scope :by_status_negotiation, ->(status_id) { where(status_id: status_id) }
   scope :by_institution, ->(institution_ids) { joins(:course).merge(App::Course.by_institution(institution_ids)) }
   scope :search, -> (search) { where("LOWER(UNACCENT(reference)) LIKE LOWER(UNACCENT(:search))", search: "%#{search}%") }
@@ -43,7 +44,7 @@ class App::Negotiation < ApplicationRecord
   end
 
   def period_in_words_and_calendar
-    "#{self.period_in_words} - #{self.calendar.name}"
+    "#{self.calendar.name} - #{self.period_in_words}"
   end
 
 end

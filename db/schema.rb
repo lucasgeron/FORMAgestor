@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2023_08_10_174933) do
+ActiveRecord::Schema[7.0].define(version: 2023_08_14_144821) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
   enable_extension "unaccent"
@@ -108,6 +108,20 @@ ActiveRecord::Schema[7.0].define(version: 2023_08_10_174933) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["client_id"], name: "index_app_companies_on_client_id"
+  end
+
+  create_table "app_contacts", force: :cascade do |t|
+    t.string "name"
+    t.string "phone"
+    t.string "instagram"
+    t.boolean "informant"
+    t.boolean "committee"
+    t.bigint "negotiation_id"
+    t.bigint "client_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["client_id"], name: "index_app_contacts_on_client_id"
+    t.index ["negotiation_id"], name: "index_app_contacts_on_negotiation_id"
   end
 
   create_table "app_courses", force: :cascade do |t|
@@ -236,6 +250,8 @@ ActiveRecord::Schema[7.0].define(version: 2023_08_10_174933) do
   add_foreign_key "app_cities_vendors", "app_cities", column: "city_id"
   add_foreign_key "app_cities_vendors", "app_vendors", column: "vendor_id"
   add_foreign_key "app_companies", "app_clients", column: "client_id"
+  add_foreign_key "app_contacts", "app_clients", column: "client_id"
+  add_foreign_key "app_contacts", "app_negotiations", column: "negotiation_id"
   add_foreign_key "app_courses", "app_clients", column: "client_id"
   add_foreign_key "app_courses", "app_institutions", column: "institution_id"
   add_foreign_key "app_institutions", "app_cities", column: "city_id"

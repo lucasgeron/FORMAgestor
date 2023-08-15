@@ -35,6 +35,9 @@ module RailsApp
     Pagy::I18n.load({ locale: 'pt-BR', filepath: 'config/locales/pagy.pt-BR.yml' },
                     { locale: 'en' })
 
+    # set Faker locale
+    Faker::Config.locale = 'pt-BR'
+          
     # set layouts for devise
     config.to_prepare do
       Devise::SessionsController.layout "public_application"

@@ -1,4 +1,4 @@
-<div class="w-full py-4 space-y-4 ">
+<div class="w-full  space-y-4 ">
 
   <div class="">
     <p class=""><%= App::Prospect.human_attribute_name('vendor_id') %></p>
@@ -28,9 +28,14 @@
       <p class="detail-input"><%= @app_prospect.phone.present? ? @app_prospect.phone : t('activerecord.options.general.blank') %></p>
     </div>
 
-    <div class="">
+       <div class="">
       <p class=""><%= App::Prospect.human_attribute_name('instagram') %></p>
-      <p class="detail-input"><%= @app_prospect.instagram.present? ? @app_prospect.instagram : t('activerecord.options.general.blank') %></p>
+      <div class="relative">
+      <%= link_to "https://www.instagram.com/#{app_prospect.instagram}", target:'_blank', class:'detail-input-icon' do  %>
+        <%= icon('fa-brands','instagram')%>
+      <%end%>
+      <p class="detail-input with-icon"><%= app_prospect.instagram%></p>
+      </div>
     </div>
 
     <div class="">

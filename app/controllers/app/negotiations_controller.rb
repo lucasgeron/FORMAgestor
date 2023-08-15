@@ -74,6 +74,18 @@ class App::NegotiationsController < ApplicationController
   #   end
   # end
 
+
+  # GET /app/negotiations/filter?course=ID&target=DIV_ID
+  def filter
+    @negotiations = App::Negotiation.by_client(get_client_id).by_course(params[:course])
+    @target = params[:target]
+
+
+    respond_to do |format|
+      format.turbo_stream
+    end
+  end
+
   # GET /app/negotiations/search
   def search
 

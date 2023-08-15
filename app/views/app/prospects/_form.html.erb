@@ -3,7 +3,7 @@
     <% flash.now[:error] = app_prospect.errors.to_a%>
   <% end %>
 
-  <div class="w-full py-4 space-y-4">
+  <div class="w-full  space-y-4">
     <% if has_session? %>
 
       <div class="">
@@ -43,9 +43,13 @@
         <%= form.text_field :phone, class: "form-input", placeholder: t('activerecord.placeholders.app/prospect.phone') %>
       </div>
 
+     
       <div class="">
         <%= form.label :instagram %>
-        <%= form.text_field :instagram, class: "form-input", placeholder: t('activerecord.placeholders.app/prospect.instagram') %>
+        <div class="relative">
+          <%= icon('fa-brands', 'instagram', class:'form-input-icon')%>
+          <%= form.text_field :instagram, class: "form-input with-icon", placeholder: t('activerecord.placeholders.app/prospect.instagram') %>
+        </div>
       </div>
 
       <div class="">

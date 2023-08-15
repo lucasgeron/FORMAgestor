@@ -68,30 +68,40 @@ class App::CoursesController < ApplicationController
 
   end
 
-    #  GET /app/courses/search?query=:query&city_ids=:city_ids
-    def search 
-  
-      collection = App::Course.by_client(get_client_id).order(:name)
+  # GET /app/courses/filter?institution=ID&target=DIV_ID
+  def filter
+    @courses = App::Course.by_client(get_client_id).by_institution(params[:institution]).order(:name)
+    @target = params[:target]
 
-      if params[:query].present?  
-        collection = collection.search(params[:query])
-        @app_institutions = App::Institution.by_id(collection.pluck(:institution_id).uniq)
-        params[:city_ids] = @app_institutions.pluck(:city_id).uniq # set the city_ids to the search result
-      
-      elsif params[:city_ids].present?
-        @app_institutions = App::Institution.by_client(get_client_id).by_city(params[:city_ids]).order(:abreviation)
-        collection = collection.by_institution(@app_institutions)
-      
-      else
-        return redirect_to app_courses_path 
-      end
-      
-      @pagy, @app_courses = set_pagy(collection)
-      @app_cities = App::City.by_id(@app_institutions.pluck(:city_id).uniq).order(:name)
-  
-      render :index
-  
+    respond_to do |format|
+      format.turbo_stream
     end
+  end
+  
+    #  GET /app/courses/search?query=:query&city_ids=:city_ids
+  def search 
+
+    collection = App::Course.by_client(get_client_id).order(:name)
+
+    if params[:query].present?  
+      collection = collection.search(params[:query])
+      @app_institutions = App::Institution.by_id(collection.pluck(:institution_id).uniq)
+      params[:city_ids] = @app_institutions.pluck(:city_id).uniq # set the city_ids to the search result
+    
+    elsif params[:city_ids].present?
+      @app_institutions = App::Institution.by_client(get_client_id).by_city(params[:city_ids]).order(:abreviation)
+      collection = collection.by_institution(@app_institutions)
+    
+    else
+      return redirect_to app_courses_path 
+    end
+    
+    @pagy, @app_courses = set_pagy(collection)
+    @app_cities = App::City.by_id(@app_institutions.pluck(:city_id).uniq).order(:name)
+
+    render :index
+
+  end
 
   private
     # Use callbacks to share common setup or constraints between actions.

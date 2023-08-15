@@ -106,10 +106,9 @@
       <% end %>
 
       <%# ALUNOS %>
-      <%= link_to "#", class:"sidebar-link#{is_link_active?('students')}   text-gray-300 dark:text-gray-700 pointer-events-none" do %>
+      <%= link_to app_contacts_path, class:"sidebar-link#{is_link_active?('contacts')}" do %>
         <%= icon('fa-solid','address-book', class:"mr-1")%>
-        <%# <%= Prospect.model_name.human(count:2) %>
-        <%= t('activerecord.models.students.other')%>
+        <%= App::Contact.model_name.human(count:2) %>
       <%end%>
 
       <%# ATENDIMENTOS %>

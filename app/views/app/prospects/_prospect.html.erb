@@ -3,7 +3,7 @@
   <div class="card-header">
 
     <div class="card-header-info card-header-animate ">
-      <p class="overflow-scroll scrollbar-hide"><%= link_to  prospect.name, prospect, class:'card-header-title' %></p>
+      <p class="overflow-scroll scrollbar-hide truncate"><%= link_to  prospect.name, prospect, class:'card-header-title' %></p>
       <p class="card-header-subtitle card-header-subtitle-animate"><%= time_ago_in_words(prospect.created_at) %></p>
     </div>
 

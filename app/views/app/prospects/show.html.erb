@@ -22,9 +22,9 @@
     <%= t('views.app.prospects.button.set_vendor') %>
   <% end if can_set_vendor?(@app_prospect) %>
 
-  <%= link_to new_app_prospect_path, class: "btn-primary flex-none" do %>
+  <%= link_to new_app_contact_path(name: @app_prospect.name, phone: @app_prospect.phone, instagram: @app_prospect.instagram), class: "btn-primary flex-none" do %>
     <%= icon('fa-solid','plus',class:'btn-icon') %>
-    <%= App::Prospect.model_name.human %>
+    <%= App::Contact.model_name.human %>
   <% end %>
 
 <% end %>

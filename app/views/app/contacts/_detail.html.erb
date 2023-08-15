@@ -1,0 +1,107 @@
+
+<div class="grid grid-cols-1 xl:grid-cols-3 gap-4">
+  <div class="">
+    <p class=""><%= App::Contact.human_attribute_name('name') %></p>
+    <p class="detail-input"><%= app_contact.name%></p>
+  </div>
+
+  <div class="">
+    <p class=""><%= App::Contact.human_attribute_name('phone') %></p>
+    <p class="detail-input"><%= app_contact.phone%></p>
+  </div>
+
+  <div class="">
+    <p class=""><%= App::Contact.human_attribute_name('instagram') %></p>
+    <div class="relative">
+      <%= link_to "https://www.instagram.com/#{app_contact.instagram}", target:'_blank', class:'detail-input-icon' do  %>
+        <%= icon('fa-brands','instagram')%>
+      <%end%>
+      <p class="detail-input with-icon"><%= app_contact.instagram%></p>
+    </div>
+  </div>
+
+  <% if app_contact.negotiation %>
+    <div class="">
+      <p class=""><%= App::Contact.human_attribute_name('institution_id') %></p>
+      <div class="relative">
+        <%= link_to app_contact.negotiation.course.institution, class:'detail-input-icon' do %>
+          <%= icon('fa-solid', 'building-columns', class:'')%>
+        <%end%>
+        <p class="detail-input with-icon"><%= app_contact.negotiation.course.institution.abreviation_and_city %></p>
+      </div>
+    </div>
+
+    <div class="">
+      <p class=""><%= App::Contact.human_attribute_name('course_id') %></p>
+
+      <div class="relative">
+        <%= link_to app_contact.negotiation.course, class:'detail-input-icon' do %>
+          <%= icon('fa-solid', 'chalkboard-user', class:'')%>
+        <%end%>
+        <p class="detail-input with-icon"><%= app_contact.negotiation.course.name %></p>
+      </div>
+    </div>
+
+    <div class="">
+      <p class=""><%= App::Contact.human_attribute_name('negotiation_id') %></p>
+      <div class="relative">
+        <%= link_to app_contact.negotiation, class:'detail-input-icon' do %>
+          <%= icon('fa-solid', 'users-rectangle', class:'')%>
+        <%end%>
+        <p class="detail-input with-icon"><%= app_contact.negotiation.period_in_words_and_calendar %></p>
+      </div>
+    </div>
+  <% else %>
+    <div class="">
+      <p class=""><%= App::Contact.human_attribute_name('institution_id') %></p>
+      <div class="relative">
+        <div class='detail-input-icon hover:text-inherit'>
+          <%= icon('fa-solid', 'building-columns', class:'')%>
+        </div>
+        <p class="detail-input with-icon"><%= t('activerecord.blank_entries.institution_id') %></p>
+      </div>
+    </div>
+
+    <div class="">
+      <p class=""><%= App::Contact.human_attribute_name('course_id') %></p>
+
+      <div class="relative">
+        <div class='detail-input-icon hover:text-inherit'>
+          <%= icon('fa-solid', 'chalkboard-user', class:'')%>
+        </div>
+        <p class="detail-input with-icon"><%= t('activerecord.blank_entries.course_id') %></p>
+      </div>
+    </div>
+
+    <div class="">
+      <p class=""><%= App::Contact.human_attribute_name('negotiation_id') %></p>
+      <div class="relative">
+        <div class='detail-input-icon hover:text-inherit'>
+          <%= icon('fa-solid', 'users-rectangle', class:'')%>
+        </div>
+        <p class="detail-input with-icon"><%= t('activerecord.blank_entries.negotiation_id') %></p>
+      </div>
+    </div>
+  <% end %>
+
+  <div class="">
+    <p class=""><%= App::Contact.human_attribute_name('committee') %></p>
+
+    <% if app_contact.committee %>
+      <div class="text-base detail-input dark:bg-blue-600 bg-blue-600 text-white text-center rounded-lg"> <%= icon('fa-solid','check')%> <%= t('activerecord.options.app/contact.committee.true')%></div>
+    <% else %>
+      <div class="text-base detail-input bg-gray-100 text-red-600 text-center rounded-lg "> <%= icon('fa-solid','xmark')%> <%= t('activerecord.options.app/contact.committee.false')%></div>
+    <% end %>
+  </div>
+
+  <div class="">
+    <p class=""><%= App::Contact.human_attribute_name('informant') %></p>
+
+    <% if app_contact.informant %>
+      <div class="text-base detail-input dark:bg-blue-600 bg-blue-600 text-white text-center rounded-lg"> <%= icon('fa-solid','check')%> <%= t('activerecord.options.app/contact.informant.true')%></div>
+    <% else %>
+      <div class="text-base detail-input bg-gray-100 text-red-600 text-center rounded-lg "> <%= icon('fa-solid','xmark')%> <%= t('activerecord.options.app/contact.informant.false')%></div>
+    <% end %>
+  </div>
+
+</div>

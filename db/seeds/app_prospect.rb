@@ -2,7 +2,7 @@ Faker::Config.locale = 'pt-BR'
 
 (1..1).each_with_index do |index|
 
-   28.times do
+   60.times do
       p App::Prospect.create( 
          client_id: index,
          channel: [ 'Evento', 'Redes Sociais', 'Indicação', 'Promoções, Sorteios ou Rifas', 'Universidade'].sample, 
@@ -14,6 +14,6 @@ Faker::Config.locale = 'pt-BR'
          vendor: [App::Vendor.by_client(index).sample, nil].sample, 
          name: Faker::Name.name,
          phone: Faker::PhoneNumber.phone_number, 
-         instagram: "@" + Faker::Internet.username)
+         instagram: Faker::Internet.username)
    end
 end

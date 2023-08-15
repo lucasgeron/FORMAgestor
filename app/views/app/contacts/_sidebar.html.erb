@@ -1,0 +1,25 @@
+<div class="" data-controller="search reveal">
+
+  <div class="detail-input text-xs text-center h-8 -mb-1" id="pagy_info">
+    <%== pagy_info(@pagy, item_name: App::Contact.model_name.human(count: @pagy.items )) %>
+  </div>
+
+  <%= form_with url: search_app_contacts_path, method: :get, class:'space-y-1' do |form| %>
+
+    <%# SEACH INPUT %>
+    <div class="relative" data-action='mouseenter->reveal#toggle mouseleave->reveal#toggle '>
+      <div class="search-input-icon dark:hover:bg-blue-600" data-action="click->search#submit"><%= icon('fa-solid','search', class:'fa-sm ') %>  </div>
+      <%= form.text_field :query, value:params[:query],  class:'search-input text-sm', placeholder: t('views.app.general.search'), data: {action: 'keydown.enter->search#submit'} %>
+    </div>
+    <div class="hidden detail-input text-xs h-8 " data-reveal-target="item">
+      <p class="text-center"> 
+      <%= %i[ name instagram ].map{|attr| App::Contact.human_attribute_name(attr)}.join(" | ")  %>
+      </p>
+    </div>
+    <%# END OF SEARCH INPUT%>
+
+   
+
+  <% end %>
+
+</div>

@@ -31,7 +31,6 @@
                 vendor:  vendor
             )    
 
-            puts "---------------"
         end
     end
 end

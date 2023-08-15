@@ -1,0 +1,9 @@
+{
+  "dependencies": {
+    "@hotwired/stimulus": "^3.2.1",
+    "flowbite": "^1.7.0",
+    "lodash.throttle": "^4.1.1",
+    "stimulus-notification": "^2.2.0",
+    "stimulus-scroll-progress": "^4.1.0"
+  }
+}

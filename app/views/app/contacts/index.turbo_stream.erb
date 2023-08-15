@@ -1,6 +1,6 @@
 <!-- append content to turbo_frame -->
 <%= turbo_stream.append("app_collection_list") do %>
-  <%= render @app_prospects %>
+  <%= render @app_contacts %>
 <% end %>
 
 <!-- replace #article_pagination frame by our content loader when it gets visible (our turbo_frame_tag with loading="lazy" attribute -->
@@ -10,11 +10,13 @@
     <%= turbo_frame_tag "app_collection_pagination", loading: "lazy", 
                            src:  send(@collection_src_url, page: @pagy.next, format: "turbo_stream", 
                                        query: params[:query], status: params[:status], vendor_ids: params[:vendor_ids]) %>
+     
     
-  <% end %>
+    <% end %>
+ 
 <% end %>
 
 <%# update # %>
 <%= turbo_stream.update "pagy_info" do %>
-  <%== pagy_info(@pagy, item_name: App::Prospect.model_name.human(count: @pagy.items)) %>
+  <%== pagy_info(@pagy, item_name: App::Contact.model_name.human(count: @pagy.items)) %>
 <%end%>

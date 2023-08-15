@@ -23,9 +23,9 @@ pt-BR:
       app/prospect:
         one: Propecção
         other: Prospecções
-      students:
-        one: Aluno
-        other: Alunos
+      app/contact:
+        one: Contato
+        other: Contatos
       services:
         one: Atendimento
         other: Atendimentos
@@ -71,6 +71,15 @@ pt-BR:
         other: Negociações
 
     attributes:
+      app/contact:
+        name: Nome
+        instagram: Instagram
+        phone: Telefone
+        informant: Informante?
+        committee: Comissão?
+        institution_id: Instituição
+        course_id: Curso
+        negotiation_id: Turma
       app/client:
         name: Nome
         cnpj: CNPJ
@@ -152,6 +161,9 @@ pt-BR:
       vendor: Não associado
       company: Não associada
       status_negotiation: Não Mapeado
+      institution_id: Não Informado
+      course_id: Não Informado
+      negotiation_id: Não Informado
 
     placeholders:
       app/prospect:
@@ -164,11 +176,13 @@ pt-BR:
         year_graduation: 'Ex: 2023/01'
         name: Nome Completo
         phone: DDD + Telefone
-        instagram: '@username'
+        instagram: username
       
 
     options:
       general:
+        select:
+          default: Selecione uma Opção
         blank: Não Informado
         image:
           attached: Vinculada
@@ -201,7 +215,18 @@ pt-BR:
           false: Inativo
         info:
           true: Calendário Visível
-          false: Calendário Não Listado
+          false: Calendário Não Listado     
+      app/contact:
+        informant:
+          true: Informante
+          false: Não
+        committee:
+          true: Comissão
+          false: Não
+        info:
+          none: Contato
+        select:
+          before_select_course: Selecione um Curso
       app/company:
         active:
           all: Todos
