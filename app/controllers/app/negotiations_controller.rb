@@ -6,16 +6,15 @@ class App::NegotiationsController < ApplicationController
   # GET /app/negotiations or /app/negotiations.json
   def index
 
-    if current_access_is_user? && get_current_access.vendor 
+    if current_access_is_user? && get_current_access.vendor && get_current_access.vendor.cities.any?
       # recupera a lista de negociações baseada no vendedor atual -- incluí apenas negociações.
-      collection = App::Negotiation.by_client(get_client_id).by_vendor(get_current_access.vendor).joins(:course).order('app_courses.name')
+      collection = App::Negotiation.by_client(get_client_id).by_vendor(get_current_access.vendor).includes( :status, :vendor, :calendar, {course: :institution}).where('app_calendars.active = true').order('app_courses.name')
       
       # recupera a lista de cidades que contenham negociações de acordo com a coleção de negociações acima.
-      @app_cities = App::City.by_client(get_client_id).by_negotiation(collection.ids).order(:name).uniq
+      @app_cities = App::City.by_client(get_client_id).by_negotiation(collection.ids).order(:name).distinct
       
       # recupera a lista de instituições que contenham negociações de acordo com a coleção de negociações acima.
-      @app_institutions = App::Institution.by_client(get_client_id).by_negotiation(collection.ids).order(:abreviation).uniq
-
+      @app_institutions = App::Institution.by_client(get_client_id).by_negotiation(collection.ids).order(:abreviation).includes(:image_attachment).distinct
 
     else
       collection = App::Negotiation.none
@@ -23,6 +22,7 @@ class App::NegotiationsController < ApplicationController
       @app_calendars = App::Calendar.none
     end
     @pagy, @app_negotiations = set_pagy(collection)
+    set_counters(@app_negotiations)
 
   end
 
@@ -30,29 +30,9 @@ class App::NegotiationsController < ApplicationController
   def show
   end
 
-  # GET /app/negotiations/new
-  # def new
-  #   @app_negotiation = App::Negotiation.new
-  # end
-
   # GET /app/negotiations/1/edit
   def edit
   end
-
-  # POST /app/negotiations or /app/negotiations.json
-  # def create
-  #   @app_negotiation = App::Negotiation.new(app_negotiation_params)
-
-  #   respond_to do |format|
-  #     if @app_negotiation.save
-  #       format.html { redirect_to app_negotiation_url(@app_negotiation), notice: "Negotiation was successfully created." }
-  #       format.json { render :show, status: :created, location: @app_negotiation }
-  #     else
-  #       format.html { render :new, status: :unprocessable_entity }
-  #       format.json { render json: @app_negotiation.errors, status: :unprocessable_entity }
-  #     end
-  #   end
-  # end
 
   # PATCH/PUT /app/negotiations/1 or /app/negotiations/1.json
   def update
@@ -63,17 +43,6 @@ class App::NegotiationsController < ApplicationController
       render :edit, status: :unprocessable_entity
     end
   end
-
-  # DELETE /app/negotiations/1 or /app/negotiations/1.json
-  # def destroy
-  #   @app_negotiation.destroy
-
-  #   respond_to do |format|
-  #     format.html { redirect_to app_negotiations_url, notice: "Negotiation was successfully destroyed." }
-  #     format.json { head :no_content }
-  #   end
-  # end
-
 
   # GET /app/negotiations/filter?course=ID&target=DIV_ID
   def filter
@@ -89,30 +58,25 @@ class App::NegotiationsController < ApplicationController
   # GET /app/negotiations/search
   def search
 
-    collection = App::Negotiation.by_client(get_client_id).joins(:course).order('app_courses.name')
-    
+    collection = App::Negotiation.by_client(get_client_id).includes(:course, :status, :vendor).joins(:calendar).where('app_calendars.active = true').order('app_courses.name')
 
-    if params[:query].present?
-      collection = collection.search(params[:query])
-      params[:status_ids] = collection.pluck(:status_id).uniq
-      params[:vendor_ids] = collection.pluck(:vendor_id).uniq
-      # code to replace sidebar content
-    elsif params[:status_ids].present? || params[:vendor_ids].present?
-      collection = collection.by_status_negotiation(params[:status_ids]) if params[:status_ids].present?
+    if params[:query].present? ||  params[:status_ids].present? || params[:vendor_ids].present?
+      collection = collection.search(params[:query]) if params[:query].present?
+      collection = collection.by_status_negotiation(params[:status_ids]) if params[:status_ids].present? 
       collection = collection.by_vendor(params[:vendor_ids]) if params[:vendor_ids].present?
     else
       return redirect_to app_negotiations_path
     end
     
     # recupera a lista de cidades que contenham negociações de acordo com a coleção de negociações acima.
-    @app_cities = App::City.by_client(get_client_id).by_negotiation(collection.ids).order(:name).uniq
+    @app_cities = App::City.by_client(get_client_id).by_negotiation(collection.ids).order(:name).distinct
     
     # recupera a lista de instituições que contenham negociações de acordo com a coleção de negociações acima.
-    @app_institutions = App::Institution.by_client(get_client_id).by_negotiation(collection.ids).order(:abreviation).uniq
-
+    @app_institutions = App::Institution.by_client(get_client_id).by_negotiation(collection.ids).order(:abreviation).distinct
 
     @pagy, @app_negotiations = set_pagy(collection)
-
+    # abort params.inspect
+    set_counters(@app_negotiations)
     render :index
 
   end
@@ -129,11 +93,37 @@ class App::NegotiationsController < ApplicationController
     end
 
     def set_contant_for_sidebar
-      @status = App::StatusNegotiation.by_client(get_client_id).order(:name)
-      @vendors = App::Vendor.by_client(get_client_id).order(:name)
+      null_status = OpenStruct.new(id: -1, name: t('activerecord.blank_entries.status_negotiation'))
+      null_vendor = OpenStruct.new(id: -1, name: t('activerecord.blank_entries.vendor'))
+
+      @status = [null_status] + App::StatusNegotiation.by_client(get_client_id).order(:name)
+      @vendors = [null_vendor] + App::Vendor.by_client(get_client_id).joins(:negotiations).order(:name).distinct
     end
+
+    
 
     def set_calendars
       @app_calendars = App::Calendar.by_client(get_client_id).by_calendar_status('active').order(year: :desc, semester: :desc)
+    end
+
+    def set_counters(app_negotiations)
+
+      # abort @status_ids.inspect
+      
+      @counters = []
+
+      status_ids =  params[:status_ids].present? ? params[:status_ids] : app_negotiations.pluck(:status_id).uniq.to_a
+      
+      if status_ids.include?(nil) || status_ids.include?('-1')
+        status_not_assigned = App::StatusNegotiation.new(name: t('activerecord.blank_entries.status_negotiation'), style:'fa-regular', icon:'circle')
+        @counters << [status_not_assigned, app_negotiations.where(status: nil).count]
+      end
+
+      
+
+      status_ids.reject.reject { |status| status == '-1' || status.nil? }.each do |status_id|
+        @counters << [App::StatusNegotiation.find(status_id), app_negotiations.where(status_id: status_id).count]
+      end
+      
     end
 end

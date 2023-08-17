@@ -27,12 +27,12 @@
 
     <div class="">
       <%= form.label :name %>
-      <%= form.text_field :name, class: "form-input" %>
+      <%= form.text_field :name, class: "form-input", placeholder: t('activerecord.placeholders.app/course.name')%>
     </div>
 
     <div class="">
       <%= form.label :duration %>
-      <%= form.number_field :duration, class: "form-input" %>
+      <%= form.number_field :duration, class: "form-input", placeholder: t('activerecord.placeholders.app/course.duration')%>
     </div>
 
    

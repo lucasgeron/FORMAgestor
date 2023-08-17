@@ -1,9 +1,9 @@
-<div class="gap-4 ">
+<div class="gap-4 mb-5">
 
   <%# TURBO_STREAM CONTENT APPEND WILL APPEAR HERE %>
   <%= turbo_frame_tag "app_collection_list",  class:'default-grid',  loading: :lazy, 
                         src: send(@collection_src_url,  page: params[:page], format: "turbo_stream",
-                                  query: params[:query], status: params[:status], vendor_ids: params[:vendor_ids]) %>
+                                  query: params[:query]) %>
   <%# ---------------------------------------------------- %>
 
   <%# CONTENT FOR TURBO PAGINATION WITH INFINITE SCROLL %>

@@ -13,13 +13,14 @@
 
   </div>
 
-  <div data-reveal-target="item" class="card-popover w-24" data-action="mouseleave->reveal#show">
+  <div data-reveal-target="item" class="card-popover w-24 " data-action="mouseleave->reveal#show">
 
     <%= link_to edit_app_vendor_path(vendor), class:'card-popover-btn-primary' do %>
       <%= icon('fa-solid', 'pen-to-square', class:'btn-icon') %>
       <p class=""> <%= t('views.app.general.edit')%></p>
     <%end%>
 
+    
   </div>
 
 </div>

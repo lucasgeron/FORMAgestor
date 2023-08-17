@@ -6,13 +6,13 @@
   <div class="grid grid-cols-1 sm:grid-cols-3 gap-4">
 
     <div class="">
-      <%= form.label :year %>
-      <%= form.number_field :year, class: "form-input" %>
+      <%= form.label :year , class:"required" %>
+       <%= form.collection_select :year,@years, :to_i, :to_s, {}, {class: "form-input"} %>
     </div>
 
     <div class="">
-      <%= form.label :semester %>
-      <%= form.number_field :semester, class: "form-input" %>
+      <%= form.label :semester , class:"required" %>
+       <%= form.collection_select :semester, @semesters, :to_i, :to_s, {}, {class: "form-input"} %>
     </div>
 
     <div class=" group">

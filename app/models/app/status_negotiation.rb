@@ -1,5 +1,6 @@
 class App::StatusNegotiation < ApplicationRecord
   belongs_to :client, class_name: 'App::Client'
+  has_many :negotiations, class_name: 'App::Negotiation'
 
   # Constants
   COLORS = %w[default red amber orange yellow lime green emerald teal cyan sky indigo violet purple fuchsia pink rose ].freeze

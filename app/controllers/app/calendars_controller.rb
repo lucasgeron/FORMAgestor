@@ -2,6 +2,7 @@ class App::CalendarsController < ApplicationController
   
   before_action :authenticate_user_or_admin! 
   before_action :check_client_id, only: %i[ show edit update destroy]
+  before_action :set_content_for_form, only: %i[ new edit create update ]
   before_action :set_app_calendar, only: %i[ show edit update destroy ]
 
   # GET /app/calendars or /app/calendars.json
@@ -16,7 +17,7 @@ class App::CalendarsController < ApplicationController
 
   # GET /app/calendars/new
   def new
-    @app_calendar = App::Calendar.new
+    @app_calendar = App::Calendar.new(active: true)
   end
 
   # GET /app/calendars/1/edit
@@ -83,5 +84,10 @@ class App::CalendarsController < ApplicationController
     # Only allow a list of trusted parameters through.
     def app_calendar_params
       params.require(:app_calendar).permit(:year, :semester, :active, :client_id)
+    end
+
+    def set_content_for_form
+      @years = (Date.today.year...Date.today.year + 10).to_a
+      @semesters = [1,2]
     end
 end

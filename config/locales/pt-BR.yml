@@ -26,9 +26,9 @@ pt-BR:
       app/contact:
         one: Contato
         other: Contatos
-      services:
-        one: Atendimento
-        other: Atendimentos
+      app/interaction:
+        one: Interação
+        other: Interações
       app/city:
         one: Cidade
         other: Cidades
@@ -158,15 +158,27 @@ pt-BR:
         status_id: Status
         reference: Referência
         period: Período
+      app/interaction:
+        institution_id: Instituição
+        course_id: Curso
+        negotiation_id: Turma
+        vendor_id: Representante
+        status: Status
+        description: Descrição
 
 
     blank_entries:
-      vendor: Não associado
-      company: Não associada
+      vendor: Não Associado
+      company: Não Associada
       status_negotiation: Não Mapeado
       institution_id: Não Informado
       course_id: Não Informado
       negotiation_id: Não Informado
+      reference: Sem Referência
+      email: Não Informado
+      phone: Não Informado
+      role: Não Informado
+      
 
     placeholders:
       app/prospect:
@@ -180,7 +192,36 @@ pt-BR:
         name: Nome Completo
         phone: DDD + Telefone
         instagram: username
-      
+      app/contact:
+        name: Nome Completo
+        phone: DDD + Telefone
+        instagram: username
+      app/interaction:
+        description: Descrição da interação realizada...
+      app/institution:
+        name: Nome da Instituição 
+        abreviation: Sigla da Instituição
+      app/course:
+        name: Curso
+        duration: Períodos (Semestres)
+      app/negotiation:
+        reference: Referência
+      app/vendor:
+        name: Nome Completo
+        role: Cargo
+        phone: DDD + Telefone
+        email: Email
+      app/company:
+        name: Nome da Empresa
+      app/user:
+        email: Email
+        password: Senha
+        password_confirmation: Confirmação de Senha
+      app/status:
+        name: Descrição
+        icon: 'ex: circle'
+
+        
 
     options:
       general:
@@ -270,7 +311,7 @@ pt-BR:
           all: Todos
           true: Ativo
           false: Inativo
-        
+      
 
 
 

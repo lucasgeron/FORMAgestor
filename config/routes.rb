@@ -47,6 +47,10 @@ Rails.application.routes.draw do
 
   # Commom routes in App namespace
   namespace :app do
+    resources :interactions do 
+      get :search, on: :collection
+    end
+
     resources :status_interactions do
       get :search, on: :collection
     end

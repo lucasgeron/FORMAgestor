@@ -9,17 +9,17 @@
 
     <div class="">
       <p class=""><%= App::Vendor.human_attribute_name('role')%></p>
-      <p class="detail-input"><%= app_vendor.role %></p>
+      <p class="detail-input"><%= app_vendor.role.present? ? app_vendor.role : t('activerecord.blank_entries.role') %></p>
     </div>
 
     <div class="">
       <p class=""><%= App::Vendor.human_attribute_name('phone')%></p>
-      <p class="detail-input"><%= app_vendor.phone %></p>
+      <p class="detail-input"><%= app_vendor.phone.present? ? app_vendor.phone : t('activerecord.blank_entries.phone') %></p>
     </div>
 
     <div class="">
       <p class=""><%= App::Vendor.human_attribute_name('email')%></p>
-      <p class="detail-input"><%= app_vendor.email %></p>
+      <p class="detail-input"><%= app_vendor.email.present? ? app_vendor.email : t('activerecord.blank_entries.email') %></p>
     </div>
 
   </div>

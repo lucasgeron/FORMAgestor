@@ -1,31 +1,40 @@
-
-  <% @app_cities.each do |city| %>
+<% @app_cities.each do |city| %>
   <% if city.institutions.any? %> <%# ensure that force city ids without institutions will not be render %>
 
     <%# CITY BAR%>
-    <div class=" sticky-1 "data-aos='fade'>
-      <p class="font-bold text-2xl " > <%= city.name %> </p>
+    <div class="sticky-1 "data-aos='fade'>
+      <p class="font-bold text-2xl py-1.5" > <%= city.name %> </p>
     </div>
 
     <% city.institutions.order(:abreviation).each do |institution|%>
       <% if @app_courses.pluck(:institution_id).include?(institution.id) %>
-      <%# <% if institution.courses.any? %> 
+        <%# <% if institution.courses.any? %>
 
         <%# INSTITUTION BAR %>
-        <div class=" sticky-2 flex items-center  space-x-2 " data-aos='fade'>
-          
-          <%= link_to app_institution_path(institution), class:'card-header-image overflow-clip' do %>
-            <% if institution.image.attached? %>
-              <%= image_tag(institution.image, class:'object-cover h-18 w-18')%>
-            <% else %>
-              <%= icon('fa-solid', 'building-columns', class:'fa-2xl dark:text-gray-900')%>
-            <% end %>
-          <% end %>
+        <div class=" sticky-2 flex items-center justify-between " data-aos='fade'>
 
-          <div class="">
-          <p class="font-bold text-2xl "> <%= institution.abreviation %> </p>
-          <p class=""><%= institution.name %></p>
+          <div class="flex items-center space-x-2">
+            <%= link_to app_institution_path(institution), class:'card-header-image overflow-clip' do %>
+              <% if institution.image.attached? %>
+                <%= image_tag(institution.image, class:'object-cover h-18 w-18')%>
+              <% else %>
+                <%= icon('fa-solid', 'building-columns', class:'fa-2xl dark:text-gray-900')%>
+              <% end %>
+            <% end %>
+
+            <div class="">
+              <p class="font-bold text-2xl "> <%= institution.abreviation %> </p>
+              <p class="line-clamp-2"><%= institution.name %></p>
+            </div>
           </div>
+          
+          <div class="hidden md:inline flex-none">
+            <%= link_to new_app_course_path(institution_id: institution.id), class: " btn-secondary flex-none" do %>
+              <%= icon('fa-solid','plus',class:'btn-icon') %>
+              <%= App::Course.model_name.human %>
+            <% end %>
+          </div>
+         
 
         </div>
 

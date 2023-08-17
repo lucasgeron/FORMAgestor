@@ -1,6 +1,6 @@
 class App::Company < ApplicationRecord
   belongs_to :client, class_name:'App::Client'
-  
+  has_many :negotiations, class_name:'App::Negotiation'  
   # Scopes
   include App::Scopes
   scope :search, -> (search) { where("LOWER(UNACCENT(name)) LIKE LOWER(UNACCENT(:search))", search: "%#{search}%") }

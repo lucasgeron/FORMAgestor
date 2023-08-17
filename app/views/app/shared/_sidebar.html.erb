@@ -37,7 +37,7 @@
     </div>
 
     <%# LAST UPDATE  %>
-    <div class="absolute z-30 top-6 left-0 text-xs w-64 px-4 text-end">
+    <div class="absolute z-30 top-6 left-0 text-xs w-64 px-4 text-end hover:text-blue-600">
       <%= link_to "v#{App::Update.last.version}", App::Update.last %>
     </div>
 
@@ -111,11 +111,10 @@
         <%= App::Contact.model_name.human(count:2) %>
       <%end%>
 
-      <%# ATENDIMENTOS %>
-      <%= link_to "#", class:"sidebar-link#{is_link_active?('services')}   text-gray-300 dark:text-gray-700 pointer-events-none" do %>
+      <%# INTERAÇÕES %>
+      <%= link_to app_interactions_path, class:"sidebar-link#{is_link_active?('interactions')}" do %>
         <%= icon('fa-solid','list', class:"mr-1")%>
-        <%# <%= Prospect.model_name.human(count:2) %>
-        <%= t('activerecord.models.services.other')%>
+        <%= App::Interaction.model_name.human(count:2) %>
       <%end%>
 
       <%# CIDADES %>

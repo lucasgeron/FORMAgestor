@@ -10,6 +10,23 @@
   <%= button_to app_vendor_path(@app_vendor), method: :delete, data: { turbo: false },onclick: "return confirm('#{t('views.app.general.delete_confirm')}')",class: "btn-delete flex-none" do %>
     <%= icon('fa-solid','trash-can', class:'-mx-1')%>
   <%end%>
+<% end %>
+
+<% content_for :ctas_primary do %>
+  <%= link_to search_app_prospects_path(vendor_ids: @app_vendor.id, status: 'prospected'), class: "btn-primary flex-none" do %>
+    <%= icon('fa-solid','receipt',class:'btn-icon') %>
+    <%= App::Prospect.model_name.human(count:2) %>
+  <% end %>
+
+  <%= link_to search_app_interactions_path(vendor_ids: @app_vendor.id), class: "btn-primary flex-none" do %>
+    <%= icon('fa-solid','list',class:'btn-icon') %>
+    <%= App::Interaction.model_name.human(count:2) %>
+  <% end %>
+
+  <%= link_to search_app_negotiations_path(vendor_ids: [@app_vendor.id]), class: "btn-primary flex-none" do %>
+    <%= icon('fa-solid','table-columns',class:'btn-icon') %>
+    <%= App::Interaction.model_name.human(count:2) %>
+  <% end %>
 
 <% end %>
 

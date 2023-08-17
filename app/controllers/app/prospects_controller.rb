@@ -9,7 +9,8 @@ class App::ProspectsController < ApplicationController
 
   # GET /app/prospects or /app/prospects.json
   def index
-    @pagy,  @app_prospects = pagy(App::Prospect.by_client(get_client_id).order(created_at: :desc))
+    collection = App::Prospect.by_client(get_client_id).includes(:vendor).order(created_at: :desc)
+    @pagy,  @app_prospects = pagy(collection)
     @collection_src_url = 'app_prospects_url'
 
     respond_to do |format|

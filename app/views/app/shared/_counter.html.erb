@@ -1,0 +1,9 @@
+ <% collection.each do |el| %>
+  <div class="flex flex-nowrap items-center py-1.5 px-2 rounded gap-2 <%=get_text_color_for(el.first) %> bg-gray-200 dark:bg-gray-800">
+    <%= icon(el.first.style, el.first.icon) %>
+    <%= el.first.name %>
+    <div class=" rounded-full px-1.5 bg-gray-500 dark:bg-gray-600 text-white">
+      <%= el.last %>
+    </div>
+  </div>
+<%end%>

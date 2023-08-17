@@ -1,40 +1,53 @@
 <% @app_calendars.each do |calendar| %>
 
-  <%# CITY BAR%>
-  <div class=" sticky-1 "data-aos='fade'>
-    <p class="font-bold text-xl py-1.5" > 
-      <span class="px-2 bg-gray-100 dark:bg-gray-900 rounded-lg py-1.5 "><%= calendar.name %> </span>
-    </p>
-  </div>
+  <%# garante que só vai mostrar o calendário, caso existam negóciações %>
+  <% if @app_negotiations.select { |n| n.calendar_id == calendar.id }.count.positive? %>
 
-  <% @app_cities.each do |city| %>
+    <%# CITY BAR%>
+    <div class=" sticky-1 "data-aos='fade'>
+      <p class="font-bold text-xl py-1.5" >
+        <span class="px-2 bg-gray-100 dark:bg-gray-900 rounded-lg py-1.5 "><%= calendar.name %> </span>
+      </p>
+    </div>
 
-    <p class="sticky-2 font-bold text-2xl truncate" > <%= city.name %> </p>
+    <% @app_cities.each  do |city| %>
 
-    <% @app_institutions.select {|institution| institution.city_id == city.id}.each do |institution| %>
+      <%# garante que só vai mostrar a cidade se existir negociações do calendário e da cidade @@@@@@@@@@@ MELHORAR CÓDIGO  %> 
+      <% if @app_negotiations.select { |n| n.course.institution.city_id == city.id && n.calendar_id == calendar.id }.count.positive? %>
 
-      <%# INSTITUTION BAR %>
-      <div class=" sticky-3 flex items-center  space-x-2 " data-aos='fade'>
+        <p class="sticky-2 font-bold text-2xl truncate" > <%= city.name %> </p>
 
-        <%= link_to app_institution_path(institution), class:'card-header-image overflow-clip' do %>
-          <% if institution.image.attached? %>
-            <%= image_tag(institution.image, class:'object-cover h-18 w-18')%>
-          <% else %>
-            <%= icon('fa-solid', 'building-columns', class:'fa-2xl dark:text-gray-900')%>
+        <% @app_institutions.select {|institution| institution.city_id == city.id}.each do |institution| %>
+
+          <%# garante que só vai mostrar a instituição se houver negociações da instituição para o calendário %>
+          <% if @app_negotiations.select { |n| n.course.institution_id == institution.id && n.calendar_id == calendar.id }.count.positive? %>
+
+            <%# INSTITUTION BAR %>
+            <div class=" sticky-3 flex items-center  space-x-2 " data-aos='fade'>
+
+              <%= link_to app_institution_path(institution), class:'card-header-image overflow-clip' do %>
+
+                <% if institution.image.attached? %>
+                  <%= image_tag(institution.image, class:'object-cover h-18 w-18') %>
+                <% else %>
+                  <%= icon('fa-solid', 'building-columns', class:'fa-2xl dark:text-gray-900')%>
+                <% end %>
+              <% end %>
+
+              <div class="">
+                <p class="font-bold text-2xl "> <%= institution.abreviation %> </p>
+                <p class=""><%= institution.name %></p>
+              </div>
+
+            </div>
+
+            <div class="default-grid">
+              <%= render  @app_negotiations.select { |n| n.course.institution_id == institution.id && n.calendar_id == calendar.id } %>
+            </div>
+
           <% end %>
         <% end %>
-
-        <div class="">
-          <p class="font-bold text-2xl "> <%= institution.abreviation %> </p>
-          <p class=""><%= institution.name %></p>
-        </div>
-
-      </div>
-
-      <div class="default-grid">
-        <%= render(@app_negotiations.select { |negotiation| negotiation.course.institution_id == institution.id }) %>
-      </div>
-
+      <% end %>
     <% end %>
   <% end %>
 <% end %>

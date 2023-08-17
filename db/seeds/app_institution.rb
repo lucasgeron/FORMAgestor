@@ -207,7 +207,7 @@
 
         p  @institution = App::Institution.create( 
             client_id: index,
-            abreviation: "FACULDADE GUARAPUAVA",
+            abreviation: "GUARAPUAVA",
             name: "Faculdade Guarapuava",
             city: App::City.by_client(index).where(name:"Guarapuava").first())
         p @institution.to_s + " image attached ? " + @institution.image.attach(

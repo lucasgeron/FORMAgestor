@@ -21,5 +21,9 @@ class App::City < ApplicationRecord
     self.institutions.any?
   end
 
+  def name_and_uf
+    "#{self.name} - #{self.state}"
+  end
+
 
 end

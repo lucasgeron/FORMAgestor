@@ -25,13 +25,13 @@
 
     <% if %w[new create].include?(action_name)  ||  @permission_to_edit  %>
       <div class="">
-        <%= form.label :password, class:'' %>
-        <%= form.password_field :password, autocomplete: "new-password", class:"form-input" %>
+        <%= form.label :password, class:"#{'required' if %w[new create].include?(action_name)}" %>
+        <%= form.password_field :password, autocomplete: "new-password", class:"form-input", placeholder:t('activerecord.placeholders.app/user.password') %>
       </div>
 
       <div class="">
-        <%= form.label :password_confirmation %>
-        <%= form.password_field :password_confirmation, autocomplete: "new-password", class:"form-input" %>
+        <%= form.label :password_confirmation, class:"#{'required' if %w[new create].include?(action_name)}" %>
+        <%= form.password_field :password_confirmation, autocomplete: "new-password", class:"form-input", placeholder:t('activerecord.placeholders.app/user.password_confirmation') %>
       </div>
     <% end %>
 

@@ -20,6 +20,7 @@ class App::CoursesController < ApplicationController
 
   # GET /app/courses/1 or /app/courses/1.json
   def show
+    @negotiations = @app_course.negotiations if @app_course.negotiations.any?
   end
 
   # GET /app/courses/new

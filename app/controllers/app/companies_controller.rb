@@ -16,7 +16,7 @@ class App::CompaniesController < ApplicationController
 
   # GET /app/companies/new
   def new
-    @app_company = App::Company.new
+    @app_company = App::Company.new(active:true)
   end
 
   # GET /app/companies/1/edit

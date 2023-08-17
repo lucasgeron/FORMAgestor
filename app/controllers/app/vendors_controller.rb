@@ -44,7 +44,6 @@ class App::VendorsController < ApplicationController
       flash[:success] = t('views.app.general.flash.update_m', model: App::Vendor.model_name.human)
       redirect_to app_vendor_url(@app_vendor)
     else
-      abort params.inspect
       render :edit, status: :unprocessable_entity
     end
   end

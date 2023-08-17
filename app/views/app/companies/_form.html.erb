@@ -6,8 +6,8 @@
   <div class="grid grid-cols-1 sm:grid-cols-3 gap-4">
 
     <div class="col-span-2">
-      <%= form.label :name %>
-      <%= form.text_field :name, class: "form-input" %>
+      <%= form.label :name, class:"required" %>
+      <%= form.text_field :name, class: "form-input", placeholder: t('activerecord.placeholders.app/company.name') %>
     </div>
 
     <div class="group">

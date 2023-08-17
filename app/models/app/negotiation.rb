@@ -12,9 +12,36 @@ class App::Negotiation < ApplicationRecord
 
   # Scope
   include App::Scopes
-  scope :by_vendor, ->(vendor_id) { where(vendor_id: vendor_id) }
+  # scope :by_vendor, ->(vendor_id) { where(vendor_id: vendor_id) }
+
+  scope :by_vendor, ->(vendor_id) do
+
+    # return where(vendor_id: vendor_id) 
+    if vendor_id.is_a?(App::Vendor)
+      where(vendor_id: vendor_id)
+    elsif vendor_id.include?('-1') # Se o array de vendor_id incluir uma string vazia
+      where(vendor_id: [nil] + vendor_id.reject(&:empty?)) # Inclui nil e os outros ids não vazios
+    else
+      where(vendor_id: vendor_id.reject(&:empty?))
+    end
+  end
+
+
   scope :by_course, ->(course_id) { where(course_id: course_id) }
-  scope :by_status_negotiation, ->(status_id) { where(status_id: status_id) }
+  scope :by_company, ->(company_id) { where(company_id: company_id) }
+
+  # scope :by_status_negotiation, ->(status_ids) { where(status_id: status_ids) }
+
+
+  scope :by_status_negotiation, ->(status_ids) do
+    if status_ids.include?('-1') # Se o array de status_ids incluir uma string vazia
+      where(status_id: [nil] + status_ids.reject(&:empty?)) # Inclui nil e os outros ids não vazios
+    else
+      where(status_id: status_ids.reject(&:empty?))
+    end
+  end
+
+
   scope :by_institution, ->(institution_ids) { joins(:course).merge(App::Course.by_institution(institution_ids)) }
   scope :search, -> (search) { where("LOWER(UNACCENT(reference)) LIKE LOWER(UNACCENT(:search))", search: "%#{search}%") }
   scope :by_calendar, ->(calendar_id) { where(calendar_id: calendar_id)}  

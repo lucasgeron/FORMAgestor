@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2023_08_15_140346) do
+ActiveRecord::Schema[7.0].define(version: 2023_08_15_143353) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
   enable_extension "unaccent"
@@ -146,6 +146,20 @@ ActiveRecord::Schema[7.0].define(version: 2023_08_15_140346) do
     t.index ["client_id"], name: "index_app_institutions_on_client_id"
   end
 
+  create_table "app_interactions", force: :cascade do |t|
+    t.bigint "client_id", null: false
+    t.bigint "vendor_id", null: false
+    t.bigint "negotiation_id", null: false
+    t.bigint "status_id", null: false
+    t.text "description"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["client_id"], name: "index_app_interactions_on_client_id"
+    t.index ["negotiation_id"], name: "index_app_interactions_on_negotiation_id"
+    t.index ["status_id"], name: "index_app_interactions_on_status_id"
+    t.index ["vendor_id"], name: "index_app_interactions_on_vendor_id"
+  end
+
   create_table "app_negotiations", force: :cascade do |t|
     t.bigint "calendar_id", null: false
     t.bigint "course_id", null: false
@@ -268,6 +282,10 @@ ActiveRecord::Schema[7.0].define(version: 2023_08_15_140346) do
   add_foreign_key "app_courses", "app_institutions", column: "institution_id"
   add_foreign_key "app_institutions", "app_cities", column: "city_id"
   add_foreign_key "app_institutions", "app_clients", column: "client_id"
+  add_foreign_key "app_interactions", "app_clients", column: "client_id"
+  add_foreign_key "app_interactions", "app_negotiations", column: "negotiation_id"
+  add_foreign_key "app_interactions", "app_status_interactions", column: "status_id"
+  add_foreign_key "app_interactions", "app_vendors", column: "vendor_id"
   add_foreign_key "app_negotiations", "app_calendars", column: "calendar_id"
   add_foreign_key "app_negotiations", "app_clients", column: "client_id"
   add_foreign_key "app_negotiations", "app_companies", column: "company_id"

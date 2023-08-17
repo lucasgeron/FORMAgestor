@@ -1,6 +1,6 @@
 <% content_for :ctas_primary do %>
-  <div class="h-9">
-    contadores aqui
+  <div class="h-9 flex items-center space-x-2 text-sm">
+   <%= render partial: 'app/shared/counter', locals: {collection: @counters}%>
   </div>
 <% end %>
 
@@ -9,9 +9,9 @@
 <% provide :sidebar, render(partial: 'app/classes/sidebar') %>
 
 <% content_for :page_content do %>
-  
+
   <% if @app_negotiations.present? %>
     <%= render partial: 'classes' %>
   <% end %>
-  
+
 <%end%>

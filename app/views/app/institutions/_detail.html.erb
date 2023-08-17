@@ -36,10 +36,10 @@
   </div>
 
   <%# COURSES %>
-  <% if app_institution.courses.any? %>
+  <% if @courses %>
     <p class="font-bold text-2xl"> <%= App::Course.model_name.human(count:2) %> </p>
     <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-3 2xl:grid-cols-4 gap-4">
-      <%= render app_institution.courses %>
+      <%= render @courses %>
     </div>
   <% end %>
 </div>

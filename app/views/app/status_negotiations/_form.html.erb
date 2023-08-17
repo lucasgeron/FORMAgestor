@@ -7,7 +7,7 @@
 
     <div class="col-span-2">
       <%= form.label :name %>
-      <%= form.text_field :name, class: "form-input" %>
+      <%= form.text_field :name, class: "form-input", placeholder: t('activerecord.placeholders.app/status.name') %>
     </div>
 
     <div class=" group">
@@ -39,7 +39,7 @@
           </div>
         <%end%>
       <%end%>
-      <%= form.text_field :icon, class: "form-input" %>
+      <%= form.text_field :icon, class: "form-input", placeholder: t('activerecord.placeholders.app/status.icon') %>
     </div>
 
     <div class="">

@@ -14,10 +14,12 @@ class App::InstitutionsController < ApplicationController
       @app_cities = App::City.none
     end
     @pagy, @app_institutions = set_pagy(collection)
+    set_variables_for_sidebar(collection)
   end
     
   # GET /app/institutions/1 or /app/institutions/1.json
   def show
+    @courses = @app_institution.courses.order(:name) if @app_institution.courses.any?
   end
 
   # GET /app/institutions/new
@@ -91,6 +93,7 @@ class App::InstitutionsController < ApplicationController
     end
     
     @pagy, @app_institutions = set_pagy(collection)
+    set_variables_for_sidebar(collection)
     @app_cities = App::City.by_client(get_client_id).by_id(collection.pluck(:city_id)).order(:name)
 
     render :index
@@ -113,6 +116,10 @@ class App::InstitutionsController < ApplicationController
   
   def set_content_for_sidebar
     @cities = App::City.by_client(get_client_id).joins(:institutions).distinct.order(:name)
+  end
+
+  def set_variables_for_sidebar(collection)
+    @city_ids = collection.pluck(:city_id).uniq
   end
 
 end

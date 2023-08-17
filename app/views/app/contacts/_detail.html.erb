@@ -2,21 +2,26 @@
 <div class="grid grid-cols-1 xl:grid-cols-3 gap-4">
   <div class="">
     <p class=""><%= App::Contact.human_attribute_name('name') %></p>
-    <p class="detail-input"><%= app_contact.name%></p>
+    <p class="detail-input"><%= app_contact.name.present? ? app_contact.name : t('activerecord.options.general.blank')%></p>
   </div>
 
   <div class="">
     <p class=""><%= App::Contact.human_attribute_name('phone') %></p>
-    <p class="detail-input"><%= app_contact.phone%></p>
+    <p class="detail-input"><%= app_contact.phone.present? ? app_contact.phone : t('activerecord.options.general.blank') %></p>
   </div>
 
   <div class="">
     <p class=""><%= App::Contact.human_attribute_name('instagram') %></p>
     <div class="relative">
-      <%= link_to "https://www.instagram.com/#{app_contact.instagram}", target:'_blank', class:'detail-input-icon' do  %>
-        <%= icon('fa-brands','instagram')%>
-      <%end%>
-      <p class="detail-input with-icon"><%= app_contact.instagram%></p>
+       <% if app_contact.instagram.present? %>
+          <%= link_to "https://www.instagram.com/#{app_contact.instagram}", target:'_blank', class:'detail-input-icon' do  %>
+            <%= icon('fa-brands','instagram')%>
+          <%end%>
+          <p class="detail-input with-icon"><%= app_contact.instagram%></p>
+        <%else%>
+            <%= icon('fa-brands','instagram', class:'detail-input-icon hover:text-inherit')%>
+            <p class="detail-input with-icon"><%= t('activerecord.options.general.blank') %></p>
+        <% end %>
     </div>
   </div>
 

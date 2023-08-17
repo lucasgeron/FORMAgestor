@@ -9,7 +9,7 @@
     <%= turbo_stream.replace "app_collection_pagination" do %>
     <%= turbo_frame_tag "app_collection_pagination", loading: "lazy", 
                            src:  send(@collection_src_url, page: @pagy.next, format: "turbo_stream", 
-                                       query: params[:query], status: params[:status], vendor_ids: params[:vendor_ids]) %>
+                                       query: params[:query]) %>
      
     
     <% end %>

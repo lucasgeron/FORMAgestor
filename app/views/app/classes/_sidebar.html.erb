@@ -25,10 +25,11 @@
         <%= icon('fa-solid', 'chevron-up', class:"hidden")%>
       </button>
       
+
       <ul id="dropdown-example-<%=city.id%>" class="space-y-2 py-1 <% if @ae != city.id %> hidden <%end%>" aria-expanded='true'>
 
-          
-          <%= form.collection_radio_buttons  :institution_id, @institutions.by_city(city.id), :id, :abreviation, include_hidden: false do |institution| %>    
+
+          <%= form.collection_radio_buttons  :institution_id, @institutions.select{|institution| institution.city_id == city.id }, :id, :abreviation, include_hidden: false do |institution| %>    
             <div class="mt-0 flex px-2">
               <%= institution.radio_button(class: 'mr-1 form-radio-simple dark:bg-gray-800 bg-gray-200  ', checked: (params[:institution_id].present? && params[:institution_id] == institution.value.to_s ), data: {action: 'change->search#submit'}) %>
               <%= institution.label class:'cursor-pointer text-sm w-full ' do %>

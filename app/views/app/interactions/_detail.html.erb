@@ -1,0 +1,83 @@
+<div class="space-y-4">
+
+  <div class="grid grid-cols-1 xl:grid-cols-3 gap-4"  >
+
+    <div class="">
+      <p class=""><%= App::Interaction.human_attribute_name('institution_id') %></p>
+      <div class="relative">
+        <%= link_to app_interaction.negotiation.course.institution, class:'detail-input-icon' do %>
+          <%= icon('fa-solid', 'building-columns', class:'')%>
+        <%end%>
+        <p class="detail-input with-icon"><%= app_interaction.negotiation.course.institution.abreviation_and_city %></p>
+      </div>
+    </div>
+
+    <div class="">
+      <p class=""><%= App::Interaction.human_attribute_name('course_id') %></p>
+
+      <div class="relative">
+        <%= link_to app_interaction.negotiation.course, class:'detail-input-icon' do %>
+          <%= icon('fa-solid', 'chalkboard-user', class:'')%>
+        <%end%>
+        <p class="detail-input with-icon"><%= app_interaction.negotiation.course.name %></p>
+      </div>
+    </div>
+
+    <div class="">
+      <p class=""><%= App::Interaction.human_attribute_name('negotiation_id') %></p>
+      <div class="relative">
+        <%= link_to app_interaction.negotiation, class:'detail-input-icon' do %>
+          <%= icon('fa-solid', 'users-rectangle', class:'')%>
+        <%end%>
+        <p class="detail-input with-icon"><%= app_interaction.negotiation.period_in_words_and_calendar %></p>
+      </div>
+    </div>
+
+  </div>
+
+  <div class="grid grid-cols-1 xl:grid-cols-2 gap-4"  >
+
+    <div class="">
+      <p class=""><%= App::Negotiation.human_attribute_name('vendor_id') %></p>
+      <div class="relative">
+
+        <% if app_interaction.vendor %>
+          <%= link_to app_interaction.vendor, class:'detail-input-icon' do %>
+            <%= icon('fa-solid', 'user', class:'')%>
+          <%end%>
+
+        <% else %>
+          <div class="detail-input-icon hover:text-inherit">
+            <%= icon('fa-solid', 'user', class:'')%>
+          </div>
+        <% end %>
+        <p class="detail-input with-icon"><%= app_interaction.vendor ? app_interaction.vendor.name : t('activerecord.blank_entries.vendor')%></p>
+      </div>
+    </div>
+
+    <div class="">
+      <p class=""><%= App::Negotiation.human_attribute_name('status') %></p>
+      <% if app_interaction.status %>
+        <div class="relative text-<%= app_interaction.status.color %>-600 dark:text-<%= app_interaction.status.color %>-600">
+          <div class='detail-input-icon hover:text-inherit'>
+            <%= icon(app_interaction.status.style, app_interaction.status.icon, class:'')%>
+          </div>
+          <p class="detail-input with-icon"><%= app_interaction.status.name %></p>
+        </div>
+      <% else %>
+        <div class="relative text-gray-400 dark:text-gray-400">
+          <div class='detail-input-icon hover:text-inherit'>
+            <%= icon('fa-regular', 'circle', class:'')%>
+          </div>
+          <p class="detail-input with-icon"><%= t('activerecord.blank_entries.status_negotiation') %></p>
+        </div>
+      <% end %>
+    </div>
+  </div>
+
+  <div class="">
+    <p class=""><%= App::Interaction.human_attribute_name('description') %></p>
+    <div class="detail-input h-auto space-y-6"><%= simple_format(app_interaction.description) %></div>
+  </div>
+
+</div>

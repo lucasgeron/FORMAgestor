@@ -1,0 +1,86 @@
+<%= form_with(model: app_interaction, class: "contents ") do |form| %>
+  <% if app_interaction.errors.any? %>
+    <% flash.now[:error] = app_interaction.errors.to_a%>
+  <% end %>
+
+  <div class="space-y-4">
+
+    <div class="grid grid-cols-1 xl:grid-cols-3 gap-4"  data-controller='negotiations'>
+
+      <div class="">
+        <%= form.label :institution_id %>
+        <div class="relative">
+          <div class="form-input-icon"><%= icon('fa-solid','building-columns', class:'') %>  </div>
+          <%= form.collection_select :institution_id, @institutions, :id, :abreviation_and_city, {selected: app_interaction.negotiation.nil? ? nil : app_interaction.negotiation.course.institution_id, include_blank: t('activerecord.blank_entries.institution_id')}, {class: "form-input with-icon", data:{action:'change->negotiations#update_courses'}} %>
+        </div>
+      </div>
+
+      <div class="">
+        <%= form.label :course_id %>
+        <div class="relative">
+          <div class="form-input-icon"><%= icon('fa-solid','chalkboard-user', class:'') %>  </div>
+          <%= form.collection_select :course_id, @courses, :id, :name, {selected: app_interaction.negotiation.nil? ? nil : app_interaction.negotiation.course_id, include_blank: t('activerecord.blank_entries.course_id')}, {class: "form-input with-icon", data: {negotiations_target:'courses_select', action:'change->negotiations#update_negotiations'}} %>
+        </div>
+      </div>
+
+      <div class="">
+        <%= form.label :negotiation_id %>
+        <div class="relative">
+          <div class="form-input-icon"><%= icon('fa-solid','users-rectangle', class:'') %>  </div>
+          <%= form.collection_select :negotiation_id, @negotiations, :id, :period_in_words_and_calendar, {selected: app_interaction.negotiation.nil? ? nil : app_interaction.negotiation.id, include_blank: t('activerecord.blank_entries.negotiation_id')}, {class: "form-input with-icon", data: {negotiations_target:'negotiations_select'}} %>
+        </div>
+      </div>
+
+    </div>
+
+    <div class="grid grid-cols-1 xl:grid-cols-2 gap-4"  >
+
+      <div class="">
+        <%= form.label :vendor_id, class:'' %>
+        <% vendors = App::Vendor.by_client(get_client_id)%>
+        <% if vendors.present? %>
+          <div class="relative">
+            <div class="form-input-icon"><%= icon('fa-solid','user', class:'') %>  </div>
+            <%= form.collection_select :vendor_id, vendors, :id, :name, {selected: get_current_access.vendor ? get_current_access.vendor_id : nil, include_blank: t('activerecord.blank_entries.vendor')}, {class: "form-input with-icon"} %>
+          </div>
+        <% else %>
+          <div class="detail-input">
+            <%= link_to new_app_vendors_path, class: "btn-primary flex-none" do %>
+              <%= icon('fa-solid','plus',class:'btn-icon') %>
+              <%= App::Vendor.model_name.human %>
+            <% end %>
+          </div>
+        <% end %>
+      </div>
+
+      <div class="">
+        <%= form.label :status_id, class:'' %>
+        <% status = App::StatusInteraction.by_client(get_client_id)%>
+        <% if status.present? %>
+          <div class="relative">
+            <div class="form-input-icon"><%= icon('fa-solid','circle-question', class:'') %>  </div>
+            <%= form.collection_select :status_id, status, :id, :name, {include_blank: t('activerecord.blank_entries.vendor')}, {class: "form-input with-icon"} %>
+          </div>
+        <% else %>
+          <div class="detail-input">
+            <%= link_to new_app_status_interaction_path, class: "btn-primary flex-none" do %>
+              <%= icon('fa-solid','plus',class:'btn-icon') %>
+              <%= App::StatusIteraction.model_name.human %>
+            <% end %>
+          </div>
+        <% end %>
+      </div>
+    </div>
+
+      <div class="">
+        <%= form.label :description %>
+        <%= form.text_area :description, rows: 4, class: "form-input h-auto", data: {controller:"textarea-autogrow"}, placeholder: t('activerecord.placeholders.app/interaction.description')%>
+      </div>
+
+  </div>
+
+  <div class="mt-4 inline-flex w-full justify-end">
+    <%= form.submit class: "btn-primary" %>
+  </div>
+
+<% end %>

@@ -3,16 +3,16 @@
   <div class="">
     <p class=""><%= App::Prospect.human_attribute_name('vendor_id') %></p>
     <div class="relative">
-      
+
       <% if @app_prospect.vendor  %>
-      <%= link_to @app_prospect.vendor, class:'detail-input-icon' do %>
-        <%= icon('fa-solid','user', class:'') %>
-      <%end %>
+        <%= link_to @app_prospect.vendor, class:'detail-input-icon' do %>
+          <%= icon('fa-solid','user', class:'') %>
+        <%end %>
       <% else %>
         <%= icon('fa-solid','user', class:'detail-input-icon-disabled') %>
       <% end %>
-      
-        <p class="detail-input with-icon"><%= @app_prospect.vendor ? @app_prospect.vendor.name : t('activerecord.options.app/prospect.vendor_id.none') %> </p>
+
+      <p class="detail-input with-icon"><%= @app_prospect.vendor ? @app_prospect.vendor.name : t('activerecord.options.app/prospect.vendor_id.none') %> </p>
     </div>
   </div>
 
@@ -28,13 +28,18 @@
       <p class="detail-input"><%= @app_prospect.phone.present? ? @app_prospect.phone : t('activerecord.options.general.blank') %></p>
     </div>
 
-       <div class="">
+    <div class="">
       <p class=""><%= App::Prospect.human_attribute_name('instagram') %></p>
-      <div class="relative">
-      <%= link_to "https://www.instagram.com/#{app_prospect.instagram}", target:'_blank', class:'detail-input-icon' do  %>
-        <%= icon('fa-brands','instagram')%>
-      <%end%>
-      <p class="detail-input with-icon"><%= app_prospect.instagram%></p>
+      <div class="relative ">
+        <% if app_prospect.instagram.present? %>
+          <%= link_to "https://www.instagram.com/#{app_prospect.instagram}", target:'_blank', class:'detail-input-icon' do  %>
+            <%= icon('fa-brands','instagram')%>
+          <%end%>
+          <p class="detail-input with-icon"><%= app_prospect.instagram%></p>
+        <%else%>
+            <%= icon('fa-brands','instagram', class:'detail-input-icon hover:text-inherit')%>
+            <p class="detail-input with-icon"><%= t('activerecord.options.general.blank') %></p>
+        <% end %>
       </div>
     </div>
 

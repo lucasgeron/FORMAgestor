@@ -33,7 +33,7 @@
 
     <div class="">
       <p class=""><%= App::Negotiation.human_attribute_name('reference') %></p>
-      <p class="detail-input"><%= app_negotiation.reference %></p>
+      <p class="detail-input"><%= app_negotiation.reference.present? ? app_negotiation.reference : t('activerecord.blank_entries.reference') %></p>
     </div>
 
     <div class="">
@@ -71,7 +71,6 @@
           <p class="detail-input with-icon"><%= t('activerecord.blank_entries.status_negotiation') %></p>
         </div>
         <% end %>
-
       </div>
 
       <div class="">
