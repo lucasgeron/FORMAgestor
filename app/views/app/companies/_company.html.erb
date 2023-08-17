@@ -37,12 +37,12 @@
 
     <%= button_to app_company_path(company), method: :patch, class: "card-popover-btn-delete", params: { app_company: { active: false } } do %>
       <%= icon('fa-solid','xmark',class:'btn-icon') %>
-      Inativar
+      <%= t('activerecord.options.general.action.active_false') %>
     <% end if company.active %>
 
     <%= button_to app_company_path(company), method: :patch, class: "card-popover-btn-primary", params: { app_company: { active: true } } do %>
       <%= icon('fa-solid','check',class:'btn-icon') %>
-      Ativar
+      <%= t('activerecord.options.general.action.active_true') %>
     <% end if !company.active %>
 
   </div>

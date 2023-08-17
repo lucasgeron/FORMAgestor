@@ -1,3 +1,10 @@
+<% content_for :ctas_primary do %>
+   <%= link_to search_app_negotiations_path(company_ids: [@app_company]), class: "btn-primary flex-none" do %>
+    <%= icon('fa-solid','table-columns',class:'btn-icon') %>
+    <%= App::Negotiation.model_name.human(count: 2) %>
+  <% end %>
+<% end %>
+
 <% content_for :ctas_secondary do %>
   <%= link_to app_companies_path, class: "btn-secondary-gray flex-none" do %>
     <%= icon('fa-solid','arrow-left', class:'-mx-1')%>

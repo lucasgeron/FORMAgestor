@@ -28,7 +28,7 @@ class App::Negotiation < ApplicationRecord
 
 
   scope :by_course, ->(course_id) { where(course_id: course_id) }
-  scope :by_company, ->(company_id) { where(company_id: company_id) }
+  # scope :by_company, ->(company_id) { where(company_id: company_id) }
 
   # scope :by_status_negotiation, ->(status_ids) { where(status_id: status_ids) }
 
@@ -38,6 +38,14 @@ class App::Negotiation < ApplicationRecord
       where(status_id: [nil] + status_ids.reject(&:empty?)) # Inclui nil e os outros ids não vazios
     else
       where(status_id: status_ids.reject(&:empty?))
+    end
+  end
+
+  scope :by_company, ->(company_ids) do
+    if company_ids.include?('-1') # Se o array de company_ids incluir uma string vazia
+      where(company_id: [nil] + company_ids.reject(&:empty?)) # Inclui nil e os outros ids não vazios
+    else
+      where(company_id: company_ids.reject(&:empty?))
     end
   end
 

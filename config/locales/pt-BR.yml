@@ -228,6 +228,9 @@ pt-BR:
         select:
           default: Selecione uma Opção
         blank: Não Informado
+        action:
+          active_true: Ativar
+          active_false: Inativar
         image:
           attached: Vinculada
           not_attached: Não Vinculada

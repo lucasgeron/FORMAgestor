@@ -60,10 +60,12 @@ class App::NegotiationsController < ApplicationController
 
     collection = App::Negotiation.by_client(get_client_id).includes(:course, :status, :vendor).joins(:calendar).where('app_calendars.active = true').order('app_courses.name')
 
-    if params[:query].present? ||  params[:status_ids].present? || params[:vendor_ids].present?
+
+    if %i[query status_ids vendor_ids company_ids].any? { |key| params[key].present? }
       collection = collection.search(params[:query]) if params[:query].present?
       collection = collection.by_status_negotiation(params[:status_ids]) if params[:status_ids].present? 
       collection = collection.by_vendor(params[:vendor_ids]) if params[:vendor_ids].present?
+      collection = collection.by_company(params[:company_ids]) if params[:company_ids].present?
     else
       return redirect_to app_negotiations_path
     end
@@ -95,9 +97,11 @@ class App::NegotiationsController < ApplicationController
     def set_contant_for_sidebar
       null_status = OpenStruct.new(id: -1, name: t('activerecord.blank_entries.status_negotiation'))
       null_vendor = OpenStruct.new(id: -1, name: t('activerecord.blank_entries.vendor'))
+      null_company = OpenStruct.new(id: -1, name: t('activerecord.blank_entries.company'))
 
       @status = [null_status] + App::StatusNegotiation.by_client(get_client_id).order(:name)
       @vendors = [null_vendor] + App::Vendor.by_client(get_client_id).joins(:negotiations).order(:name).distinct
+      @companies = [null_company] + App::Company.by_client(get_client_id).order(:name)
     end
 
     
