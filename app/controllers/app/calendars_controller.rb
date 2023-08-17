@@ -30,6 +30,8 @@ class App::CalendarsController < ApplicationController
     set_client_id(@app_calendar)
 
     if @app_calendar.save
+      NegotiationGeneratorJob.perform_later(:for_calendar, @app_calendar) # call the job to create the negotiation for this course
+
       flash[:success] = t('views.app.general.flash.create_m', model: App::Calendar.model_name.human)
       redirect_to app_calendar_url(@app_calendar)
     else

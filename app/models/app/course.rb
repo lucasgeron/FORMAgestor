@@ -7,7 +7,8 @@ class App::Course < ApplicationRecord
    # Scope
    include App::Scopes
    scope :by_institution, ->(institution_id) { where(institution_id: institution_id) }
-   scope :search, -> (search) { where("LOWER(UNACCENT(name)) LIKE LOWER(UNACCENT(:search))", search: "%#{search}%") }
+   scope :by_city, ->(city_id) { joins(:institution).where(app_institutions: { city_id: city_id }) }
+   scope :search, -> (search) { where("LOWER(UNACCENT(app_courses.name)) LIKE LOWER(UNACCENT(:search))", search: "%#{search}%") }
 
   
    

@@ -6,12 +6,10 @@
 
 <% provide :page_title, "#{t('views.app.general.new')} #{App::Prospect.model_name.human}" %>
 
-
 <% if has_session? %>
-<% content_for :page_content do %>
-  <%= render "form", app_prospect: @app_prospect %>
-<%end%>
+  <% content_for :page_content do %>
+    <%= render "form", app_prospect: @app_prospect %>
+  <%end%>
 <% else %>
   <%= render "form", app_prospect: @app_prospect %>
 <%end%>
-

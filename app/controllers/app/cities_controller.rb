@@ -77,11 +77,9 @@ class App::CitiesController < ApplicationController
 
     collection = App::City.by_client(get_client_id).order(:name)
     
-    if params[:query].present?  
-      collection = collection.search(params[:query])
-      params[:uf] = collection.pluck(:state).uniq
-    elsif params[:uf].present?
-      collection = collection.by_uf(params[:uf])
+    if %i[query uf].any? { |key| params[key].present? }
+      collection = collection.search(params[:query]) if params[:query].present?
+      collection = collection.by_uf(params[:uf]) if params[:uf].present?
     else
       return redirect_to app_cities_path 
     end

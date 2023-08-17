@@ -27,7 +27,7 @@
       @app_client = App::Client.new(client_params)
 
         if @app_client.save
-          flash[:success] = t('views.app.general.flash.create', model: App::Client.model_name.human)
+          flash[:success] = t('views.app.general.flash.create_m', model: App::Client.model_name.human)
           redirect_to app_client_url(@app_client)
         else
           render :new, status: :unprocessable_entity
@@ -37,7 +37,7 @@
     # PATCH/PUT /clients/1 or /clients/1.json
     def update
       if @app_client.update(client_params)
-        flash[:success] = t('views.app.general.flash.update', model: App::Client.model_name.human)
+        flash[:success] = t('views.app.general.flash.update_m', model: App::Client.model_name.human)
         redirect_to app_client_url(@app_client)
       else
         render :edit, status: :unprocessable_entity
@@ -48,10 +48,10 @@
     def destroy
       if @app_client.users.count == 0 
         @app_client.destroy
-        flash[:success] = t('views.app.general.flash.destroy', model: App::Client.model_name.human)
+        flash[:success] = t('views.app.general.flash.destroy_m', model: App::Client.model_name.human)
         redirect_to app_clients_url
       else
-        flash[:error] = t('views.app.clients.flash.destroy_failed', model: App::Client.model_name.human)
+        flash[:error] = t('views.app.clients.flash.destroy_failed_m', model: App::Client.model_name.human)
         redirect_to app_client_url(@app_client)
       end
     end

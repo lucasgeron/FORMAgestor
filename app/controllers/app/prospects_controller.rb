@@ -27,21 +27,23 @@ class App::ProspectsController < ApplicationController
   # GET /app/prospects/new
   def new
     @app_prospect = App::Prospect.new
+    @app_prospect.vendor_id = current_user.vendor_id if current_user.vendor_id
   end
 
   # GET /:slug
   def new_by_slug
-    return redirect_to new_app_prospect_path if get_current_access
-
-    @app_prospect = App::Prospect.new
     @client = App::Client.find_by(slug: params[:slug])
-
-    # a não ser que o cliente seja encontrado, redirecione para a raiz do site
-    unless @client
+    
+    # se o client não for encontrado e existir um acesso atual, ou se o client for encontrado e o id do client for diferente do id do client do acesso atual, redirecione para a página de prospects
+    if (@client.nil? && get_current_access) || (@client && get_current_access.present? && @client.id != get_current_access.client_id)
       flash[:error] = t('views.app.prospects.flash.client_not_found')
-      redirect_to site_root_path
+      return redirect_to app_prospects_path
+    elsif @client.nil? # se não, verifique se existe um cliente. Se não existir, redirecione para a raiz do site
+      flash[:error] = t('views.app.prospects.flash.client_not_found')
+      return redirect_to site_root_path
     end
-  
+
+    @app_prospect = App::Prospect.new  
     render :new
   end
 

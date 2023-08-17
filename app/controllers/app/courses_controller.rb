@@ -9,6 +9,7 @@ class App::CoursesController < ApplicationController
   def index
     if current_access_is_user? && get_current_access.vendor && get_current_access.vendor.cities.any?
       @app_cities = get_current_access.vendor.cities.order(:name)
+      @city_ids = @app_cities.ids # for sidebar
       @app_institutions = App::Institution.by_client(get_client_id).by_city(@app_cities)
       collection = App::Course.by_client(get_client_id).by_institution(@app_institutions).order(:name)
     else
@@ -16,6 +17,7 @@ class App::CoursesController < ApplicationController
       @app_cities = App::City.none
     end
     @pagy, @app_courses = set_pagy(collection)
+    
   end
 
   # GET /app/courses/1 or /app/courses/1.json
@@ -38,6 +40,9 @@ class App::CoursesController < ApplicationController
     set_client_id(@app_course)
     
     if @app_course.save
+
+      NegotiationGeneratorJob.perform_later(:for_course, @app_course) # call the job to create the negotiation for this course
+
       flash[:success] = t('views.app.general.flash.create_m', model: App::Course.model_name.human)
       redirect_to app_course_url(@app_course)
     else
@@ -84,21 +89,15 @@ class App::CoursesController < ApplicationController
 
     collection = App::Course.by_client(get_client_id).order(:name)
 
-    if params[:query].present?  
-      collection = collection.search(params[:query])
-      @app_institutions = App::Institution.by_id(collection.pluck(:institution_id).uniq)
-      params[:city_ids] = @app_institutions.pluck(:city_id).uniq # set the city_ids to the search result
-    
-    elsif params[:city_ids].present?
-      @app_institutions = App::Institution.by_client(get_client_id).by_city(params[:city_ids]).order(:abreviation)
-      collection = collection.by_institution(@app_institutions)
-    
+    if %i[query city_ids].any? { |key| params[key].present? }
+      collection = collection.by_city(params[:city_ids]) if params[:city_ids].present?
+      collection = collection.search(params[:query]) if params[:query].present?  
     else
       return redirect_to app_courses_path 
     end
     
     @pagy, @app_courses = set_pagy(collection)
-    @app_cities = App::City.by_id(@app_institutions.pluck(:city_id).uniq).order(:name)
+    @app_cities = App::City.by_client(get_client_id).by_course(collection.ids).distinct.order(:name)
 
     render :index
 
@@ -119,4 +118,5 @@ class App::CoursesController < ApplicationController
   def set_content_for_sidebar
     @cities = App::City.by_client(get_client_id).joins(:institutions).distinct.order(:name)
   end
+
 end

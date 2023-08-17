@@ -15,8 +15,8 @@
       </div>
 
     <%else%>
-      <% if !has_session? %>
 
+      <% if !has_session? %>
         <% if @client.image.attached? %>
           <div class=" h-48 bg-contain animate-breathe bg-no-repeat bg-center " style="background-image: url(<%=url_for(@client.image)%>)"> </div>
         <%else%>
@@ -43,11 +43,12 @@
         <%= form.text_field :phone, class: "form-input", placeholder: t('activerecord.placeholders.app/prospect.phone') %>
       </div>
 
-     
       <div class="">
         <%= form.label :instagram %>
-        <div class="relative">
-          <%= icon('fa-brands', 'instagram', class:'form-input-icon')%>
+        <div class="relative ">
+          <div class="form-input-icon">
+            <%= icon('fa-brands', 'instagram', class:' ')%>
+          </div>
           <%= form.text_field :instagram, class: "form-input with-icon", placeholder: t('activerecord.placeholders.app/prospect.instagram') %>
         </div>
       </div>

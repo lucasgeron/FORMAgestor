@@ -11,7 +11,7 @@ Rails.application.routes.draw do
   post '/toogle_locale', to: 'site#toogle_locale', as: :toogle_locale
   post '/contact_forms', to: 'site#contact_forms', as: :contact_forms
 
-  # get '/:slug', to: 'app/prospects#new_by_slug'
+  get '/:slug', to: 'app/prospects#new_by_slug'
 
   # - - - - - - - - - - ROUTES FOR APPLICATION - - - - - - - - - - 
 
