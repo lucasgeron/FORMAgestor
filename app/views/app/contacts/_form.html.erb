@@ -6,13 +6,13 @@
   <div class="grid grid-cols-1 xl:grid-cols-3 gap-4" data-controller='negotiations'>
 
     <div class="">
-      <%= form.label :name %>
+      <%= form.label :name, class:'required' %>
       <%= form.text_field :name, class: "form-input", placeholder: t('activerecord.placeholders.app/contact.name') %>
     </div>
 
     <div class="" >
       <%= form.label :phone %>
-      <%= form.text_field :phone, class: "form-input", placeholder: t('activerecord.placeholders.app/contact.phone') %>
+      <%= form.text_field :phone, class: "form-input", placeholder: t('activerecord.placeholders.app/contact.phone'), onkeypress:"return event.charCode >= 48 && event.charCode <= 57" %>
     </div>
 
     <div class="">

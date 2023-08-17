@@ -1,0 +1,29 @@
+<div id="<%= dom_id role_vendor %>"  data-aos='fade' class='card group' data-controller="reveal" data-reveal-hidden-class="grid">
+
+  <div class="card-header">
+
+    <div class="card-header-info my-auto">
+      <p class="overflow-scroll scrollbar-hide ">
+        <%= link_to app_role_vendor_path(role_vendor), class:'card-header-title' do %>
+          <%= role_vendor.name %>
+        <%end%>
+      </p>
+
+    </div>
+
+    <%= button_tag class:'card-header-btn',  data: { action:"click->reveal#toggle" } do %>
+      <%= icon('fa-solid','bars', class:'fa-sm')%>
+    <%end%>
+
+  </div>
+
+  <div data-reveal-target="item" class="card-popover w-24" data-action="mouseleave->reveal#show">
+
+    <%= link_to edit_app_role_vendor_path(role_vendor), class:'card-popover-btn-primary' do %>
+      <%= icon('fa-solid', 'pen-to-square', class:'btn-icon') %>
+      <p class=""> <%= t('views.app.general.edit')%></p>
+    <%end%>
+
+  </div>
+
+</div>

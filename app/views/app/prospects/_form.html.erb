@@ -34,13 +34,13 @@
     <div class="grid grid-cols-1 lg:grid-cols-3 gap-4">
 
       <div class="">
-        <%= form.label :name %>
+        <%= form.label :name, class:'required' %>
         <%= form.text_field :name, class: "form-input", placeholder: t('activerecord.placeholders.app/prospect.name') %>
       </div>
 
       <div class="">
-        <%= form.label :phone %>
-        <%= form.text_field :phone, class: "form-input", placeholder: t('activerecord.placeholders.app/prospect.phone') %>
+        <%= form.label :phone, class:'required' %>
+        <%= form.text_field :phone, class: "form-input", placeholder: t('activerecord.placeholders.app/prospect.phone'), onkeypress:"return event.charCode >= 48 && event.charCode <= 57"  %>
       </div>
 
       <div class="">
@@ -54,27 +54,27 @@
       </div>
 
       <div class="">
-        <%= form.label :city %>
+        <%= form.label :city, class:'required' %>
         <%= form.text_field :city, class: "form-input", placeholder: t('activerecord.placeholders.app/prospect.city') %>
       </div>
 
       <div class="">
-        <%= form.label :institution %>
+        <%= form.label :institution, class:'required' %>
         <%= form.text_field :institution, class: "form-input", placeholder: t('activerecord.placeholders.app/prospect.institution') %>
       </div>
 
       <div class="">
-        <%= form.label :course %>
+        <%= form.label :course, class:'required' %>
         <%= form.text_field :course, class: "form-input", placeholder: t('activerecord.placeholders.app/prospect.course') %>
       </div>
 
       <div class="">
-        <%= form.label :amount %>
+        <%= form.label :amount, class:'required' %>
         <%= form.text_field :amount, class: "form-input", placeholder: t('activerecord.placeholders.app/prospect.amount') %>
       </div>
 
       <div class="">
-        <%= form.label :year_graduation %>
+        <%= form.label :year_graduation, class:'required' %>
         <%= form.text_field :year_graduation, class: "form-input", placeholder: t('activerecord.placeholders.app/prospect.year_graduation') %>
       </div>
 

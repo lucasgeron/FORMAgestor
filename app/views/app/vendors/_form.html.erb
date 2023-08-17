@@ -11,9 +11,18 @@
     </div>
 
     <div class="">
-      <%= form.label :role %>
-      <%= form.text_field :role, class: "form-input", placeholder: t('activerecord.placeholders.app/vendor.role') %>
-    </div>
+        <%= form.label :role_id, class:'' %>
+        <% if @roles.present? %>
+            <%= form.collection_select :role_id, @roles, :id, :name, {include_blank: t('activerecord.blank_entries.role')}, {class: "form-input"} %>
+        <% else %>
+          <div class="detail-input">
+            <%= link_to new_app_role_vendor_path, class: "btn-primary flex-none" do %>
+              <%= icon('fa-solid','plus',class:'btn-icon') %>
+              <%= App::RoleVendor.model_name.human %>
+            <% end %>
+          </div>
+        <% end %>
+      </div>
 
     <div class="">
       <%= form.label :phone %>
@@ -32,7 +41,7 @@
     <div class="mt-4">
       <p class="font-bold text-2xl"> <%= App::Vendor.human_attribute_name('city_ids') %> </p>
       <div class="mt-2 bg-gray-100 dark:bg-gray-900 py-2 px-3 space-y-1 rounded-lg text-sm grid grid-cols-1 lg:grid-cols-3">
-        <%= form.collection_check_boxes  :city_ids, @cities, :id, :name, include_hidden: true do |city| %>
+        <%= form.collection_check_boxes  :city_ids, @cities, :id, :name_and_uf, include_hidden: true do |city| %>
           <div class="">
             <%= city.check_box(class: 'form-checkbox-simple dark:bg-gray-800 bg-gray-200 mr-1 ') %>
             <%= city.label class:'cursor-pointer text-sm' do %>

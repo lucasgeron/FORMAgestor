@@ -2,6 +2,10 @@ class App::Contact < ApplicationRecord
   belongs_to :negotiation, class_name: 'App::Negotiation', optional: true
   belongs_to :client, class_name: 'App::Client'
 
+  # Validations
+  validates :name, presence: true
+  validates_uniqueness_of :name, scope: :client_id
+
   # Scopes
   include App::Scopes
   scope :search, -> (search) { where("LOWER(UNACCENT(name)) LIKE LOWER(UNACCENT(:search)) OR 
@@ -18,6 +22,7 @@ class App::Contact < ApplicationRecord
   end
 
   def has_dependency?
+    # ADD LOGIC AFTER ADDING CONTACT TO INTERACTION 
     false
   end
 

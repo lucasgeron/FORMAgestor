@@ -1,6 +1,6 @@
 class App::ProspectsController < ApplicationController
 
-  before_action :authenticate_user_or_admin!, except: %i[ new_by_slug create  ]
+  before_action :authenticate_user_or_admin!, except: %i[ new_by_slug create ]
   before_action :set_layout
   before_action :check_client_id, only: %i[ show edit update destroy ]
   before_action :set_app_prospect, only: %i[ show edit update destroy ]
@@ -58,9 +58,14 @@ class App::ProspectsController < ApplicationController
     
     if @app_prospect.save
         flash[:success] = t('views.app.general.flash.create_f', model: App::Prospect.model_name.human)
-        redirect_to app_prospect_url(@app_prospect)
+        redirect_to get_current_access.present? ? app_prospect_url(@app_prospect) : site_root_path
     else
+      if get_current_access.present?
         render :new, status: :unprocessable_entity 
+      else
+       @client = App::Client.find_by(id: @app_prospect.client_id)
+       render :new, layout: 'public_application', status: :unprocessable_entity 
+      end
     end
   end
 
@@ -68,7 +73,8 @@ class App::ProspectsController < ApplicationController
   def update
     if @app_prospect.update(app_prospect_params)
       flash[:success] = t('views.app.general.flash.update_f', model: App::Prospect.model_name.human)
-      redirect_to app_prospect_url(@app_prospect)
+     
+      redirect_to  request.referrer.include?('edit') ? app_prospect_url(@app_prospect) : request.referrer
     else
       render :edit, status: :unprocessable_entity
     end

@@ -112,18 +112,13 @@ class App::NegotiationsController < ApplicationController
 
     def set_counters(app_negotiations)
 
-      # abort @status_ids.inspect
-      
       @counters = []
-
       status_ids =  params[:status_ids].present? ? params[:status_ids] : app_negotiations.pluck(:status_id).uniq.to_a
       
       if status_ids.include?(nil) || status_ids.include?('-1')
         status_not_assigned = App::StatusNegotiation.new(name: t('activerecord.blank_entries.status_negotiation'), style:'fa-regular', icon:'circle')
         @counters << [status_not_assigned, app_negotiations.where(status: nil).count]
       end
-
-      
 
       status_ids.reject.reject { |status| status == '-1' || status.nil? }.each do |status_id|
         @counters << [App::StatusNegotiation.find(status_id), app_negotiations.where(status_id: status_id).count]

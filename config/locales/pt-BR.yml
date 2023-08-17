@@ -72,6 +72,9 @@ pt-BR:
       app/negotiation:
         one: Negociação
         other: Negociações
+      app/role_vendor:
+        one: Cargo
+        other: Cargos
 
     attributes:
       app/contact:
@@ -150,6 +153,12 @@ pt-BR:
         icon: Ícone
         style: Estilo
         color: Cor
+      app/status_interaction:
+        name: Descrição
+        active: Status
+        icon: Ícone
+        style: Estilo
+        color: Cor
       app/negotiation:
         calendar: Calendário
         course_id: Curso
@@ -165,6 +174,10 @@ pt-BR:
         vendor_id: Representante
         status: Status
         description: Descrição
+      app/role_vendor:
+        name: Descrição
+        active: Status
+
 
 
     blank_entries:
@@ -310,6 +323,11 @@ pt-BR:
           true: Ativo
           false: Inativo
       app/status_interaction:
+        active:
+          all: Todos
+          true: Ativo
+          false: Inativo
+      app/role_vendor:
         active:
           all: Todos
           true: Ativo

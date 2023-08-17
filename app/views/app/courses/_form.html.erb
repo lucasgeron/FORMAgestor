@@ -1,12 +1,12 @@
 <%= form_with(model: app_course, class: "contents") do |form| %>
   <% if app_course.errors.any? %>
-   <% flash.now[:error] = app_institution.errors.to_a %>
+   <% flash.now[:error] = app_course.errors.to_a %>
   <% end %>
 
   <div class="grid grid-cols-1 xl:grid-cols-2 gap-4">
 
     <div class="col-span-2">
-      <%= form.label :institution_id, class:'' %>
+      <%= form.label :institution_id, class:'required' %>
 
       <% institutions = App::Institution.by_client(get_client_id)%>
       <% if institutions.present? %>
@@ -26,13 +26,13 @@
 
 
     <div class="">
-      <%= form.label :name %>
+      <%= form.label :name,class:'required' %>
       <%= form.text_field :name, class: "form-input", placeholder: t('activerecord.placeholders.app/course.name')%>
     </div>
 
     <div class="">
-      <%= form.label :duration %>
-      <%= form.number_field :duration, class: "form-input", placeholder: t('activerecord.placeholders.app/course.duration')%>
+      <%= form.label :duration,class:'required' %>
+      <%= form.text_field :duration, class: "form-input", placeholder: t('activerecord.placeholders.app/course.duration') , onkeypress:"return event.charCode >= 48 && event.charCode <= 57"%>
     </div>
 
    

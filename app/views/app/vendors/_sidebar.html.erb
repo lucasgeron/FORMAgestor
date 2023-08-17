@@ -2,7 +2,7 @@
   <div class="detail-input text-xs text-center h-8 -mb-1" id="pagy_info">
     <%== pagy_info(@pagy, item_name: App::Vendor.model_name.human(count: @pagy.items)) %>
   </div>
-  
+
   <%= form_with(url: search_app_vendors_path, method: :get,  class:'space-y-1') do |form| %>
 
     <%# SEACH INPUT %>
@@ -11,18 +11,38 @@
       <%= form.text_field :query, value:params[:query],  class:'search-input text-sm', placeholder: t('views.app.general.search'), data: {action: 'keydown.enter->search#submit'} %>
     </div>
 
-   
-      
-    
     <div class="hidden  detail-input text-xs h-8 " data-reveal-target="item">
-      <p class="text-center"> 
-       <%= %i[ name role  ].map{|attr| App::Vendor.human_attribute_name(attr)}.join(" | ")  %>
-       </p>
+      <p class="text-center">
+        <%= %i[ name  ].map{|attr| App::Vendor.human_attribute_name(attr)}.join(" | ")  %>
+      </p>
     </div>
     <%# END OF SEARCH INPUT%>
 
+    <%# VENDORS INPUT %>
 
-  
+    <% if @roles.count >1%>
+
+      <div class="bg-gray-100 dark:bg-gray-900 py-2 px-3 space-y-1 rounded-lg text-sm">
+
+        <%= button_tag t('views.app.general.select_all_m'), type: "button", class: "w-full bg-gray-200 dark:bg-gray-800 hover:bg-blue-600 hover:text-white dark:hover:bg-blue-600 p-1 rounded-lg text-sm", data: { action: "search#selectAll search#submit" } if @roles.any?%>
+
+        <%= form.collection_check_boxes  :role_ids, @roles, :id, :name, include_hidden: false do |role| %>
+          <div class="mt-0 flex justify-between items-center">
+            <div class="truncate">
+              <%= role.check_box(class: 'form-checkbox-simple dark:bg-gray-800 bg-gray-200 mr-1 ', checked: (params[:role_ids].present? && params[:role_ids].include?(role.value.to_s)), data: {action: 'change->search#submit'}) %>
+              <%= role.label class:'cursor-pointer text-sm' do %>
+                <%= role.text %>
+              <% end %>
+            </div>
+            <%= icon('fa-solid', 'bolt', class:'p-1.5 bg-gray-200 dark:bg-gray-800 rounded-lg hover:text-blue-600 cursor-pointer', data: { action:" click->search#selectOnly click->search#submit"} )%>
+          </div>
+        <% end %>
+      </div>
+
+    <% end %>
+
+    <%# END OF VENDORS %>
+
   <% end %>
 
 </div>

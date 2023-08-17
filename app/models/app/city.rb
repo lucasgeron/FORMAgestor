@@ -4,11 +4,14 @@ class App::City < ApplicationRecord
   has_many :institutions, class_name: 'App::Institution'
   has_many :courses, class_name: 'App::Course', through: :institutions
 
-
   # Through Associations
   has_many :negotiations, through: :institutions
   has_many :courses, through: :institutions
 
+  # Validations
+  validates :name, :state,  presence: true
+  validates_uniqueness_of :name, scope: :client_id
+  
   # Scopes
   include App::Scopes
 

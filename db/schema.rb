@@ -198,6 +198,15 @@ ActiveRecord::Schema[7.0].define(version: 2023_08_15_143353) do
     t.index ["vendor_id"], name: "index_app_prospects_on_vendor_id"
   end
 
+  create_table "app_role_vendors", force: :cascade do |t|
+    t.bigint "client_id", null: false
+    t.string "name"
+    t.boolean "active"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["client_id"], name: "index_app_role_vendors_on_client_id"
+  end
+
   create_table "app_status_interactions", force: :cascade do |t|
     t.string "name"
     t.boolean "active"
@@ -261,11 +270,12 @@ ActiveRecord::Schema[7.0].define(version: 2023_08_15_143353) do
     t.string "name"
     t.string "phone"
     t.string "email"
-    t.string "role"
+    t.bigint "role_id"
     t.bigint "client_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["client_id"], name: "index_app_vendors_on_client_id"
+    t.index ["role_id"], name: "index_app_vendors_on_role_id"
   end
 
   add_foreign_key "active_storage_attachments", "active_storage_blobs", column: "blob_id"
@@ -294,9 +304,11 @@ ActiveRecord::Schema[7.0].define(version: 2023_08_15_143353) do
   add_foreign_key "app_negotiations", "app_vendors", column: "vendor_id"
   add_foreign_key "app_prospects", "app_clients", column: "client_id"
   add_foreign_key "app_prospects", "app_vendors", column: "vendor_id"
+  add_foreign_key "app_role_vendors", "app_clients", column: "client_id"
   add_foreign_key "app_status_interactions", "app_clients", column: "client_id"
   add_foreign_key "app_status_negotiations", "app_clients", column: "client_id"
   add_foreign_key "app_users", "app_clients", column: "client_id"
   add_foreign_key "app_users", "app_vendors", column: "vendor_id"
   add_foreign_key "app_vendors", "app_clients", column: "client_id"
+  add_foreign_key "app_vendors", "app_role_vendors", column: "role_id"
 end

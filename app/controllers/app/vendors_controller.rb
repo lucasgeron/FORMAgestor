@@ -4,6 +4,7 @@ class App::VendorsController < ApplicationController
   before_action :check_client_id, only: %i[ show edit update destroy]  
   before_action :set_app_vendor, only: %i[ show edit update destroy ]
   before_action :set_content_for_form, only: %i[ new edit create update ]
+  before_action :set_content_for_sidebar, only: %i[ index search ]
   
   # GET /app/vendors or /app/vendors.json
   def index
@@ -17,7 +18,7 @@ class App::VendorsController < ApplicationController
 
   # GET /app/vendors/new
   def new
-    @app_vendor = App::Vendor.new
+    @app_vendor = App::Vendor.new(role_id: params[:role_id])
   end
 
   # GET /app/vendors/1/edit
@@ -61,8 +62,9 @@ class App::VendorsController < ApplicationController
 
     collection = App::Vendor.by_client(get_client_id).order(:name)
     
-    if params[:query].present?  
-      collection = collection.search(params[:query])
+    if %i[query role_ids].any? { |key| params[key].present? }
+      collection = collection.search(params[:query]) if params[:query].present?
+      collection = collection.by_role(params[:role_ids]) if params[:role_ids].present?
     else
       return redirect_to app_vendors_path 
     end
@@ -81,10 +83,16 @@ class App::VendorsController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def app_vendor_params
-      params.require(:app_vendor).permit(:name, :phone, :email, :role, city_ids: [])
+      params.require(:app_vendor).permit(:name, :phone, :email, :role_id, city_ids: [])
     end
 
     def set_content_for_form
-      @cities = App::City.by_client(get_client_id)
+      @cities = App::City.by_client(get_client_id).order(:state, :name)
+      @roles = App::RoleVendor.by_client(get_client_id).where(active: true).order(:name)
+    end
+
+    def set_content_for_sidebar
+      null_role = OpenStruct.new(id: -1, name: t('activerecord.blank_entries.role'))
+      @roles = [null_role] + App::RoleVendor.by_client(get_client_id).order(:name)
     end
 end

@@ -1,0 +1,35 @@
+<% content_for :ctas_secondary do %>
+  <%= link_to app_role_vendors_path, class: "btn-secondary-gray flex-none" do %>
+    <%= icon('fa-solid','arrow-left', class:'-mx-1')%>
+  <%end%>
+
+  <%= link_to edit_app_role_vendor_path(@app_role_vendor), class: "btn-secondary flex-none" do %>
+    <%= icon('fa-solid','pen-to-square', class:'-mx-1')%>
+  <%end%>
+
+  <%= button_to app_role_vendor_path(@app_role_vendor), method: :delete, data: { turbo: false },onclick: "return confirm('#{t('views.app.general.delete_confirm')}')", class: "btn-delete flex-none" do %>
+    <%= icon('fa-solid','trash-can', class:'-mx-1')%>
+  <%end%>
+<% end %>
+
+<% content_for :ctas_primary do %>
+
+  <%= link_to new_app_vendor_path(role_id: @app_role_vendor.id), class: "btn-primary flex-none" do %>
+    <%= icon('fa-solid','plus',class:'btn-icon') %>
+    <%= App::Vendor.model_name.human %>
+  <% end %>
+
+  <%= link_to search_app_vendors_path(role_ids: [@app_role_vendor.id]), class: "btn-primary flex-none" do %>
+    <%= icon('fa-solid','user-group',class:'btn-icon') %>
+    <%= App::Vendor.model_name.human(count:2) %>
+  <% end %>
+
+<% end %>
+
+<% provide :head_title, "#{t('views.app.general.showing')} #{App::RoleVendor.model_name.human} " %>
+<% provide :page_title, "#{t('views.app.general.showing')} #{App::RoleVendor.model_name.human} " %>
+<% provide :entry_id, "#{@app_role_vendor.id}" %>
+
+<% content_for :page_content do %>
+  <%= render "detail", app_role_vendor: @app_role_vendor %>
+<%end%>

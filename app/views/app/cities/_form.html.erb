@@ -7,12 +7,12 @@
   <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
 
     <div class="">
-      <%= form.label :state %>
+      <%= form.label :state, class:'required' %>
       <%= form.collection_select :state, ConectaAddressBr::States.all, :last, :first, {}, {class: "form-input", data:{cities_target: 'state_input', action:'change->cities#update_state'}} %>
     </div>
    
     <div class="">
-      <%= form.label :name %>
+      <%= form.label :name, class:'required' %>
 
       <div class="relative">
 

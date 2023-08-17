@@ -5,17 +5,17 @@
 
   <div class="grid grid-cols-1 xl:grid-cols-2 gap-4">
     <div class="">
-      <%= form.label :name %>
+      <%= form.label :name, class:'required' %>
       <%= form.text_field :name, class: "form-input", placeholder: t('activerecord.placeholders.app/institution.name') %>
     </div>
 
     <div class="">
-      <%= form.label :abreviation %>
+      <%= form.label :abreviation, class:'required' %>
       <%= form.text_field :abreviation, class: "form-input", placeholder: t('activerecord.placeholders.app/institution.abreviation') %>
     </div>
 
     <div class="">
-      <%= form.label :city_id, class:'' %>
+      <%= form.label :city_id, class:'required' %>
 
       <% cities = App::City.by_client(get_client_id)%>
       <% if cities.present? %>

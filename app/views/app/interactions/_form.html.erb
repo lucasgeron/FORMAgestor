@@ -45,7 +45,7 @@
           </div>
         <% else %>
           <div class="detail-input">
-            <%= link_to new_app_vendors_path, class: "btn-primary flex-none" do %>
+            <%= link_to new_app_vendor_path, class: "btn-primary flex-none" do %>
               <%= icon('fa-solid','plus',class:'btn-icon') %>
               <%= App::Vendor.model_name.human %>
             <% end %>
@@ -65,7 +65,7 @@
           <div class="detail-input">
             <%= link_to new_app_status_interaction_path, class: "btn-primary flex-none" do %>
               <%= icon('fa-solid','plus',class:'btn-icon') %>
-              <%= App::StatusIteraction.model_name.human %>
+              <%= App::StatusInteraction.model_name.human %>
             <% end %>
           </div>
         <% end %>

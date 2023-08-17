@@ -47,6 +47,9 @@ Rails.application.routes.draw do
 
   # Commom routes in App namespace
   namespace :app do
+    resources :role_vendors do
+      get :search, on: :collection
+    end
     resources :interactions do 
       get :search, on: :collection
     end

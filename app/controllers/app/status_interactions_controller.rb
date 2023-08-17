@@ -56,8 +56,8 @@ class App::StatusInteractionsController < ApplicationController
     end
   end
 
-   #  GET /app/calendars/search?query=:query&status=:status
-   def search 
+  #  GET /app/calendars/search?query=:query&status=:status
+  def search 
 
     collection = App::StatusInteraction.by_client(get_client_id)
 

@@ -7,7 +7,7 @@ Faker::Config.locale = 'pt-BR'
             name: Faker::Name.first_name + " "+ Faker::Name.last_name, 
             phone: Faker::PhoneNumber.cell_phone, 
             email: Faker::Internet.email, 
-            role: ["Representante Comercial", "Prospectador"].sample, 
+            role_id: [App::RoleVendor.by_client(index).sample.id, nil].sample, 
             client_id: index
         )
     end
