@@ -3,6 +3,7 @@ class App::CoursesController < ApplicationController
   before_action :check_client_id, only: %i[ show edit update destroy]
   before_action :set_app_course, only: %i[ show edit update destroy ]
   before_action :set_content_for_sidebar, only: %i[ index search ]
+  before_action :set_content_for_form, only: %i[ edit update new create ]
 
 
   # GET /app/courses or /app/courses.json
@@ -117,6 +118,10 @@ class App::CoursesController < ApplicationController
       
   def set_content_for_sidebar
     @cities = App::City.by_client(get_client_id).joins(:institutions).distinct.order(:name)
+  end
+
+  def set_content_for_form
+    @institutions = App::Institution.by_client(get_client_id).order(:abreviation)
   end
 
 end

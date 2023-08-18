@@ -1,9 +1,13 @@
 class App::StatusInteraction < ApplicationRecord
   belongs_to :client, class_name: 'App::Client'
+  has_many :interactions, class_name: 'App::Interaction', foreign_key: 'status_id'
 
   # Constants
-  COLORS = %w[default red amber orange yellow lime green emerald teal cyan sky indigo violet purple fuchsia pink rose ].freeze
+  COLORS = %w[default red orange amber yellow lime green emerald teal cyan sky blue indigo violet purple fuchsia pink rose ].freeze
   STYLES = %w[fa-solid fa-regular fa-brands].freeze
+
+  # Validations
+  validates :name, presence: true, uniqueness: { scope: :client_id }
 
   # Scope
   include App::Scopes
@@ -20,6 +24,6 @@ class App::StatusInteraction < ApplicationRecord
 
   #  Methods
   def has_dependency?
-    false
+    self.interactions.any?
   end
 end

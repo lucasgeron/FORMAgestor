@@ -83,6 +83,7 @@ Rails.application.routes.draw do
 
     resources :calendars do
       get :search, on: :collection
+      delete :destroy_confirm, on: :member
     end
 
     resources :courses do 

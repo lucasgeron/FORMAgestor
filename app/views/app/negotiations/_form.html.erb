@@ -6,9 +6,9 @@
   <div class="space-y-4">
 
     <%# DETAIL %>
-    <div class="grid grid-cols-1 xl:grid-cols-3 gap-4">
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
 
-      <div class="">
+      <div class="md:col-span-2 lg:col-span-1">
         <p class=""><%= App::Course.human_attribute_name('institution') %></p>
         <div class="relative">
           <%= link_to app_negotiation.course.institution, class:'detail-input-icon' do %>
@@ -28,16 +28,15 @@
         </div>
       </div>
 
-     
-    <div class="">
-      <p class=""><%= App::Negotiation.human_attribute_name('period') %></p>
-      <p class="detail-input "><%= app_negotiation.period_in_words %></p>
-    </div>
+      <div class="">
+        <p class=""><%= App::Negotiation.human_attribute_name('period') %></p>
+        <p class="detail-input "><%= app_negotiation.period_in_words %></p>
+      </div>
 
     </div>
 
     <%# FORM  %>
-    <div class="grid grid-cols-1 xl:grid-cols-4 gap-4">
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
 
       <div class="">
         <%= form.label :reference %>
@@ -46,56 +45,45 @@
 
       <div class="">
         <%= form.label :vendor_id, class:'' %>
-        <% vendors = App::Vendor.by_client(get_client_id)%>
-        <% if vendors.present? %>
-          <div class="relative">
-            <div class="form-input-icon"><%= icon('fa-solid','user', class:'') %>  </div>
-            <%= form.collection_select :vendor_id, vendors, :id, :name, {include_blank: t('activerecord.blank_entries.vendor')}, {class: "form-input with-icon"} %>
+           <div class="flex justify-between space-x-2 items-center ">
+          <div class="relative flex-grow">
+            <div class="form-input-icon pt-2"><%= icon('fa-solid','user', class:'') %>  </div>
+            <%= form.collection_select :vendor_id, @vendors, :id, :name, {include_blank: t('activerecord.blank_entries.general.not_informed')}, {class: "form-input with-icon"} %>
           </div>
-        <% else %>
-          <div class="detail-input">
-            <%= link_to new_app_vendors_path, class: "btn-primary flex-none" do %>
-              <%= icon('fa-solid','plus',class:'btn-icon') %>
-              <%= App::Vendor.model_name.human %>
-            <% end %>
-          </div>
-        <% end %>
+          <%= link_to new_app_vendor_path, class: "btn-primary flex-none mt-2 h-10 pt-2.5" do %>
+            <%= icon('fa-solid','plus',class:'-mr-2 2xl:-mr-0 btn-icon') %>
+            <span class="hidden 2xl:inline"><%= App::Vendor.model_name.human %> </span>
+          <% end %>
+        </div>
       </div>
 
       <div class="">
         <%= form.label :status_id, class:'' %>
-        <% status_negotiations = App::StatusNegotiation.by_client(get_client_id)%>
-        <% if status_negotiations.present? %>
-          <div class="relative">
-            <div class="form-input-icon"><%= icon('fa-solid','circle-question', class:'') %>  </div>
-            <%= form.collection_select :status_id, status_negotiations, :id, :name, {include_blank: t('activerecord.blank_entries.status_negotiation')}, {class: "form-input with-icon"} %>
+
+        <div class="flex justify-between space-x-2 items-center ">
+          <div class="relative flex-grow">
+            <div class="form-input-icon pt-2"><%= icon('fa-solid','circle-question', class:'') %>  </div>
+            <%= form.collection_select :status_id, @status, :id, :name, {include_blank: t('activerecord.blank_entries.status_negotiation')}, {class: "form-input with-icon"} %>
           </div>
-        <% else %>
-          <div class="detail-input">
-            <%= link_to new_app_status_negotiations_path, class: "btn-primary flex-none" do %>
-              <%= icon('fa-solid','plus',class:'btn-icon') %>
-              <%= App::StatusNegotiation.model_name.human %>
-            <% end %>
-          </div>
-        <% end %>
+          <%= link_to new_app_status_negotiation_path, class: "btn-primary flex-none mt-2 h-10 pt-2.5" do %>
+            <%= icon('fa-solid','plus',class:'-mr-2 2xl:-mr-0 btn-icon') %>
+            <span class="hidden 2xl:inline"><%= App::StatusNegotiation.model_name.human %> </span>
+          <% end %>
+        </div>
       </div>
 
       <div class="">
         <%= form.label :company_id, class:'' %>
-        <% companies = App::Company.by_client(get_client_id)%>
-        <% if companies.present? %>
-          <div class="relative">
-            <div class="form-input-icon"><%= icon('fa-solid','building', class:'') %>  </div>
-            <%= form.collection_select :company_id, companies, :id, :name, {include_blank: t('activerecord.blank_entries.company')}, {class: "form-input with-icon"} %>
+      <div class="flex justify-between space-x-2 items-center ">
+          <div class="relative flex-grow">
+            <div class="form-input-icon pt-2"><%= icon('fa-solid','building', class:'') %>  </div>
+            <%= form.collection_select :company_id, @companies, :id, :name, {include_blank: t('activerecord.blank_entries.general.not_informed')}, {class: "form-input with-icon"} %>
           </div>
-        <% else %>
-          <div class="detail-input">
-            <%= link_to new_app_companies_path, class: "btn-primary flex-none" do %>
-              <%= icon('fa-solid','plus',class:'btn-icon') %>
-              <%= App::Company.model_name.human %>
-            <% end %>
-          </div>
-        <% end %>
+         <%= link_to new_app_company_path, class: "btn-primary flex-none mt-2 h-10 pt-2.5" do %>
+            <%= icon('fa-solid','plus',class:'-mr-2 2xl:-mr-0 btn-icon') %>
+            <span class="hidden 2xl:inline"><%= App::Company.model_name.human %> </span>
+          <% end %>
+        </div>
       </div>
 
     </div>

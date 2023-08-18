@@ -1,7 +1,11 @@
 class App::Course < ApplicationRecord
   belongs_to :institution, class_name: 'App::Institution'
   belongs_to :client, class_name: 'App::Client'
-  has_many :negotiations, class_name: 'App::Negotiation'
+  has_many :negotiations, class_name: 'App::Negotiation', dependent: :destroy
+
+  # Through Associations
+  has_many :contacts, class_name: 'App::Contact', through: :negotiations
+  has_many :interactions, class_name: 'App::Interaction', through: :negotiations
 
 
   # Validations
@@ -17,7 +21,7 @@ class App::Course < ApplicationRecord
 
   #  Methods
   def has_dependency?
-    self.negotiations.any?
+    self.interactions.any? || self.contacts.any?
   end
 
 end

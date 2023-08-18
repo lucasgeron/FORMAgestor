@@ -1,9 +1,9 @@
 <div class="space-y-4">
 
   <%# DETAILS %>
-  <div class="grid grid-cols-1 xl:grid-cols-3 gap-4">
+  <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
 
-    <div class="col-span-2">
+    <div class="md:col-span-2">
       <p class=""><%= App::StatusNegotiation.human_attribute_name('name') %></p>
       <p class="detail-input "><%= app_status_negotiation.name%></p>
     </div>
@@ -18,7 +18,7 @@
       <% end %>
     </div>
 
-   <div class="col-span-3">
+   <div class="">
       <p class=""><%= App::StatusNegotiation.human_attribute_name('icon') %></p>
       <p class="detail-input text-<%= app_status_negotiation.color%>-600">
         <%= icon(app_status_negotiation.style, app_status_negotiation.icon) %>

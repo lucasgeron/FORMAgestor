@@ -4,7 +4,7 @@
     <% flash.now[:error] = app_user.errors.to_a%>
   <% end %>
 
-  <div class="grid grid-cols-1 xl:grid-cols-4 gap-4">
+  <div class="grid grid-cols-1 md:grid-cols-2 2xl:grid-cols-4 gap-4">
 
     <div class="">
       <%= form.label :email, class:'required' %>
@@ -37,20 +37,24 @@
 
   </div>
 
-
-
-  <div class="grid grid-cols-1 xl:grid-cols-4 gap-4 mt-4">
+  <div class="grid grid-cols-1 md:grid-cols-2 gap-4 mt-4">
 
     <div class="">
       <%= form.label :vendor_id, class:'' %>
 
-      <div class="relative">
-       <div class="form-input-icon"><%= icon('fa-solid','user', class:'') %>  </div>
-        <%= form.collection_select :vendor_id, App::Vendor.by_client(get_client_id), :id, :name, {include_blank: App::User.human_attribute_name('vendor_not_found')}, {class: "form-input with-icon"} %>
+      <div class="flex justify-between space-x-2 items-center ">
+        <div class="relative flex-grow">
+          <div class="form-input-icon pt-2"><%= icon('fa-solid','user', class:'') %>  </div>
+          <%= form.collection_select :vendor_id, App::Vendor.by_client(get_client_id), :id, :name, {include_blank: App::User.human_attribute_name('vendor_not_found')}, {class: "form-input with-icon"} %>
+        </div>
+        <%= link_to new_app_vendor_path, class: "btn-primary flex-none mt-2 h-10 pt-2.5" do %>
+          <%= icon('fa-solid','plus',class:'-mr-2 2xl:-mr-0 btn-icon') %>
+          <span class="hidden 2xl:inline"><%= App::Vendor.model_name.human %></span>
+        <% end %>
+
       </div>
     </div>
 
-     
   </div>
 
   <div class="mt-4 inline-flex w-full justify-end">

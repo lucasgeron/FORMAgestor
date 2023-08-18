@@ -4,6 +4,9 @@ class App::Interaction < ApplicationRecord
   belongs_to :negotiation, class_name: 'App::Negotiation'
   belongs_to :status, class_name: 'App::StatusInteraction'
 
+  # Validations
+  validates :description, presence: true, length: { minimum: 10 }
+
   # Scopes
   include App::Scopes
   scope :search, -> (search) { where("LOWER(UNACCENT(description)) LIKE LOWER(UNACCENT(:search))", search: "%#{search}%") }

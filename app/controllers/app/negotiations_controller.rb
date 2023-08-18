@@ -1,5 +1,6 @@
 class App::NegotiationsController < ApplicationController
-  before_action :set_app_negotiation, only: %i[ show edit update destroy ]
+  before_action :set_app_negotiation, only: %i[ show edit update  ]
+  before_action :set_content_for_form, only: %i[ edit update]
   before_action :set_contant_for_sidebar, only: %i[ index search ]
   before_action :set_calendars, only: %i[ index search ]
 
@@ -37,7 +38,13 @@ class App::NegotiationsController < ApplicationController
   # PATCH/PUT /app/negotiations/1 or /app/negotiations/1.json
   def update
     if @app_negotiation.update(app_negotiation_params)
+      if params[:app_negotiation][:active] == 'false'
+        flash[:success] = t('views.app.negotiations.flash.hide', model: App::Negotiation.model_name.human)
+      elsif params[:app_negotiation][:active] == 'true'
+        flash[:success] = t('views.app.negotiations.flash.unhide', model: App::Negotiation.model_name.human)
+      else
       flash[:success] = t('views.app.general.flash.update_f', model: App::Negotiation.model_name.human)
+      end
       redirect_to app_negotiation_url(@app_negotiation)
     else
       render :edit, status: :unprocessable_entity
@@ -100,7 +107,7 @@ class App::NegotiationsController < ApplicationController
       null_company = OpenStruct.new(id: -1, name: t('activerecord.blank_entries.company'))
 
       @status = [null_status] + App::StatusNegotiation.by_client(get_client_id).order(:name)
-      @vendors = [null_vendor] + App::Vendor.by_client(get_client_id).joins(:negotiations).order(:name).distinct
+      @vendors = [null_vendor] + App::Vendor.by_client(get_client_id).order(:name).distinct
       @companies = [null_company] + App::Company.by_client(get_client_id).order(:name)
     end
 
@@ -124,5 +131,11 @@ class App::NegotiationsController < ApplicationController
         @counters << [App::StatusNegotiation.find(status_id), app_negotiations.where(status_id: status_id).count]
       end
       
+    end
+
+    def set_content_for_form
+      @vendors = App::Vendor.by_client(get_client_id).order(:name)
+      @status = App::StatusNegotiation.by_client(get_client_id).order(:name)
+      @companies = App::Company.by_client(get_client_id).order(:name)
     end
 end

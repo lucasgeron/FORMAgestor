@@ -19,10 +19,9 @@
     <%# END OF SEARCH INPUT%>
 
     <%# STATUS NEGOTIATIONS INPUT %>
-    <% if @status.count > 1 %>
       <div class="bg-gray-100 dark:bg-gray-900 py-2 px-3 space-y-1 rounded-lg text-sm">
+         <p class="text-center  text-gray-600 font-medium "><%= App::StatusNegotiation.model_name.human(count:2) %></p>
         <%= button_tag t('views.app.general.select_all_m'), type: "button", class: "w-full bg-gray-200 dark:bg-gray-800 hover:bg-blue-600 hover:text-white dark:hover:bg-blue-600 p-1 rounded-lg text-sm", data: { action: "search#selectAll search#submit" } if @status.any?%>
-
         <%= form.collection_check_boxes  :status_ids, @status, :id, :name, include_hidden: false do |status| %>
           <div class="mt-0 flex justify-between items-center">
             <div class="truncate">
@@ -36,12 +35,11 @@
           </div>
         <% end %>
       </div>
-    <% end %>
     <%# END OF STATUS NEGOTIATIONS INPUT%>
 
     <%# VENDOR NEGOTIATIONS INPUT %>
-    <% if @vendors.count > 1 %>
       <div class="bg-gray-100 dark:bg-gray-900 py-2 px-3 space-y-1 rounded-lg text-sm">
+        <p class="text-center  text-gray-600 font-medium "><%= App::Vendor.model_name.human(count:2) %></p>
         <%= button_tag t('views.app.general.select_all_m'), type: "button", class: "w-full bg-gray-200 dark:bg-gray-800 hover:bg-blue-600 hover:text-white dark:hover:bg-blue-600 p-1 rounded-lg text-sm", data: { action: "search#selectAll search#submit" } if @vendors.any?%>
 
         <%= form.collection_check_boxes  :vendor_ids, @vendors, :id, :name, include_hidden: false do |vendor| %>
@@ -56,14 +54,12 @@
           </div>
         <% end %>
       </div>
-    <% end %>
     <%# END OF VENDOR NEGOTIATIONS INPUT%>
 
     <%# COMPANIES NEGOTIATIONS INPUT %>
-    <% if @companies.count > 1 %>
       <div class="bg-gray-100 dark:bg-gray-900 py-2 px-3 space-y-1 rounded-lg text-sm">
+        <p class="text-center  text-gray-600 font-medium "><%= App::Company.model_name.human(count:2) %></p>
         <%= button_tag t('views.app.general.select_all_m'), type: "button", class: "w-full bg-gray-200 dark:bg-gray-800 hover:bg-blue-600 hover:text-white dark:hover:bg-blue-600 p-1 rounded-lg text-sm", data: { action: "search#selectAll search#submit" } if @companies.any?%>
-
         <%= form.collection_check_boxes  :company_ids, @companies, :id, :name, include_hidden: false do |company| %>
           <div class="mt-0 flex justify-between items-center">
             <div class="truncate">
@@ -76,7 +72,6 @@
           </div>
         <% end %>
       </div>
-    <% end %>
     <%# END OF COMPANIES NEGOTIATIONS INPUT%>
 
   <% end %>

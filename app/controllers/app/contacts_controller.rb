@@ -1,6 +1,6 @@
 class App::ContactsController < ApplicationController
   before_action :set_app_contact, only: %i[ show edit update destroy ]
-  before_action :set_filters_for_form, only: %i[ new create edit update ]
+  before_action :set_content_for_form, only: %i[ new create edit update ]
 
   # GET /app/contacts or /app/contacts.json
   def index
@@ -99,14 +99,23 @@ class App::ContactsController < ApplicationController
       params.require(:app_contact).permit(:name, :phone, :instagram, :informant, :committee, :negotiation_id)
     end
 
-    def set_filters_for_form
+    def set_content_for_form
+
       @institutions = App::Institution.by_client(get_client_id).order(:abreviation)
+      
       if @app_contact.present? && @app_contact.negotiation.present?
         @courses = App::Course.by_client(get_client_id).by_institution(@app_contact.negotiation.course.institution_id).order(:name)
         @negotiations = App::Negotiation.by_client(get_client_id).by_course(@app_contact.negotiation.course_id)
+      elsif params[:app_contact].present? && params[:app_contact][:institution_id].present?
+        @courses = App::Course.by_client(get_client_id).by_institution(params[:app_contact][:institution_id]).order(:name)
+        if params[:app_contact][:course_id].present?
+          @negotiations = App::Negotiation.by_client(get_client_id).by_course(params[:app_contact][:course_id])
+        else
+          @negotiations = App::Negotiation.none
+        end
       else
-        @courses = []
-        @negotiations = []
+        @courses =  App::Course.none
+        @negotiations =  App::Negotiation.none
       end
       
     end

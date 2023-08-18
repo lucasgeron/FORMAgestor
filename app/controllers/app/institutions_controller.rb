@@ -3,6 +3,7 @@ class App::InstitutionsController < ApplicationController
   before_action :check_client_id, only: %i[ show edit update destroy]
   before_action :set_app_institution, only: %i[ show edit update destroy destroy_attachment ]
   before_action :set_content_for_sidebar, only: %i[ index search ]
+  before_action :set_content_for_form, only: %i[ new create edit update ]
 
   # GET /app/institutions or /app/institutions.json
   def index
@@ -121,5 +122,10 @@ class App::InstitutionsController < ApplicationController
   def set_variables_for_sidebar(collection)
     @city_ids = collection.pluck(:city_id).uniq
   end
+
+  def set_content_for_form
+    @cities = App::City.by_client(get_client_id).order(:name)
+  end
+ 
 
 end

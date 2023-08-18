@@ -5,12 +5,12 @@
 
   <div class="grid grid-cols-1 sm:grid-cols-3 gap-4">
 
-    <div class="col-span-2">
-      <%= form.label :name %>
+    <div class="md:col-span-2">
+      <%= form.label :name, class:'required' %>
       <%= form.text_field :name, class: "form-input", placeholder: t('activerecord.placeholders.app/status.name') %>
     </div>
 
-    <div class=" group">
+    <div class=" group mb-2">
       <%= form.label :active, class:'pointer-events-none' %>
       <%= form.check_box :active, class: "hidden peer" %>
       <%= form.label :active, class:'form-checkbox w-full  dark:bg-gray-900
@@ -47,61 +47,63 @@
       <%= form.collection_select :style, @styles, :first, :last, {}, {class: "form-input"} %>
     </div>
 
-
     <div class="">
       <%= form.label :color %>
       <%= form.select :color, [], {selected: 'amber'}, {class: "form-input"} do %>
 
         <option class="text-black dark:text-white" value="default" <%= 'selected' if @app_status_negotiation.color == 'default'  %>  >
-          <%= t("activerecord.options.general.COLORS.default") %> 
+          <%= t("activerecord.options.general.COLORS.default") %>
         </option>
         <option class="text-red-600 " value="red" <%= 'selected' if @app_status_negotiation.color == 'red'  %> >
-          <%= t("activerecord.options.general.COLORS.red") %> 
+          <%= t("activerecord.options.general.COLORS.red") %>
         </option>
         <option class="text-amber-600" value="amber" <%= 'selected' if @app_status_negotiation.color == 'amber'  %> >
-          <%= t("activerecord.options.general.COLORS.amber")  %> 
+          <%= t("activerecord.options.general.COLORS.amber")  %>
         </option>
         <option class="text-orange-600" value="orange" <%= 'selected' if @app_status_negotiation.color == 'orange'  %> >
-          <%= t("activerecord.options.general.COLORS.orange") %> 
+          <%= t("activerecord.options.general.COLORS.orange") %>
         </option>
         <option class="text-yellow-600" value="yellow" <%= 'selected' if @app_status_negotiation.color == 'yellow'  %> >
-          <%= t("activerecord.options.general.COLORS.yellow") %> 
+          <%= t("activerecord.options.general.COLORS.yellow") %>
         </option>
         <option class="text-lime-600" value="lime" <%= 'selected' if @app_status_negotiation.color == 'lime'  %> >
-          <%= t("activerecord.options.general.COLORS.lime") %> 
+          <%= t("activerecord.options.general.COLORS.lime") %>
         </option>
         <option class="text-green-600" value="green" <%= 'selected' if @app_status_negotiation.color == 'green'  %> >
-          <%= t("activerecord.options.general.COLORS.green") %> 
+          <%= t("activerecord.options.general.COLORS.green") %>
         </option>
         <option class="text-emerald-600" value="emerald" <%= 'selected' if @app_status_negotiation.color == 'emerald'  %> >
-          <%= t("activerecord.options.general.COLORS.emerald") %> 
+          <%= t("activerecord.options.general.COLORS.emerald") %>
         </option>
         <option class="text-teal-600" value="teal" <%= 'selected' if @app_status_negotiation.color == 'teal'  %> >
-          <%= t("activerecord.options.general.COLORS.teal") %> 
+          <%= t("activerecord.options.general.COLORS.teal") %>
         </option>
         <option class="text-cyan-600" value="cyan" <%= 'selected' if @app_status_negotiation.color == 'cyan'  %> >
-          <%= t("activerecord.options.general.COLORS.cyan") %> 
+          <%= t("activerecord.options.general.COLORS.cyan") %>
         </option>
         <option class="text-sky-600" value="sky" <%= 'selected' if @app_status_negotiation.color == 'sky'  %> >
-          <%= t("activerecord.options.general.COLORS.sky") %> 
+          <%= t("activerecord.options.general.COLORS.sky") %>
+        </option>
+        <option class="text-blue-600" value="blue" <%= 'selected' if @app_status_negotiation.color == 'blue'  %> >
+          <%= t("activerecord.options.general.COLORS.blue") %>
         </option>
         <option class="text-indigo-600" value="indigo" <%= 'selected' if @app_status_negotiation.color == 'indigo'  %> >
-          <%= t("activerecord.options.general.COLORS.indigo") %> 
+          <%= t("activerecord.options.general.COLORS.indigo") %>
         </option>
         <option class="text-violet-600" value="violet" <%= 'selected' if @app_status_negotiation.color == 'violet'  %> >
-          <%= t("activerecord.options.general.COLORS.violet") %> 
+          <%= t("activerecord.options.general.COLORS.violet") %>
         </option>
         <option class="text-purple-600" value="purple" <%= 'selected' if @app_status_negotiation.color == 'purple'  %> >
-          <%= t("activerecord.options.general.COLORS.purple") %> 
+          <%= t("activerecord.options.general.COLORS.purple") %>
         </option>
         <option class="text-fuchsia-600" value="fuchsia" <%= 'selected' if @app_status_negotiation.color == 'fuchsia'  %> >
-          <%= t("activerecord.options.general.COLORS.fuchsia") %> 
+          <%= t("activerecord.options.general.COLORS.fuchsia") %>
         </option>
         <option class="text-pink-600" value="pink" <%= 'selected' if @app_status_negotiation.color == 'pink'  %> >
-          <%= t("activerecord.options.general.COLORS.pink") %> 
+          <%= t("activerecord.options.general.COLORS.pink") %>
         </option>
         <option class="text-rose-600" value="rose" <%= 'selected' if @app_status_negotiation.color == 'rose'  %> >
-          <%= t("activerecord.options.general.COLORS.rose") %> 
+          <%= t("activerecord.options.general.COLORS.rose") %>
         </option>
 
       <%end%>

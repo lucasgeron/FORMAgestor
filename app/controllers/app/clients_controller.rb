@@ -27,6 +27,7 @@
       @app_client = App::Client.new(client_params)
 
         if @app_client.save
+          ClientSetupJob.perform_now(@app_client)
           flash[:success] = t('views.app.general.flash.create_m', model: App::Client.model_name.human)
           redirect_to app_client_url(@app_client)
         else

@@ -4,7 +4,7 @@
   <%end%>
 <% end %>
 
-<% provide :page_title, "#{t('views.app.general.new')} #{App::StatusInteraction.model_name.human}" %>
+<% provide :page_title, "#{t('views.app.general.new')} #{App::StatusInteraction.model_name.human} (#{App::Interaction.model_name.human})" %>
 
 <% content_for :page_content do %>
   <%= render "form", app_status_interaction: @app_status_interaction %>

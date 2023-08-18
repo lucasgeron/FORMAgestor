@@ -9,8 +9,24 @@
 
   <%= button_to app_status_interaction_path(@app_status_interaction), method: :delete, data: { turbo: false },onclick: "return confirm('#{t('views.app.general.delete_confirm')}')", class: "btn-delete flex-none" do %>
     <%= icon('fa-solid','trash-can', class:'-mx-1')%>
-  <%end%>
+  <%end  unless @app_status_interaction.has_dependency?%>
 <% end %>
+
+
+<% content_for :ctas_primary do %>
+
+  <%= link_to new_app_interaction_path(status_id: @app_status_interaction.id), class: "btn-primary flex-none" do %>
+    <%= icon('fa-solid','plus',class:'btn-icon') %>
+    <%= App::Interaction.model_name.human %>
+  <% end %>
+
+  <%= link_to search_app_interactions_path(status_ids: [@app_status_interaction.id]), class: "btn-primary flex-none" do %>
+    <%= icon('fa-solid','list',class:'btn-icon') %>
+    <%= App::Interaction.model_name.human(count:2) %>
+  <% end %>
+
+<% end %>
+
 
 <% provide :head_title, "#{t('views.app.general.showing')} #{App::StatusInteraction.model_name.human} " %>
 <% provide :page_title, "#{t('views.app.general.showing')} #{App::StatusInteraction.model_name.human} " %>

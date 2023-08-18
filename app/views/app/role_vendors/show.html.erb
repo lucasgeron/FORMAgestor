@@ -9,7 +9,7 @@
 
   <%= button_to app_role_vendor_path(@app_role_vendor), method: :delete, data: { turbo: false },onclick: "return confirm('#{t('views.app.general.delete_confirm')}')", class: "btn-delete flex-none" do %>
     <%= icon('fa-solid','trash-can', class:'-mx-1')%>
-  <%end%>
+  <%end unless @app_role_vendor.has_dependency?%>
 <% end %>
 
 <% content_for :ctas_primary do %>

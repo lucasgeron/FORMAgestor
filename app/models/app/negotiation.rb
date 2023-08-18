@@ -6,6 +6,9 @@ class App::Negotiation < ApplicationRecord
   belongs_to :vendor, class_name: 'App::Vendor', optional: true
   belongs_to :company, class_name: 'App::Company', optional: true
   belongs_to :status, class_name: 'App::StatusNegotiation', optional: true
+ 
+  has_many :contacts, class_name: 'App::Contact'
+  has_many :interactions, class_name: 'App::Interaction'
 
 
   before_validation :calculate_period
@@ -80,6 +83,10 @@ class App::Negotiation < ApplicationRecord
 
   def period_in_words_and_calendar
     "#{self.calendar.name} - #{self.period_in_words}"
+  end
+
+  def has_dependency?
+    self.contacts.any? || self.interactions.any?
   end
 
 end

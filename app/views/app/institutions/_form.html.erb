@@ -3,8 +3,8 @@
     <% flash.now[:error] = app_institution.errors.to_a%>
   <% end %>
 
-  <div class="grid grid-cols-1 xl:grid-cols-2 gap-4">
-    <div class="">
+  <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+    <div class="col-span-2">
       <%= form.label :name, class:'required' %>
       <%= form.text_field :name, class: "form-input", placeholder: t('activerecord.placeholders.app/institution.name') %>
     </div>
@@ -16,22 +16,18 @@
 
     <div class="">
       <%= form.label :city_id, class:'required' %>
-
-      <% cities = App::City.by_client(get_client_id)%>
-      <% if cities.present? %>
-        <div class="relative">
-          <div class="form-input-icon"><%= icon('fa-solid','map-location-dot', class:'') %>  </div>
-          <%= form.collection_select :city_id, cities, :id, :name_and_uf, {include_blank: false}, {class: "form-input with-icon"} %>
-        </div>
-      <% else %>
-        <div class="detail-input">
-          <%= link_to new_app_city_path, class: "btn-primary flex-none" do %>
-            <%= icon('fa-solid','plus',class:'btn-icon') %>
-            <%= App::City.model_name.human %>
+       <div class="flex justify-between space-x-2 items-center ">
+        <div class="relative flex-grow">
+          <div class="form-input-icon pt-2"><%= icon('fa-solid','map-location-dot', class:'') %>  </div>
+          <%= form.collection_select :city_id, @cities, :id, :name_and_uf, {include_blank: t('activerecord.blank_entries.general.not_informed')}, {class: "form-input with-icon"} %>
+         </div>
+          <%= link_to new_app_city_path, class: "btn-primary flex-none mt-2 h-10 pt-2.5" do %>
+            <%= icon('fa-solid','plus',class:'-mr-2 2xl:-mr-0 btn-icon') %>
+            <span class="hidden 2xl:inline"><%= App::City.model_name.human %></span>
           <% end %>
         </div>
-      <% end %>
     </div>
+    
 
     <div class="" data-controller="reveal input" data-reveal-hidden-class="hidden">
       <%= form.label :image, class:'inline-flex items-center gap-1 relative' do %>

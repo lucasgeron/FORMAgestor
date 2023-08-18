@@ -2,7 +2,7 @@
    <%= link_to search_app_classes_path(institution_id: @app_institution), class: "btn-primary flex-none" do %>
     <%= icon('fa-solid','users-rectangle',class:'btn-icon') %>
     <%= t('controller.app/class.other') %>
-  <% end %>
+  <% end if @app_institution.courses.any? %>
    <%= link_to new_app_course_path(institution_id: @app_institution), class: "btn-primary flex-none" do %>
     <%= icon('fa-solid','plus',class:'btn-icon') %>
     <%= App::Course.model_name.human %>

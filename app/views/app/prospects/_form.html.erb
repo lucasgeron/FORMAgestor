@@ -8,9 +8,15 @@
 
       <div class="">
         <%= form.label :vendor_id %>
-        <div class="relative">
-          <div class="form-input-icon"><%= icon('fa-solid','user', class:'') %>  </div>
-          <%= form.collection_select :vendor_id, App::Vendor.by_client(get_client_id), :id, :name, {include_blank: t('activerecord.options.app/prospect.vendor_id.none')}, {class: "form-input with-icon"} %>
+        <div class="flex justify-between space-x-2 items-center ">
+          <div class="relative flex-grow">
+            <div class="form-input-icon pt-2"><%= icon('fa-solid','user', class:'') %>  </div>
+            <%= form.collection_select :vendor_id, App::Vendor.by_client(get_client_id), :id, :name, {include_blank: t('activerecord.blank_entries.general.not_assigned')}, {class: "form-input with-icon"} %>
+          </div>
+          <%= link_to new_app_vendor_path, class: "btn-primary flex-none mt-2 h-10 pt-2.5" do %>
+            <%= icon('fa-solid','plus',class:'-mr-2 2xl:-mr-0 btn-icon') %>
+            <span class="hidden 2xl:inline"><%= App::Vendor.model_name.human %></span>
+          <% end %>
         </div>
       </div>
 
@@ -31,7 +37,7 @@
 
     <%end%>
 
-    <div class="grid grid-cols-1 lg:grid-cols-3 gap-4">
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
 
       <div class="">
         <%= form.label :name, class:'required' %>

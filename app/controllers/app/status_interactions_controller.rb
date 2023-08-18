@@ -27,7 +27,7 @@ class App::StatusInteractionsController < ApplicationController
     set_client_id(@app_status_interaction)
 
     if @app_status_interaction.save
-      flash[:success] = t('views.app.general.flash.create_f', model: App::StatusInteraction.model_name.human)
+      flash[:success] = t('views.app.general.flash.create_m', model: App::StatusInteraction.model_name.human)
       redirect_to app_status_interaction_url(@app_status_interaction)
     else
         render :new, status: :unprocessable_entity 
@@ -37,7 +37,7 @@ class App::StatusInteractionsController < ApplicationController
   # PATCH/PUT /app/status_interactions/1 or /app/status_interactions/1.json
   def update
     if @app_status_interaction.update(app_status_interaction_params)
-      flash[:success] = t('views.app.general.flash.update_f', model: App::StatusInteraction.model_name.human)
+      flash[:success] = t('views.app.general.flash.update_m', model: App::StatusInteraction.model_name.human)
       redirect_to app_status_interaction_url(@app_status_interaction)
     else
       render :edit, status: :unprocessable_entity
@@ -47,11 +47,11 @@ class App::StatusInteractionsController < ApplicationController
   # DELETE /app/status_interactions/1 or /app/status_interactions/1.json
   def destroy
     if @app_status_interaction.has_dependency?
-      flash[:error] = t('views.app.general.flash.destroy_failed_f', model: App::StatusInteraction.model_name.human)
+      flash[:error] = t('views.app.general.flash.destroy_failed_m', model: App::StatusInteraction.model_name.human)
       redirect_to @app_status_interaction
     else
       @app_status_interaction.destroy
-      flash[:success] = t('views.app.general.flash.destroy_f', model: App::StatusInteraction.model_name.human)
+      flash[:success] = t('views.app.general.flash.destroy_m', model: App::StatusInteraction.model_name.human)
       redirect_to app_status_interactions_path
     end
   end

@@ -28,7 +28,7 @@ class App::ClassesController < ApplicationController
     end
 
     def set_contant_for_sidebar
-      @cities = App::City.by_client(get_client_id).joins(:institutions).distinct.order(:name)
+      @cities = App::City.by_client(get_client_id).joins(institutions: :courses).distinct.order(:name)
       @institutions = App::Institution.by_client(get_client_id).joins(:courses).order(:abreviation).distinct
       @ae = @app_institution.city.id if @app_institution.present? # area expanded for city
     end

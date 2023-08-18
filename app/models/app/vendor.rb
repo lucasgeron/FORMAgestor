@@ -10,7 +10,7 @@ class App::Vendor < ApplicationRecord
 
   # Validations
   validates :client_id, presence: true
-  validates :name, presence: true
+  validates :name, presence: true, uniqueness: { scope: :client_id }
   validates :email, format: { with: /\A([^@\s]+)@((?:[-a-z0-9]+\.)+[a-z]{2,})\z/i}, allow_blank: true
   
   # Scopes

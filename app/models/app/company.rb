@@ -1,6 +1,10 @@
 class App::Company < ApplicationRecord
   belongs_to :client, class_name:'App::Client'
   has_many :negotiations, class_name:'App::Negotiation'  
+
+  # Validations
+  validates :name, presence: true, uniqueness: { scope: :client_id }
+
   # Scopes
   include App::Scopes
   scope :search, -> (search) { where("LOWER(UNACCENT(name)) LIKE LOWER(UNACCENT(:search))", search: "%#{search}%") }
@@ -15,8 +19,7 @@ class App::Company < ApplicationRecord
 
   # Methods
   def has_dependency?
-    false
+    self.negotiations.any?
   end
-
 
 end

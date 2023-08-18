@@ -1,6 +1,6 @@
 class App::InteractionsController < ApplicationController
   before_action :set_app_interaction, only: %i[ show edit update destroy ]
-  before_action :set_filters_for_form, only: %i[ new create edit update ]
+  before_action :set_content_for_form, only: %i[ new create edit update ]
   before_action :set_content_for_sidebar, only: %i[ index search ]
 
   # GET /app/interactions or /app/interactions.json
@@ -28,7 +28,7 @@ class App::InteractionsController < ApplicationController
 
   # GET /app/interactions/new
   def new
-    @app_interaction = App::Interaction.new
+    @app_interaction = App::Interaction.new(negotiation_id: params[:negotiation_id], status_id: params[:status_id])
   end
 
   # GET /app/interactions/1/edit
@@ -109,16 +109,31 @@ class App::InteractionsController < ApplicationController
       params.require(:app_interaction).permit(:client_id, :vendor_id, :negotiation_id, :status_id, :description)
     end
 
-    def set_filters_for_form
+    def set_content_for_form
+
+      @vendors = App::Vendor.by_client(get_client_id).order(:name)
+      @status = App::StatusInteraction.by_client(get_client_id).order(:name)
+
       @institutions = App::Institution.by_client(get_client_id).order(:abreviation)
+      
       if @app_interaction.present? && @app_interaction.negotiation.present?
         @courses = App::Course.by_client(get_client_id).by_institution(@app_interaction.negotiation.course.institution_id).order(:name)
         @negotiations = App::Negotiation.by_client(get_client_id).by_course(@app_interaction.negotiation.course_id)
+      elsif params[:app_interaction].present? && params[:app_interaction][:institution_id].present?
+        @courses = App::Course.by_client(get_client_id).by_institution(params[:app_interaction][:institution_id]).order(:name)
+        if params[:app_interaction][:course_id].present?
+          @negotiations = App::Negotiation.by_client(get_client_id).by_course(params[:app_interaction][:course_id])
+        else
+          @negotiations = App::Negotiation.none
+        end
       else
-        @courses = []
-        @negotiations = []
+        @courses =  App::Course.none
+        @negotiations =  App::Negotiation.none
       end
+      
     end
+
+
 
     def set_content_for_sidebar
       @status = App::StatusInteraction.by_client(get_client_id).order(:name)

@@ -13,7 +13,7 @@ class App::Client < ApplicationRecord
   before_validation :generate_slug
   
   # Validations
-  validates :name, presence: true
+  validates :name, presence: true, uniqueness: true
   validates :cnpj, presence: true
   validates :slug, uniqueness: true
 

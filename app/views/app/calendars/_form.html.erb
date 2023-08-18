@@ -3,7 +3,7 @@
     <% flash.now[:error] = app_calendar.errors.to_a%>
   <% end %>
 
-  <div class="grid grid-cols-1 sm:grid-cols-3 gap-4">
+  <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
 
     <div class="">
       <%= form.label :year , class:"required" %>
@@ -15,7 +15,7 @@
        <%= form.collection_select :semester, @semesters, :to_i, :to_s, {}, {class: "form-input"} %>
     </div>
 
-    <div class=" group">
+    <div class="group mb-2">
       <%= form.label :active, class:'pointer-events-none' %>
       <%= form.check_box :active, class: "hidden peer" %>
       <%= form.label :active, class:'form-checkbox w-full  dark:bg-gray-900
@@ -26,7 +26,6 @@
       <div class="text-base peer-text hidden peer-checked:block "> <%= icon('fa-solid','check')%> <%= t('activerecord.options.app/calendar.active.true')%></div>
       <div class="text-base peer-text block peer-checked:hidden "> <%= icon('fa-solid','xmark')%> <%= t('activerecord.options.app/calendar.active.false')%></div>
     </div>
-   
    
   </div>
 

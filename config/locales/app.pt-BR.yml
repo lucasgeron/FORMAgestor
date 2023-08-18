@@ -16,6 +16,7 @@ pt-BR:
         empty_input_file: Selecione um Arquivo
         search: Pesquisar
         delete_confirm: 'Tem certeza que deseja excluir este registro?'
+        hide_confirm: 'Tem certeza que deseja ocultar este registro?'
         flash:
           switch_client: 'Devido as permissões, é necessário selecione o registro novamente'
           unauthorized: 'Você não possui permissão para acessar esta página'
@@ -76,4 +77,7 @@ pt-BR:
           has_no_entry: Não existem <span class='font-medium'> <i class="fa-solid fa-receipt"></i> Prospecções </span> cadastradas. 
         flash:
           client_not_found: O link que você tentou acessar é inválido.
-      
+      negotiations:
+        flash:
+          hide: Negociação ocultada com sucesso
+          unhide: Negociação desocultada com sucesso

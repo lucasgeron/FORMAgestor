@@ -28,7 +28,6 @@ class App::User < ApplicationRecord
     self.default_per_page 
   end
 
-
   # Scopes
   include App::Scopes
   # scope :only_active, -> { where(active: true) }

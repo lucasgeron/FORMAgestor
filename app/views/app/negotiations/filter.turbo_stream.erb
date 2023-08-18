@@ -1,4 +1,4 @@
 <%= turbo_stream.update @target do %>
-    <option value=""><%= t('activerecord.options.general.select.default') %></option>
+    <option value=""><%= t('activerecord.blank_entries.general.not_informed') %></option>
     <%= options_from_collection_for_select(@negotiations, :id, :period_in_words_and_calendar) %>
 <% end %>

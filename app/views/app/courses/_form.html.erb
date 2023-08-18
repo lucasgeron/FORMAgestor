@@ -1,29 +1,23 @@
 <%= form_with(model: app_course, class: "contents") do |form| %>
   <% if app_course.errors.any? %>
-   <% flash.now[:error] = app_course.errors.to_a %>
+    <% flash.now[:error] = app_course.errors.to_a %>
   <% end %>
 
-  <div class="grid grid-cols-1 xl:grid-cols-2 gap-4">
+  <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
 
-    <div class="col-span-2">
+    <div class="md:col-span-2 lg:col-span-1">
       <%= form.label :institution_id, class:'required' %>
-
-      <% institutions = App::Institution.by_client(get_client_id)%>
-      <% if institutions.present? %>
-        <div class="relative">
-          <div class="form-input-icon"><%= icon('fa-solid','building-columns', class:'') %>  </div>
-          <%= form.collection_select :institution_id, institutions, :id, :abreviation_and_city, {include_blank: false}, {class: "form-input with-icon"} %>
+      <div class="flex justify-between space-x-2 items-center ">
+        <div class="relative flex-grow">
+          <div class="form-input-icon pt-2"><%= icon('fa-solid','building-columns', class:'') %>  </div>
+          <%= form.collection_select :institution_id, @institutions, :id, :abreviation_and_city, {include_blank: t('activerecord.blank_entries.general.not_informed')}, {class: "form-input with-icon"} %>
         </div>
-      <% else %>
-        <div class="detail-input">
-          <%= link_to new_app_institution_path, class: "btn-primary flex-none" do %>
-            <%= icon('fa-solid','plus',class:'btn-icon') %>
-            <%= App::Institution.model_name.human %>
-          <% end %>
-        </div>
-      <% end %>
+        <%= link_to new_app_institution_path, class: "btn-primary flex-none mt-2 h-10 pt-2.5" do %>
+          <%= icon('fa-solid','plus',class:'-mr-2 2xl:-mr-0 btn-icon') %>
+          <span class="hidden 2xl:inline"> <%= App::Institution.model_name.human %> </span>
+        <% end %>
+      </div>
     </div>
-
 
     <div class="">
       <%= form.label :name,class:'required' %>
@@ -35,11 +29,8 @@
       <%= form.text_field :duration, class: "form-input", placeholder: t('activerecord.placeholders.app/course.duration') , onkeypress:"return event.charCode >= 48 && event.charCode <= 57"%>
     </div>
 
-   
+  </div>
 
-    </div>
-
-  
   <div class="mt-4 inline-flex w-full justify-end">
     <%= form.submit class: "btn-primary" %>
   </div>

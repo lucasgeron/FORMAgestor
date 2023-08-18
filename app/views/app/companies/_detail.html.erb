@@ -1,15 +1,15 @@
 <div class="space-y-4">
 
   <%# DETAILS %>
-  <div class="grid grid-cols-1 xl:grid-cols-3 gap-4">
+  <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
 
-    <div class="col-span-2">
-      <p class=""><%= App::Calendar.human_attribute_name('name') %></p>
+    <div class="md:col-span-2">
+      <p class=""><%= App::Company.human_attribute_name('name') %></p>
       <p class="detail-input "><%= app_company.name %></p>
     </div>
 
     <div class="">
-      <p class=""><%= App::Calendar.human_attribute_name('active') %></p>
+      <p class=""><%= App::Company.human_attribute_name('active') %></p>
 
       <% if app_company.active %>
         <div class="text-base detail-input dark:bg-blue-600 bg-blue-600 text-white text-center rounded-lg"> <%= icon('fa-solid','check')%> <%= t('activerecord.options.app/calendar.active.true')%></div>

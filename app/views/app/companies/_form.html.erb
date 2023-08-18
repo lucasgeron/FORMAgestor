@@ -3,25 +3,26 @@
     <% flash.now[:error] = app_company.errors.to_a%>
   <% end %>
 
-  <div class="grid grid-cols-1 sm:grid-cols-3 gap-4">
+  <div class="grid grid-cols-1 md:grid-cols-3 gap-4 ">
 
-    <div class="col-span-2">
+    <div class="md:col-span-2">
       <%= form.label :name, class:"required" %>
       <%= form.text_field :name, class: "form-input", placeholder: t('activerecord.placeholders.app/company.name') %>
     </div>
 
-    <div class="group">
+    <div class="group mb-2">
       <%= form.label :active, class:'pointer-events-none' %>
       <%= form.check_box :active, class: "hidden peer" %>
       <%= form.label :active, class:'form-checkbox w-full  dark:bg-gray-900
-      group-hover:bg-gray-100        group-hover:peer-checked:bg-blue-700  
-      dark:group-hover:bg-gray-950   dark:group-hover:peer-checked:bg-blue-700' do %>
-      <% end %>
+        group-hover:bg-gray-100        group-hover:peer-checked:bg-blue-700  
+        dark:group-hover:bg-gray-950   dark:group-hover:peer-checked:bg-blue-700' %>
 
       <div class="text-base peer-text hidden peer-checked:block "> <%= icon('fa-solid','check')%> <%= t('activerecord.options.app/calendar.active.true')%></div>
       <div class="text-base peer-text block peer-checked:hidden "> <%= icon('fa-solid','xmark')%> <%= t('activerecord.options.app/calendar.active.false')%></div>
     </div>
+  
   </div>
+
 
   <div class="mt-4 inline-flex w-full justify-end">
     <%= form.submit class: "btn-primary" %>

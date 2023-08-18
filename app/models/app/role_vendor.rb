@@ -2,6 +2,9 @@ class App::RoleVendor < ApplicationRecord
   belongs_to :client, class_name: 'App::Client'
   has_many :vendors, class_name: 'App::Vendor', foreign_key: 'role_id'
 
+  # Validations
+  validates :name, presence: true, uniqueness: { scope: :client_id }
+  
 
    # Scope
    include App::Scopes

@@ -108,7 +108,7 @@ pt-BR:
         name: Nome
         phone: Telefone
         email: Email
-        role: Cargo
+        role_id: Cargo
         city_ids: Cidades Atendidas
       contactform:
         email: Teste OK
@@ -170,8 +170,10 @@ pt-BR:
       app/interaction:
         institution_id: Instituição
         course_id: Curso
-        negotiation_id: Turma
-        vendor_id: Representante
+        negotiation_id: Turma #for label
+        negotiation: Turma #for validation
+        vendor_id: Representante # for label
+        vendor: Representante # for validation
         status: Status
         description: Descrição
       app/role_vendor:
@@ -181,6 +183,9 @@ pt-BR:
 
 
     blank_entries:
+      general:
+        not_informed: Não Informado
+        not_assigned: Não Associado
       vendor: Não Associado
       company: Não Associada
       status_negotiation: Não Mapeado
@@ -191,6 +196,7 @@ pt-BR:
       email: Não Informado
       phone: Não Informado
       role: Não Informado
+      city: Não Informado
       
 
     placeholders:
@@ -221,7 +227,7 @@ pt-BR:
         reference: Referência
       app/vendor:
         name: Nome Completo
-        role: Cargo
+        role_id: Cargo
         phone: DDD + Telefone
         email: Email
       app/company:
@@ -259,6 +265,7 @@ pt-BR:
           teal: Verde-Azulado
           cyan: Ciano
           sky: Céu
+          blue: Azul
           indigo: Indigo
           violet: Violeta
           purple: Roxo

@@ -7,9 +7,15 @@
     <%= icon('fa-solid','pen-to-square', class:'-mx-1')%>
   <%end%>
 
-  <%= button_to app_negotiation_path(@app_negotiation), method: :delete, data: { turbo: false },onclick: "return confirm('#{t('views.app.general.delete_confirm')}')", class: "btn-delete flex-none" do %>
-    <%= icon('fa-solid','trash-can', class:'-mx-1')%>
-  <%end%>
+  <%= button_to app_negotiation_path(@app_negotiation), method: :patch, class: "btn-delete  flex-none", params: { app_negotiation: { active: false } } ,onclick: "return confirm('#{t('views.app.general.hide_confirm')}')" do %>
+    <%= icon('fa-solid','eye', class:'-mx-1')%>
+  <% end if @app_negotiation.active %>
+
+  <%= button_to app_negotiation_path(@app_negotiation), method: :patch, class: "btn-secondary  flex-none", params: { app_negotiation: { active: true } } do %>
+    <%= icon('fa-solid','eye-slash', class:'-mx-1')%>
+  <% end if !@app_negotiation.active %>
+
+
 <% end %>
 
 <% provide :head_title, "#{t('views.app.general.showing')} #{App::Negotiation.model_name.human} " %>

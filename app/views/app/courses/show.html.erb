@@ -10,7 +10,7 @@
 
   <%= button_to app_course_path(@app_course),  method: :delete, data: { turbo: false },onclick: "return confirm('#{t('views.app.general.delete_confirm')}')", class: "btn-delete flex-none" do %>
     <%= icon('fa-solid','trash-can', class:'-mx-1')%>
-  <%end%>
+  <%end unless @app_course.has_dependency?%>
 
 <% end %>
 

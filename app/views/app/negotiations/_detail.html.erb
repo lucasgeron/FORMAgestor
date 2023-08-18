@@ -1,8 +1,8 @@
 <div class="space-y-4">
 
-  <div class="grid grid-cols-1 xl:grid-cols-3 gap-4">
+  <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
 
-    <div class="">
+    <div class="md:col-span-2 lg:col-span-1">
       <p class=""><%= App::Course.human_attribute_name('institution') %></p>
       <div class="relative">
         <%= link_to app_negotiation.course.institution, class:'detail-input-icon' do %>
@@ -29,7 +29,7 @@
 
   </div>
 
-  <div class="grid grid-cols-1 xl:grid-cols-4 gap-4">
+  <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
 
     <div class="">
       <p class=""><%= App::Negotiation.human_attribute_name('reference') %></p>
@@ -63,32 +63,48 @@
           </div>
           <p class="detail-input with-icon"><%= app_negotiation.status.name %></p>
         </div>
-        <% else %>
-          <div class="relative text-gray-400 dark:text-gray-400">
-            <div class='detail-input-icon hover:text-inherit'>
-              <%= icon('fa-regular', 'circle', class:'')%>
-            </div>
+      <% else %>
+        <div class="relative text-gray-400 dark:text-gray-400">
+          <div class='detail-input-icon hover:text-inherit'>
+            <%= icon('fa-regular', 'circle', class:'')%>
+          </div>
           <p class="detail-input with-icon"><%= t('activerecord.blank_entries.status_negotiation') %></p>
         </div>
-        <% end %>
-      </div>
+      <% end %>
+    </div>
 
-      <div class="">
-        <p class=""><%= App::Negotiation.human_attribute_name('company_id') %></p>
-        <div class="relative">
-          <% if app_negotiation.company  %>
-            <%= link_to app_negotiation.company, class:'detail-input-icon' do %>
-              <%= icon('fa-solid', 'building', class:'')%>
-            <% end %>
-          <%else %>
-            <div class="detail-input-icon hover:text-inherit">
-              <%= icon('fa-solid', 'building', class:'')%>
-            </div>
+    <div class="">
+      <p class=""><%= App::Negotiation.human_attribute_name('company_id') %></p>
+      <div class="relative">
+        <% if app_negotiation.company  %>
+          <%= link_to app_negotiation.company, class:'detail-input-icon' do %>
+            <%= icon('fa-solid', 'building', class:'')%>
           <% end %>
-          <p class="detail-input with-icon"><%= app_negotiation.company ? app_negotiation.company.name : t('activerecord.blank_entries.company') %></p>
-        </div>
+        <%else %>
+          <div class="detail-input-icon hover:text-inherit">
+            <%= icon('fa-solid', 'building', class:'')%>
+          </div>
+        <% end %>
+        <p class="detail-input with-icon"><%= app_negotiation.company ? app_negotiation.company.name : t('activerecord.blank_entries.company') %></p>
       </div>
-
     </div>
 
   </div>
+
+  <%# CONTACTS %>
+  <% if app_negotiation.contacts.any? %>
+    <p class="font-bold text-2xl"> <%= App::Contact.model_name.human(count:2) %> </p>
+    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-3 2xl:grid-cols-4 gap-4">
+      <%= render app_negotiation.contacts %>
+    </div>
+  <% end %>
+
+  <%# INTERACTIONS %>
+  <% if app_negotiation.interactions.any? %>
+    <p class="font-bold text-2xl"> <%= App::Interaction.model_name.human(count:2) %> </p>
+    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-3 2xl:grid-cols-4 gap-4">
+      <%= render app_negotiation.interactions %>
+    </div>
+  <% end %>
+
+</div>
