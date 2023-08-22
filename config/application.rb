@@ -48,6 +48,5 @@ module RailsApp
     end
     
 
-
   end
 end

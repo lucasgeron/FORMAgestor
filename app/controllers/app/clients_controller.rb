@@ -1,4 +1,4 @@
-  class App::ClientsController < ApplicationController
+class App::ClientsController < ApplicationController
     
     before_action :authenticate_admin!
     before_action :set_client, only: %i[ show edit update destroy destroy_attachment]
@@ -7,6 +7,7 @@
     def index
       collection = App::Client.all.order(:name)
       @pagy,  @app_clients = set_pagy(collection)
+      @job = params[:job_id] if params[:job_id].present?
     end
 
     # GET /clients/1 or /clients/1.json
@@ -78,6 +79,12 @@
       @pagy,  @app_clients = set_pagy(collection)
       render :index
     end
+
+  # POST /app/clients/:id/recalculate_periods
+  def recalculate_periods
+    job = NegotiationPeriodCalculatorJob.set(wait: 1.seconds).perform_later("The job has been completed successfully!")
+    redirect_to app_clients_path(job_id: job.job_id)
+  end
 
 
     private

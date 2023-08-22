@@ -15,6 +15,7 @@ class App::Client < ApplicationRecord
   # Validations
   validates :name, presence: true, uniqueness: true
   validates :cnpj, presence: true
+  validates :licenses, presence: true, numericality: { only_integer: true, greater_than: 0 }
   validates :slug, uniqueness: true
 
   # Scopes

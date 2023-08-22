@@ -37,7 +37,7 @@ gem "font-awesome-sass"
 gem "jbuilder"
 
 # Use Redis adapter to run Action Cable in production
-# gem "redis", "~> 4.0"
+gem "redis", "~> 4.0"
 
 # Use Kredis to get higher-level data types in Redis [https://github.com/rails/kredis]
 # gem "kredis"
@@ -81,6 +81,8 @@ gem 'active_storage_validations'
 # Pagy [https://github.com/ddnexus/pagy]
 gem "pagy" 
 
+# Sidekiq [https://github.com/sidekiq/sidekiq]
+gem "sidekiq", "~> 7.1"
 
 group :development, :test do
   # See https://guides.rubyonrails.org/debugging_FORMAgestorlications.html#debugging-with-the-debug-gem

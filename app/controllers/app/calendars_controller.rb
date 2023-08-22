@@ -1,5 +1,6 @@
 class App::CalendarsController < ApplicationController
   
+  
   before_action :authenticate_user_or_admin! 
   before_action :check_client_id, only: %i[ show edit update destroy]
   before_action :set_content_for_form, only: %i[ new edit create update ]
@@ -75,7 +76,6 @@ class App::CalendarsController < ApplicationController
     render :index
 
   end
-
 
   private
     # Use callbacks to share common setup or constraints between actions.

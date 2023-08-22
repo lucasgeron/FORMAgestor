@@ -38,6 +38,7 @@ Rails.application.routes.draw do
         resources :clients do
           delete :destroy_attachment, on: :member
           get :search, on: :collection
+          post :recalculate_periods, on: :collection
         end
         resources :subscribers, only: [:index]
         resources :updates 

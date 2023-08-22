@@ -42,7 +42,7 @@
     </div>
 
     <%# BIG HEADER %>
-    <div class="pt-5 pb-1 hidden xl:block sticky top-0 bg-gray-50 dark:bg-gray-900">
+    <div class="pt-5 pb-1 hidden xl:block sticky top-0 bg-gray-50 dark:bg-gray-900 z-10">
 
 
       <% if get_current_access.client.image.attached?%>
@@ -66,7 +66,7 @@
     </div>
 
     <%# SMALL HEADER %>
-    <div class="pt-6 pb-1 bg-gray-50 dark:bg-gray-900  sticky top-0 xl:hidden mx-auto">
+    <div class="pt-6 pb-1 bg-gray-50 dark:bg-gray-900  sticky top-0 xl:hidden mx-auto ">
       <div class="w-full inline-flex justify-center items-center">
         <% if get_current_access.client.image.attached?%>
           <p class="font-bold uppercase tracking-wider"><%= get_current_access.client.name %></p>
@@ -89,10 +89,10 @@
       <%= render 'app/admins/form', app_admin: current_admin if current_admin %>
     </div>
 
-    <div class="space-y-1 mb-4">       <%# -------------- %>
+    <div class="space-y-1 mb-4 ">       <%# -------------- %>
 
       <%# PROSPECÇÕES %>
-      <%= link_to app_prospects_path, class: "sidebar-link#{is_link_active?('prospects')} flex justify-between items-center" do %>
+      <%= link_to app_prospects_path, class: "sidebar-link#{is_link_active?('prospects')} flex justify-between items-center " do %>
       
         <div class="">
           <%= icon('fa-solid', 'receipt', class: "mr-1") %>
@@ -100,7 +100,7 @@
         </div>
 
         <% if  has_notification? %>
-          <%= icon('fa-solid','circle', class:'text-blue-600 animate-notify')%>
+          <%= icon('fa-solid','circle', class:'text-blue-600 animate-notify ')%>
         <% end %>
 
       <% end %>
