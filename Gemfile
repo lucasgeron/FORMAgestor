@@ -75,14 +75,12 @@ gem 'active_storage_validations'
 # Mini Magick [https://github.com/minimagick/minimagick]
 # gem "mini_magick"
 
-# Will Paginate [https://github.com/mislav/will_paginate]
-# gem 'will_paginate', '~> 4.0'
-
 # Pagy [https://github.com/ddnexus/pagy]
 gem "pagy" 
 
-# Sidekiq [https://github.com/sidekiq/sidekiq]
-gem "sidekiq", "~> 7.1"
+# AWS SDK for Ruby [https://github.com/aws/aws-sdk-ruby]
+gem "aws-sdk-s3", require: false
+
 
 group :development, :test do
   # See https://guides.rubyonrails.org/debugging_FORMAgestorlications.html#debugging-with-the-debug-gem
