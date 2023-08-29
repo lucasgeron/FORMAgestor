@@ -1,37 +1,56 @@
-<%= form_with(model: client, url: client.new_record? ? app_clients_path : app_client_path(client), class: "contents") do |form| %>
-  <% if client.errors.any? %>
-    <div id="error_explanation" class="bg-red-50 text-red-500 px-3 py-2 font-medium rounded-lg mt-3">
-      <h2><%= pluralize(client.errors.count, "error") %> prohibited this client from being saved:</h2>
+<%= form_with(model: app_client, class: "contents") do |form| %>
 
-      <ul>
-        <% client.errors.each do |error| %>
-          <li><%= error.full_message %></li>
-        <% end %>
-      </ul>
-    </div>
+  <% if app_client.errors.any? %>
+    <% flash.now[:error] = app_client.errors.to_a%>
   <% end %>
 
-  <div class="my-5">
-    <%= form.label :name %>
-    <%= form.text_field :name, class: "form-input" %>
+  <div class="grid grid-cols-1 xl:grid-cols-4 gap-4">
+
+    <div class="">
+      <%= form.label :name, class:'' %>
+      <%= form.text_field :name, class:"form-input", placeholder:" " %>
+    </div>
+
+    <div class="">
+      <%= form.label :cnpj, class:'' %>
+      <%= form.text_field :cnpj, class:"form-input", placeholder:" " %>
+    </div>
+
+    <div class="">
+      <%= form.label :licenses, class:'' %>
+      <div class="relative">
+        <div class="form-input-icon"><%= icon('fa-solid','key') %></div>
+        <%= form.text_field :licenses, class:"form-input with-icon", placeholder:" " %>
+      </div>
+    </div>
+
+    <div class="group">
+      <%= form.label :active, class:'pointer-events-none' %>
+      <%= form.check_box :active, class: "hidden peer" %>
+      <%= form.label :active, class:'form-checkbox w-full dark:bg-gray-900
+        group-hover:bg-gray-100        group-hover:peer-checked:bg-blue-700  
+        dark:group-hover:bg-gray-950   dark:group-hover:peer-checked:bg-blue-700' do %>
+      <% end %>
+
+      <div class="text-base peer-text hidden peer-checked:block "> <%= icon('fa-solid','check')%> <%= t('activerecord.options.app/client.active.true')%></div>
+      <div class="text-base peer-text block peer-checked:hidden "> <%= icon('fa-solid','xmark')%> <%= t('activerecord.options.app/client.active.false')%></div>
+    </div>
+
+  <div class="" data-controller="reveal input" data-reveal-hidden-class="hidden">
+      <%= form.label :image, class:'inline-flex items-center gap-1 relative' do %>
+        <%= form.label :image %> <%= icon('fa-solid', 'circle-info', class:'fa-xs hover:text-blue-600', data: {action:"mouseenter->reveal#show mouseleave->reveal#hide"}) %> 
+        <div data-reveal-target="item" class="py-1 px-2 bg-gray-100 dark:bg-gray-900 rounded-md absolute left-14 text-xs hidden w-max" id="file_input_help">PNG/JPG/JPEG - Max:750kb</div>
+      <%end%>
+      <%= form.label :image, class:'form-input-file truncate', data: {input_target: 'input'} do %>
+        <%= icon('fa-solid', 'image', class:'pr-2')%> <%= t('views.app.general.empty_input_file')%>
+      <%end%>
+      <%= form.file_field :image, class:'hidden' , data: {action:'input->input#update'} %>
+    </div>
+
   </div>
 
-  <div class="my-5">
-    <%= form.label :cnpj %>
-    <%= form.text_field :cnpj, class: "form-input" %>
+  <div class="mt-4 inline-flex w-full justify-end">
+    <%= form.submit class: "btn-primary" %>
   </div>
 
-  <div class="my-5">
-    <%= form.label :active %>
-    <%= form.check_box :active, class: "form-checkbox" %>
-  </div>
-
-  <div class="my-5">
-    <%= form.label :licenses %>
-    <%= form.number_field :licenses, class: "form-input" %>
-  </div>
-
-  <div class="inline">
-    <%= form.submit class: "rounded-lg py-3 px-5 bg-blue-600 text-white inline-block font-medium cursor-pointer" %>
-  </div>
 <% end %>

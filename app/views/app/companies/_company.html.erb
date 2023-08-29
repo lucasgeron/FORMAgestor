@@ -1,0 +1,50 @@
+<div id="<%= dom_id company %>" class="card group" data-aos='fade' data-controller="reveal" data-reveal-hidden-class="grid">
+
+  <div class="card-header">
+
+    <div class="card-header-info card-header-animate">
+      <p class="overflow-scroll scrollbar-hide"><%= link_to company.name, app_company_path(company), class:'card-header-title' %></p>
+      <p class="card-header-subtitle card-header-subtitle-animate">
+        <% if company.active %>
+        <%= icon('fa-solid','eye')  %> <%= t('activerecord.options.app/company.info.true') %>
+        <% else %>
+        <%= icon('fa-solid','eye-slash')  %> <%= t('activerecord.options.app/company.info.false') %>
+        
+        <% end %>
+      </p>
+    </div>
+
+    <%= button_tag class:'card-header-btn', data: { action:"click->reveal#toggle" }  do %>
+      <%= icon('fa-solid','bars', class:'fa-sm')%>
+    <%end%>
+
+  </div>
+
+  <%# CARD BODY %>
+  <% if company.active %>
+    <p class="card-tag-active"><%= icon('fa-solid','check', class:'')%> <%= t('activerecord.options.app/company.active.true')%></p>
+  <%else%>
+    <p class="card-tag-inactive"><%= icon('fa-solid','xmark', class:'')%> <%= t('activerecord.options.app/company.active.false')%> </p>
+  <%end%>
+  <%# END BODY %>
+
+  <div data-reveal-target="item" class="card-popover" data-action="mouseleave->reveal#show">
+
+    <%= link_to edit_app_company_path(company), class:'card-popover-btn-primary' do %>
+      <%= icon('fa-solid', 'pen-to-square', class:'btn-icon') %>
+      <p class=""> <%= t('views.app.general.edit')%></p>
+    <%end%>
+
+    <%= button_to app_company_path(company), method: :patch, class: "card-popover-btn-delete", params: { app_company: { active: false } } do %>
+      <%= icon('fa-solid','xmark',class:'btn-icon') %>
+      <%= t('activerecord.options.general.action.active_false') %>
+    <% end if company.active %>
+
+    <%= button_to app_company_path(company), method: :patch, class: "card-popover-btn-primary", params: { app_company: { active: true } } do %>
+      <%= icon('fa-solid','check',class:'btn-icon') %>
+      <%= t('activerecord.options.general.action.active_true') %>
+    <% end if !company.active %>
+
+  </div>
+
+</div>

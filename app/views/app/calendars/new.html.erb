@@ -1,0 +1,11 @@
+<% content_for :ctas_secondary do %>
+  <%= link_to app_calendars_path, class: "btn-secondary-gray flex-none" do %>
+    <%= icon('fa-solid','arrow-left', class:'-mx-1')%>
+  <%end%>
+<% end %>
+
+<% provide :page_title, "#{t('views.app.general.new')} #{App::Calendar.model_name.human}" %>
+
+<% content_for :page_content do %>
+  <%= render "form", app_calendar: @app_calendar %>
+<%end%>

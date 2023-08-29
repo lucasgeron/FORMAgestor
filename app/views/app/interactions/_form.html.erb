@@ -1,0 +1,99 @@
+<%= form_with(model: app_interaction, class: "contents ") do |form| %>
+  <% if app_interaction.errors.any? %>
+    <% flash.now[:error] = app_interaction.errors.to_a%>
+  <% end %>
+
+  <div class="space-y-4">
+
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-4"  data-controller='negotiations'>
+
+      <%# FILTERS  %>
+      <div class="">
+        <%= form.label :institution_id, class:'required' %>
+        <div class="flex justify-between space-x-2 items-center ">
+          <div class="relative flex-grow">
+            <div class="form-input-icon pt-2"><%= icon('fa-solid','building-columns', class:'') %>  </div>
+            <%= form.collection_select :institution_id, @institutions, :id, :abreviation_and_city, {selected: set_selected_institution(app_interaction.negotiation, params[:app_interaction]), include_blank: t('activerecord.blank_entries.general.not_informed')}, {class: "form-input with-icon", data:{action:'change->negotiations#update_courses'}} %>
+          </div>
+          <%= link_to new_app_institution_path, class: "btn-primary flex-none mt-2 h-10 pt-2.5" do %>
+            <%= icon('fa-solid','plus',class:'-mr-2 2xl:-mr-0 btn-icon') %>
+            <span class="hidden 2xl:inline"><%= App::Institution.model_name.human %></span>
+          <% end %>
+        </div>
+
+      </div>
+
+      <div class="">
+        <%= form.label :course_id, class:'required' %>
+        <div class="flex justify-between space-x-2 items-center ">
+          <div class="relative flex-grow">
+            <div class="form-input-icon pt-2"><%= icon('fa-solid','chalkboard-user', class:'') %>  </div>
+            <%= form.collection_select :course_id, @courses, :id, :name, {selected: set_selected_course(app_interaction.negotiation, params[:app_interaction]), include_blank: t('activerecord.blank_entries.general.not_informed')}, {class: "form-input with-icon", data: {negotiations_target:'courses_select', action:'change->negotiations#update_negotiations'}} %>
+          </div>
+          <%= link_to new_app_course_path, class: "btn-primary flex-none mt-2 h-10 pt-2.5" do %>
+            <%= icon('fa-solid','plus',class:'-mr-2 2xl:-mr-0 btn-icon') %>
+            <span class="hidden 2xl:inline"><%= App::Course.model_name.human %></span>
+          <% end %>
+        </div>
+      </div>
+
+      <%#  %>
+      <div class="">
+        <%= form.label :negotiation_id, class:'required' %>
+        <div class="flex justify-between space-x-2 items-center ">
+          <div class="relative flex-grow">
+            <div class="form-input-icon pt-2"><%= icon('fa-solid','users-rectangle', class:'') %>  </div>
+            <%= form.collection_select :negotiation_id, @negotiations, :id, :period_in_words_and_calendar, {selected: app_interaction.negotiation.nil? ? nil : app_interaction.negotiation.id, include_blank: t('activerecord.blank_entries.negotiation_id')}, {class: "form-input with-icon", data: {negotiations_target:'negotiations_select'}} %>
+          </div>
+          <%= link_to new_app_calendar_path, class: "btn-primary flex-none mt-2 h-10 pt-2.5" do %>
+            <%= icon('fa-solid','plus',class:'-mr-2 2xl:-mr-0 btn-icon') %>
+            <span class="hidden 2xl:inline"><%= App::Calendar.model_name.human %></span>
+          <% end %>
+        </div>
+      </div>
+
+    </div>
+
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-4"  >
+
+      <div class="">
+        <%= form.label :vendor_id, class:'required' %>
+        <div class="flex justify-between space-x-2 items-center ">
+          <div class="relative flex-grow">
+            <div class="form-input-icon pt-2"><%= icon('fa-solid','user', class:'') %>  </div>
+            <%= form.collection_select :vendor_id, @vendors, :id, :name, {selected: get_current_access.vendor ? get_current_access.vendor_id : nil, include_blank: t('activerecord.blank_entries.general.not_informed')}, {class: "form-input with-icon"} %>
+          </div>
+          <%= link_to new_app_vendor_path, class: "btn-primary flex-none mt-2 h-10 pt-2.5" do %>
+            <%= icon('fa-solid','plus',class:'-mr-2 2xl:-mr-0  btn-icon') %>
+            <span class="hidden 2xl:inline"><%= App::Vendor.model_name.human %></span>
+          <% end %>
+        </div>
+      </div>
+
+      <div class="">
+        <%= form.label :status_id, class:'required' %>
+        <div class="flex justify-between space-x-2 items-center ">
+          <div class="relative flex-grow">
+            <div class="form-input-icon pt-2"><%= icon('fa-solid','circle-question', class:'') %>  </div>
+            <%= form.collection_select :status_id, @status, :id, :name, {include_blank: t('activerecord.blank_entries.general.not_informed')}, {class: "form-input with-icon"} %>
+          </div>
+          <%= link_to new_app_status_interaction_path, class: "btn-primary flex-none mt-2 h-10 pt-2.5" do %>
+            <%= icon('fa-solid','plus',class:'-mr-2 2xl:-mr-0  btn-icon') %>
+            <span class="hidden 2xl:inline"><%= App::StatusInteraction.model_name.human %></span>
+          <% end %>
+        </div>
+      </div>
+    </div>
+
+    <div class="col-span-2">
+      <%= form.label :description, class:'required' %>
+      <%= form.text_area :description, rows: 4, class: "form-input h-auto", data: {controller:"textarea-autogrow"}, placeholder: t('activerecord.placeholders.app/interaction.description')%>
+    </div>
+
+  </div>
+
+  <div class="mt-4 inline-flex w-full justify-end">
+    <%= form.submit class: "btn-primary" %>
+  </div>
+
+<% end %>

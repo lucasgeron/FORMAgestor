@@ -1,0 +1,49 @@
+<%= form_with(model: app_institution, class: "contents") do |form| %>
+  <% if app_institution.errors.any? %>
+    <% flash.now[:error] = app_institution.errors.to_a%>
+  <% end %>
+
+  <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+    <div class="col-span-2">
+      <%= form.label :name, class:'required' %>
+      <%= form.text_field :name, class: "form-input", placeholder: t('activerecord.placeholders.app/institution.name') %>
+    </div>
+
+    <div class="">
+      <%= form.label :abreviation, class:'required' %>
+      <%= form.text_field :abreviation, class: "form-input", placeholder: t('activerecord.placeholders.app/institution.abreviation') %>
+    </div>
+
+    <div class="">
+      <%= form.label :city_id, class:'required' %>
+       <div class="flex justify-between space-x-2 items-center ">
+        <div class="relative flex-grow">
+          <div class="form-input-icon pt-2"><%= icon('fa-solid','map-location-dot', class:'') %>  </div>
+          <%= form.collection_select :city_id, @cities, :id, :name_and_uf, {include_blank: t('activerecord.blank_entries.general.not_informed')}, {class: "form-input with-icon"} %>
+         </div>
+          <%= link_to new_app_city_path, class: "btn-primary flex-none mt-2 h-10 pt-2.5" do %>
+            <%= icon('fa-solid','plus',class:'-mr-2 2xl:-mr-0 btn-icon') %>
+            <span class="hidden 2xl:inline"><%= App::City.model_name.human %></span>
+          <% end %>
+        </div>
+    </div>
+    
+
+    <div class="" data-controller="reveal input" data-reveal-hidden-class="hidden">
+      <%= form.label :image, class:'inline-flex items-center gap-1 relative' do %>
+        <%= form.label :image %> <%= icon('fa-solid', 'circle-info', class:'fa-xs hover:text-blue-600', data: {action:"mouseenter->reveal#show mouseleave->reveal#hide"}) %>
+        <div data-reveal-target="item" class="py-1 px-2 bg-gray-100 dark:bg-gray-900 rounded-md absolute left-14 text-xs hidden w-max" id="file_input_help">PNG/JPG/JPEG - Max:750kb</div>
+      <%end%>
+      <%= form.label :image, class:'form-input-file truncate', data: {input_target: 'input'} do %>
+        <%= icon('fa-solid', 'image', class:'pr-2')%> <%= t('views.app.general.empty_input_file')%>
+      <%end%>
+      <%= form.file_field :image, class:'hidden' , data: {action:'input->input#update'} %>
+    </div>
+
+  </div>
+
+  <div class="mt-4 inline-flex w-full justify-end">
+    <%= form.submit class: "btn-primary" %>
+  </div>
+
+<% end %>

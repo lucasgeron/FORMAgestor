@@ -1,0 +1,37 @@
+<div class="space-y-4">
+
+  <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+
+    <div class="">
+      <p class=""><%= App::Vendor.human_attribute_name('name')%></p>
+      <p class="detail-input"><%= app_vendor.name  %></p>
+    </div>
+
+    <div class="">
+      <p class=""><%= App::Vendor.human_attribute_name('role')%></p>
+      <p class="detail-input"><%= app_vendor.role.present? ? app_vendor.role.name : t('activerecord.blank_entries.role') %></p>
+    </div>
+
+    <div class="">
+      <p class=""><%= App::Vendor.human_attribute_name('phone')%></p>
+      <p class="detail-input"><%= app_vendor.phone.present? ? app_vendor.phone : t('activerecord.blank_entries.phone') %></p>
+    </div>
+
+    <div class="">
+      <p class=""><%= App::Vendor.human_attribute_name('email')%></p>
+      <p class="detail-input"><%= app_vendor.email.present? ? app_vendor.email : t('activerecord.blank_entries.email') %></p>
+    </div>
+
+  </div>
+
+  <%# USERS TITLE %>
+  <% if app_vendor.cities.present? %>
+  <div class="">
+    <p class="font-bold text-2xl"> <%= App::Vendor.human_attribute_name('city_ids') %> </p>
+      <div class="mt-2 default-grid">
+        <%= render app_vendor.cities %>
+      </div>
+  </div>
+  <% end %>
+
+</div>

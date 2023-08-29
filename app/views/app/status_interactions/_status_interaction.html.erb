@@ -1,0 +1,29 @@
+<div id="<%= dom_id status_interaction %>"  data-aos='fade' class='card group' data-controller="reveal" data-reveal-hidden-class="grid">
+
+  <div class="card-header">
+
+    <div class="card-header-info my-auto">
+      <p class="overflow-scroll scrollbar-hide text-<%=status_interaction.color%>-600 dark:text-<%=status_interaction.color%>-600">
+        <%= link_to app_status_interaction_path(status_interaction), class:'card-header-title' do %>
+          <%= icon(status_interaction.style, status_interaction.icon)%> <%= status_interaction.name %>
+        <%end%>
+      </p>
+
+    </div>
+
+    <%= button_tag class:'card-header-btn',  data: { action:"click->reveal#toggle" } do %>
+      <%= icon('fa-solid','bars', class:'fa-sm')%>
+    <%end%>
+
+  </div>
+
+  <div data-reveal-target="item" class="card-popover w-24" data-action="mouseleave->reveal#show">
+
+    <%= link_to edit_app_status_interaction_path(status_interaction), class:'card-popover-btn-primary' do %>
+      <%= icon('fa-solid', 'pen-to-square', class:'btn-icon') %>
+      <p class=""> <%= t('views.app.general.edit')%></p>
+    <%end%>
+
+  </div>
+
+</div>

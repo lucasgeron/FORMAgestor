@@ -1,0 +1,38 @@
+<% content_for :ctas_secondary do %>
+  <%= link_to app_prospects_path, class: "btn-secondary-gray flex-none" do %>
+    <%= icon('fa-solid','arrow-left', class:'-mx-1')%>
+  <%end%>
+
+  <%= link_to edit_app_prospect_path(@app_prospect), class: "btn-secondary flex-none" do %>
+    <%= icon('fa-solid','pen-to-square', class:'-mx-1')%>
+  <%end%>
+
+  <%= button_to app_prospect_path(@app_prospect), method: :delete, data: { turbo: false },onclick: "return confirm('#{t('views.app.general.delete_confirm')}')", class: "btn-delete flex-none" do %>
+    <%= icon('fa-solid','trash-can', class:'-mx-1')%>
+  <%end%>
+
+
+
+<% end %>
+
+<% content_for :ctas_primary do %>
+
+  <%= button_to app_prospect_path(@app_prospect), method: :patch, class: "btn-primary flex-none", params: { app_prospect: { vendor_id: get_current_access.vendor_id } } do %>
+    <%= icon('fa-solid','check-to-slot',class:'btn-icon') %>
+    <%= t('views.app.prospects.button.set_vendor') %>
+  <% end if can_set_vendor?(@app_prospect) %>
+
+  <%= link_to new_app_contact_path(name: @app_prospect.name, phone: @app_prospect.phone, instagram: @app_prospect.instagram), class: "btn-primary flex-none" do %>
+    <%= icon('fa-solid','plus',class:'btn-icon') %>
+    <%= App::Contact.model_name.human %>
+  <% end %>
+
+<% end %>
+
+<% provide :head_title, "#{t('views.app.general.showing')} #{App::Prospect.model_name.human} " %>
+<% provide :page_title, "#{t('views.app.general.showing')} #{App::Prospect.model_name.human} " %>
+<% provide :entry_id, "#{@app_prospect.id}" %>
+
+<% content_for :page_content do %>
+  <%= render "detail", app_prospect: @app_prospect %>
+<%end%>

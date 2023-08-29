@@ -1,0 +1,21 @@
+<% content_for :ctas_secondary do %>
+  <%= link_to app_calendars_path, class: "btn-secondary-gray flex-none" do %>
+    <%= icon('fa-solid','arrow-left', class:'-mx-1')%>
+  <%end%>
+
+  <%= link_to edit_app_calendar_path(@app_calendar), class: "btn-secondary flex-none" do %>
+    <%= icon('fa-solid','pen-to-square', class:'-mx-1')%>
+  <%end%>
+
+  <%= button_to app_calendar_path(@app_calendar), method: :delete, data: { turbo: false },onclick: "return confirm('#{t('views.app.general.delete_confirm')}')", class: "btn-delete flex-none" do %>
+    <%= icon('fa-solid','trash-can', class:'-mx-1')%>
+  <% end unless @app_calendar.has_dependency? %>
+<% end %>
+
+<% provide :head_title, "#{t('views.app.general.showing')} #{App::Calendar.model_name.human} " %>
+<% provide :page_title, "#{t('views.app.general.showing')} #{App::Calendar.model_name.human} " %>
+<% provide :entry_id, "#{@app_calendar.id}" %>
+
+<% content_for :page_content do %>
+  <%= render "detail", app_calendar: @app_calendar %>
+<%end%>

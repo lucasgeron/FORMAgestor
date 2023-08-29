@@ -1,0 +1,27 @@
+<% content_for :ctas_secondary do %>
+  <%= link_to app_negotiations_path, class: "btn-secondary-gray flex-none" do %>
+    <%= icon('fa-solid','arrow-left', class:'-mx-1')%>
+  <%end%>
+
+  <%= link_to edit_app_negotiation_path(@app_negotiation), class: "btn-secondary flex-none" do %>
+    <%= icon('fa-solid','pen-to-square', class:'-mx-1')%>
+  <%end%>
+
+  <%= button_to app_negotiation_path(@app_negotiation), method: :patch, class: "btn-delete  flex-none", params: { app_negotiation: { active: false } } ,onclick: "return confirm('#{t('views.app.general.hide_confirm')}')" do %>
+    <%= icon('fa-solid','eye', class:'-mx-1')%>
+  <% end if @app_negotiation.active %>
+
+  <%= button_to app_negotiation_path(@app_negotiation), method: :patch, class: "btn-secondary  flex-none", params: { app_negotiation: { active: true } } do %>
+    <%= icon('fa-solid','eye-slash', class:'-mx-1')%>
+  <% end if !@app_negotiation.active %>
+
+
+<% end %>
+
+<% provide :head_title, "#{t('views.app.general.showing')} #{App::Negotiation.model_name.human} " %>
+<% provide :page_title, "#{t('views.app.general.showing')} #{App::Negotiation.model_name.human} " %>
+<% provide :entry_id, "#{@app_negotiation.id}" %>
+
+<% content_for :page_content do %>
+  <%= render "detail", app_negotiation: @app_negotiation %>
+<%end%>

@@ -1,0 +1,67 @@
+<section id="updates" data-navigation-target="updates_sec"  class="">
+  <div class="inner-section-default">
+
+  
+    <%# UPDATES TABS %>
+    <div data-aos="fade-up" data-aos-delay="50" class="update_aos_trigger max-w-3xl mx-auto my-10">
+
+      <div class=" border-b border-gray-200 dark:border-gray-700 ">
+        <ul class="flex flex-wrap  justify-around center -mb-px text-sm text-center" id="myTab" data-tabs-toggle="#myTabContent" role="tablist">
+            <li class="" role="presentation">
+              <button class=" text-xs md:text-base inline-block p-2 md:p-4 border-b-2 rounded-t-lg" id="<%=app_update.id%>-tab" data-tabs-target="#profile-<%=app_update.id%>" type="button" role="tab" aria-controls="profile" aria-selected="false"><span class="text-sm"><%=icon('fa-solid','code-commit', class:"mr-1")%></span><%= app_update.version%></button>
+            </li>
+        </ul>
+      </div>
+      <div id="myTabContent" class="my-8">
+          <div class="hidden px-4 md:px-8 py-8 rounded-lg bg-gray-100 dark:bg-gray-900" id="profile-<%=app_update.id%>" role="tabpanel" aria-labelledby="<%=app_update.id%>-tab">
+            <div class="grid space-y-4 text-sm">
+              <p class="description  md:text-center text-base"> <span class=""><%=t('views.site.updates.release')%></span> <span class="px-2 py-1 ml-1  bg-blue-600 text-white  rounded"><%= time_ago_in_words(app_update.release_date).capitalize %></span></p>
+              
+              <%# DESCRIPTION %>
+              <% if app_update.description.present? %>
+              <div class="space-y-2">
+              <p class="font-bold text-base text-gray-700 dark:text-gray-400"> <%= icon('fa-solid','comment', class:'mr-1 text-blue-600')%></i> Comentário da Atualização </p>
+              <p class="description"><%= app_update.description.html_safe %></p>
+              </div>
+              <%end %>
+              
+              <%# ADDED FEATURES %>
+              <% if app_update.added_features.present? %>
+              <div class="space-y-2">
+              <p class="font-bold text-base text-gray-700 dark:text-gray-400"> <%= icon('fa-solid','circle-check', class:'mr-1 text-blue-600')%></i> Recursos Adicionados </p>
+              <% convert_to_hash(app_update.added_features).each do |i| %>
+                <p class="description"><span class="font-bold text-gray-700 dark:text-gray-400"><%= i[:title] %> </span><%= icon('fa-solid','caret-right',class:"mx-1")%> <%= i[:description] %> </p>
+                <%end %>
+              </div>
+              <%end %>
+
+              <%# REMOVED FEATURES %>
+              <% if app_update.removed_features.present? %>
+              <div class="space-y-2">
+              <p class="font-bold text-base text-gray-700 dark:text-gray-400"> <%= icon('fa-solid','circle-xmark', class:'mr-1 text-red-600')%></i> Recursos Removidos </p>
+              <% convert_to_hash(app_update.removed_features).each do |i| %>
+                <p class="description"><span class="font-bold text-gray-700 dark:text-gray-400"><%= i[:title] %> </span><%= icon('fa-solid','caret-right',class:"mx-1")%> <%= i[:description] %> </p>
+                <%end %>
+              </div>
+              <%end %>
+
+              <%# BUGS FIXED %>
+              <% if app_update.bugs_fixed.present? %>
+              <div class="space-y-2">
+              <p class="font-bold text-base text-gray-700 dark:text-gray-400"> <%= icon('fa-solid','bug-slash', class:'mr-1 text-blue-600')%></i> Correção de Bugs </p>
+              <% convert_to_hash(app_update.bugs_fixed).each do |i| %>
+                <p class="description"><span class="font-bold text-gray-700 dark:text-gray-400"><%= i[:title] %> </span><%= icon('fa-solid','caret-right',class:"mx-1")%> <%= i[:description] %> </p>
+                <%end %>
+              </div>
+              <%end %>
+
+
+
+            </div>
+          </div>
+      </div>
+    </div>
+
+ 
+  </div>
+</section>

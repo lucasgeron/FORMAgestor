@@ -1,0 +1,11 @@
+ <div class="detail-input h-auto flex justify-between items-center gap-4 ">
+      <p class="">
+        <%= icon('fa-solid', 'triangle-exclamation', class:'mr-1 p-2.5 rounded-lg text-amber-500 bg-amber-100 dark:bg-amber-900 dark:text-amber-400')%>
+        <%= msg %>
+      </p>
+
+      <%= link_to path, class: "btn-primary flex-none" do %>
+        <%= icon('fa-solid','plus',class:'btn-icon') %>
+        <%= entry %>
+      <% end if local_assigns.has_key?(:path) %>
+    </div>

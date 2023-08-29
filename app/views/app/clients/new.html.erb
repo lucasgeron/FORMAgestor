@@ -1,7 +1,11 @@
-<div class="mx-auto md:w-2/3 w-full">
-  <h1 class="font-bold text-4xl">New client</h1>
+<% content_for :ctas_secondary do %>
+  <%= link_to app_clients_path, class: "btn-secondary-gray flex-none" do %>
+    <%= icon('fa-solid','arrow-left', class:'-mx-1')%>
+  <%end%>
+<% end %>
+   
+<% provide :page_title, "#{t('views.app.general.new')} #{App::Client.model_name.human}" %>
 
-  <%= render "form", client: @client %>
-
-  <%= link_to 'Back to clients', app_clients_path, class: "ml-2 rounded-lg py-3 px-5 bg-gray-100 inline-block font-medium" %>
-</div>
+<% content_for :page_content do %>
+  <%= render "form", app_client: @app_client %>
+<%end%>

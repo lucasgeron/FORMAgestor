@@ -75,7 +75,7 @@ RUN apt-get update -qq && \
                        rsync        \
                        procps       \
                        cron         \
-                       vim
+                       nano
 
 # --------------------------
 # INSTALL NODEJS BY NVM

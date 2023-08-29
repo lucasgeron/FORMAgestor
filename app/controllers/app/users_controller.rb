@@ -1,132 +1,140 @@
-module App
-  class UsersController < ApplicationController
+  class App::UsersController < ApplicationController
 
     before_action :authenticate_user_or_admin!
-
+    before_action :check_client_id, only: %i[ show edit update destroy ]
     before_action :set_user, only: %i[ show edit update destroy ]
+    before_action :can_edit?, only: %i[ edit ]
+
 
     # GET /users or /users.json
     def index
-      # @users = User.all 
-      @users = User.by_client(current_user.client_id) if (current_user && current_user.client_id)
-      @users = User.all if current_admin
+      collection = App::User.by_client(get_client_id).order(:email)
+      @pagy,  @app_users = set_pagy(collection)
     end
 
     # GET /users/1 or /users/1.json
     def show
-      
     end
 
     # GET /users/new
     def new
-      if current_admin || (current_user && current_user.client.has_available_license?)
-        @user = User.new
-      else  
-        flash[:error] = "You don't have available licenses"
-        redirect_to app_users_url
+      if current_access_is_admin? && params[:client_id].present?
+        flash.now[:success] = t('views.app.admins.flash.update_client', client: get_current_access.client.name)
+        current_admin.update(client_id: params[:client_id])
       end
-
-      # @user = User.new
-      
+      @app_user = App::User.new
     end
 
     # GET /users/1/edit
     def edit
-      
     end
 
     # POST /users or /users.json
     def create
-      
-      @user = User.new(user_params)
 
-      respond_to do |format|
-        
-        if @user.client.available_licenses >= 0
+      @app_user = App::User.new(user_params)
+      set_client_id(@app_user)
 
-          if @user.active == true && @user.client.available_licenses <= 0
-            format.html do
-              flash.now[:error] = "Não existem licensas disponíveis para #{@user.client.name}, só é possível criar o usuário inativo."
-              render :new, status: :unprocessable_entity
-            end
-          elsif ( is_client_scope?(user_params[:client_id]) &&  @user.save )
-            format.html do  
-              flash[:success] = "User was successfully created."
-              redirect_to app_user_url(@user)
-            end
-          else
-            format.html { render :new, status: :unprocessable_entity }
-          end
-
-        
+        if (can_create?(@app_user.active) && @app_user.save )
+            flash[:success] = t('views.app.general.flash.create_m', model: @app_user.class.model_name.human)
+            redirect_to app_user_url(@app_user)
         else
-          format.html do
-            flash.now[:error] = "Não existem licensas disponíveis para #{@user.client.name}"
             render :new, status: :unprocessable_entity
-          end
         end
-      end
 
     end
 
-    # PATCH/PUT /users/1 or /users/1.json
+   # PATCH/PUT /users/1 or /users/1.json
     def update
+      if can_update?(@app_user.active, to_b(user_params[:active]))
+        updated = if user_params[:password].present?
+                    # update with password
+                    password_updated = true
+                    @app_user.update(user_params)
+                  else
+                    # update without password
+                    password_updated = false
+                    @app_user.update_without_password(user_params)
+                  end
+      end
 
-      respond_to do |format|
-
-        # garante que o o cliente tem licenças
-        if @user.client.available_licenses >= 0 
-
-          #  se o usuário estiver inativo for ativado  e o cliente tiver licenças disponíveis
-          if ((@user.active == false && user_params[:active] == '1') && @user.client.available_licenses <= 0)
-            format.html do
-              flash.now[:error] = "Não existem licensas disponíveis para #{@user.client.name}. Considere liberar uma licença antes de ativar este usuário."
-              render :edit, status: :unprocessable_entity
-            end
-          elsif ( is_client_scope?(user_params[:client_id]) && @user.update(user_params) )
-            format.html do 
-              flash[:success] = "User was successfully updated."
-              redirect_to app_user_url(@user)
-            end
-            format.json { render :show, status: :ok, location: @user }
-          else
-            format.html { render :edit, status: :unprocessable_entity }
-            format.json { render json: @user.errors, status: :unprocessable_entity }
-          end
-         
+      if updated
+        flash[:success] = "#{t('views.app.general.flash.update_m', model: @app_user.class.model_name.human)} #{password_updated ? t('views.app.users.flash.password_updated') : t('views.app.users.flash.password_not_updated')}"
+        
+        if current_access_is_same_user?
+           sign_out(get_current_access)
+           redirect_to new_user_session_url
         else
-          format.html do
-          flash.now[:error] = "Não existem licensas disponíveis para #{@user.client.name}."
-          render :edit, status: :unprocessable_entity
-          end
+           redirect_to app_user_url(@app_user)
         end
 
+      else
+        render :edit, status: :unprocessable_entity
       end
     end
 
     # DELETE /users/1 or /users/1.json
     def destroy
-      @user.destroy
-
-      respond_to do |format|
-
-        format.html do
-          flash[:success] = "User was successfully destroyed."
-          redirect_to app_users_url 
-        end 
-        format.json { head :no_content }
+      if @app_user.has_dependency?
+        flash[:error] = t('views.app.general.flash.destroy_failed_m', model:  App::User.model_name.human)
+        redirect_to @app_user
+      else
+        @app_user.destroy
+        flash[:success] = t('views.app.general.flash.destroy_m', model:  App::User.model_name.human)
+        redirect_to app_users_url 
       end
+    end
+
+    # GET /users/search?query=:query?status=:status
+    def search
+      
+      collection = App::User.by_client(get_client_id).order(:email)
+      
+      collection = collection.search(params[:query]) if params[:query].present?
+      collection = collection.by_user_status(params[:status]) if params[:status].present?
+      
+
+      @pagy,  @app_users = set_pagy(collection)
+      render :index
     end
 
     private
       # Use callbacks to share common setup or constraints between actions.
       def set_user
-        @user = User.find(params[:id])
+          @app_user = App::User.find(params[:id])
       end
 
       # Only allow a list of trusted parameters through.
       def user_params
-        params.require(:user).permit(:email, :password, :password_confirmation, :client_id, :active)
+        params.require(:app_user).permit(:email, :password, :password_confirmation, :active, :vendor_id)
       end
+
+      def current_access_is_same_user?
+        get_current_access.id == @app_user.id ? true : false
+      end
+
+      def can_edit? 
+        @permission_to_edit = get_current_access.id == @app_user.id ? true : false
+      end
+
+      def can_create?(active)
+        unless get_current_access.client.available_licenses > 0 || (get_current_access.client.available_licenses.zero? && active == false)
+          flash.now[:error] = t('views.app.users.flash.no_license_available', client:get_current_access.client.name)
+          flash.now[:info] = action_name == 'create' ? t('views.app.users.flash.tip_for_create').html_safe : t('views.app.users.flash.tip_for_update').html_safe
+          return false
+        end
+        true
+      end
+
+      def can_update?(current_active, update_active)
+         if get_current_access.client.available_licenses > 0
+          return true
+         elsif  (current_active == update_active) || (current_active == true && update_active == false)
+            return true
+         else 
+            flash.now[:error] = t('views.app.users.flash.no_license_available', client:get_current_access.client.name)
+            flash.now[:info] = t('views.app.users.flash.tip_for_update').html_safe
+            return false
+          end
+      end        
   end
-end

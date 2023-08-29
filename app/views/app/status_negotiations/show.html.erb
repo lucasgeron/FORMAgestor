@@ -1,0 +1,31 @@
+<% content_for :ctas_secondary do %>
+  <%= link_to app_status_negotiations_path, class: "btn-secondary-gray flex-none" do %>
+    <%= icon('fa-solid','arrow-left', class:'-mx-1')%>
+  <%end%>
+
+  <%= link_to edit_app_status_negotiation_path(@app_status_negotiation), class: "btn-secondary flex-none" do %>
+    <%= icon('fa-solid','pen-to-square', class:'-mx-1')%>
+  <%end%>
+
+  <%= button_to app_status_negotiation_path(@app_status_negotiation), method: :delete, data: { turbo: false },onclick: "return confirm('#{t('views.app.general.delete_confirm')}')", class: "btn-delete flex-none" do %>
+    <%= icon('fa-solid','trash-can', class:'-mx-1')%>
+  <%end  unless @app_status_negotiation.has_dependency? %>
+<% end %>
+
+<% content_for :ctas_primary do %>
+
+  <%= link_to search_app_negotiations_path(status_ids: [@app_status_negotiation.id]), class: "btn-primary flex-none" do %>
+    <%= icon('fa-solid','table-columns',class:'btn-icon') %>
+    <%= App::Negotiation.model_name.human(count:2) %>
+  <% end %>
+
+<% end %>
+
+
+<% provide :head_title, "#{t('views.app.general.showing')} #{App::StatusNegotiation.model_name.human} " %>
+<% provide :page_title, "#{t('views.app.general.showing')} #{App::StatusNegotiation.model_name.human} " %>
+<% provide :entry_id, "#{@app_status_negotiation.id}" %>
+
+<% content_for :page_content do %>
+  <%= render "detail", app_status_negotiation: @app_status_negotiation %>
+<%end%>

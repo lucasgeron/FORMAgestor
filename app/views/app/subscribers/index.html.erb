@@ -1,0 +1,22 @@
+<% provide :head_title, App::Subscriber.model_name.human.pluralize %>
+<% provide :page_title, App::Subscriber.model_name.human.pluralize %>
+
+<% content_for :page_content do %>
+  <div class="relative overflow-x-auto sm:rounded-lg">
+    <table class="w-full text-sm text-center ">
+      <thead class="text-xs text-gray-900 uppercase bg-gray-100 dark:bg-gray-700 dark:text-gray-400">
+        <tr>
+          <% ['email', 'locale', 'created_at'].each do |attribute| %>
+            <th scope="col" class="p-4 text-center">
+              <%= App::Subscriber.human_attribute_name(attribute) %>
+            </th>
+          <% end %>
+          <th scope="col" class="p-4 text-center"></th>
+        </tr>
+      </thead>
+      <tbody>
+        <%= render @app_subscribers %>
+      </tbody>
+    </table>
+  </div>
+<% end %>

@@ -3,7 +3,6 @@ class SiteController < ApplicationController
 
   before_action :set_locale
 
-
   layout 'site'
 
   def index
@@ -13,9 +12,9 @@ class SiteController < ApplicationController
     # flash.now[:info] = "This is a info message"
     # flash.now[:message] = "This is a message"
 
-    @subscriber = Subscriber.new
+    @app_subscriber = App::Subscriber.new
     # Recover the form data (if any) from the session, and then, remove the data from the session
-    @subscriber.email = session.delete(:subscriber_email) if session.key?(:subscriber_email)
+    @app_subscriber.email = session.delete(:app_subscriber_email) if session.key?(:app_subscriber_email)
     
     @contact_form = ContactForm.new
     # Recover the form data (if any) from the session, and then, remove the data from the session
@@ -23,7 +22,8 @@ class SiteController < ApplicationController
     @contact_form.subject = session.delete(:contact_form_subject) if session.key?(:contact_form_subject)
     @contact_form.message = session.delete(:contact_form_message) if session.key?(:contact_form_message)
 
-    # redirect_to root_path(locale: I18n.locale, anchor: 'newsletter')
+
+    @app_updates = App::Update.last(5).reverse
 
   end
 
@@ -35,59 +35,55 @@ class SiteController < ApplicationController
     redirect_to request.referrer || root_path
   end
 
-  # POST /subscribe
-  def subscribe_to_newsletter
+  # # POST /subscribe
+  # def subscribe_to_newsletter
     
-    # set the current locale before save
-    params[:subscriber][:locale] = I18n.locale.to_s
+  #   # set the current locale before save
+  #   params[:subscriber][:locale] = I18n.locale.to_s
 
-    @subscriber = Subscriber.new(subscriber_params)
+  #   @subscriber = Subscriber.new(subscriber_params)
 
-    respond_to do |format|
-      if @subscriber.save
-        # Send email to subscriber
-        SiteMailer.with(email: @subscriber.email).subscribed_successfully.deliver_later
-        flash[:success] = t('views.site.newsletter.subscribed_successfully', email: @subscriber.email)
-      else
-        # Save the form data in the session
-        session[:subscriber_email] = params[:subscriber][:email]
-        flash[:error] = @subscriber.errors.full_messages.join(", ") 
-      end
+  #   respond_to do |format|
+  #     if @subscriber.save
+  #       # Send email to subscriber
+  #       SiteMailer.with(email: @subscriber.email).subscribed_successfully.deliver_later
+  #       flash[:success] = t('views.site.newsletter.subscribed_successfully', email: @subscriber.email)
+  #     else
+  #       # Save the form data in the session
+  #       session[:subscriber_email] = params[:subscriber][:email]
+  #       flash[:error] = @subscriber.errors.full_messages.join(", ") 
+  #     end
 
-      format.html { redirect_to root_path }
-    end
+  #     format.html { redirect_to root_path }
+  #   end
 
-  end
+  # end
 
 
   # GET /unsubscribe/
-  def unsubscribe_confirm
-    @subscriber = Subscriber.find_by(email: params[:email])
-    if @subscriber.nil?
-      flash[:error] = t('views.site.newsletter.subscriber_not_found', email: params[:email])
-      redirect_to root_path
-    else
-      render 'site/unsubscribe', locals: { subscriber: @subscriber }
-    end
-  
-  end
+  # def unsubscribe_confirm
+  #   @subscriber = Subscriber.find_by(email: params[:email])
+  #   if @subscriber.nil?
+  #     flash[:error] = t('views.site.newsletter.subscriber_not_found', email: params[:email])
+  #     redirect_to root_path
+  #   else
+  #     render 'site/unsubscribe', locals: { subscriber: @subscriber }
+  #   end
+  # end
 
   # POST /unsubscribe/
-  def unsubscribe_to_newsletter
-    # abort params[:subscriber][:email].inspect
-    subscriber = Subscriber.find_by(email: params[:subscriber][:email])
-    if subscriber
-      subscriber.destroy
-      flash[:success] = t('views.site.newsletter.unsubscribed_successfully', email: subscriber[:email])
-      redirect_to root_path
-    else
-      flash[:error] = t('views.site.newsletter.unsubscribed_unsuccessfully', email: params[:subscriber][:email])
-      redirect_to root_path
-    end
-  end
-
-  
-
+  # def unsubscribe_to_newsletter
+  #   # abort params[:subscriber][:email].inspect
+  #   subscriber = Subscriber.find_by(email: params[:subscriber][:email])
+  #   if subscriber
+  #     subscriber.destroy
+  #     flash[:success] = t('views.site.newsletter.unsubscribed_successfully', email: subscriber[:email])
+  #     redirect_to root_path
+  #   else
+  #     flash[:error] = t('views.site.newsletter.unsubscribed_unsuccessfully', email: params[:subscriber][:email])
+  #     redirect_to root_path
+  #   end
+  # end
 
   # POST /contact_forms
   def contact_forms
@@ -116,11 +112,6 @@ class SiteController < ApplicationController
 
   def set_locale
     I18n.locale = session[:locale] || I18n.default_locale
-  end
-
-  # Only allow a list of trusted parameters through.
-  def subscriber_params
-    params.require(:subscriber).permit(:email, :locale)
   end
 
   def contact_form_params

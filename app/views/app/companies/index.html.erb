@@ -1,0 +1,14 @@
+<% content_for :ctas_primary do %>
+  <%= link_to new_app_company_path, class: "btn-primary flex-none" do %>
+    <%= icon('fa-solid','plus',class:'btn-icon') %>
+    <%= App::Company.model_name.human %>
+  <% end %>
+<% end %>
+
+<% provide :head_title, App::Company.model_name.human.pluralize %>
+<% provide :page_title, App::Company.model_name.human.pluralize %>
+<% provide :sidebar, render(partial: 'app/companies/sidebar') %>
+
+<% content_for :page_content do %>
+  <%= render partial: 'companies' %>
+<%end%>

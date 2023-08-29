@@ -1,0 +1,33 @@
+<div class="space-y-4">
+<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+
+  <div class="md:col-span-2 lg:col-span-1">
+    <p class=""><%= App::Course.human_attribute_name('institution_id') %></p>
+    <div class="relative">
+      <%= link_to app_course.institution, class:'detail-input-icon' do %>
+        <%= icon('fa-solid', 'building-columns', class:'')%>
+      <%end%>
+      <p class="detail-input with-icon"><%= app_course.institution.abreviation_and_city %></p>
+    </div>
+  </div>
+
+  <div class="">
+    <p class=""><%= App::Course.human_attribute_name('name') %></p>
+    <p class="detail-input"><%= app_course.name%></p>
+  </div>
+
+  <div class="">
+    <p class=""><%= App::Course.human_attribute_name('duration') %></p>
+    <p class="detail-input"><%= app_course.duration%></p>
+  </div>
+
+</div>
+
+  <%# NEGOTIATIONS %>
+  <% if @negotiations %>
+    <p class="font-bold text-2xl"> <%= App::Negotiation.model_name.human(count:2) %> </p>
+    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-3 2xl:grid-cols-4 gap-4">
+      <%= render @negotiations %>
+    </div>
+  <% end %>
+</div>

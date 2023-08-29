@@ -1,0 +1,15 @@
+  
+<div class="pagination-bar" >
+  <div class="hidden md:flex flex-grow">
+    <%= page_entries_info collection%>
+  </div>
+  <div class="w-full md:w-auto flex justify-between items-center gap-1">
+    <%= will_paginate collection, container: false, page_links: true, inner_window: 1, outer_window: 0 %>
+  </div>
+</div>
+  <div class="-my-2 text-xs text-center md:hidden ">
+    <%= page_entries_info collection%>
+  </div>
+
+<%# force tailwind to load pagination classes %>
+<div class="pagination-btn pagination-btn-active pagination-btn-disabled hidden"></div>

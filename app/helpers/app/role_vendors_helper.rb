@@ -1,0 +1,2 @@
+module App::RoleVendorsHelper
+end

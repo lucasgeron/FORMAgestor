@@ -1,5 +1,14 @@
 ---
 pt-BR:
+
+  controller:
+    app/setting:
+      one: Personalização 
+      other: Personalizações
+    app/class:
+      one: Turma
+      other: Turmas
+
   activemodel:
     models:
       contact_form: Formulário de Contato
@@ -8,59 +17,340 @@ pt-BR:
         email: Email
         subject: Assunto
         message: Mensagem
+
   activerecord:
     models:
-      prospect:
+      app/prospect:
         one: Propecção
         other: Prospecções
-      students:
-        one: Aluno
-        other: Alunos
-      services:
-        one: Atendimento
-        other: Atendimentos
-      city:
+      app/contact:
+        one: Contato
+        other: Contatos
+      app/interaction:
+        one: Interação
+        other: Interações
+      app/city:
         one: Cidade
         other: Cidades
-      institution:
+      app/institution:
         one: Instituição
         other: Instituições
-      course:
+      app/course:
         one: Curso
         other: Cursos
-      update:
+      app/update:
         one: Atualização
         other: Atualizações
-      semester:
-        one: Semestre
-        other: Semestres
-      vendor:
+      app/calendar:
+        one: Calendário
+        other: Calendários
+      app/vendor:
         one: Representante
         other: Representantes
-      company:
+      app/company:
         one: Empresa
         other: Empresas
-      admin:
+      app/admin:
         one: Administrador
         other: Administradores
-      client:
+      app/user:
+        one: Usuário
+        other: Usuários
+      app/client:
         one: Cliente
         other: Clientes
       contactform: Formulário de Contato
-      subscriber: Assinante
+      app/subscriber:
+        one: Assinante
+        other: Assinantes
+      app/status_negotiation:
+        one: Status
+        other: Status
+      app/status_interaction:
+        one: Status
+        other: Status
+      app/negotiation:
+        one: Negociação
+        other: Negociações
+      app/role_vendor:
+        one: Cargo
+        other: Cargos
+
     attributes:
+      app/contact:
+        name: Nome
+        instagram: Instagram
+        phone: Telefone
+        informant: Informante?
+        committee: Comissão?
+        institution_id: Instituição
+        course_id: Curso
+        negotiation_id: Turma
+      app/client:
+        name: Nome
+        cnpj: CNPJ
+        active: Acesso
+        licenses: Licenças
+        slug: Link de Prospecção
+        image: Logo
+      app/city:
+        name: Cidade
+        state: Estado
+      app/user:
+        client_id: Cliente
+        vendor_id: Representante
+        vendor_not_found: Não associado
+        password: Senha
+        password_confirmation: Confirme sua senha
+        active: Acesso
+        licenses: Licenças
+      app/vendor:
+        name: Nome
+        phone: Telefone
+        email: Email
+        role_id: Cargo
+        city_ids: Cidades Atendidas
       contactform:
         email: Teste OK
         subject: Teste 2
         message: Teste 3
-      subscriber: 
+      app/subscriber: 
         email: Email
+        locale: Localização
+        created_at: Membro há
+      app/prospect:
+        vendor_id: Assumido por
+        channel: Canal de Contato
+        institution: Instituição
+        city: Cidade
+        course: Curso
+        amount: Formandos
+        year_graduation: Ano de Formação
+        name: Nome
+        phone: Telefone
+        instagram: Instagram
+      app/institution:
+        name: Nome
+        abreviation: Sigla
+        city: Cidade #for validation
+        city_id: Cidade #for label
+        image: Logo
+      app/course:
+        name: Curso
+        duration: Duração
+        institution_id: Instituição
+        institution: Instituição
+      app/calendar:
+        year: Ano
+        semester: Semestre
+        active: Status
+      app/company:
+        name: Nome
+        active: Status
+      app/status_negotiation:
+        name: Descrição
+        active: Status
+        icon: Ícone
+        style: Estilo
+        color: Cor
+      app/status_interaction:
+        name: Descrição
+        active: Status
+        icon: Ícone
+        style: Estilo
+        color: Cor
+      app/negotiation:
+        calendar: Calendário
+        course_id: Curso
+        vendor_id: Representante
+        company_id: Empresa
+        status_id: Status
+        reference: Referência
+        period: Período
+      app/interaction:
+        institution_id: Instituição
+        course_id: Curso
+        negotiation_id: Turma #for label
+        negotiation: Turma #for validation
+        vendor_id: Representante # for label
+        vendor: Representante # for validation
+        status: Status
+        description: Descrição
+      app/role_vendor:
+        name: Descrição
+        active: Status
+
+
+
+    blank_entries:
+      general:
+        not_informed: Não Informado
+        not_assigned: Não Associado
+      vendor: Não Associado
+      company: Não Associada
+      status_negotiation: Não Mapeado
+      institution_id: Não Informado
+      course_id: Não Informado
+      negotiation_id: Não Informado
+      reference: Sem Referência
+      email: Não Informado
+      phone: Não Informado
+      role: Não Informado
+      city: Não Informado
+      
+
+    placeholders:
+      app/prospect:
+        vendor_id: Assumido por
+        channel: Como nos conheceu?
+        institution: Instituição
+        city: Cidade - UF
+        course: Curso(s)
+        amount: Qtde de Alunos
+        year_graduation: 'Ex: 2023/01'
+        name: Nome Completo
+        phone: DDD + Telefone
+        instagram: username
+      app/contact:
+        name: Nome Completo
+        phone: DDD + Telefone
+        instagram: username
+      app/interaction:
+        description: Descrição da interação realizada...
+      app/institution:
+        name: Nome da Instituição 
+        abreviation: Sigla da Instituição
+      app/course:
+        name: Curso
+        duration: Períodos (Semestres)
+      app/negotiation:
+        reference: Referência
+      app/vendor:
+        name: Nome Completo
+        role_id: Cargo
+        phone: DDD + Telefone
+        email: Email
+      app/company:
+        name: Nome da Empresa
+      app/user:
+        email: Email
+        password: Senha
+        password_confirmation: Confirmação de Senha
+      app/status:
+        name: Descrição
+        icon: 'ex: circle'
+
+        
+
+    options:
+      general:
+        select:
+          default: Selecione uma Opção
+        blank: Não Informado
+        action:
+          active_true: Ativar
+          active_false: Inativar
+        image:
+          attached: Vinculada
+          not_attached: Não Vinculada
+        COLORS:
+          default: Padrão
+          red: Vermelho
+          amber: Ambar
+          orange: Laranja
+          yellow: Amarelo
+          lime: Limão
+          green: Verde
+          emerald: Esmeralda
+          teal: Verde-Azulado
+          cyan: Ciano
+          sky: Céu
+          blue: Azul
+          indigo: Indigo
+          violet: Violeta
+          purple: Roxo
+          fuchsia: Fúcsia
+          pink: Pink
+          rose: Rosa
+        STYLE:
+          fa-solid: Sólido
+          fa-regular: Regular
+          fa-brands: Marcas
+      app/prospect:
+        vendor_id:
+          none: Não Prospectada
+        status:
+          all: Todas
+          prospected: Prospectadas
+          not_prospected: Não Prospectadas
+      app/client:
+        active:
+          true: Habilitado
+          false: Bloqueado
+      app/user:
+        active:
+          all: Todos
+          true: Habilitado
+          false: Bloqueado
+      app/client:
+        active:
+          all: Todos
+          true: Habilitado
+          false: Bloqueado
+      app/calendar:
+        active:
+          all: Todos
+          true: Ativo
+          false: Inativo
+        info:
+          true: Calendário Visível
+          false: Calendário Não Listado     
+      app/contact:
+        informant:
+          true: Informante
+          false: Não
+        committee:
+          true: Comissão
+          false: Não
+        info:
+          none: Contato
+        select:
+          before_select_course: Selecione um Curso
+      app/company:
+        active:
+          all: Todos
+          true: Ativo
+          false: Inativo
+        info:
+          true: Empresa Visível
+          false: Empresa Não Listado
+      app/status_negotiation:
+        active:
+          all: Todos
+          true: Ativo
+          false: Inativo
+      app/status_interaction:
+        active:
+          all: Todos
+          true: Ativo
+          false: Inativo
+      app/role_vendor:
+        active:
+          all: Todos
+          true: Ativo
+          false: Inativo
+      
+
+
+
+
     errors:
       messages:
         record_invalid: 'A validação falhou: %{errors}'
         restrict_dependent_destroy:
           has_one: Não é possível excluir o registro pois existe um %{record} dependente
           has_many: Não é possível excluir o registro pois existem %{record} dependentes
+        vendor_client_id_matches_user_client_id: ' não pertence à sua empresa. Você foi reportado ao Administrador do sistema.'
   date:
     abbr_day_names:
     - dom
@@ -117,14 +407,14 @@ pt-BR:
   datetime:
     distance_in_words:
       about_x_hours:
-        one: aproximadamente %{count} hora
-        other: aproximadamente %{count} horas
+        one: aprox. %{count} hora
+        other: aprox. %{count} horas
       about_x_months:
-        one: aproximadamente %{count} mês
-        other: aproximadamente %{count} meses
+        one: aprox. %{count} mês
+        other: aprox. %{count} meses
       about_x_years:
-        one: aproximadamente %{count} ano
-        other: aproximadamente %{count} anos
+        one: aprox. %{count} ano
+        other: aprox. %{count} anos
       almost_x_years:
         one: quase %{count} ano
         other: quase %{count} anos

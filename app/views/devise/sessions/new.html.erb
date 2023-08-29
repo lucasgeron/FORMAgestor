@@ -1,55 +1,53 @@
-<%# THEME SWITCHER %>
-    <div class="absolute top-3.5 left-3">
-      <button id="theme-toggle" type="button" class="text-gray-500 dark:text-gray-400 hover:bg-gray-100 dark:hover:bg-gray-700 focus:outline-none  rounded-lg text-sm p-2.5">
-        <svg id="theme-toggle-dark-icon" class="hidden w-5 h-5" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path d="M17.293 13.293A8 8 0 016.707 2.707a8.001 8.001 0 1010.586 10.586z"></path></svg>
-        <svg id="theme-toggle-light-icon" class="hidden w-5 h-5" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path d="M10 2a1 1 0 011 1v1a1 1 0 11-2 0V3a1 1 0 011-1zm4 8a4 4 0 11-8 0 4 4 0 018 0zm-.464 4.95l.707.707a1 1 0 001.414-1.414l-.707-.707a1 1 0 00-1.414 1.414zm2.12-10.607a1 1 0 010 1.414l-.706.707a1 1 0 11-1.414-1.414l.707-.707a1 1 0 011.414 0zM17 11a1 1 0 100-2h-1a1 1 0 100 2h1zm-7 4a1 1 0 011 1v1a1 1 0 11-2 0v-1a1 1 0 011-1zM5.05 6.464A1 1 0 106.465 5.05l-.708-.707a1 1 0 00-1.414 1.414l.707.707zm1.414 8.486l-.707.707a1 1 0 01-1.414-1.414l.707-.707a1 1 0 011.414 1.414zM4 11a1 1 0 100-2H3a1 1 0 000 2h1z" fill-rule="evenodd" clip-rule="evenodd"></path></svg>
-      </button>
-    </div>
 
 
 <div class="grid place-items-center h-screen ">
-  <div class="bg-gray-100 dark:bg-gray-900 rounded-lg p-10 max-w-sm space-y-2">
+<div class="bg-[url('background.svg')] h-screen w-screen  bg-no-repeat bg-cover  absolute "></div>
+  <div class="bg-gray-100 dark:bg-gray-900 rounded-lg p-10 max-w-sm space-y-2" data-aos="fade" data-dutaion='1000' >
 
-  <div class="space-y-10 mb-6">
-    <%= image_tag('favicon.svg', class:"w-full h-48 animate-breathe") %>
-    <%= image_tag('favtext-dark.svg', class:"w-full block dark:hidden") %>
-    <%= image_tag('favtext-white.svg', class:"w-full dark:block hidden") %>
-  </div>
 
-    <div class="flex justify-between">
-      <p class="text-center">Acesso: <%= resource.model_name.human %></p>
-      <div class="">
-        <%= link_to "Admin", :new_admin_session, class:"p-2 text-xs bg-gray-200 dark:bg-gray-700 dark:hover:bg-blue-600 rounded-lg hover:bg-blue-600 hover:text-white" %>
-        <%= link_to "User", :new_user_session, class:"p-2 text-xs bg-gray-200 dark:bg-gray-700 dark:hover:bg-blue-600 rounded-lg hover:bg-blue-600 hover:text-white" %>
-      </div>
+    <%= link_to site_root_path, class: "btn-secondary-gray relative -top-4 -left-6 " do %>
+      <%= icon('fa-solid','arrow-left', class:'-mx-1')%>
+    <% end %>
+
+
+    <div class="space-y-10 mb-6">
+      <%= image_tag('favicon.svg', class:"w-full h-48 animate-breathe") %>
+      <%= image_tag('favtext-dark.svg', class:"w-full block dark:hidden") %>
+      <%= image_tag('favtext-white.svg', class:"w-full dark:block hidden") %>
     </div>
 
-    <%= form_for(resource, as: resource_name, url: session_path(resource_name), html: {class: "space-y-2"}) do |f| %>
+    <div class="flex justify-center space-x-2 pt-4">
+        <%= link_to App::Admin.model_name.human, :new_admin_session, class:"p-2 text-xs #{resource_name.to_s=='admin' ? 'bg-blue-600 dark:bg-blue-600 text-white '  : ' bg-gray-200 dark:bg-gray-700 '}  dark:hover:bg-blue-700 rounded-lg hover:bg-blue-700 hover:text-white" %>
+        <%= link_to App::User.model_name.human, :new_user_session, class:"p-2 text-xs #{resource_name.to_s=='user' ? 'bg-blue-600 dark:bg-blue-600 text-white' : 'bg-gray-200 dark:bg-gray-700'}    dark:hover:bg-blue-700 rounded-lg hover:bg-blue-700 hover:text-white" %>
+    </div>
+
+    <%= form_for(resource, as: resource_name, url: session_path(resource_name), html: {class: "space-y-2", data:{turbo:false} })  do |f| %>
 
       <div class="">
-        <%= f.label :email %><br />
-        <%= f.email_field :email, class:'form-input', autofocus: true, autocomplete: "email" %>
+        <%= f.label :email %>
+        <%= f.email_field :email, class:'form-input bg-gray-200 dark:bg-gray-200 peer-default:bg-red-600 dark:text-gray-900', autofocus: true, autocomplete: "email" %>
       </div>
 
       <div class="">
-        <%= f.label :password %><br />
-        <%= f.password_field :password, class:'form-input', autocomplete: "current-password" %>
+        <%= f.label :password %>
+        <%= f.password_field :password, class:'form-input bg-gray-200 dark:bg-gray-200 dark:text-gray-900', autocomplete: "current-password" %>
       </div>
 
+      <div class="pt-2 w-full flex justify-between items-center flex-row-reverse ">
+        <%= f.submit t('devise.sessions.new.sign_in'), class:'btn-primary ' %>
 
-      <div class="w-full inline-flex justify-between items-center  ">
         <% if devise_mapping.rememberable? %>
-          <div class="">
-            <%= f.check_box :remember_me, class:'form-checkbox' %>
-            <%= f.label :remember_me %>
+          <div class="flex flex-row-reverse items-center text-sm">
+            <%= f.label :remember_me, class:'ml-2 ' %>
+            <%= f.check_box :remember_me, class:'form-checkbox-simple bg-gray-200 dark:bg-gray-200' %>
           </div>
         <% end %>
-        <%= f.submit t('devise.sessions.new.sign_in'), class:'btn-primary' %>
       </div>
 
     <% end %>
-
+    <div class="text-xs">
     <%= render "devise/shared/links" %>
+    </div>
 
   </div>
 </div>

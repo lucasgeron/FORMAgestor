@@ -1,0 +1,15 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  client: one
+  vendor: one
+  negotiation: one
+  status: one
+  description: MyText
+
+two:
+  client: two
+  vendor: two
+  negotiation: two
+  status: two
+  description: MyText

@@ -1,0 +1,95 @@
+<%= form_with(model: app_negotiation, class: "contents") do |form| %>
+  <% if app_negotiation.errors.any? %>
+    <% flash.now[:error] = app_prospect.errors.to_a%>
+  <% end %>
+
+  <div class="space-y-4">
+
+    <%# DETAIL %>
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+
+      <div class="md:col-span-2 lg:col-span-1">
+        <p class=""><%= App::Course.human_attribute_name('institution') %></p>
+        <div class="relative">
+          <%= link_to app_negotiation.course.institution, class:'detail-input-icon' do %>
+            <%= icon('fa-solid', 'building-columns', class:'')%>
+          <%end%>
+          <p class="detail-input with-icon"><%= app_negotiation.course.institution.abreviation_and_city %></p>
+        </div>
+      </div>
+
+      <div class="">
+        <p class=""><%= App::Negotiation.human_attribute_name('course') %></p>
+        <div class="relative">
+          <%= link_to app_negotiation.course, class:'detail-input-icon' do %>
+            <%= icon('fa-solid', 'chalkboard-user', class:'')%>
+          <%end%>
+          <p class="detail-input with-icon"><%= app_negotiation.course.name %></p>
+        </div>
+      </div>
+
+      <div class="">
+        <p class=""><%= App::Negotiation.human_attribute_name('period') %></p>
+        <p class="detail-input "><%= app_negotiation.period_in_words %></p>
+      </div>
+
+    </div>
+
+    <%# FORM  %>
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+
+      <div class="">
+        <%= form.label :reference %>
+        <%= form.text_field :reference, class: "form-input", placeholder: t('activerecord.placeholders.app/negotiation.reference') %>
+      </div>
+
+      <div class="">
+        <%= form.label :vendor_id, class:'' %>
+           <div class="flex justify-between space-x-2 items-center ">
+          <div class="relative flex-grow">
+            <div class="form-input-icon pt-2"><%= icon('fa-solid','user', class:'') %>  </div>
+            <%= form.collection_select :vendor_id, @vendors, :id, :name, {include_blank: t('activerecord.blank_entries.general.not_informed')}, {class: "form-input with-icon"} %>
+          </div>
+          <%= link_to new_app_vendor_path, class: "btn-primary flex-none mt-2 h-10 pt-2.5" do %>
+            <%= icon('fa-solid','plus',class:'-mr-2 2xl:-mr-0 btn-icon') %>
+            <span class="hidden 2xl:inline"><%= App::Vendor.model_name.human %> </span>
+          <% end %>
+        </div>
+      </div>
+
+      <div class="">
+        <%= form.label :status_id, class:'' %>
+
+        <div class="flex justify-between space-x-2 items-center ">
+          <div class="relative flex-grow">
+            <div class="form-input-icon pt-2"><%= icon('fa-solid','circle-question', class:'') %>  </div>
+            <%= form.collection_select :status_id, @status, :id, :name, {include_blank: t('activerecord.blank_entries.status_negotiation')}, {class: "form-input with-icon"} %>
+          </div>
+          <%= link_to new_app_status_negotiation_path, class: "btn-primary flex-none mt-2 h-10 pt-2.5" do %>
+            <%= icon('fa-solid','plus',class:'-mr-2 2xl:-mr-0 btn-icon') %>
+            <span class="hidden 2xl:inline"><%= App::StatusNegotiation.model_name.human %> </span>
+          <% end %>
+        </div>
+      </div>
+
+      <div class="">
+        <%= form.label :company_id, class:'' %>
+      <div class="flex justify-between space-x-2 items-center ">
+          <div class="relative flex-grow">
+            <div class="form-input-icon pt-2"><%= icon('fa-solid','building', class:'') %>  </div>
+            <%= form.collection_select :company_id, @companies, :id, :name, {include_blank: t('activerecord.blank_entries.general.not_informed')}, {class: "form-input with-icon"} %>
+          </div>
+         <%= link_to new_app_company_path, class: "btn-primary flex-none mt-2 h-10 pt-2.5" do %>
+            <%= icon('fa-solid','plus',class:'-mr-2 2xl:-mr-0 btn-icon') %>
+            <span class="hidden 2xl:inline"><%= App::Company.model_name.human %> </span>
+          <% end %>
+        </div>
+      </div>
+
+    </div>
+
+    <div class="mt-4 inline-flex w-full justify-end">
+      <%= form.submit class: "btn-primary" %>
+    </div>
+  </div>
+<% end %>

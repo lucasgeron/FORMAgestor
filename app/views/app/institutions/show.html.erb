@@ -1,0 +1,33 @@
+<% content_for :ctas_primary do %>
+   <%= link_to search_app_classes_path(institution_id: @app_institution), class: "btn-primary flex-none" do %>
+    <%= icon('fa-solid','users-rectangle',class:'btn-icon') %>
+    <%= t('controller.app/class.other') %>
+  <% end if @app_institution.courses.any? %>
+   <%= link_to new_app_course_path(institution_id: @app_institution), class: "btn-primary flex-none" do %>
+    <%= icon('fa-solid','plus',class:'btn-icon') %>
+    <%= App::Course.model_name.human %>
+  <% end %>
+<% end %>
+
+<% content_for :ctas_secondary do %>
+  <%= link_to app_institutions_path, class: "btn-secondary-gray flex-none" do %>
+    <%= icon('fa-solid','arrow-left', class:'-mx-1')%>
+  <%end%>
+
+  <%= link_to edit_app_institution_path(@app_institution), class: "btn-secondary flex-none" do %>
+    <%= icon('fa-solid','pen-to-square', class:'-mx-1')%>
+  <%end%>
+
+  <%= button_to app_institution_path(@app_institution),  method: :delete, data: { turbo: false },onclick: "return confirm('#{t('views.app.general.delete_confirm')}')", class: "btn-delete flex-none" do %>
+    <%= icon('fa-solid','trash-can', class:'-mx-1')%>
+  <%end%>
+
+<% end %>
+
+<% provide :head_title, "#{t('views.app.general.showing')} #{App::Institution.model_name.human} " %>
+<% provide :page_title, "#{t('views.app.general.showing')} #{App::Institution.model_name.human} " %>
+<% provide :entry_id, "#{@app_institution.id}" %>
+
+<% content_for :page_content do %>
+  <%= render "detail", app_institution: @app_institution %>
+<%end%>

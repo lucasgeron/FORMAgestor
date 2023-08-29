@@ -1,0 +1,102 @@
+<%= form_with(model: app_contact, class: "contents") do |form| %>
+  <% if app_contact.errors.any? %>
+    <% flash.now[:error] = app_contact.errors.to_a%>
+  <% end %>
+
+  <div class="grid grid-cols-1 md:grid-cols-2 2xl:grid-cols-3 gap-4" data-controller='negotiations'>
+
+    <div class="">
+      <%= form.label :name, class:'required' %>
+      <%= form.text_field :name, class: "form-input", placeholder: t('activerecord.placeholders.app/contact.name') %>
+    </div>
+
+    <div class="" >
+      <%= form.label :phone %>
+      <%= form.text_field :phone, class: "form-input", placeholder: t('activerecord.placeholders.app/contact.phone'), onkeypress:"return event.charCode >= 48 && event.charCode <= 57" %>
+    </div>
+
+    <div class="">
+      <%= form.label :instagram %>
+      <div class="relative">
+        <%= icon('fa-brands', 'instagram', class:'form-input-icon')%>
+        <%= form.text_field :instagram, class: "form-input with-icon", placeholder: t('activerecord.placeholders.app/contact.instagram') %>
+      </div>
+    </div>
+
+
+    <%# FILTERS  %>
+    <div class="">
+      <%= form.label :institution_id %> 
+      <div class="flex justify-between space-x-2 items-center ">
+        <div class="relative flex-grow">
+          <div class="form-input-icon pt-2"><%= icon('fa-solid','building-columns', class:'') %>  </div>
+          <%= form.collection_select :institution_id, @institutions, :id, :abreviation_and_city, {selected: set_selected_institution(app_contact.negotiation, params[:app_contact]), include_blank: t('activerecord.blank_entries.general.not_informed')}, {class: "form-input with-icon", data:{action:'change->negotiations#update_courses'}} %>
+        </div>
+        <%= link_to new_app_institution_path, class: "btn-primary flex-none mt-2 h-10 pt-2.5" do %>
+          <%= icon('fa-solid','plus',class:'-mr-2 2xl:-mr-0 btn-icon') %>
+           <span class="hidden 2xl:inline"><%= App::Institution.model_name.human %></span>
+        <% end %>
+      </div>
+
+    </div>
+
+    <div class="">
+      <%= form.label :course_id %>  
+      <div class="flex justify-between space-x-2 items-center ">
+        <div class="relative flex-grow">
+          <div class="form-input-icon pt-2"><%= icon('fa-solid','chalkboard-user', class:'') %>  </div>
+          <%= form.collection_select :course_id, @courses, :id, :name, {selected: set_selected_course(app_contact.negotiation, params[:app_contact]), include_blank: t('activerecord.blank_entries.general.not_informed')}, {class: "form-input with-icon", data: {negotiations_target:'courses_select', action:'change->negotiations#update_negotiations'}} %>
+        </div>
+        <%= link_to new_app_course_path, class: "btn-primary flex-none mt-2 h-10 pt-2.5" do %>
+            <%= icon('fa-solid','plus',class:'-mr-2 2xl:-mr-0 btn-icon') %>
+             <span class="hidden 2xl:inline"><%= App::Course.model_name.human %></span>
+          <% end %>
+      </div>
+    </div>
+
+    <%#  %>
+    <div class="">
+      <%= form.label :negotiation_id %>
+     <div class="flex justify-between space-x-2 items-center ">
+        <div class="relative flex-grow">
+        <div class="form-input-icon pt-2"><%= icon('fa-solid','users-rectangle', class:'') %>  </div>
+        <%= form.collection_select :negotiation_id, @negotiations, :id, :period_in_words_and_calendar, {selected: app_contact.negotiation.nil? ? nil : app_contact.negotiation.id, include_blank: t('activerecord.blank_entries.negotiation_id')}, {class: "form-input with-icon", data: {negotiations_target:'negotiations_select'}} %>
+      </div>
+        <%= link_to new_app_calendar_path, class: "btn-primary flex-none mt-2 h-10 pt-2.5" do %>
+            <%= icon('fa-solid','plus',class:'-mr-2 2xl:-mr-0 btn-icon') %>
+             <span class="hidden 2xl:inline"><%= App::Calendar.model_name.human %></span>
+          <% end %>
+      </div>
+    </div>
+
+    <div class="group mb-2">
+      <%= form.label :committee, class:'pointer-events-none' %>
+      <%= form.check_box :committee, class: "hidden peer" %>
+      <%= form.label :committee, class:'form-checkbox w-full dark:bg-gray-900
+        group-hover:bg-gray-100        group-hover:peer-checked:bg-blue-700  
+        dark:group-hover:bg-gray-950   dark:group-hover:peer-checked:bg-blue-700' do %>
+      <% end %>
+
+      <div class="text-base peer-text hidden peer-checked:block "> <%= icon('fa-solid','check')%> <%= t('activerecord.options.app/contact.committee.true')%></div>
+      <div class="text-base peer-text block peer-checked:hidden "> <%= icon('fa-solid','xmark')%> <%= t('activerecord.options.app/contact.committee.false')%></div>
+    </div>
+
+    <div class="group mb-2">
+      <%= form.label :informant, class:'pointer-events-none' %>
+      <%= form.check_box :informant, class: "hidden peer" %>
+      <%= form.label :informant, class:'form-checkbox w-full dark:bg-gray-900
+        group-hover:bg-gray-100        group-hover:peer-checked:bg-blue-700  
+        dark:group-hover:bg-gray-950   dark:group-hover:peer-checked:bg-blue-700' do %>
+      <% end %>
+
+      <div class="text-base peer-text hidden peer-checked:block "> <%= icon('fa-solid','check')%> <%= t('activerecord.options.app/contact.informant.true')%></div>
+      <div class="text-base peer-text block peer-checked:hidden "> <%= icon('fa-solid','xmark')%> <%= t('activerecord.options.app/contact.informant.false')%></div>
+    </div>
+
+  </div>
+
+  <div class="mt-4 inline-flex w-full justify-end">
+    <%= form.submit class: "btn-primary" %>
+  </div>
+
+<% end %>

@@ -1,0 +1,21 @@
+<% @app_cities.each do |city| %>
+  <% if city.institutions.present? %> <%# ensure that force city ids without institutions will not be render %>
+    
+    <div class="sticky-1 flex justify-between items-center">
+      
+      <p class="font-bold text-2xl" data-aos='fade'> <%= city.name %> </p>
+
+      <div class="hidden md:inline flex-none">
+        <%= link_to new_app_institution_path(city_id: city.id), class: "btn-secondary flex-none" do %>
+          <%= icon('fa-solid','plus',class:'btn-icon') %>
+          <%= App::Institution.model_name.human %>
+        <% end %>
+      </div>
+
+    </div>
+
+    <div class="default-grid">
+      <%= render(@app_institutions.by_city(city)) %>
+    </div>
+  <% end %>
+<% end %>

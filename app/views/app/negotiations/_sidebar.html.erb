@@ -1,0 +1,79 @@
+<div class="" data-controller="search reveal">
+
+  <div class="detail-input text-xs text-center h-8 -mb-1" id="pagy_info">
+    <%== pagy_info(@pagy, item_name: App::Negotiation.model_name.human(count: @pagy.items )) %>
+  </div>
+
+  <%= form_with url: search_app_negotiations_path, method: :get, class:'space-y-1' do |form| %>
+
+    <%# SEACH INPUT %>
+    <div class="relative" data-action='mouseenter->reveal#toggle mouseleave->reveal#toggle '>
+      <div class="search-input-icon dark:hover:bg-blue-600" data-action="click->search#submit"><%= icon('fa-solid','search', class:'fa-sm ') %>  </div>
+      <%= form.text_field :query, value:params[:query],  class:'search-input text-sm', placeholder: t('views.app.general.search'), data: {action: 'keydown.enter->search#submit'} %>
+    </div>
+    <div class="hidden detail-input text-xs h-8 " data-reveal-target="item">
+      <p class="text-center">
+        <%= %i[ reference  ].map{|attr| App::Negotiation.human_attribute_name(attr)}.join(" | ")  %>
+      </p>
+    </div>
+    <%# END OF SEARCH INPUT%>
+
+    <%# STATUS NEGOTIATIONS INPUT %>
+      <div class="bg-gray-100 dark:bg-gray-900 py-2 px-3 space-y-1 rounded-lg text-sm">
+         <p class="text-center  text-gray-600 font-medium "><%= App::StatusNegotiation.model_name.human(count:2) %></p>
+        <%= button_tag t('views.app.general.select_all_m'), type: "button", class: "w-full bg-gray-200 dark:bg-gray-800 hover:bg-blue-600 hover:text-white dark:hover:bg-blue-600 p-1 rounded-lg text-sm", data: { action: "search#selectAll search#submit" } if @status.any?%>
+        <%= form.collection_check_boxes  :status_ids, @status, :id, :name, include_hidden: false do |status| %>
+          <div class="mt-0 flex justify-between items-center">
+            <div class="truncate">
+
+              <%= status.check_box(class: 'form-checkbox-simple dark:bg-gray-800 bg-gray-200 mr-1 ', checked: (params[:status_ids].present? && params[:status_ids].include?(status.value.to_s)) , data: {action: ' change->search#submit'}) %>
+              <%= status.label class:'cursor-pointer text-sm' do %>
+                <%= status.text %>
+              <% end %>
+            </div>
+            <%= icon('fa-solid', 'bolt', class:'p-1.5 bg-gray-200 dark:bg-gray-800 rounded-lg hover:text-blue-600 cursor-pointer', data: { action:" click->search#selectOnly click->search#submit"} )%>
+          </div>
+        <% end %>
+      </div>
+    <%# END OF STATUS NEGOTIATIONS INPUT%>
+
+    <%# VENDOR NEGOTIATIONS INPUT %>
+      <div class="bg-gray-100 dark:bg-gray-900 py-2 px-3 space-y-1 rounded-lg text-sm">
+        <p class="text-center  text-gray-600 font-medium "><%= App::Vendor.model_name.human(count:2) %></p>
+        <%= button_tag t('views.app.general.select_all_m'), type: "button", class: "w-full bg-gray-200 dark:bg-gray-800 hover:bg-blue-600 hover:text-white dark:hover:bg-blue-600 p-1 rounded-lg text-sm", data: { action: "search#selectAll search#submit" } if @vendors.any?%>
+
+        <%= form.collection_check_boxes  :vendor_ids, @vendors, :id, :name, include_hidden: false do |vendor| %>
+          <div class="mt-0 flex justify-between items-center">
+            <div class="truncate">
+              <%= vendor.check_box(class: 'form-checkbox-simple dark:bg-gray-800 bg-gray-200 mr-1 ', checked:  (params[:vendor_ids].present? && params[:vendor_ids].include?(vendor.value.to_s) || (action_name=='index' && get_current_access.is_a?(App::User) && get_current_access.vendor_id == vendor.value) )  , data: {action: ' change->search#submit'}) %>
+              <%= vendor.label class:'cursor-pointer text-sm ' do %>
+                <%= vendor.text %>
+              <% end %>
+            </div>
+            <%= icon('fa-solid', 'bolt', class:'p-1.5 bg-gray-200 dark:bg-gray-800 rounded-lg hover:text-blue-600 cursor-pointer', data: { action:" click->search#selectOnly click->search#submit"} )%>
+          </div>
+        <% end %>
+      </div>
+    <%# END OF VENDOR NEGOTIATIONS INPUT%>
+
+    <%# COMPANIES NEGOTIATIONS INPUT %>
+      <div class="bg-gray-100 dark:bg-gray-900 py-2 px-3 space-y-1 rounded-lg text-sm">
+        <p class="text-center  text-gray-600 font-medium "><%= App::Company.model_name.human(count:2) %></p>
+        <%= button_tag t('views.app.general.select_all_m'), type: "button", class: "w-full bg-gray-200 dark:bg-gray-800 hover:bg-blue-600 hover:text-white dark:hover:bg-blue-600 p-1 rounded-lg text-sm", data: { action: "search#selectAll search#submit" } if @companies.any?%>
+        <%= form.collection_check_boxes  :company_ids, @companies, :id, :name, include_hidden: false do |company| %>
+          <div class="mt-0 flex justify-between items-center">
+            <div class="truncate">
+              <%= company.check_box(class: 'form-checkbox-simple dark:bg-gray-800 bg-gray-200 mr-1 ', checked:  (params[:company_ids].present? && params[:company_ids].include?(company.value.to_s))  , data: {action: ' change->search#submit'}) %>
+              <%= company.label class:'cursor-pointer text-sm ' do %>
+                <%= company.text %>
+              <% end %>
+            </div>
+            <%= icon('fa-solid', 'bolt', class:'p-1.5 bg-gray-200 dark:bg-gray-800 rounded-lg hover:text-blue-600 cursor-pointer', data: { action:" click->search#selectOnly click->search#submit"} )%>
+          </div>
+        <% end %>
+      </div>
+    <%# END OF COMPANIES NEGOTIATIONS INPUT%>
+
+  <% end %>
+
+</div>

@@ -6,24 +6,7 @@
       <p data-aos-anchor=".newsletter_aos_trigger" data-aos='zoom-in'  data-aos-delay="50" class=" max-w-screen-md mx-auto"><%= t('views.site.newsletter.description') %></p>
     </div>
 
-    <%= form_with(model: subscriber, class: "contents my-10", url: subscribe_path, method: :post) do |form| %>
-      <div data-aos-anchor=".newsletter_aos_trigger" data-aos='fade-up' data-aos-delay="50" class="items-center mx-auto space-y-4 max-w-screen-sm sm:flex sm:space-y-0">
-        <div class="relative w-full my-4">
-
-          <%= form.label :email, class: "hidden mb-2 text-sm font-medium text-gray-900 dark:text-gray-300"%>
-
-          <div class="flex absolute inset-y-0 left-0 items-center pl-3 pointer-events-none">
-            <%= icon('fa-solid', 'envelope', class:"text-gray-600") %>
-          </div>
-          <%= form.text_field :email, class: "block p-3 pl-10 w-full text-sm text-gray-900 bg-gray-50 rounded-lg border border-gray-300 sm:rounded-none sm:rounded-l-lg focus:ring-0 focus:outline-none  dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:focus:border-blue-600 dark:text-white", placeholder: t('views.site.newsletter.placeholder') %>
-        </div>
-        <div>
-          <%= form.submit t('views.site.newsletter.cta'), data: { action: 'navigation#scrollToNewsletter' }, class: "py-3 px-5 w-full text-sm font-medium text-center text-white rounded-lg border cursor-pointer bg-blue-700 border-blue-600 sm:rounded-none sm:rounded-r-lg hover:bg-blue-800  dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800 cursor-pointer" do %>
-            <%=  %>
-          <%end%>
-        </div>
-      </div>
-  <% end%>
+    <%= render 'app/subscribers/form', app_subscriber: @app_subscriber%>
 
 </div>
 </section>

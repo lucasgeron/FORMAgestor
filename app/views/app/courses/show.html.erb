@@ -1,0 +1,23 @@
+<% content_for :ctas_secondary do %>
+
+  <%= link_to app_courses_path, class: "btn-secondary-gray flex-none" do %>
+    <%= icon('fa-solid','arrow-left', class:'-mx-1')%>
+  <%end%>
+
+  <%= link_to edit_app_course_path(@app_course), class: "btn-secondary flex-none" do %>
+    <%= icon('fa-solid','pen-to-square', class:'-mx-1')%>
+  <%end%>
+
+  <%= button_to app_course_path(@app_course),  method: :delete, data: { turbo: false },onclick: "return confirm('#{t('views.app.general.delete_confirm')}')", class: "btn-delete flex-none" do %>
+    <%= icon('fa-solid','trash-can', class:'-mx-1')%>
+  <%end unless @app_course.has_dependency?%>
+
+<% end %>
+
+<% provide :head_title, "#{t('views.app.general.showing')} #{App::Course.model_name.human} " %>
+<% provide :page_title, "#{t('views.app.general.showing')} #{App::Course.model_name.human} " %>
+<% provide :entry_id, "#{@app_course.id}" %>
+
+<% content_for :page_content do %>
+  <%= render "detail", app_course: @app_course %>
+<%end%>

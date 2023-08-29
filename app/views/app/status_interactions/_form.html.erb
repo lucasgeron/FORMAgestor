@@ -1,0 +1,118 @@
+<%= form_with(model: app_status_interaction, class: "contents") do |form| %>
+  <% if app_status_interaction.errors.any? %>
+    <% flash.now[:error] = app_status_interaction.errors.to_a%>
+  <% end %>
+
+  <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
+
+    <div class="md:col-span-2">
+      <%= form.label :name, class:'required' %>
+      <%= form.text_field :name, class: "form-input", placeholder: t('activerecord.placeholders.app/status.name') %>
+    </div>
+
+    <div class="group mb-2">
+      <%= form.label :active, class:'pointer-events-none' %>
+      <%= form.check_box :active, class: "hidden peer" %>
+      <%= form.label :active, class:'form-checkbox w-full  dark:bg-gray-900
+      group-hover:bg-gray-100        group-hover:peer-checked:bg-blue-700  
+      dark:group-hover:bg-gray-950   dark:group-hover:peer-checked:bg-blue-700' do %>
+      <% end %>
+
+      <div class="text-base peer-text hidden peer-checked:block "> <%= icon('fa-solid','check')%> <%= t('activerecord.options.app/status_interaction.active.true')%></div>
+      <div class="text-base peer-text block peer-checked:hidden "> <%= icon('fa-solid','xmark')%> <%= t('activerecord.options.app/status_interaction.active.false')%></div>
+    </div>
+
+    <div class="" data-controller="reveal" data-reveal-hidden-class="hidden">
+
+      <%= form.label :icon, class:'inline-flex items-center gap-1 relative' do %>
+
+        <%= form.label :icon %>
+
+        <button data-action="click->reveal#toggle " type="button" class="btn">
+          <%= icon('fa-solid', 'circle-info', class:'fa-xs hover:text-blue-600') %>
+        </button>
+
+        <div data-reveal-target="item" class="py-1 px-2 bg-gray-100 dark:bg-gray-900 rounded-md absolute left-14 text-xs hidden w-max" id="file_input_help">
+          <%= link_to "https://fontawesome.com/search?o=r&m=free", class:'hover:text-blue-600', target:'_blank' do %>
+            <%= icon('fa-solid', 'external-link-alt', class:'fa-xs') %>
+            Font Awesome Icons
+          </div>
+        <%end%>
+      <%end%>
+      <%= form.text_field :icon, class: "form-input", placeholder: t('activerecord.placeholders.app/status.icon') %>
+    </div>
+
+    <div class="">
+      <%= form.label :style %>
+      <%= form.collection_select :style, @styles, :first, :last, {}, {class: "form-input"} %>
+    </div>
+
+    <div class="">
+      <%= form.label :color %>
+      <%= form.select :color, [], {selected: 'amber'}, {class: "form-input"} do %>
+
+        <option class="text-black dark:text-white" value="default" <%= 'selected' if @app_status_interaction.color == 'default'  %>  >
+          <%= t("activerecord.options.general.COLORS.default") %>
+        </option>
+        <option class="text-red-600 " value="red" <%= 'selected' if @app_status_interaction.color == 'red'  %> >
+          <%= t("activerecord.options.general.COLORS.red") %>
+        </option>
+        <option class="text-amber-600" value="amber" <%= 'selected' if @app_status_interaction.color == 'amber'  %> >
+          <%= t("activerecord.options.general.COLORS.amber")  %>
+        </option>
+        <option class="text-orange-600" value="orange" <%= 'selected' if @app_status_interaction.color == 'orange'  %> >
+          <%= t("activerecord.options.general.COLORS.orange") %>
+        </option>
+        <option class="text-yellow-600" value="yellow" <%= 'selected' if @app_status_interaction.color == 'yellow'  %> >
+          <%= t("activerecord.options.general.COLORS.yellow") %>
+        </option>
+        <option class="text-lime-600" value="lime" <%= 'selected' if @app_status_interaction.color == 'lime'  %> >
+          <%= t("activerecord.options.general.COLORS.lime") %>
+        </option>
+        <option class="text-green-600" value="green" <%= 'selected' if @app_status_interaction.color == 'green'  %> >
+          <%= t("activerecord.options.general.COLORS.green") %>
+        </option>
+        <option class="text-emerald-600" value="emerald" <%= 'selected' if @app_status_interaction.color == 'emerald'  %> >
+          <%= t("activerecord.options.general.COLORS.emerald") %>
+        </option>
+        <option class="text-teal-600" value="teal" <%= 'selected' if @app_status_interaction.color == 'teal'  %> >
+          <%= t("activerecord.options.general.COLORS.teal") %>
+        </option>
+        <option class="text-cyan-600" value="cyan" <%= 'selected' if @app_status_interaction.color == 'cyan'  %> >
+          <%= t("activerecord.options.general.COLORS.cyan") %>
+        </option>
+        <option class="text-sky-600" value="sky" <%= 'selected' if @app_status_interaction.color == 'sky'  %> >
+          <%= t("activerecord.options.general.COLORS.sky") %>
+        </option>
+        <option class="text-blue-600" value="blue" <%= 'selected' if @app_status_interaction.color == 'blue'  %> >
+          <%= t("activerecord.options.general.COLORS.blue") %>
+        </option>
+        <option class="text-indigo-600" value="indigo" <%= 'selected' if @app_status_interaction.color == 'indigo'  %> >
+          <%= t("activerecord.options.general.COLORS.indigo") %>
+        </option>
+        <option class="text-violet-600" value="violet" <%= 'selected' if @app_status_interaction.color == 'violet'  %> >
+          <%= t("activerecord.options.general.COLORS.violet") %>
+        </option>
+        <option class="text-purple-600" value="purple" <%= 'selected' if @app_status_interaction.color == 'purple'  %> >
+          <%= t("activerecord.options.general.COLORS.purple") %>
+        </option>
+        <option class="text-fuchsia-600" value="fuchsia" <%= 'selected' if @app_status_interaction.color == 'fuchsia'  %> >
+          <%= t("activerecord.options.general.COLORS.fuchsia") %>
+        </option>
+        <option class="text-pink-600" value="pink" <%= 'selected' if @app_status_interaction.color == 'pink'  %> >
+          <%= t("activerecord.options.general.COLORS.pink") %>
+        </option>
+        <option class="text-rose-600" value="rose" <%= 'selected' if @app_status_interaction.color == 'rose'  %> >
+          <%= t("activerecord.options.general.COLORS.rose") %>
+        </option>
+
+      <%end%>
+    </div>
+
+  </div>
+
+  <div class="mt-4 inline-flex w-full justify-end">
+    <%= form.submit class: "btn-primary" %>
+  </div>
+
+<% end %>

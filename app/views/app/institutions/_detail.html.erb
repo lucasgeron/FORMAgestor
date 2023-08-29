@@ -1,0 +1,45 @@
+<div class="space-y-4">
+  <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+    <div class="col-span-2  ">
+      <p class=""><%= App::Institution.human_attribute_name('name') %></p>
+      <p class="detail-input"><%= app_institution.name%></p>
+    </div>
+
+    <div class="">
+      <p class=""><%= App::Institution.human_attribute_name('abreviation') %></p>
+      <p class="detail-input"><%= app_institution.abreviation%></p>
+    </div>
+
+    <div class="">
+      <p class=""><%= App::Institution.human_attribute_name('city_id') %></p>
+      <div class="relative">
+        <%= link_to app_institution.city, class:'detail-input-icon' do %>
+          <%= icon('fa-solid', 'map-location-dot', class:'')%>
+        <%end%>
+        <p class="detail-input with-icon"><%= app_institution.city.name%></p>
+      </div>
+    </div>
+
+    <% if app_institution.image.attached? %>
+      <%= content_for(:sidebar) do %>
+        <%= image_tag(app_institution.image, class:'object-cover h-52 w-60 rounded-lg  dark:bg-gray-100')%>
+      <% end %>
+    <% else %>
+      <div class="">
+        <p class=""><%= App::Institution.human_attribute_name('image') %></p>
+        <div class="relative">
+          <div class="detail-input-icon"><%= icon('fa-solid', 'image', class:'')%> </div>
+          <p class="detail-input with-icon"><%= t('activerecord.options.general.image.not_attached')%></p>
+        </div>
+      </div>
+    <% end %>
+  </div>
+
+  <%# COURSES %>
+  <% if @courses %>
+    <p class="font-bold text-2xl"> <%= App::Course.model_name.human(count:2) %> </p>
+    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-3 2xl:grid-cols-4 gap-4">
+      <%= render @courses %>
+    </div>
+  <% end %>
+</div>

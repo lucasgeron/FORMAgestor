@@ -31,13 +31,13 @@ gem "tailwindcss-rails"
 gem 'jquery-rails'
 
 # Use Font Awsome [https://fontawesome.com/v6/docs/web/use-with/ruby-on-rails]
-gem "font-awesome-sass", "~> 6.4.0"
+gem "font-awesome-sass"
 
 # Build JSON APIs with ease [https://github.com/rails/jbuilder]
 gem "jbuilder"
 
 # Use Redis adapter to run Action Cable in production
-# gem "redis", "~> 4.0"
+gem "redis", "~> 4.0"
 
 # Use Kredis to get higher-level data types in Redis [https://github.com/rails/kredis]
 # gem "kredis"
@@ -59,6 +59,28 @@ gem "bootsnap", require: false
 
 # Devise [https://github.com/heartcombo/devise]
 gem 'devise'
+
+# ConectaAdress[https://github.com/conectaai/address-br]
+gem 'conecta_address_br'
+
+# requestjs-rails [https://github.com/rails/requestjs-rails]
+gem 'requestjs-rails'
+
+# Faker [https://github.com/faker-ruby/faker]
+gem 'faker'
+
+# Active Storage Validations [https://github.com/igorkasyanchuk/active_storage_validations]
+gem 'active_storage_validations'
+
+# Mini Magick [https://github.com/minimagick/minimagick]
+# gem "mini_magick"
+
+# Pagy [https://github.com/ddnexus/pagy]
+gem "pagy" 
+
+# AWS SDK for Ruby [https://github.com/aws/aws-sdk-ruby]
+gem "aws-sdk-s3", require: false
+
 
 group :development, :test do
   # See https://guides.rubyonrails.org/debugging_FORMAgestorlications.html#debugging-with-the-debug-gem

@@ -1,0 +1,25 @@
+<div id="<%= dom_id contact %>" data-turbo='false' data-aos='fade' class='card group' data-controller="reveal" data-reveal-hidden-class="grid">
+
+  <div class="card-header">
+
+    <div class="card-header-info card-header-animate">
+      <p class="overflow-scroll scrollbar-hide truncate"><%= link_to contact.name, app_contact_path(contact), class:'card-header-title' %></p>
+      <p class="card-header-subtitle card-header-subtitle-animate"> <%= contact.info %> </p>
+    </div>
+
+    <%= button_tag class:'card-header-btn',  data: { action:"click->reveal#toggle" } do %>
+      <%= icon('fa-solid','bars', class:'fa-sm')%>
+    <%end%>
+
+  </div>
+
+  <div data-reveal-target="item" class="card-popover w-24" data-action="mouseleave->reveal#show">
+  
+    <%= link_to edit_app_contact_path(contact), class:'card-popover-btn-primary' do %>
+      <%= icon('fa-solid', 'pen-to-square', class:'btn-icon') %>
+      <p class=""> <%= t('views.app.general.edit')%></p>
+    <%end%>
+
+  </div>
+
+</div>

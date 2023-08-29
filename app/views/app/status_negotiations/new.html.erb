@@ -1,0 +1,11 @@
+<% content_for :ctas_secondary do %>
+  <%= link_to app_status_negotiations_path, class: "btn-secondary-gray flex-none" do %>
+    <%= icon('fa-solid','arrow-left', class:'-mx-1')%>
+  <%end%>
+<% end %>
+
+<% provide :page_title, "#{t('views.app.general.new')} #{App::StatusNegotiation.model_name.human} (#{App::Negotiation.model_name.human})" %>
+
+<% content_for :page_content do %>
+  <%= render "form", app_status_negotiation: @app_status_negotiation %>
+<%end%>

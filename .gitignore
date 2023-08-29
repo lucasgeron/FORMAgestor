@@ -35,3 +35,5 @@
 /node_modules
 
 config/application.yml
+
+/app/assets/images/seed_images/*

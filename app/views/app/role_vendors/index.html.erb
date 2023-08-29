@@ -1,0 +1,22 @@
+<% content_for :ctas_primary do %>
+  <%= link_to new_app_role_vendor_path, class: "btn-primary flex-none" do %>
+    <%= icon('fa-solid','plus',class:'btn-icon') %>
+    <%= App::RoleVendor.model_name.human %>
+  <% end %>
+<% end %>
+
+<% content_for :ctas_secondary do %>
+  <%= link_to app_settings_path, class: "btn-secondary-gray flex-none" do %>
+    <%= icon('fa-solid','arrow-left', class:'-mx-1')%>
+  <%end%>
+<%end%>
+
+
+<% provide :head_title, App::RoleVendor.model_name.human(count:2) %>
+<% provide :page_title, App::RoleVendor.model_name.human(count:2) %>
+<% provide :sidebar, render(partial: 'app/role_vendors/sidebar') %>
+
+<% content_for :page_content do %>
+
+  <%= render partial: 'role_vendors' %>
+<%end%>

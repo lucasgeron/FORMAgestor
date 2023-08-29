@@ -1,0 +1,25 @@
+<div class="space-y-4">
+  <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+
+    <div class="">
+      <p class=""><%= App::City.human_attribute_name('state')%></p>
+      <p class="detail-input"><%= get_state_name(app_city.state)  %></p>
+    </div>
+
+    <div class="">
+      <p class=""><%= App::City.human_attribute_name('name')%></p>
+        <p class="detail-input"><%= app_city.name %></p>
+    </div>
+  </div>
+
+  <%# INSTITUTIONS TITLE %>
+
+  <% if app_city.institutions.present? %>
+    <p class="font-bold text-2xl"> <%= App::Institution.model_name.human(count:2) %> </p>
+    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-3 2xl:grid-cols-4 gap-4">
+      <%= render app_city.institutions %>
+    </div>
+  <% end %>
+
+</div>
+</div>

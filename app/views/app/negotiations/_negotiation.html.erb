@@ -1,0 +1,68 @@
+<div id="<%= dom_id negotiation %>" class="card group" data-aos='fade' data-controller="reveal" data-reveal-hidden-class="grid">
+
+  <div class="card-header">
+
+    <div class="card-header-info card-header-animate">
+      <p class="overflow-scroll scrollbar-hide ">
+        <%= link_to negotiation.name, app_negotiation_path(negotiation), class:'card-header-title' %>
+
+      </p>
+      <p class="card-header-subtitle card-header-subtitle-animate"><%= negotiation.period_in_words %>  </p>
+    </div>
+
+    <%= button_tag class:'card-header-btn', data: { action:"click->reveal#toggle" }  do %>
+      <%= icon('fa-solid','bars', class:'fa-sm')%>
+    <%end%>
+
+  </div>
+
+  <%# CARD BODY %>
+
+  <div class="card-tag-readonly relative"  data-controller="reveal" data-action="mouseleave->reveal#hide"> 
+    <% if negotiation.status.present? %>
+      <%= button_tag data: {action:"click->reveal#show"}, class:"w-full truncate text-#{ negotiation.status.color}-600 dark:text-#{ negotiation.status.color}-600" do %>
+        <%= icon(negotiation.status.style,negotiation.status.icon, class:'')%> <%= negotiation.status.name %>
+      <%end%>
+    <% else %>
+      <%= button_tag data: {action:"click->reveal#show"}, class:"w-full truncate text-gray-400 dark:text-gray-400" do %>
+        <%= icon('fa-regular','circle', class:'')%> <%= t('activerecord.blank_entries.status_negotiation') %>
+      <%end%>
+    <%end%>
+
+    <div data-reveal-target="item" class="hidden absolute bg-gray-200 w-full -top-11 left-0 pt-1.5 rounded-t-md" >
+      <p class="truncate "><%= icon('fa-solid', 'user', class:'mr-1')%><%= negotiation.vendor.present? ? negotiation.vendor.name : t('activerecord.blank_entries.vendor') %></p>
+      <p class="truncate"><%= negotiation.reference.present? ? negotiation.reference : t('activerecord.blank_entries.reference') %></p>
+      
+      <% if negotiation.company.present? %>
+      <p class="truncate"><%= icon('fa-solid', 'building', class:'mr-1')%><%= negotiation.company.name %></p>
+        
+      <% end %>
+      
+    </div>
+  </div>
+
+  <% if false %>
+    <% if negotiation.status.present? %>
+      <p class="card-tag-readonly ">
+      </p>
+    <% else %>
+      <p class="card-tag-readonly text-gray-400 dark:text-gray-400">
+        <%= icon('fa-regular','circle', class:'')%> <%= t('activerecord.blank_entries.status_negotiation') %></p>
+    <% end %>
+
+  <% end %>
+
+  <%# END BODY %>
+
+  <div data-reveal-target="item" class="card-popover w-24" data-action="mouseleave->reveal#show">
+
+    <%= link_to edit_app_negotiation_path(negotiation), class:'card-popover-btn-primary' do %>
+      <%= icon('fa-solid', 'pen-to-square', class:'btn-icon') %>
+      <p class=""> <%= t('views.app.general.edit')%></p>
+    <%end%>
+
+   
+
+  </div>
+
+</div>

@@ -1,0 +1,25 @@
+<div id="<%= dom_id course %>"  data-aos='fade' class='card group' data-controller="reveal" data-reveal-hidden-class="grid">
+
+  <div class="card-header">
+
+    <div class="card-header-info card-header-animate">
+      <p class="overflow-scroll scrollbar-hide"><%= link_to course.name, app_course_path(course), class:'card-header-title' %></p>
+      <p class="card-header-subtitle card-header-subtitle-animate"> <%= icon('fa-solid','clock') %> <%= course.duration %></p>
+    </div>
+
+    <%= button_tag class:'card-header-btn',  data: { action:"click->reveal#toggle" } do %>
+      <%= icon('fa-solid','bars', class:'fa-sm')%>
+    <%end%>
+
+  </div>
+
+  <div data-reveal-target="item" class="card-popover w-24" data-action="mouseleave->reveal#show">
+  
+    <%= link_to edit_app_course_path(course), class:'card-popover-btn-primary' do %>
+      <%= icon('fa-solid', 'pen-to-square', class:'btn-icon') %>
+      <p class=""> <%= t('views.app.general.edit')%></p>
+    <%end%>
+
+  </div>
+
+</div>

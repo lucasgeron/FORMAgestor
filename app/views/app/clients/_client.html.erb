@@ -1,32 +1,50 @@
-<div id="<%= dom_id client %>">
-  <p class="">
-    <strong class="block font-medium mb-1">Name:</strong>
-    <%= client.name %>
-  </p>
+<div id="<%= dom_id client %>" class="card group" data-aos='fade' data-controller="reveal" data-reveal-hidden-class="grid">
 
-  <p class="">
-    <strong class="block font-medium mb-1">Cnpj:</strong>
-    <%= client.cnpj %>
-  </p>
+  <div class="card-header">
 
-  <p class="">
-    <strong class="block font-medium mb-1">Ativo:</strong>
-    <%= client.active %>
-  </p>
+    <div class="card-header-info card-header-animate">
+      <p class="card-header-title"><%= link_to client.name, app_client_path(client), class:'card-header-title' %></p>
+      <p class="card-header-subtitle card-header-subtitle-animate"><%= client.cnpj %></p>
+    </div>
 
-  <p class="">
-    <strong class="block font-medium mb-1">Licensas:</strong>
-    
-    <p class=""> <%= client.users.count %> Usuários </p>
-    <p class=""> <%= client.used_licenses %> de <%= client.licenses %> Utilizadas  </p>
-    <p class=""><%= client.available_licenses %> Disponíveis </p>
+    <%= button_tag class:'card-header-btn', data: { action:"click->reveal#toggle" } do %>
+      <%= icon('fa-solid','bars', class:'fa-sm')%>
+    <%end%>
 
-    <%= client.has_available_license? %>
-  </p>
+  </div>
 
-  <% if action_name != "show" %>
-    <%= link_to "Show this client", app_client_path(client), class: "rounded-lg py-3 px-5 bg-gray-100 inline-block font-medium" %>
-    <%= link_to 'Edit this client', edit_app_client_path(client), class: "rounded-lg py-3 ml-2 px-5 bg-gray-100 inline-block font-medium" %>
-    <hr class="mt-6">
-  <% end %>
+  <%# CARD BODY %>
+  <div class="flex justify-between items-center gap-2">
+
+    <% if client.active %>
+      <p class="card-tag-active "><%= icon('fa-solid','check', class:'')%> <%= t('activerecord.options.app/client.active.true')%></p>
+    <%else%>
+      <p class="card-tag-inactive "><%= icon('fa-solid','xmark', class:'')%> <%= t('activerecord.options.app/client.active.false')%> </p>
+    <%end%>
+
+    <p class="card-tag-readonly ">
+      <%= icon('fa-solid','key', class:'')%> <%= client.used_licenses %> / <%= client.licenses %>
+    </p>
+  </div>
+  <%# END BODY %>
+
+  <div data-reveal-target="item" class="card-popover" data-action="mouseleave->reveal#show">
+
+    <%= link_to edit_app_client_path(client), class:'card-popover-btn-primary' do %>
+      <%= icon('fa-solid', 'pen-to-square', class:'btn-icon') %>
+      <p class=""> <%= t('views.app.general.edit')%></p>
+    <%end%>
+
+    <%= button_to app_client_path(client), method: :patch, class: "card-popover-btn-delete", params: { app_client: { active: false } } do %>
+      <%= icon('fa-solid','xmark',class:'btn-icon') %>
+      Bloquear
+    <% end if client.active %>
+
+    <%= button_to app_client_path(client), method: :patch, class: "card-popover-btn-primary", params: { app_client: { active: true } } do %>
+      <%= icon('fa-solid','check',class:'btn-icon') %>
+      Habilitar
+    <% end if !client.active %>
+
+  </div>
+
 </div>

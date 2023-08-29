@@ -21,7 +21,7 @@ module NotificationHelper
       when 'error'
         'text-red-500 bg-red-100 dark:bg-red-800 dark:text-red-200'
       when 'warning'
-        'text-yellow-500 bg-yellow-100 dark:bg-yellow-800 dark:text-yellow-200'
+        'text-amber-500 bg-amber-100 dark:bg-amber-900 dark:text-amber-400'
       when 'info'
         'text-blue-500 bg-blue-100 dark:bg-blue-800 dark:text-blue-200'
       else
@@ -36,7 +36,7 @@ module NotificationHelper
       when 'error'
         'text-red-500 dark:text-red-200'
       when 'warning'
-        'text-yellow-500 dark:text-yellow-200'
+        'text-amber-500 dark:text-amber-200'
       when 'info'
         'text-blue-500 dark:text-blue-200'
       else

@@ -1,0 +1,17 @@
+<% content_for :ctas_primary do %>
+  <% if @counters.present? %>
+    <div class="h-9 flex items-center space-x-2 text-sm">
+      <%= render partial: 'app/shared/counter', locals: {collection: @counters}%>
+    </div>
+  <% else %>
+  <p class="h-9 block"> </p>
+  <% end %>
+<% end %>
+
+<% provide :head_title, App::Negotiation.model_name.human(count: 2) %>
+<% provide :page_title, App::Negotiation.model_name.human(count: 2) %>
+<% provide :sidebar, render(partial: 'app/negotiations/sidebar') %>
+
+<% content_for :page_content do %>
+  <%= render partial: 'negotiations' %>
+<%end%>

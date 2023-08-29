@@ -1,0 +1,40 @@
+<div id="<%= dom_id prospect %>" data-turbo="false" data-aos="fade" class='card group' data-controller="reveal" data-reveal-hidden-class="grid" >
+
+  <div class="card-header">
+
+    <div class="card-header-info card-header-animate ">
+      <p class="overflow-scroll scrollbar-hide truncate"><%= link_to  prospect.name, prospect, class:'card-header-title' %></p>
+      <p class="card-header-subtitle card-header-subtitle-animate"><%= time_ago_in_words(prospect.created_at) %></p>
+    </div>
+
+    <%= button_tag class:'card-header-btn', data: { action:"click->reveal#toggle" } do %>
+      <%= icon('fa-solid','bars', class:'fa-sm')%>
+    <%end%>
+
+  </div>
+
+  <%# CARD BODY %>
+  <% if prospect.vendor %>
+    <p class="card-tag-active"><%= icon('fa-solid','user', class:'btn-icon fa-xs')%> <%= prospect.vendor.name %></p>
+  <%else%>
+    <p class="card-tag-inactive"><%= icon('fa-solid','xmark', class:'btn-icon')%> <%= t('activerecord.options.app/prospect.vendor_id.none')%> </p>
+  <%end%>
+  <%# END BODY %>
+
+  <div data-reveal-target="item" class="card-popover <% if !can_set_vendor?(prospect)%> w-24 grid-cols-1<%end%>" data-action="mouseleave->reveal#show">
+
+    <%= link_to edit_app_prospect_path(prospect), class:'card-popover-btn-primary w-full' do %>
+      <%= icon('fa-solid', 'pen-to-square', class:'btn-icon') %>
+      <p class=""> <%= t('views.app.general.edit')%></p>
+    <%end%>
+    
+
+    <%= button_to app_prospect_path(prospect), method: :patch, form_class: "", class:'card-popover-btn-primary flex-none ', params: { app_prospect: { vendor_id: get_current_access.vendor_id } } do %>
+      <%= icon('fa-solid','check-to-slot',class:'btn-icon') %>
+      <%= t('views.app.prospects.button.set_vendor') %>
+    <%end if can_set_vendor?(prospect)%>
+
+
+  </div>
+
+</div>

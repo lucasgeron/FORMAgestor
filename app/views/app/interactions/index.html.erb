@@ -1,0 +1,14 @@
+<% content_for :ctas_primary do %>
+  <%= link_to new_app_interaction_path, class: "btn-primary flex-none" do %>
+    <%= icon('fa-solid','plus',class:'btn-icon') %>
+    <%= App::Interaction.model_name.human %>
+  <% end %>
+<% end %>
+
+<% provide :head_title, App::Interaction.model_name.human(count:2) %>
+<% provide :page_title, App::Interaction.model_name.human(count:2) %>
+<% provide :sidebar, render(partial: 'app/interactions/sidebar') %>
+
+<% content_for :page_content do %>
+  <%= render partial: "interactions" %>
+<%end%>

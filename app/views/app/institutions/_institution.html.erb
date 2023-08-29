@@ -1,0 +1,33 @@
+<div id="<%= dom_id institution %>" class='card group '  data-aos="fade" data-controller="reveal" data-reveal-hidden-class="grid">
+
+  <div class="card-header">
+
+    <%= link_to app_institution_path(institution), class:'card-header-image overflow-clip' do %>
+      <% if institution.image.attached? %>
+        <%= image_tag(institution.image, class:'object-cover h-18 w-18')%>
+      <% else %>
+        <%= icon('fa-solid', 'building-columns', class:'fa-2xl dark:text-gray-900')%>
+      <% end %>
+    <% end %>
+
+    <div class="card-header-info card-header-animate  ">
+      <p class="overflow-scroll scrollbar-hide"><%= link_to institution.abreviation, app_institution_path(institution), class:'card-header-title' %></p>
+      <p class="card-header-subtitle card-header-subtitle-animate line-clamp-3"><%= institution.name %></p>
+    </div>
+
+    <%= button_tag class:'card-header-btn', data: { action:"click->reveal#toggle" } do %>
+      <%= icon('fa-solid','bars', class:'fa-sm')%>
+    <%end%>
+
+  </div>
+
+  <div data-reveal-target="item" class="card-popover w-24" data-action="mouseleave->reveal#show">
+
+    <%= link_to edit_app_institution_path(institution), class:'card-popover-btn-primary' do %>
+      <%= icon('fa-solid', 'pen-to-square', class:'btn-icon') %>
+      <p class=""> <%= t('views.app.general.edit')%></p>
+    <%end%>
+
+  </div>
+
+</div>

@@ -30,5 +30,23 @@ module RailsApp
     config.i18n.default_locale = :'pt-BR'
     # config.i18n.default_locale = :en
 
+    # load the "de", "en" and "es" built-in locales:
+    # the first :locale will be used also as the default locale
+    Pagy::I18n.load({ locale: 'pt-BR', filepath: 'config/locales/pagy.pt-BR.yml' },
+                    { locale: 'en' })
+
+    # set Faker locale
+    Faker::Config.locale = 'pt-BR'
+          
+    # set layouts for devise
+    config.to_prepare do
+      Devise::SessionsController.layout "public_application"
+      Devise::RegistrationsController.layout "public_application"
+      Devise::ConfirmationsController.layout "public_application"
+      Devise::UnlocksController.layout "public_application"
+      Devise::PasswordsController.layout "public_application"
+    end
+    
+
   end
 end

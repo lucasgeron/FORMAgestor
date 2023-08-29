@@ -1,6 +1,6 @@
 en:
   views:
-    app:
+    application:
       title: Rails App
       name: Rails Application Sample
       developer: lucasgeron
@@ -8,7 +8,7 @@ en:
 
 pt-BR:
   views:
-    app:
+    application:
       title: FORMAgestor
       name: www.formagestor.com.br
       developer: lucasgeron

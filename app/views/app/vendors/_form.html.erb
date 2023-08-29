@@ -1,0 +1,59 @@
+<%= form_with(model: app_vendor, class: "contents") do |form| %>
+  <% if app_vendor.errors.any? %>
+    <% flash.now[:error] = app_vendor.errors.to_a%>
+  <% end %>
+
+  <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+
+    <div class="">
+      <%= form.label :name, class:'required' %>
+      <%= form.text_field :name, class: "form-input", placeholder: t('activerecord.placeholders.app/vendor.name') %>
+    </div>
+
+    <div class="">
+      <%= form.label :role_id, class:'' %>
+      <div class="flex justify-between space-x-2 items-center ">
+        <%= form.collection_select :role_id, @roles, :id, :name, {include_blank: t('activerecord.blank_entries.role')}, {class: "form-input"} %>
+        <%= link_to new_app_role_vendor_path, class: "btn-primary flex-none mt-2 h-10 pt-2.5" do %>
+          <%= icon('fa-solid','plus',class:'-mr-2 2xl:-mr-0 btn-icon') %>
+          <span class="hidden 2xl:inline"><%= App::RoleVendor.model_name.human %></span>
+        <% end %>
+      </div>
+    </div>
+
+
+  <div class="">
+    <%= form.label :phone %>
+    <%= form.text_field :phone, class: "form-input", placeholder: t('activerecord.placeholders.app/vendor.phone') %>
+  </div>
+
+  <div class="">
+    <%= form.label :email %>
+    <%= form.text_field :email, class: "form-input", placeholder: t('activerecord.placeholders.app/vendor.email') %>
+  </div>
+
+</div>
+
+<%# CITIES INPUT %>
+<% if @cities.present? %>
+  <div class="mt-4">
+    <p class="font-bold text-2xl"> <%= App::Vendor.human_attribute_name('city_ids') %> </p>
+    <div class="mt-2 bg-gray-100 dark:bg-gray-900 py-2 px-3 space-y-1 rounded-lg text-sm grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3">
+      <%= form.collection_check_boxes  :city_ids, @cities, :id, :name_and_uf, include_hidden: true do |city| %>
+        <div class="">
+          <%= city.check_box(class: 'form-checkbox-simple dark:bg-gray-800 bg-gray-200 mr-1 ') %>
+          <%= city.label class:'cursor-pointer text-sm' do %>
+            <%= city.text %>
+          <% end %>
+        </div>
+      <% end %>
+    </div>
+  <% end %>
+</div>
+<%# END OF CITIES %>
+
+<div class="mt-4 inline-flex w-full justify-end">
+  <%= form.submit class: "btn-primary" %>
+</div>
+
+<% end %>

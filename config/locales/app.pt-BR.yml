@@ -1,0 +1,83 @@
+pt-BR:
+  views:
+    sessions:
+      user_not_active: '%{email} está com acesso bloqueado. Para desbloquear, entre em contato com %{client}.'
+      client_not_active: '%{client} está bloqueado. Para desbloquear, entre em contato com FORMAgestor.'
+    app:
+      general:
+        new: Criar 
+        edit: Editar
+        editing: Editando
+        show: Exibir
+        showing: Exibindo
+        all: Todos
+        select_all_m: Selecionar Todos
+        select_all_f: Selecionar Todas
+        empty_input_file: Selecione um Arquivo
+        search: Pesquisar
+        delete_confirm: 'Tem certeza que deseja excluir este registro?'
+        hide_confirm: 'Tem certeza que deseja ocultar este registro?'
+        flash:
+          switch_client: 'Devido as permissões, é necessário selecione o registro novamente'
+          unauthorized: 'Você não possui permissão para acessar esta página'
+          ban_alert: 'ATENÇÃO: Repetir esta ação pode resultar banimento'
+          not_found_m: '%{model} não encontrado' 
+          not_found_f: '%{model} não encontrada' 
+          create_m: '%{model} criado com sucesso'
+          create_f: '%{model} criada com sucesso'
+          update_m: '%{model} atualizado com sucesso'
+          update_f: '%{model} atualizada com sucesso'
+          destroy_m: '%{model} excluido com sucesso'
+          destroy_f: '%{model} excluida com sucesso'
+          destroy_failed_m: 'Não é possível excluir este %{model} pois ele possui dependências'
+          destroy_failed_f: 'Não é possível excluir esta %{model} pois ela possui dependências'
+          destroy_attachment_m: '%{attribute} excluido com sucesso'
+          destroy_attachment_f: '%{attribute} excluida com sucesso'
+          invalid_image_format: 'não possui uma extensão válida'
+          invalid_image_size: 'é muito grande'
+          course_already_exists: 'já registrado para esta Instituição'
+      clients:
+        form:
+          has_no_entry:  Não existem <span class='font-medium'> <i class="fa-solid fa-circle-user"></i> Usuários </span> cadastrados para este <span class='font-medium'> <i class="fa-solid fa-building-user"></i> Cliente</span>. 
+        flash:
+          destroy_failed: 'Não é possível excluir este Cliente pois existem Usuários.'
+          destroy_attachment_failed: 'Este cliente não possui logo vinculado atualmente.'
+      admins:
+        flash:
+          update_client: 'Cliente alterado para %{client}.'
+      users:
+        form:
+          has_no_entry: Não existem <span class='font-medium'> <i class="fa-solid fa-user-circle"></i> Usuários </span> cadastrados. 
+        flash:
+          no_license_available: 'Não existem licensas disponíveis para %{client}.'
+          tip_for_create: "É possível criar este usuário com <span class='font-bold'> Acesso: Bloqueado</span>"
+          tip_for_update: 'Libere licenças não utilizadas ou adquira novas licenças para prosseguir'
+          password_updated: Senha Atualizada.
+          password_not_updated: Senha não alterada.
+      cities:
+        form:
+          has_no_entry: Não existem <span class='font-medium'> <i class="fa-solid fa-map-location-dot"></i> Cidades </span> cadastradas. 
+        flash:
+          destroy_failed: 'Não é possível excluir esta Cidade pois ela possui Instituições.'
+          destroy_attachment_failed: 'Esta Instituição não possui logo vinculado atualmente.'
+      institutions:
+        index:
+          search_to_start: É necessário selecionar ao menos uma cidade para exibir informações.
+        form:
+          has_no_entry: Não existem <span class='font-medium'> <i class="fa-solid fa-building-columns"></i> Instituições </span> cadastradas. 
+        flash:
+        form:
+          has_no_entry: Não existem <span class='font-medium'> <i class="fa-solid fa-user"></i> Representante </span> cadastrados. 
+        detail:
+          has_no_entry: Este <span class='font-medium'> <i class="fa-solid fa-user"></i> Representante </span> não atendente nenhuma <span class='font-medium'> <i class="fa-solid fa-map-location-dot"></i> Cidade</span>.
+      prospects:
+        button:
+          set_vendor: Assumir
+        form:
+          has_no_entry: Não existem <span class='font-medium'> <i class="fa-solid fa-receipt"></i> Prospecções </span> cadastradas. 
+        flash:
+          client_not_found: O link que você tentou acessar é inválido.
+      negotiations:
+        flash:
+          hide: Negociação ocultada com sucesso
+          unhide: Negociação desocultada com sucesso
