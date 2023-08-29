@@ -7,8 +7,8 @@ p App::Client.create(name: 'Empresa A', cnpj:'00.000.000/0001-00', active: true,
 p App::Client.create(name: 'Empresa B', cnpj:'00.000.000/0001-00', active: true, licenses: 2)
 
 
-p App::Admin.create(email: 'lucasf.geron@gmail.com', password:'123456', password_confirmation:'123456', client_id: 1)
-p App::User.create(email: 'lucasf.geron@gmail.com', password:'123456', password_confirmation:'123456', client_id: 1)
+p App::Admin.create(email: 'admin@formagestor', password:'123456', password_confirmation:'123456', client_id: 1)
+p App::User.create(email: 'admin@formagestor', password:'123456', password_confirmation:'123456', client_id: 1)
 
 p App::User.create(email: 'a@a', password:'123456', password_confirmation:'123456', client_id: 2)
 p App::User.create(email: 'b@a', password:'123456', password_confirmation:'123456', client_id: 2)
@@ -26,7 +26,6 @@ load Rails.root.join('db', 'seeds', 'app_role_vendor.rb')
 load Rails.root.join('db', 'seeds', 'app_status_negotiation.rb')
 load Rails.root.join('db', 'seeds', 'app_status_interaction.rb')
 load Rails.root.join('db', 'seeds', 'app_vendor.rb')
-
 
 load Rails.root.join('db', 'seeds', 'app_negotiation.rb')
 
