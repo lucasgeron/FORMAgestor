@@ -69,6 +69,12 @@ Access the project folder:
 
 Before you continue, make sure the Docker is running.
 
+In your terminal, Login in docker hub:
+
+    $ docker login
+
+Next, build the containers:
+
 If you are on **Mac OS** or **WLS2**:
 
     $ docker build .
@@ -117,10 +123,15 @@ To populate the application with required and defaults values:
 
     $ docker compose run --rm web bundle exec rails db:seed
 
+### 10. Setup Tailwind 
+
+To compile the tailwind assets:
+
+    $ docker compose run --rm web bundle exec rails tailwindcss:build
 
 ### 10. Up the container web
 
-    $ docker compose up -d web
+    $ docker compose up web -d
     
 
 ### 11. Access the application
