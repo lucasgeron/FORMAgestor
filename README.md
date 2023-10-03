@@ -129,18 +129,18 @@ To compile the tailwind assets:
 
     $ docker compose run --rm web bundle exec rails tailwindcss:build
 
-### 10. Up the container web
+### 11. Up the container web
 
     $ docker compose up web -d
     
 
-### 11. Access the application
+### 12. Access the application
 
 In your browser access **localhost** through the port **:3000**
 
 * [http://localhost:3000](http://localhost:3000) 
 
-### 12. Login in the application
+### 13. Login in the application
 
 To finish this installation guide, perform a [login](http://localhost:3000/users/sign_in) on the application using the following credentials:
 
@@ -154,7 +154,7 @@ If all work's as expected, you should be redirected to application prospections.
 
 To populate the application with the **valid data** generated trougth a study of many cities.
 
-    docker compose run --rm web rails db:seed 
+    docker compose run --rm web rails db:populate
 
 This command will populate the main database with some data.
 
