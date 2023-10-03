@@ -36,4 +36,4 @@
 
 config/application.yml
 
-/app/assets/images/seed_images/*
+# /app/assets/images/seed_images/*

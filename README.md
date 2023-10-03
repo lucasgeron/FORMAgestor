@@ -69,6 +69,12 @@ Access the project folder:
 
 Before you continue, make sure the Docker is running.
 
+In your terminal, Login in docker hub:
+
+    $ docker login
+
+Next, build the containers:
+
 If you are on **Mac OS** or **WLS2**:
 
     $ docker build .
